@@ -303,7 +303,6 @@
 			isa = PBXGroup;
 			children = (
 				D390F62D276F34D50042FF90 /* View */,
-				D390F62E276F34DE0042FF90 /* ViewModel */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -315,13 +314,6 @@
 				D390F5E2276F33C00042FF90 /* MainViewController.storyboard */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		D390F62E276F34DE0042FF90 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		D390F62F276F34F70042FF90 /* SupportingFiles */ = {
