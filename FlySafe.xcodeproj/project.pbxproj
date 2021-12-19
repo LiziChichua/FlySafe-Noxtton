@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D5CED37276F40B9008D29B9 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED36276F40B9008D29B9 /* DataRequest.swift */; };
 		D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5DC276F33C00042FF90 /* AppDelegate.swift */; };
 		D390F5DF276F33C00042FF90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5DE276F33C00042FF90 /* SceneDelegate.swift */; };
 		D390F5E1276F33C00042FF90 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5E0276F33C00042FF90 /* MainViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D5CED36276F40B9008D29B9 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataRequest.swift; path = ../../../../DataRequest.swift; sourceTree = "<group>"; };
 		D390F5D9276F33C00042FF90 /* FlySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlySafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D390F5DC276F33C00042FF90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D390F5DE276F33C00042FF90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -194,6 +196,7 @@
 		D390F613276F341B0042FF90 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				0D5CED36276F40B9008D29B9 /* DataRequest.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -415,6 +418,7 @@
 				D390F60C276F33F00042FF90 /* UIView+Extension.swift in Sources */,
 				D390F608276F33F00042FF90 /* CoordinatorProtocol.swift in Sources */,
 				D390F5E1276F33C00042FF90 /* MainViewController.swift in Sources */,
+				0D5CED37276F40B9008D29B9 /* DataRequest.swift in Sources */,
 				D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */,
 				D390F60A276F33F00042FF90 /* UIImage+Extension.swift in Sources */,
 				D390F60F276F33F00042FF90 /* UITableViewCell+Extension.swift in Sources */,
