@@ -7,7 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D5CED37276F40B9008D29B9 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED36276F40B9008D29B9 /* DataRequest.swift */; };
+		0D5CED3C276F4372008D29B9 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED3B276F4372008D29B9 /* DataRequest.swift */; };
+		0D5CED3E276F5B93008D29B9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED3D276F5B93008D29B9 /* NetworkService.swift */; };
+		0D5CED42276F7691008D29B9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED41276F7691008D29B9 /* User.swift */; };
+		0D5CED45276F7D78008D29B9 /* AddTravelPlanResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED44276F7D78008D29B9 /* AddTravelPlanResponse.swift */; };
+		0D5CED47276F7E7E008D29B9 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED46276F7E7E008D29B9 /* AuthResponse.swift */; };
+		0D5CED49276F7EB7008D29B9 /* TravelPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED48276F7EB7008D29B9 /* TravelPlan.swift */; };
+		0D5CED4B276F7F54008D29B9 /* FetchTravelPlansResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED4A276F7F54008D29B9 /* FetchTravelPlansResponse.swift */; };
+		0D5CED4D276F7FB9008D29B9 /* DeleteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED4C276F7FB9008D29B9 /* DeleteResponse.swift */; };
+		0D5CED4F276F800F008D29B9 /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED4E276F800F008D29B9 /* Airport.swift */; };
+		0D5CED51276F802B008D29B9 /* FetchAirportsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED50276F802B008D29B9 /* FetchAirportsResponse.swift */; };
+		0D5CED53276F808A008D29B9 /* FetchVaccinesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED52276F808A008D29B9 /* FetchVaccinesResponse.swift */; };
+		0D5CED55276F81A9008D29B9 /* FetchNationalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED54276F81A9008D29B9 /* FetchNationalities.swift */; };
+		0D5CED57276F82BB008D29B9 /* FetchRestrictionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */; };
 		D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5DC276F33C00042FF90 /* AppDelegate.swift */; };
 		D390F5DF276F33C00042FF90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5DE276F33C00042FF90 /* SceneDelegate.swift */; };
 		D390F5E1276F33C00042FF90 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5E0276F33C00042FF90 /* MainViewController.swift */; };
@@ -34,7 +46,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D5CED36276F40B9008D29B9 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataRequest.swift; path = ../../../../DataRequest.swift; sourceTree = "<group>"; };
+		0D5CED3B276F4372008D29B9 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataRequest.swift; path = ../../../../DataRequest.swift; sourceTree = "<group>"; };
+		0D5CED3D276F5B93008D29B9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkService.swift; path = ../../../../NetworkService.swift; sourceTree = "<group>"; };
+		0D5CED41276F7691008D29B9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0D5CED44276F7D78008D29B9 /* AddTravelPlanResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelPlanResponse.swift; sourceTree = "<group>"; };
+		0D5CED46276F7E7E008D29B9 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		0D5CED48276F7EB7008D29B9 /* TravelPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlan.swift; sourceTree = "<group>"; };
+		0D5CED4A276F7F54008D29B9 /* FetchTravelPlansResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTravelPlansResponse.swift; sourceTree = "<group>"; };
+		0D5CED4C276F7FB9008D29B9 /* DeleteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteResponse.swift; sourceTree = "<group>"; };
+		0D5CED4E276F800F008D29B9 /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
+		0D5CED50276F802B008D29B9 /* FetchAirportsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAirportsResponse.swift; sourceTree = "<group>"; };
+		0D5CED52276F808A008D29B9 /* FetchVaccinesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchVaccinesResponse.swift; sourceTree = "<group>"; };
+		0D5CED54276F81A9008D29B9 /* FetchNationalities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNationalities.swift; sourceTree = "<group>"; };
+		0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestrictionsResponse.swift; sourceTree = "<group>"; };
 		D390F5D9276F33C00042FF90 /* FlySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlySafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D390F5DC276F33C00042FF90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D390F5DE276F33C00042FF90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +97,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D5CED38276F430E008D29B9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D390F614276F34210042FF90 /* CoreData */,
+				0D5CED39276F433D008D29B9 /* Network */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		0D5CED39276F433D008D29B9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0D5CED3B276F4372008D29B9 /* DataRequest.swift */,
+				0D5CED3D276F5B93008D29B9 /* NetworkService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0D5CED40276F7680008D29B9 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				0D5CED41276F7691008D29B9 /* User.swift */,
+				0D5CED44276F7D78008D29B9 /* AddTravelPlanResponse.swift */,
+				0D5CED46276F7E7E008D29B9 /* AuthResponse.swift */,
+				0D5CED48276F7EB7008D29B9 /* TravelPlan.swift */,
+				0D5CED4A276F7F54008D29B9 /* FetchTravelPlansResponse.swift */,
+				0D5CED4C276F7FB9008D29B9 /* DeleteResponse.swift */,
+				0D5CED4E276F800F008D29B9 /* Airport.swift */,
+				0D5CED50276F802B008D29B9 /* FetchAirportsResponse.swift */,
+				0D5CED52276F808A008D29B9 /* FetchVaccinesResponse.swift */,
+				0D5CED54276F81A9008D29B9 /* FetchNationalities.swift */,
+				0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		D390F5D0276F33C00042FF90 = {
 			isa = PBXGroup;
 			children = (
@@ -93,8 +153,8 @@
 			isa = PBXGroup;
 			children = (
 				D390F5F3276F33EF0042FF90 /* Core */,
-				D390F612276F34130042FF90 /* Managers */,
 				D390F615276F34310042FF90 /* Models */,
+				0D5CED38276F430E008D29B9 /* Managers */,
 				D390F618276F34510042FF90 /* Resources */,
 				D390F627276F346C0042FF90 /* Scenes */,
 				D390F62F276F34F70042FF90 /* SupportingFiles */,
@@ -184,23 +244,6 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		D390F612276F34130042FF90 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				D390F613276F341B0042FF90 /* Network */,
-				D390F614276F34210042FF90 /* CoreData */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		D390F613276F341B0042FF90 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				0D5CED36276F40B9008D29B9 /* DataRequest.swift */,
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		D390F614276F34210042FF90 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -211,17 +254,10 @@
 		D390F615276F34310042FF90 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D390F616276F34370042FF90 /* API */,
+				0D5CED40276F7680008D29B9 /* API */,
 				D390F617276F343D0042FF90 /* CoreData */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		D390F616276F34370042FF90 /* API */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		D390F617276F343D0042FF90 /* CoreData */ = {
@@ -413,22 +449,34 @@
 			buildActionMask = 2147483647;
 			files = (
 				D390F60D276F33F00042FF90 /* UICollectionView+Extension.swift in Sources */,
+				0D5CED4B276F7F54008D29B9 /* FetchTravelPlansResponse.swift in Sources */,
 				D390F60E276F33F00042FF90 /* UICollectionViewCell+Extension.swift in Sources */,
 				D390F610276F33F00042FF90 /* UITableView+Extension.swift in Sources */,
 				D390F60C276F33F00042FF90 /* UIView+Extension.swift in Sources */,
+				0D5CED4F276F800F008D29B9 /* Airport.swift in Sources */,
+				0D5CED47276F7E7E008D29B9 /* AuthResponse.swift in Sources */,
+				0D5CED57276F82BB008D29B9 /* FetchRestrictionsResponse.swift in Sources */,
+				0D5CED45276F7D78008D29B9 /* AddTravelPlanResponse.swift in Sources */,
+				0D5CED53276F808A008D29B9 /* FetchVaccinesResponse.swift in Sources */,
+				0D5CED3E276F5B93008D29B9 /* NetworkService.swift in Sources */,
 				D390F608276F33F00042FF90 /* CoordinatorProtocol.swift in Sources */,
 				D390F5E1276F33C00042FF90 /* MainViewController.swift in Sources */,
-				0D5CED37276F40B9008D29B9 /* DataRequest.swift in Sources */,
+				0D5CED3C276F4372008D29B9 /* DataRequest.swift in Sources */,
 				D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */,
 				D390F60A276F33F00042FF90 /* UIImage+Extension.swift in Sources */,
+				0D5CED51276F802B008D29B9 /* FetchAirportsResponse.swift in Sources */,
 				D390F60F276F33F00042FF90 /* UITableViewCell+Extension.swift in Sources */,
 				D390F609276F33F00042FF90 /* CoordinatorDelegate.swift in Sources */,
+				0D5CED49276F7EB7008D29B9 /* TravelPlan.swift in Sources */,
 				D390F606276F33EF0042FF90 /* AppCoordinator.swift in Sources */,
+				0D5CED4D276F7FB9008D29B9 /* DeleteResponse.swift in Sources */,
 				D390F607276F33EF0042FF90 /* StoryBoarded.swift in Sources */,
 				D390F5E7276F33C00042FF90 /* FlySafe.xcdatamodeld in Sources */,
 				D390F62A276F34760042FF90 /* BaseViewController.swift in Sources */,
 				D390F5DF276F33C00042FF90 /* SceneDelegate.swift in Sources */,
+				0D5CED55276F81A9008D29B9 /* FetchNationalities.swift in Sources */,
 				D390F60B276F33F00042FF90 /* UIColor+Extension.swift in Sources */,
+				0D5CED42276F7691008D29B9 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
