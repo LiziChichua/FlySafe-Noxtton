@@ -31,6 +31,7 @@
 		0D5CED53276F808A008D29B9 /* FetchVaccinesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED52276F808A008D29B9 /* FetchVaccinesResponse.swift */; };
 		0D5CED55276F81A9008D29B9 /* FetchNationalitiesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED54276F81A9008D29B9 /* FetchNationalitiesResponse.swift */; };
 		0D5CED57276F82BB008D29B9 /* FetchRestrictionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */; };
+		0DB90439277103150063436A /* FetchSelfResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB90438277103150063436A /* FetchSelfResponse.swift */; };
 		0DD2CA1F277041130044CB1B /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2CA1D277041130044CB1B /* DataRequest.swift */; };
 		0DD2CA20277041130044CB1B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2CA1E277041130044CB1B /* NetworkService.swift */; };
 		D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5DC276F33C00042FF90 /* AppDelegate.swift */; };
@@ -83,6 +84,7 @@
 		0D5CED52276F808A008D29B9 /* FetchVaccinesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchVaccinesResponse.swift; sourceTree = "<group>"; };
 		0D5CED54276F81A9008D29B9 /* FetchNationalitiesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNationalitiesResponse.swift; sourceTree = "<group>"; };
 		0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestrictionsResponse.swift; sourceTree = "<group>"; };
+		0DB90438277103150063436A /* FetchSelfResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSelfResponse.swift; sourceTree = "<group>"; };
 		0DD2CA1D277041130044CB1B /* DataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataRequest.swift; path = Network/DataRequest.swift; sourceTree = SOURCE_ROOT; };
 		0DD2CA1E277041130044CB1B /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkService.swift; path = Network/NetworkService.swift; sourceTree = SOURCE_ROOT; };
 		D390F5D9276F33C00042FF90 /* FlySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlySafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -170,7 +172,15 @@
 		0D5CED40276F7680008D29B9 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				0DB904372770DEC70063436A /* ResponseStructs */,
 				0D5B34EF2770695C00148518 /* RequestStructs */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		0DB904372770DEC70063436A /* ResponseStructs */ = {
+			isa = PBXGroup;
+			children = (
 				0D5CED41276F7691008D29B9 /* User.swift */,
 				0D5CED44276F7D78008D29B9 /* AddTravelPlanResponse.swift */,
 				0D5CED46276F7E7E008D29B9 /* AuthResponse.swift */,
@@ -183,8 +193,9 @@
 				0D5CED54276F81A9008D29B9 /* FetchNationalitiesResponse.swift */,
 				0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */,
 				0D2C10D22770A49000B0AC93 /* Flight.swift */,
+				0DB90438277103150063436A /* FetchSelfResponse.swift */,
 			);
-			path = API;
+			path = ResponseStructs;
 			sourceTree = "<group>";
 		};
 		D390F5D0276F33C00042FF90 = {
@@ -514,6 +525,7 @@
 				0D5CED47276F7E7E008D29B9 /* AuthResponse.swift in Sources */,
 				0D2C10CA27707C2900B0AC93 /* AuthRequest.swift in Sources */,
 				0D2C10D32770A49000B0AC93 /* Flight.swift in Sources */,
+				0DB90439277103150063436A /* FetchSelfResponse.swift in Sources */,
 				0DD2CA1F277041130044CB1B /* DataRequest.swift in Sources */,
 				0D5CED57276F82BB008D29B9 /* FetchRestrictionsResponse.swift in Sources */,
 				0D5CED45276F7D78008D29B9 /* AddTravelPlanResponse.swift in Sources */,

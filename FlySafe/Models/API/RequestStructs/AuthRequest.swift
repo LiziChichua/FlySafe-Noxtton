@@ -15,6 +15,8 @@ struct AuthRequest: DataRequest {
     var password: String
     var queryItems: [String : String] = [:]
     var userData: UserData?
+    var method: HTTPMethod {.post}
+    typealias Response = AuthResponse
     
     init(userEmail: String, userPassword: String, isNewUser: Bool, userData: UserData?) {
         self.email = userEmail
@@ -39,7 +41,7 @@ struct AuthRequest: DataRequest {
         }
     }
     
-    var method: HTTPMethod {.post}
-    typealias Response = AuthResponse
+    
+    
 
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+//Gives ability to loop through properties of struct, throws key-value pairs
 
 protocol Loopable {
     func allProperties() throws -> [String: Any]

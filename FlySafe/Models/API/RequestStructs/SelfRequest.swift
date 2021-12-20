@@ -11,7 +11,7 @@ import Foundation
 struct SelfRequest: DataRequest {
     
     var method: HTTPMethod = .get
-    typealias Response = AuthResponse
+    typealias Response = FetchSelfResponse
     var url: String { "http://covid-restrictions-api.noxtton.com/v1_private/self"}
     var headers: [String : String] = [:]
 
