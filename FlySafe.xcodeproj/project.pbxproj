@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D5CED3C276F4372008D29B9 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED3B276F4372008D29B9 /* DataRequest.swift */; };
-		0D5CED3E276F5B93008D29B9 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED3D276F5B93008D29B9 /* NetworkService.swift */; };
 		0D5CED42276F7691008D29B9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED41276F7691008D29B9 /* User.swift */; };
 		0D5CED45276F7D78008D29B9 /* AddTravelPlanResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED44276F7D78008D29B9 /* AddTravelPlanResponse.swift */; };
 		0D5CED47276F7E7E008D29B9 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED46276F7E7E008D29B9 /* AuthResponse.swift */; };
@@ -20,6 +18,8 @@
 		0D5CED53276F808A008D29B9 /* FetchVaccinesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED52276F808A008D29B9 /* FetchVaccinesResponse.swift */; };
 		0D5CED55276F81A9008D29B9 /* FetchNationalities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED54276F81A9008D29B9 /* FetchNationalities.swift */; };
 		0D5CED57276F82BB008D29B9 /* FetchRestrictionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */; };
+		0DD2CA1F277041130044CB1B /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2CA1D277041130044CB1B /* DataRequest.swift */; };
+		0DD2CA20277041130044CB1B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2CA1E277041130044CB1B /* NetworkService.swift */; };
 		D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5DC276F33C00042FF90 /* AppDelegate.swift */; };
 		D390F5DF276F33C00042FF90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5DE276F33C00042FF90 /* SceneDelegate.swift */; };
 		D390F5E1276F33C00042FF90 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5E0276F33C00042FF90 /* MainViewController.swift */; };
@@ -46,8 +46,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0D5CED3B276F4372008D29B9 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DataRequest.swift; path = ../../../../DataRequest.swift; sourceTree = "<group>"; };
-		0D5CED3D276F5B93008D29B9 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NetworkService.swift; path = ../../../../NetworkService.swift; sourceTree = "<group>"; };
 		0D5CED41276F7691008D29B9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0D5CED44276F7D78008D29B9 /* AddTravelPlanResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelPlanResponse.swift; sourceTree = "<group>"; };
 		0D5CED46276F7E7E008D29B9 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
@@ -59,6 +57,8 @@
 		0D5CED52276F808A008D29B9 /* FetchVaccinesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchVaccinesResponse.swift; sourceTree = "<group>"; };
 		0D5CED54276F81A9008D29B9 /* FetchNationalities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNationalities.swift; sourceTree = "<group>"; };
 		0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestrictionsResponse.swift; sourceTree = "<group>"; };
+		0DD2CA1D277041130044CB1B /* DataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataRequest.swift; path = Network/DataRequest.swift; sourceTree = SOURCE_ROOT; };
+		0DD2CA1E277041130044CB1B /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkService.swift; path = Network/NetworkService.swift; sourceTree = SOURCE_ROOT; };
 		D390F5D9276F33C00042FF90 /* FlySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlySafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D390F5DC276F33C00042FF90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D390F5DE276F33C00042FF90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -109,8 +109,8 @@
 		0D5CED39276F433D008D29B9 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				0D5CED3B276F4372008D29B9 /* DataRequest.swift */,
-				0D5CED3D276F5B93008D29B9 /* NetworkService.swift */,
+				0DD2CA1D277041130044CB1B /* DataRequest.swift */,
+				0DD2CA1E277041130044CB1B /* NetworkService.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -455,13 +455,12 @@
 				D390F60C276F33F00042FF90 /* UIView+Extension.swift in Sources */,
 				0D5CED4F276F800F008D29B9 /* Airport.swift in Sources */,
 				0D5CED47276F7E7E008D29B9 /* AuthResponse.swift in Sources */,
+				0DD2CA1F277041130044CB1B /* DataRequest.swift in Sources */,
 				0D5CED57276F82BB008D29B9 /* FetchRestrictionsResponse.swift in Sources */,
 				0D5CED45276F7D78008D29B9 /* AddTravelPlanResponse.swift in Sources */,
 				0D5CED53276F808A008D29B9 /* FetchVaccinesResponse.swift in Sources */,
-				0D5CED3E276F5B93008D29B9 /* NetworkService.swift in Sources */,
 				D390F608276F33F00042FF90 /* CoordinatorProtocol.swift in Sources */,
 				D390F5E1276F33C00042FF90 /* MainViewController.swift in Sources */,
-				0D5CED3C276F4372008D29B9 /* DataRequest.swift in Sources */,
 				D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */,
 				D390F60A276F33F00042FF90 /* UIImage+Extension.swift in Sources */,
 				0D5CED51276F802B008D29B9 /* FetchAirportsResponse.swift in Sources */,
@@ -475,6 +474,7 @@
 				D390F62A276F34760042FF90 /* BaseViewController.swift in Sources */,
 				D390F5DF276F33C00042FF90 /* SceneDelegate.swift in Sources */,
 				0D5CED55276F81A9008D29B9 /* FetchNationalities.swift in Sources */,
+				0DD2CA20277041130044CB1B /* NetworkService.swift in Sources */,
 				D390F60B276F33F00042FF90 /* UIColor+Extension.swift in Sources */,
 				0D5CED42276F7691008D29B9 /* User.swift in Sources */,
 			);
