@@ -8,7 +8,7 @@
 import Foundation
 
 
-struct FetchNationalities: Codable {
+struct FetchNationalitiesResponse: Codable {
     let success: Bool
     let nationalities: [String]
     
