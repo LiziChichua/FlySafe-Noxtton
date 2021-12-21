@@ -62,8 +62,8 @@ class MainViewController: BaseViewController {
 //            print(response)
 //        }
         
-        //Works but needs futher testing
-//        apiManager.fetchRestrictions(flight: Flight(source: "TBS", destination: "GVA", date: ""), nationality: "georgian", vaccine: "pfizer", transfer: "BER") { result in
+        //Works with or without given nationality, vaccine and transfer information
+//        apiManager.fetchRestrictions(flight: Flight(source: "TBS", destination: "GVA", date: ""), nationality: nil, vaccine: nil, transfer: nil) { result in
 //            print (result)
 //        }
         
