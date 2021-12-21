@@ -160,8 +160,8 @@ class APIManager {
     }
     
     //Fetch restrictions for given travel information
-    func fetchRestrictions(nationality: String?, vaccine: String?, transfer: String?, completion: @escaping (FetchRestrictionsResponse?) -> Void) {
-        let request = FetchRestrictionsRequest(nationality: nationality, vaccine: vaccine, transfer: transfer)
+    func fetchRestrictions(flight: Flight, nationality: String?, vaccine: String?, transfer: String?, completion: @escaping (FetchRestrictionsResponse?) -> Void) {
+        let request = FetchRestrictionsRequest(flight: flight, nationality: nationality, vaccine: vaccine, transfer: transfer)
         
         networkService.request(request) { [weak self] result in
             switch result {

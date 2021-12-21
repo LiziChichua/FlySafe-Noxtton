@@ -18,7 +18,7 @@ final class DefaultNetworkService: NetworkService {
     func request<Request: DataRequest>(_ request: Request, completion: @escaping (Result<Request.Response, Error>) -> Void) {
         
         //Safely initializes urlComponnent with given url
-        guard let urlComponent = URLComponents(string: request.url) else {
+        guard var urlComponent = URLComponents(string: request.url) else {
             let error = NSError(
                 domain: "Could not create URLComponents Struct with given url",
                 code: 404,
@@ -26,6 +26,17 @@ final class DefaultNetworkService: NetworkService {
             )
             return completion(.failure(error))
         }
+        
+        //Initialise variable to hold query data
+        var queryItems: [URLQueryItem] = []
+         
+         request.queryItems.forEach {
+             let urlQueryItem = URLQueryItem(name: $0.key, value: $0.value)
+             //urlComponent.queryItems?.append(urlQueryItem)
+             queryItems.append(urlQueryItem)
+         }
+         
+         urlComponent.queryItems = queryItems
         
         //Initialise variable to hold Body data
         var bodyItems: Data?

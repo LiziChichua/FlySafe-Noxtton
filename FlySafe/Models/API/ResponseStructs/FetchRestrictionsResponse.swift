@@ -10,32 +10,23 @@ import Foundation
 // MARK: - Welcome
 struct FetchRestrictionsResponse: Codable {
     let success: Bool
-    let restricions: Restricions
-}
-
-// MARK: - Restricions
-struct Restricions: Codable {
-    let gva: Gva
-    let ber: BER
-
-    enum CodingKeys: String, CodingKey {
-        case gva = "GVA"
-        case ber = "BER"
-    }
+    let restricions: [String : Restrictions]?
 }
 
 // MARK: - Airport Name
-struct BER: Codable {
+struct Restrictions: Codable {
     let type: String
-    let generalRestrictions: GeneralRestrictions
+    let generalRestrictions: GeneralRestrictions?
+    let restrictionsByVaccination: RestrictionsByVaccination?
+    let restrictionsByNationality: [RestrictionsByNationality]?
 }
 
 // MARK: - GeneralRestrictions
 struct GeneralRestrictions: Codable {
-    let allowsTourists, allowsBusinessVisit, covidPassportRequired, pcrRequiredForNoneResidents: Bool
-    let pcrRequiredForResidents: Bool
-    let generalInformation: String
-    let moreInfoURL: String
+    let allowsTourists, allowsBusinessVisit, covidPassportRequired, pcrRequiredForNoneResidents: Bool?
+    let pcrRequiredForResidents: Bool?
+    let generalInformation: String?
+    let moreInfoURL: String?
 
     enum CodingKeys: String, CodingKey {
         case allowsTourists, allowsBusinessVisit, covidPassportRequired, pcrRequiredForNoneResidents, pcrRequiredForResidents, generalInformation
@@ -43,29 +34,21 @@ struct GeneralRestrictions: Codable {
     }
 }
 
-// MARK: - Gva
-struct Gva: Codable {
-    let type: String
-    let generalRestrictions: GeneralRestrictions
-    let restrictionsByVaccination: RestrictionsByVaccination
-    let restrictionsByNationality: [RestrictionsByNationality]
-}
-
 // MARK: - RestrictionsByNationality
 struct RestrictionsByNationality: Codable {
-    let type: String
-    let data: DataClass
+    let type: String?
+    let data: DetailsInfo?
 }
 
 // MARK: - DataClass
-struct DataClass: Codable {
+struct DetailsInfo: Codable {
     let allowsTourists, allowsBusinessVisit, pcrRequired, fastTestRequired: Bool?
     let biometricPassportRequired, locatorFormRequired, covidPassportRequired: Bool?
 }
 
 // MARK: - RestrictionsByVaccination
 struct RestrictionsByVaccination: Codable {
-    let isAllowed: Bool
-    let dozesRequired, minDaysAfterVaccination, maxDaysAfterVaccination: Int
+    let isAllowed: Bool?
+    let dozesRequired, minDaysAfterVaccination, maxDaysAfterVaccination: Int?
 }
 

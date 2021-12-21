@@ -62,6 +62,11 @@ class MainViewController: BaseViewController {
 //            print(response)
 //        }
         
+        //Works but needs futher testing
+//        apiManager.fetchRestrictions(flight: Flight(source: "TBS", destination: "GVA", date: ""), nationality: "georgian", vaccine: "pfizer", transfer: "BER") { result in
+//            print (result)
+//        }
+        
     }
 
 
