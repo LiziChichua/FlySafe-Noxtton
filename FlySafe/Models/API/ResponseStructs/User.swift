@@ -22,6 +22,6 @@ struct User: Codable {
 // MARK: - UserData
 struct UserData: Codable, Loopable {
     let nationality: String?
-    let vaccine: String
+    let vaccine: String?
 }
 

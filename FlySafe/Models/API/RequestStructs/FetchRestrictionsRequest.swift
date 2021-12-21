@@ -16,13 +16,13 @@ struct FetchRestrictionsRequest: DataRequest {
     
     init(nationality: String?, vaccine: String?, transfer: String?) {
         if let Nationality = nationality {
-            
+            print (Nationality)
         }
         if let Vaccine = vaccine {
-            
+            print (Vaccine)
         }
         if let Transfer = transfer {
-            
+            print (Transfer)
         }
     }
     
