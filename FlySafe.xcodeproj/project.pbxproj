@@ -7,6 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D2C10CA27707C2900B0AC93 /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10C927707C2900B0AC93 /* AuthRequest.swift */; };
+		0D2C10CD277096A000B0AC93 /* Loopable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10CC277096A000B0AC93 /* Loopable.swift */; };
+		0D2C10CF27709E9100B0AC93 /* SelfRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10CE27709E9100B0AC93 /* SelfRequest.swift */; };
+		0D2C10D12770A29C00B0AC93 /* FetchTravelPlansRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10D02770A29C00B0AC93 /* FetchTravelPlansRequest.swift */; };
+		0D2C10D32770A49000B0AC93 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10D22770A49000B0AC93 /* Flight.swift */; };
+		0D2C10D52770A61C00B0AC93 /* AddTravelPlanRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10D42770A61C00B0AC93 /* AddTravelPlanRequest.swift */; };
+		0D2C10D92770AD1700B0AC93 /* EditTravelPlanRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10D82770AD1700B0AC93 /* EditTravelPlanRequest.swift */; };
+		0D2C10DB2770B14D00B0AC93 /* DeleteTravelPlanRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10DA2770B14D00B0AC93 /* DeleteTravelPlanRequest.swift */; };
+		0D2C10DD2770B52000B0AC93 /* FetchAirportsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10DC2770B52000B0AC93 /* FetchAirportsRequest.swift */; };
+		0D2C10DF2770B5D600B0AC93 /* FetchVaccinesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10DE2770B5D600B0AC93 /* FetchVaccinesRequest.swift */; };
+		0D2C10E12770B6AA00B0AC93 /* FetchNationalitiesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10E02770B6AA00B0AC93 /* FetchNationalitiesRequest.swift */; };
+		0D2C10E32770B73E00B0AC93 /* FetchRestrictionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10E22770B73E00B0AC93 /* FetchRestrictionsRequest.swift */; };
+		0D5B34EE27705F8E00148518 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5B34ED27705F8E00148518 /* APIManager.swift */; };
+		0D5CED42276F7691008D29B9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED41276F7691008D29B9 /* User.swift */; };
+		0D5CED45276F7D78008D29B9 /* AddTravelPlanResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED44276F7D78008D29B9 /* AddTravelPlanResponse.swift */; };
+		0D5CED47276F7E7E008D29B9 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED46276F7E7E008D29B9 /* AuthResponse.swift */; };
+		0D5CED49276F7EB7008D29B9 /* TravelPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED48276F7EB7008D29B9 /* TravelPlan.swift */; };
+		0D5CED4B276F7F54008D29B9 /* FetchTravelPlansResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED4A276F7F54008D29B9 /* FetchTravelPlansResponse.swift */; };
+		0D5CED4D276F7FB9008D29B9 /* DeleteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED4C276F7FB9008D29B9 /* DeleteResponse.swift */; };
+		0D5CED4F276F800F008D29B9 /* Airport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED4E276F800F008D29B9 /* Airport.swift */; };
+		0D5CED51276F802B008D29B9 /* FetchAirportsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED50276F802B008D29B9 /* FetchAirportsResponse.swift */; };
+		0D5CED53276F808A008D29B9 /* FetchVaccinesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED52276F808A008D29B9 /* FetchVaccinesResponse.swift */; };
+		0D5CED55276F81A9008D29B9 /* FetchNationalitiesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED54276F81A9008D29B9 /* FetchNationalitiesResponse.swift */; };
+		0D5CED57276F82BB008D29B9 /* FetchRestrictionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */; };
+		0DB90439277103150063436A /* FetchSelfResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB90438277103150063436A /* FetchSelfResponse.swift */; };
+		0DD2CA1F277041130044CB1B /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2CA1D277041130044CB1B /* DataRequest.swift */; };
+		0DD2CA20277041130044CB1B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2CA1E277041130044CB1B /* NetworkService.swift */; };
 		D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5DC276F33C00042FF90 /* AppDelegate.swift */; };
 		D390F5DF276F33C00042FF90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5DE276F33C00042FF90 /* SceneDelegate.swift */; };
 		D390F5E1276F33C00042FF90 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5E0276F33C00042FF90 /* MainViewController.swift */; };
@@ -33,6 +60,33 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D2C10C927707C2900B0AC93 /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
+		0D2C10CC277096A000B0AC93 /* Loopable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loopable.swift; sourceTree = "<group>"; };
+		0D2C10CE27709E9100B0AC93 /* SelfRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfRequest.swift; sourceTree = "<group>"; };
+		0D2C10D02770A29C00B0AC93 /* FetchTravelPlansRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTravelPlansRequest.swift; sourceTree = "<group>"; };
+		0D2C10D22770A49000B0AC93 /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
+		0D2C10D42770A61C00B0AC93 /* AddTravelPlanRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelPlanRequest.swift; sourceTree = "<group>"; };
+		0D2C10D82770AD1700B0AC93 /* EditTravelPlanRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTravelPlanRequest.swift; sourceTree = "<group>"; };
+		0D2C10DA2770B14D00B0AC93 /* DeleteTravelPlanRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTravelPlanRequest.swift; sourceTree = "<group>"; };
+		0D2C10DC2770B52000B0AC93 /* FetchAirportsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAirportsRequest.swift; sourceTree = "<group>"; };
+		0D2C10DE2770B5D600B0AC93 /* FetchVaccinesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchVaccinesRequest.swift; sourceTree = "<group>"; };
+		0D2C10E02770B6AA00B0AC93 /* FetchNationalitiesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNationalitiesRequest.swift; sourceTree = "<group>"; };
+		0D2C10E22770B73E00B0AC93 /* FetchRestrictionsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestrictionsRequest.swift; sourceTree = "<group>"; };
+		0D5B34ED27705F8E00148518 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = Network/APIManager.swift; sourceTree = SOURCE_ROOT; };
+		0D5CED41276F7691008D29B9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0D5CED44276F7D78008D29B9 /* AddTravelPlanResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelPlanResponse.swift; sourceTree = "<group>"; };
+		0D5CED46276F7E7E008D29B9 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		0D5CED48276F7EB7008D29B9 /* TravelPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelPlan.swift; sourceTree = "<group>"; };
+		0D5CED4A276F7F54008D29B9 /* FetchTravelPlansResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTravelPlansResponse.swift; sourceTree = "<group>"; };
+		0D5CED4C276F7FB9008D29B9 /* DeleteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteResponse.swift; sourceTree = "<group>"; };
+		0D5CED4E276F800F008D29B9 /* Airport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Airport.swift; sourceTree = "<group>"; };
+		0D5CED50276F802B008D29B9 /* FetchAirportsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchAirportsResponse.swift; sourceTree = "<group>"; };
+		0D5CED52276F808A008D29B9 /* FetchVaccinesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchVaccinesResponse.swift; sourceTree = "<group>"; };
+		0D5CED54276F81A9008D29B9 /* FetchNationalitiesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNationalitiesResponse.swift; sourceTree = "<group>"; };
+		0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestrictionsResponse.swift; sourceTree = "<group>"; };
+		0DB90438277103150063436A /* FetchSelfResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSelfResponse.swift; sourceTree = "<group>"; };
+		0DD2CA1D277041130044CB1B /* DataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataRequest.swift; path = Network/DataRequest.swift; sourceTree = SOURCE_ROOT; };
+		0DD2CA1E277041130044CB1B /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkService.swift; path = Network/NetworkService.swift; sourceTree = SOURCE_ROOT; };
 		D390F5D9276F33C00042FF90 /* FlySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlySafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D390F5DC276F33C00042FF90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D390F5DE276F33C00042FF90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +125,79 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D2C10CB2770967400B0AC93 /* Loopable */ = {
+			isa = PBXGroup;
+			children = (
+				0D2C10CC277096A000B0AC93 /* Loopable.swift */,
+			);
+			path = Loopable;
+			sourceTree = "<group>";
+		};
+		0D5B34EF2770695C00148518 /* RequestStructs */ = {
+			isa = PBXGroup;
+			children = (
+				0D2C10C927707C2900B0AC93 /* AuthRequest.swift */,
+				0D2C10E02770B6AA00B0AC93 /* FetchNationalitiesRequest.swift */,
+				0D2C10CE27709E9100B0AC93 /* SelfRequest.swift */,
+				0D2C10D02770A29C00B0AC93 /* FetchTravelPlansRequest.swift */,
+				0D2C10D42770A61C00B0AC93 /* AddTravelPlanRequest.swift */,
+				0D2C10D82770AD1700B0AC93 /* EditTravelPlanRequest.swift */,
+				0D2C10DA2770B14D00B0AC93 /* DeleteTravelPlanRequest.swift */,
+				0D2C10DC2770B52000B0AC93 /* FetchAirportsRequest.swift */,
+				0D2C10DE2770B5D600B0AC93 /* FetchVaccinesRequest.swift */,
+				0D2C10E22770B73E00B0AC93 /* FetchRestrictionsRequest.swift */,
+			);
+			path = RequestStructs;
+			sourceTree = "<group>";
+		};
+		0D5CED38276F430E008D29B9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D390F614276F34210042FF90 /* CoreData */,
+				0D5CED39276F433D008D29B9 /* Network */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		0D5CED39276F433D008D29B9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				0DD2CA1D277041130044CB1B /* DataRequest.swift */,
+				0DD2CA1E277041130044CB1B /* NetworkService.swift */,
+				0D5B34ED27705F8E00148518 /* APIManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		0D5CED40276F7680008D29B9 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				0DB904372770DEC70063436A /* ResponseStructs */,
+				0D5B34EF2770695C00148518 /* RequestStructs */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		0DB904372770DEC70063436A /* ResponseStructs */ = {
+			isa = PBXGroup;
+			children = (
+				0D5CED41276F7691008D29B9 /* User.swift */,
+				0D5CED44276F7D78008D29B9 /* AddTravelPlanResponse.swift */,
+				0D5CED46276F7E7E008D29B9 /* AuthResponse.swift */,
+				0D5CED48276F7EB7008D29B9 /* TravelPlan.swift */,
+				0D5CED4A276F7F54008D29B9 /* FetchTravelPlansResponse.swift */,
+				0D5CED4C276F7FB9008D29B9 /* DeleteResponse.swift */,
+				0D5CED4E276F800F008D29B9 /* Airport.swift */,
+				0D5CED50276F802B008D29B9 /* FetchAirportsResponse.swift */,
+				0D5CED52276F808A008D29B9 /* FetchVaccinesResponse.swift */,
+				0D5CED54276F81A9008D29B9 /* FetchNationalitiesResponse.swift */,
+				0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */,
+				0D2C10D22770A49000B0AC93 /* Flight.swift */,
+				0DB90438277103150063436A /* FetchSelfResponse.swift */,
+			);
+			path = ResponseStructs;
+			sourceTree = "<group>";
+		};
 		D390F5D0276F33C00042FF90 = {
 			isa = PBXGroup;
 			children = (
@@ -91,8 +218,8 @@
 			isa = PBXGroup;
 			children = (
 				D390F5F3276F33EF0042FF90 /* Core */,
-				D390F612276F34130042FF90 /* Managers */,
 				D390F615276F34310042FF90 /* Models */,
+				0D5CED38276F430E008D29B9 /* Managers */,
 				D390F618276F34510042FF90 /* Resources */,
 				D390F627276F346C0042FF90 /* Scenes */,
 				D390F62F276F34F70042FF90 /* SupportingFiles */,
@@ -124,6 +251,7 @@
 		D390F5F9276F33EF0042FF90 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0D2C10CB2770967400B0AC93 /* Loopable */,
 				D390F5FA276F33EF0042FF90 /* UIImage */,
 				D390F5FC276F33EF0042FF90 /* UIColor */,
 				D390F5FE276F33EF0042FF90 /* UIView */,
@@ -182,22 +310,6 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		D390F612276F34130042FF90 /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				D390F613276F341B0042FF90 /* Network */,
-				D390F614276F34210042FF90 /* CoreData */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
-		D390F613276F341B0042FF90 /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Network;
-			sourceTree = "<group>";
-		};
 		D390F614276F34210042FF90 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,17 +320,10 @@
 		D390F615276F34310042FF90 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D390F616276F34370042FF90 /* API */,
+				0D5CED40276F7680008D29B9 /* API */,
 				D390F617276F343D0042FF90 /* CoreData */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		D390F616276F34370042FF90 /* API */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = API;
 			sourceTree = "<group>";
 		};
 		D390F617276F343D0042FF90 /* CoreData */ = {
@@ -410,21 +515,48 @@
 			buildActionMask = 2147483647;
 			files = (
 				D390F60D276F33F00042FF90 /* UICollectionView+Extension.swift in Sources */,
+				0D5CED4B276F7F54008D29B9 /* FetchTravelPlansResponse.swift in Sources */,
 				D390F60E276F33F00042FF90 /* UICollectionViewCell+Extension.swift in Sources */,
+				0D2C10CD277096A000B0AC93 /* Loopable.swift in Sources */,
 				D390F610276F33F00042FF90 /* UITableView+Extension.swift in Sources */,
 				D390F60C276F33F00042FF90 /* UIView+Extension.swift in Sources */,
+				0D2C10E12770B6AA00B0AC93 /* FetchNationalitiesRequest.swift in Sources */,
+				0D5CED4F276F800F008D29B9 /* Airport.swift in Sources */,
+				0D5CED47276F7E7E008D29B9 /* AuthResponse.swift in Sources */,
+				0D2C10CA27707C2900B0AC93 /* AuthRequest.swift in Sources */,
+				0D2C10D32770A49000B0AC93 /* Flight.swift in Sources */,
+				0DB90439277103150063436A /* FetchSelfResponse.swift in Sources */,
+				0DD2CA1F277041130044CB1B /* DataRequest.swift in Sources */,
+				0D5CED57276F82BB008D29B9 /* FetchRestrictionsResponse.swift in Sources */,
+				0D5CED45276F7D78008D29B9 /* AddTravelPlanResponse.swift in Sources */,
+				0D5CED53276F808A008D29B9 /* FetchVaccinesResponse.swift in Sources */,
 				D390F608276F33F00042FF90 /* CoordinatorProtocol.swift in Sources */,
+				0D2C10D52770A61C00B0AC93 /* AddTravelPlanRequest.swift in Sources */,
+				0D5B34EE27705F8E00148518 /* APIManager.swift in Sources */,
 				D390F5E1276F33C00042FF90 /* MainViewController.swift in Sources */,
 				D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */,
+				0D2C10D92770AD1700B0AC93 /* EditTravelPlanRequest.swift in Sources */,
+				0D2C10DD2770B52000B0AC93 /* FetchAirportsRequest.swift in Sources */,
+				0D2C10D12770A29C00B0AC93 /* FetchTravelPlansRequest.swift in Sources */,
 				D390F60A276F33F00042FF90 /* UIImage+Extension.swift in Sources */,
+				0D5CED51276F802B008D29B9 /* FetchAirportsResponse.swift in Sources */,
 				D390F60F276F33F00042FF90 /* UITableViewCell+Extension.swift in Sources */,
 				D390F609276F33F00042FF90 /* CoordinatorDelegate.swift in Sources */,
+				0D2C10E32770B73E00B0AC93 /* FetchRestrictionsRequest.swift in Sources */,
+				0D5CED49276F7EB7008D29B9 /* TravelPlan.swift in Sources */,
 				D390F606276F33EF0042FF90 /* AppCoordinator.swift in Sources */,
+				0D5CED4D276F7FB9008D29B9 /* DeleteResponse.swift in Sources */,
 				D390F607276F33EF0042FF90 /* StoryBoarded.swift in Sources */,
+				0D2C10CF27709E9100B0AC93 /* SelfRequest.swift in Sources */,
 				D390F5E7276F33C00042FF90 /* FlySafe.xcdatamodeld in Sources */,
 				D390F62A276F34760042FF90 /* BaseViewController.swift in Sources */,
 				D390F5DF276F33C00042FF90 /* SceneDelegate.swift in Sources */,
+				0D5CED55276F81A9008D29B9 /* FetchNationalitiesResponse.swift in Sources */,
+				0DD2CA20277041130044CB1B /* NetworkService.swift in Sources */,
+				0D2C10DF2770B5D600B0AC93 /* FetchVaccinesRequest.swift in Sources */,
 				D390F60B276F33F00042FF90 /* UIColor+Extension.swift in Sources */,
+				0D5CED42276F7691008D29B9 /* User.swift in Sources */,
+				0D2C10DB2770B14D00B0AC93 /* DeleteTravelPlanRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,7 +633,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -556,7 +688,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
