@@ -11,10 +11,16 @@ class MainViewController: BaseViewController {
     
     //Networking test
     let networkService = DefaultNetworkService()
+    var mainView = MainView()
+    
+    override func loadView() {
+        view = mainView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
         let apiManager = APIManager(with: networkService)
         apiManager.onError = { error in
             print (error)

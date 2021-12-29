@@ -33,12 +33,12 @@
 		0D5CED57276F82BB008D29B9 /* FetchRestrictionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */; };
 		0DB90439277103150063436A /* FetchSelfResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB90438277103150063436A /* FetchSelfResponse.swift */; };
 		0DBBAE32277CBA020078348C /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBAE31277CBA020078348C /* iOSDropDown.swift */; };
+		0DBBAE35277CBC3A0078348C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBAE34277CBC3A0078348C /* MainView.swift */; };
 		0DD2CA1F277041130044CB1B /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2CA1D277041130044CB1B /* DataRequest.swift */; };
 		0DD2CA20277041130044CB1B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2CA1E277041130044CB1B /* NetworkService.swift */; };
 		D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5DC276F33C00042FF90 /* AppDelegate.swift */; };
 		D390F5DF276F33C00042FF90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5DE276F33C00042FF90 /* SceneDelegate.swift */; };
 		D390F5E1276F33C00042FF90 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5E0276F33C00042FF90 /* MainViewController.swift */; };
-		D390F5E4276F33C00042FF90 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D390F5E2276F33C00042FF90 /* MainViewController.storyboard */; };
 		D390F5E7276F33C00042FF90 /* FlySafe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D390F5E5276F33C00042FF90 /* FlySafe.xcdatamodeld */; };
 		D390F5EC276F33C20042FF90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D390F5EA276F33C20042FF90 /* LaunchScreen.storyboard */; };
 		D390F606276F33EF0042FF90 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5F5276F33EF0042FF90 /* AppCoordinator.swift */; };
@@ -87,13 +87,13 @@
 		0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestrictionsResponse.swift; sourceTree = "<group>"; };
 		0DB90438277103150063436A /* FetchSelfResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSelfResponse.swift; sourceTree = "<group>"; };
 		0DBBAE31277CBA020078348C /* iOSDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSDropDown.swift; sourceTree = "<group>"; };
+		0DBBAE34277CBC3A0078348C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0DD2CA1D277041130044CB1B /* DataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataRequest.swift; path = Network/DataRequest.swift; sourceTree = SOURCE_ROOT; };
 		0DD2CA1E277041130044CB1B /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkService.swift; path = Network/NetworkService.swift; sourceTree = SOURCE_ROOT; };
 		D390F5D9276F33C00042FF90 /* FlySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlySafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D390F5DC276F33C00042FF90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D390F5DE276F33C00042FF90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D390F5E0276F33C00042FF90 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		D390F5E3276F33C00042FF90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainViewController.storyboard; sourceTree = "<group>"; };
 		D390F5E6276F33C00042FF90 /* FlySafe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlySafe.xcdatamodel; sourceTree = "<group>"; };
 		D390F5EB276F33C20042FF90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D390F5ED276F33C20042FF90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -206,6 +206,14 @@
 				0DBBAE31277CBA020078348C /* iOSDropDown.swift */,
 			);
 			path = DropDown;
+			sourceTree = "<group>";
+		};
+		0DBBAE33277CBBFC0078348C /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				D390F5E0276F33C00042FF90 /* MainViewController.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 		D390F5D0276F33C00042FF90 = {
@@ -418,6 +426,7 @@
 		D390F62C276F348D0042FF90 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				0DBBAE33277CBBFC0078348C /* VC */,
 				D390F62D276F34D50042FF90 /* View */,
 				D390F62E276F34DE0042FF90 /* ViewModel */,
 			);
@@ -427,8 +436,7 @@
 		D390F62D276F34D50042FF90 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D390F5E0276F33C00042FF90 /* MainViewController.swift */,
-				D390F5E2276F33C00042FF90 /* MainViewController.storyboard */,
+				0DBBAE34277CBC3A0078348C /* MainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -512,7 +520,6 @@
 				D390F623276F34510042FF90 /* Colors.xcassets in Resources */,
 				D390F5EC276F33C20042FF90 /* LaunchScreen.storyboard in Resources */,
 				D390F622276F34510042FF90 /* Assets.xcassets in Resources */,
-				D390F5E4276F33C00042FF90 /* MainViewController.storyboard in Resources */,
 				D390F626276F34510042FF90 /* MyriadGEOMtavruli-Medium.otf in Resources */,
 				D390F625276F34510042FF90 /* MyriadGEOMtavruli-Regular.otf in Resources */,
 			);
@@ -553,6 +560,7 @@
 				D390F60A276F33F00042FF90 /* UIImage+Extension.swift in Sources */,
 				0D5CED51276F802B008D29B9 /* FetchAirportsResponse.swift in Sources */,
 				D390F60F276F33F00042FF90 /* UITableViewCell+Extension.swift in Sources */,
+				0DBBAE35277CBC3A0078348C /* MainView.swift in Sources */,
 				D390F609276F33F00042FF90 /* CoordinatorDelegate.swift in Sources */,
 				0D2C10E32770B73E00B0AC93 /* FetchRestrictionsRequest.swift in Sources */,
 				0D5CED49276F7EB7008D29B9 /* TravelPlan.swift in Sources */,
@@ -575,14 +583,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D390F5E2276F33C00042FF90 /* MainViewController.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D390F5E3276F33C00042FF90 /* Base */,
-			);
-			name = MainViewController.storyboard;
-			sourceTree = "<group>";
-		};
 		D390F5EA276F33C20042FF90 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
