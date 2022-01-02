@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D1AD7AF2781C8510063DE71 /* HomeTVTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1AD7AE2781C8510063DE71 /* HomeTVTopCell.swift */; };
+		0D1AD7B12781CA510063DE71 /* HomeTVBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1AD7B02781CA510063DE71 /* HomeTVBottomCell.swift */; };
+		0D1AD7B32781CA940063DE71 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1AD7B22781CA940063DE71 /* MainViewModel.swift */; };
 		0D2C10CA27707C2900B0AC93 /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10C927707C2900B0AC93 /* AuthRequest.swift */; };
 		0D2C10CD277096A000B0AC93 /* Loopable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10CC277096A000B0AC93 /* Loopable.swift */; };
 		0D2C10CF27709E9100B0AC93 /* SelfRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10CE27709E9100B0AC93 /* SelfRequest.swift */; };
@@ -62,6 +65,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D1AD7AE2781C8510063DE71 /* HomeTVTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVTopCell.swift; sourceTree = "<group>"; };
+		0D1AD7B02781CA510063DE71 /* HomeTVBottomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVBottomCell.swift; sourceTree = "<group>"; };
+		0D1AD7B22781CA940063DE71 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewModel.swift; path = FlySafe/Scenes/Main/ViewModel/MainViewModel.swift; sourceTree = SOURCE_ROOT; };
 		0D2C10C927707C2900B0AC93 /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
 		0D2C10CC277096A000B0AC93 /* Loopable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loopable.swift; sourceTree = "<group>"; };
 		0D2C10CE27709E9100B0AC93 /* SelfRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfRequest.swift; sourceTree = "<group>"; };
@@ -129,6 +135,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D1AD7AD2781C7F70063DE71 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				0D1AD7AE2781C8510063DE71 /* HomeTVTopCell.swift */,
+				0D1AD7B02781CA510063DE71 /* HomeTVBottomCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		0D2C10CB2770967400B0AC93 /* Loopable */ = {
 			isa = PBXGroup;
 			children = (
@@ -411,6 +426,7 @@
 		D390F627276F346C0042FF90 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0D1AD7AD2781C7F70063DE71 /* TableViewCells */,
 				D390F628276F34760042FF90 /* BaseViewController */,
 				D390F62B276F34810042FF90 /* Launch */,
 				D390F62C276F348D0042FF90 /* Main */,
@@ -455,6 +471,7 @@
 		D390F62E276F34DE0042FF90 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0D1AD7B22781CA940063DE71 /* MainViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -543,6 +560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D1AD7B32781CA940063DE71 /* MainViewModel.swift in Sources */,
 				D390F60D276F33F00042FF90 /* UICollectionView+Extension.swift in Sources */,
 				0D5CED4B276F7F54008D29B9 /* FetchTravelPlansResponse.swift in Sources */,
 				D390F60E276F33F00042FF90 /* UICollectionViewCell+Extension.swift in Sources */,
@@ -552,6 +570,7 @@
 				0D2C10E12770B6AA00B0AC93 /* FetchNationalitiesRequest.swift in Sources */,
 				0D5CED4F276F800F008D29B9 /* Airport.swift in Sources */,
 				0D5CED47276F7E7E008D29B9 /* AuthResponse.swift in Sources */,
+				0D1AD7B12781CA510063DE71 /* HomeTVBottomCell.swift in Sources */,
 				0D2C10CA27707C2900B0AC93 /* AuthRequest.swift in Sources */,
 				0D2C10D32770A49000B0AC93 /* Flight.swift in Sources */,
 				0DB90439277103150063436A /* FetchSelfResponse.swift in Sources */,
@@ -564,6 +583,7 @@
 				0D5B34EE27705F8E00148518 /* APIManager.swift in Sources */,
 				D390F5E1276F33C00042FF90 /* MainViewController.swift in Sources */,
 				D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */,
+				0D1AD7AF2781C8510063DE71 /* HomeTVTopCell.swift in Sources */,
 				0D2C10D92770AD1700B0AC93 /* EditTravelPlanRequest.swift in Sources */,
 				0D2C10DD2770B52000B0AC93 /* FetchAirportsRequest.swift in Sources */,
 				0D2C10D12770A29C00B0AC93 /* FetchTravelPlansRequest.swift in Sources */,
