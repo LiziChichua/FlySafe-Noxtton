@@ -8,6 +8,15 @@
 import UIKit
 
 class RestrictionTableViewCell: UITableViewCell {
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+            super.init(style: style, reuseIdentifier: reuseIdentifier)
+        createSubviews()
+     }
+
+     required init?(coder aDecoder: NSCoder) {
+       super.init(coder: aDecoder)
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,6 +27,10 @@ class RestrictionTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func createSubviews() {
+        
     }
 
 }
