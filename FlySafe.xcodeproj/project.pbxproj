@@ -30,6 +30,7 @@
 		D390F625276F34510042FF90 /* MyriadGEOMtavruli-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D390F620276F34510042FF90 /* MyriadGEOMtavruli-Regular.otf */; };
 		D390F626276F34510042FF90 /* MyriadGEOMtavruli-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D390F621276F34510042FF90 /* MyriadGEOMtavruli-Medium.otf */; };
 		D390F62A276F34760042FF90 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F629276F34760042FF90 /* BaseViewController.swift */; };
+		D3C65A132781FB7C0019D676 /* RestrictionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C65A122781FB7C0019D676 /* RestrictionDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		D390F620276F34510042FF90 /* MyriadGEOMtavruli-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadGEOMtavruli-Regular.otf"; sourceTree = "<group>"; };
 		D390F621276F34510042FF90 /* MyriadGEOMtavruli-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadGEOMtavruli-Medium.otf"; sourceTree = "<group>"; };
 		D390F629276F34760042FF90 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		D3C65A122781FB7C0019D676 /* RestrictionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -279,6 +281,7 @@
 				D390F628276F34760042FF90 /* BaseViewController */,
 				D390F62B276F34810042FF90 /* Launch */,
 				D390F62C276F348D0042FF90 /* Main */,
+				D3C65A0F2781FAF90019D676 /* RestrictionDetails */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -324,6 +327,30 @@
 				D390F5ED276F33C20042FF90 /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		D3C65A0F2781FAF90019D676 /* RestrictionDetails */ = {
+			isa = PBXGroup;
+			children = (
+				D3C65A102781FB550019D676 /* VC */,
+				D3C65A112781FB590019D676 /* View */,
+			);
+			path = RestrictionDetails;
+			sourceTree = "<group>";
+		};
+		D3C65A102781FB550019D676 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				D3C65A122781FB7C0019D676 /* RestrictionDetailsViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		D3C65A112781FB590019D676 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -414,6 +441,7 @@
 				D390F606276F33EF0042FF90 /* AppCoordinator.swift in Sources */,
 				D390F607276F33EF0042FF90 /* StoryBoarded.swift in Sources */,
 				D390F5E7276F33C00042FF90 /* FlySafe.xcdatamodeld in Sources */,
+				D3C65A132781FB7C0019D676 /* RestrictionDetailsViewController.swift in Sources */,
 				D390F62A276F34760042FF90 /* BaseViewController.swift in Sources */,
 				D390F5DF276F33C00042FF90 /* SceneDelegate.swift in Sources */,
 				D390F60B276F33F00042FF90 /* UIColor+Extension.swift in Sources */,
