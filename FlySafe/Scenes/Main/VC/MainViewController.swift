@@ -20,7 +20,7 @@ class MainViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        self.navigationController?.isNavigationBarHidden = true
         let apiManager = APIManager(with: networkService)
         apiManager.onError = { error in
             print (error)

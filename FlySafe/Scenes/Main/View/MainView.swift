@@ -9,7 +9,10 @@ import UIKit
 
 class MainView: UIView {
     
+    var authorisedUser: Bool
+    
     override init(frame: CGRect) {
+        authorisedUser = true
         super.init(frame: frame)
         createSubviews()
     }
@@ -18,8 +21,10 @@ class MainView: UIView {
         fatalError()
     }
     
+    
+    
     func createSubviews() {
-        // all the layout code from above
+
         self.translatesAutoresizingMaskIntoConstraints = false
         
         //Set background color
@@ -137,8 +142,6 @@ class MainView: UIView {
         datePicker.frame = CGRect(x: imgDatePicker.frame.maxX + 16, y: imgDatePicker.frame.minY, width: sourceAirport.frame.width, height: sourceAirport.frame.height)
         
         
-        
-        
         //Add subviews
         self.addSubview(menuButton)
         self.addSubview(greetingLabel)
@@ -154,15 +157,50 @@ class MainView: UIView {
         containerView.addSubview(destinationAirport)
         pickerContainer.addSubview(imgDatePicker)
        // pickerContainer.addSubview(datePicker)
+        
+    }
+    
+    func summaryViewLabel() -> UILabel {
+        let summaryLabel = UILabel()
+        summaryLabel.text = "Upcoming Flights"
+        summaryLabel.font = .systemFont(ofSize: 18, weight: .bold)
+        summaryLabel.sizeToFit()
+        summaryLabel.frame = CGRect(x: Constants.gap, y: Constants.gap, width: summaryLabel.intrinsicContentSize.width + 5, height: 25)
+        
+        return summaryLabel
     }
     
     
-    func tripSummaryView(source: String, connections: [String]?, destination: String) {
+    func tripSummaryView(viewCount: Int, source: String, connections: [String]?, destination: String) -> UIView {
         let summaryContainer = UIView()
         summaryContainer.viewBorder(borderColor: .black, borderWidth: Constants.borderWidth)
         summaryContainer.layer.cornerRadius = Constants.cornerRadius
-        summaryContainer.frame = CGRect(x: Constants.gap, y: super.containerView?.frame.maxY + 20, width: super.containerView?.frame.width, height: 60)
         
+        //Dynamically change frame of summaryView depending on total summaryView count
+
+        summaryContainer.frame = CGRect(x: Constants.gap, y: Constants.gap, width: super.frame.maxY - Constants.gap*2, height: 177)
+        
+        
+        //Create label for source
+        let sourceLabel = UILabel()
+        sourceLabel.text = source
+        sourceLabel.font = .systemFont(ofSize: 18, weight: .medium)
+        sourceLabel.sizeToFit()
+        sourceLabel.frame = CGRect(x: summaryContainer.bounds.minX+15, y: summaryContainer.bounds.minY+85, width: sourceLabel.intrinsicContentSize.width+5, height: sourceLabel.intrinsicContentSize.height)
+        
+        
+        //Create label for destination
+        let destinationLabel = UILabel()
+        destinationLabel.text = destination
+        destinationLabel.font = .systemFont(ofSize: 18, weight: .medium)
+        destinationLabel.sizeToFit()
+        destinationLabel.frame = CGRect(x: summaryContainer.bounds.maxX-15, y: summaryContainer.bounds.minY+85, width: destinationLabel.intrinsicContentSize.width+5, height: destinationLabel.intrinsicContentSize.height)
+  
+        summaryContainer.addSubview(sourceLabel)
+        summaryContainer.addSubview(destinationLabel)
+        
+        
+        return summaryContainer
     }
     
 }
