@@ -19,7 +19,7 @@ final class AppCoordinator: CoordinatorProtocol {
     }
     
     func start() {
-        let vc = RestrictionDetailsViewController.instantiateFromStoryboard()
+        let vc = RestrictionDetailsViewController()
         vc.coordinator = self
         navigationController?.pushViewController(vc, animated: true)
         window?.rootViewController = navigationController
