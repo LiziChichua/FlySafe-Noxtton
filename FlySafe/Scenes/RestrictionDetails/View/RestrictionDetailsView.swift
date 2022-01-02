@@ -8,63 +8,92 @@
 import UIKit
 
 class RestrictionDetailsView: UIView {
-
+    
+    //Side menu button
+    let menuButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        button.tintColor = .black
+        return button
+    }()
+    
+    //Back button
+    let backButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        button.contentHorizontalAlignment = .left
+        button.contentVerticalAlignment = .fill
+        button.tintColor = .black
+        return button
+    }()
+    
+    //Restriction Information label
+    let restrictionInformationLabel: UILabel = {
+        let label = UILabel()
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 24, weight: .semibold)
+        label.textColor = .black
+        label.numberOfLines = 1
+        label.textAlignment = .left
+        label.text = "Restriction Information"
+        return label
+    }()
+    
+    //Frame View
+    let frameView: FrameView = {
+        let frame = FrameView()
+        frame.translatesAutoresizingMaskIntoConstraints = false
+        frame.frameTableView.register(RestrictionTableViewCell.self, forCellReuseIdentifier: "RestrictionTableViewCell")
+        return frame
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        createSubviews()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-    
-    func createSubviews() {
-
-        self.translatesAutoresizingMaskIntoConstraints = false
         
         //Set background color
         self.backgroundColor = .white
-        
-        //Back button
-        let backButton = UIButton()
-        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
-        backButton.contentHorizontalAlignment = .left
-        backButton.contentVerticalAlignment = .fill
-        backButton.tintColor = .black
-        backButton.frame = CGRect(x: 20, y: 50, width: 25, height: 20)
-        
-        //Side menu button
-        let menuButton = UIButton()
-        menuButton.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
-        menuButton.contentHorizontalAlignment = .fill
-        menuButton.contentVerticalAlignment = .fill
-        menuButton.tintColor = .black
-        menuButton.frame = CGRect(x: UIScreen.main.bounds.width - 45, y: 50, width: 25, height: 20)
-        
-        
-        //Restriction Information label
-        let restrictionInformationLabel = UILabel()
-        restrictionInformationLabel.sizeToFit()
-//        restrictionInformationLabel.frame = CGRect(x: Constants.gap, y: menuButton.frame.maxY + 5, width: UIScreen.main.bounds.width-(Constants.gap*2), height: 30)
-        restrictionInformationLabel.frame = CGRect(x: 20, y: menuButton.frame.maxY + 20, width: UIScreen.main.bounds.width-(20*2), height: 30)
-        restrictionInformationLabel.font = .systemFont(ofSize: 24, weight: .semibold)
-        restrictionInformationLabel.textColor = .black
-        restrictionInformationLabel.numberOfLines = 1
-        restrictionInformationLabel.textAlignment = .left
-        restrictionInformationLabel.text = "Restriction Information"
-        
-        //Frame View
-        let frameView = FrameView()
-        frameView.frame = CGRect(x: 20, y: restrictionInformationLabel.frame.maxY + 20, width: UIScreen.main.bounds.width-(20*2), height: UIScreen.main.bounds.height - 200)
-        frameView.frameTableView.register(RestrictionTableViewCell.self, forCellReuseIdentifier: "RestrictionTableViewCell")
-        frameView.frameTableView.delegate = self
-        frameView.frameTableView.dataSource = self
         
         //Add subviews
         self.addSubview(menuButton)
         self.addSubview(backButton)
         self.addSubview(restrictionInformationLabel)
         self.addSubview(frameView)
+        
+        //Frame View DataSource & Delegate
+        frameView.frameTableView.delegate = self
+        frameView.frameTableView.dataSource = self
+        
+        //Constraints
+        NSLayoutConstraint.activate([
+            menuButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
+            menuButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            menuButton.widthAnchor.constraint(equalToConstant: 25),
+            menuButton.heightAnchor.constraint(equalToConstant: 20),
+            
+            backButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
+            backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            backButton.widthAnchor.constraint(equalToConstant: 25),
+            backButton.heightAnchor.constraint(equalToConstant: 20),
+            
+            restrictionInformationLabel.topAnchor.constraint(equalTo: menuButton.bottomAnchor, constant: 15),
+            restrictionInformationLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            restrictionInformationLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            restrictionInformationLabel.heightAnchor.constraint(equalToConstant: 30),
+            
+            frameView.topAnchor.constraint(equalTo: restrictionInformationLabel.bottomAnchor, constant: 20),
+            frameView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            frameView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            frameView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -50)
+        ])
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError()
     }
     
 }
