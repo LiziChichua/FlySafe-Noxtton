@@ -31,6 +31,9 @@
 		D390F626276F34510042FF90 /* MyriadGEOMtavruli-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D390F621276F34510042FF90 /* MyriadGEOMtavruli-Medium.otf */; };
 		D390F62A276F34760042FF90 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F629276F34760042FF90 /* BaseViewController.swift */; };
 		D3C65A132781FB7C0019D676 /* RestrictionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C65A122781FB7C0019D676 /* RestrictionDetailsViewController.swift */; };
+		D3C65A152781FD6E0019D676 /* RestrictionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C65A142781FD6E0019D676 /* RestrictionDetailsView.swift */; };
+		D3C65A17278202D70019D676 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C65A16278202D70019D676 /* FrameView.swift */; };
+		D3C65A1A27820BA90019D676 /* RestrictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C65A1927820BA90019D676 /* RestrictionTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +63,9 @@
 		D390F621276F34510042FF90 /* MyriadGEOMtavruli-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadGEOMtavruli-Medium.otf"; sourceTree = "<group>"; };
 		D390F629276F34760042FF90 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D3C65A122781FB7C0019D676 /* RestrictionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsViewController.swift; sourceTree = "<group>"; };
+		D3C65A142781FD6E0019D676 /* RestrictionDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsView.swift; sourceTree = "<group>"; };
+		D3C65A16278202D70019D676 /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
+		D3C65A1927820BA90019D676 /* RestrictionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -332,6 +338,7 @@
 		D3C65A0F2781FAF90019D676 /* RestrictionDetails */ = {
 			isa = PBXGroup;
 			children = (
+				D3C65A1827820B750019D676 /* TableViewCell */,
 				D3C65A102781FB550019D676 /* VC */,
 				D3C65A112781FB590019D676 /* View */,
 			);
@@ -349,8 +356,18 @@
 		D3C65A112781FB590019D676 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D3C65A142781FD6E0019D676 /* RestrictionDetailsView.swift */,
+				D3C65A16278202D70019D676 /* FrameView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		D3C65A1827820B750019D676 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				D3C65A1927820BA90019D676 /* RestrictionTableViewCell.swift */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,6 +447,7 @@
 			files = (
 				D390F60D276F33F00042FF90 /* UICollectionView+Extension.swift in Sources */,
 				D390F60E276F33F00042FF90 /* UICollectionViewCell+Extension.swift in Sources */,
+				D3C65A1A27820BA90019D676 /* RestrictionTableViewCell.swift in Sources */,
 				D390F610276F33F00042FF90 /* UITableView+Extension.swift in Sources */,
 				D390F60C276F33F00042FF90 /* UIView+Extension.swift in Sources */,
 				D390F608276F33F00042FF90 /* CoordinatorProtocol.swift in Sources */,
@@ -438,8 +456,10 @@
 				D390F60A276F33F00042FF90 /* UIImage+Extension.swift in Sources */,
 				D390F60F276F33F00042FF90 /* UITableViewCell+Extension.swift in Sources */,
 				D390F609276F33F00042FF90 /* CoordinatorDelegate.swift in Sources */,
+				D3C65A17278202D70019D676 /* FrameView.swift in Sources */,
 				D390F606276F33EF0042FF90 /* AppCoordinator.swift in Sources */,
 				D390F607276F33EF0042FF90 /* StoryBoarded.swift in Sources */,
+				D3C65A152781FD6E0019D676 /* RestrictionDetailsView.swift in Sources */,
 				D390F5E7276F33C00042FF90 /* FlySafe.xcdatamodeld in Sources */,
 				D3C65A132781FB7C0019D676 /* RestrictionDetailsViewController.swift in Sources */,
 				D390F62A276F34760042FF90 /* BaseViewController.swift in Sources */,
