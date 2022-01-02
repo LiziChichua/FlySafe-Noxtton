@@ -10,100 +10,98 @@ import UIKit
 class MainView: UIView {
     
     var authorisedUser: Bool
-    let homeTableView = UITableView()
     
-    override init(frame: CGRect) {
-        authorisedUser = true
-        super.init(frame: frame)
-        createSubviews()
-    }
+    //Side menu button
+    let menuButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
+        button.contentHorizontalAlignment = .fill
+        button.contentVerticalAlignment = .fill
+        button.tintColor = .black
+        return button
+    }()
     
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
+    
+    //Greeting label
+    let greetingLabel: UILabel = {
+        let label = UILabel()
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 24, weight: .semibold)
+        label.textColor = .black
+        label.numberOfLines = 1
+        label.textAlignment = .left
+        label.text = "Hello "
+        return label
+    }()
     
     
-    func createSubviews() {
+    //Create main table view
+    let homeTableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.showsHorizontalScrollIndicator = false
+        tableView.showsVerticalScrollIndicator = false
+        tableView.allowsSelection = false
+        return tableView
+    }()
+    
+    
+    //Create CheckRestrictions button
+    let checkRestrictions: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Check Restrictions", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
+        button.titleLabel?.textColor = .white
+        button.contentHorizontalAlignment = .center
+        button.contentVerticalAlignment = .center
+        button.backgroundColor = UIColor(hex: "10A5F9")
+        button.layer.cornerRadius = 54/2
+        return button
+    }()
 
-        self.translatesAutoresizingMaskIntoConstraints = false
-        
-        //Set background color
-        self.backgroundColor = .white
-        
-        //Side menu button
-        let menuButton = UIButton()
-        menuButton.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
-        menuButton.contentHorizontalAlignment = .fill
-        menuButton.contentVerticalAlignment = .fill
-        menuButton.tintColor = .black
-        menuButton.frame = CGRect(x: UIScreen.main.bounds.width - 45, y: 50, width: 25, height: 20)
-        
-        
-        //Greeting label
-        let greetingLabel = UILabel()
-        greetingLabel.sizeToFit()
-        greetingLabel.frame = CGRect(x: Constants.gap, y: menuButton.frame.maxY + 5, width: UIScreen.main.bounds.width-(Constants.gap*2), height: 30)
-        greetingLabel.font = .systemFont(ofSize: 24, weight: .semibold)
-        greetingLabel.textColor = .black
-        greetingLabel.numberOfLines = 1
-        greetingLabel.textAlignment = .left
-        greetingLabel.text = "Hello "
-        
-        //Create main table view
-        homeTableView.frame = CGRect(x: 0, y: greetingLabel.frame.maxY, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - greetingLabel.frame.maxY)
-        homeTableView.backgroundColor = .yellow
-        homeTableView.showsHorizontalScrollIndicator = false
-        homeTableView.showsVerticalScrollIndicator = false
-        homeTableView.allowsSelection = false
-        homeTableView.estimatedRowHeight = 300
-        
-        //Add subviews
-        self.addSubview(menuButton)
-        self.addSubview(greetingLabel)
-        self.addSubview(homeTableView)
-    }
+
+override init(frame: CGRect) {
+    authorisedUser = true
+    super.init(frame: frame)
+    
+    //Set background color
+    self.backgroundColor = .white
+    
+    //Add subviews
+    self.addSubview(menuButton)
+    self.addSubview(greetingLabel)
+    self.addSubview(homeTableView)
+    self.addSubview(checkRestrictions)
     
     
+    menuButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
+    menuButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+    menuButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
+    menuButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    
+    greetingLabel.topAnchor.constraint(equalTo: menuButton.bottomAnchor, constant: 5).isActive = true
+    greetingLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.gap).isActive = true
+    greetingLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.gap).isActive = true
+    greetingLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+
+    homeTableView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor).isActive = true
+    homeTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
+    homeTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
+    homeTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 75).isActive = true
+    
+    checkRestrictions.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -33).isActive = true
+    checkRestrictions.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.gap).isActive = true
+    checkRestrictions.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.gap).isActive = true
+    checkRestrictions.heightAnchor.constraint(equalToConstant: 55).isActive = true
     
     
-    func summaryViewLabel() -> UILabel {
-        let summaryLabel = UILabel()
-        summaryLabel.text = "Upcoming Flights"
-        summaryLabel.font = .systemFont(ofSize: 18, weight: .bold)
-        summaryLabel.sizeToFit()
-        summaryLabel.frame = CGRect(x: Constants.gap, y: Constants.gap, width: summaryLabel.intrinsicContentSize.width + 5, height: 25)
-        
-        return summaryLabel
-    }
-    
-    
-    func tripSummaryView(viewCount: Int, source: String, connections: [String]?, destination: String) -> UIView {
-        let summaryContainer = UIView()
-        summaryContainer.viewBorder(borderColor: .black, borderWidth: Constants.borderWidth)
-        summaryContainer.layer.cornerRadius = Constants.cornerRadius
-        summaryContainer.frame = CGRect(x: Constants.gap, y: Constants.gap, width: super.frame.maxY - Constants.gap*2, height: 177)
-        
-        
-        //Create label for source
-        let sourceLabel = UILabel()
-        sourceLabel.text = source
-        sourceLabel.font = .systemFont(ofSize: 18, weight: .medium)
-        sourceLabel.sizeToFit()
-        sourceLabel.frame = CGRect(x: summaryContainer.bounds.minX+15, y: summaryContainer.bounds.minY+85, width: sourceLabel.intrinsicContentSize.width+5, height: sourceLabel.intrinsicContentSize.height)
-        
-        
-        //Create label for destination
-        let destinationLabel = UILabel()
-        destinationLabel.text = destination
-        destinationLabel.font = .systemFont(ofSize: 18, weight: .medium)
-        destinationLabel.sizeToFit()
-        destinationLabel.frame = CGRect(x: summaryContainer.bounds.maxX-15, y: summaryContainer.bounds.minY+85, width: destinationLabel.intrinsicContentSize.width+5, height: destinationLabel.intrinsicContentSize.height)
-  
-        summaryContainer.addSubview(sourceLabel)
-        summaryContainer.addSubview(destinationLabel)
-        
-        
-        return summaryContainer
-    }
-    
+}
+
+required init?(coder: NSCoder) {
+    fatalError()
+}
+
 }
