@@ -23,6 +23,7 @@
 		0D2C10E12770B6AA00B0AC93 /* FetchNationalitiesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10E02770B6AA00B0AC93 /* FetchNationalitiesRequest.swift */; };
 		0D2C10E32770B73E00B0AC93 /* FetchRestrictionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10E22770B73E00B0AC93 /* FetchRestrictionsRequest.swift */; };
 		0D2EF04C277DA50F00FE4E1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2EF04B277DA50F00FE4E1B /* Constants.swift */; };
+		0D32CCA72783061A005C6283 /* TripPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32CCA62783061A005C6283 /* TripPlan.swift */; };
 		0D5B34EE27705F8E00148518 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5B34ED27705F8E00148518 /* APIManager.swift */; };
 		0D5CED42276F7691008D29B9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED41276F7691008D29B9 /* User.swift */; };
 		0D5CED45276F7D78008D29B9 /* AddTravelPlanResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED44276F7D78008D29B9 /* AddTravelPlanResponse.swift */; };
@@ -81,6 +82,7 @@
 		0D2C10E02770B6AA00B0AC93 /* FetchNationalitiesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNationalitiesRequest.swift; sourceTree = "<group>"; };
 		0D2C10E22770B73E00B0AC93 /* FetchRestrictionsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestrictionsRequest.swift; sourceTree = "<group>"; };
 		0D2EF04B277DA50F00FE4E1B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0D32CCA62783061A005C6283 /* TripPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPlan.swift; sourceTree = "<group>"; };
 		0D5B34ED27705F8E00148518 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = Network/APIManager.swift; sourceTree = SOURCE_ROOT; };
 		0D5CED41276F7691008D29B9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0D5CED44276F7D78008D29B9 /* AddTravelPlanResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelPlanResponse.swift; sourceTree = "<group>"; };
@@ -158,6 +160,14 @@
 				0D2EF04B277DA50F00FE4E1B /* Constants.swift */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		0D32CCA5278305B5005C6283 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				0D32CCA62783061A005C6283 /* TripPlan.swift */,
+			);
+			path = Misc;
 			sourceTree = "<group>";
 		};
 		0D5B34EF2770695C00148518 /* RequestStructs */ = {
@@ -364,6 +374,7 @@
 		D390F615276F34310042FF90 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0D32CCA5278305B5005C6283 /* Misc */,
 				0D5CED40276F7680008D29B9 /* API */,
 				D390F617276F343D0042FF90 /* CoreData */,
 			);
@@ -593,6 +604,7 @@
 				D390F60F276F33F00042FF90 /* UITableViewCell+Extension.swift in Sources */,
 				0DBBAE35277CBC3A0078348C /* MainView.swift in Sources */,
 				0D2EF04C277DA50F00FE4E1B /* Constants.swift in Sources */,
+				0D32CCA72783061A005C6283 /* TripPlan.swift in Sources */,
 				D390F609276F33F00042FF90 /* CoordinatorDelegate.swift in Sources */,
 				0D2C10E32770B73E00B0AC93 /* FetchRestrictionsRequest.swift in Sources */,
 				0D5CED49276F7EB7008D29B9 /* TravelPlan.swift in Sources */,

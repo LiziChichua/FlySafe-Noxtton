@@ -104,7 +104,8 @@ extension MainViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVTopCell", for: indexPath)
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVBottomCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVBottomCell", for: indexPath) as! HomeTVBottomCell
+            cell.tripPlan = TripPlan(source: "TBS", destination: "WSW", connections: [], date: "Tomorrow")
             return cell
         }
     }
