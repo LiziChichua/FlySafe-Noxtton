@@ -13,12 +13,13 @@ class FrameView: UIView {
     let frameTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .red
+        tableView.backgroundColor = .clear
         tableView.showsHorizontalScrollIndicator = false
         tableView.showsVerticalScrollIndicator = false
         tableView.allowsSelection = false
         tableView.estimatedRowHeight = 300
         tableView.layer.cornerRadius = 20
+        tableView.separatorColor = .clear
         return tableView
     }()
     

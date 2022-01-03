@@ -107,7 +107,7 @@ extension RestrictionDetailsView: UITableViewDelegate {
 
 extension RestrictionDetailsView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        7
+        2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
