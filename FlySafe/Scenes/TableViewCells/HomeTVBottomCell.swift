@@ -9,18 +9,25 @@ import UIKit
 
 class HomeTVBottomCell: UITableViewCell {
     
+    var curvePath: UIBezierPath?
+    
     var tripPlan: TripPlan? {
         didSet {
             guard let plan = tripPlan else {return}
             sourceLabel.text = plan.source
             destinationLabel.text = plan.destination
-            let stopsCount = plan.date.count
-            if stopsCount == 0 {
-                connectionCount.text = "Direct Flight"
-            } else if stopsCount == 1 {
-                connectionCount.text = "1 Stop"
-            } else {
-                connectionCount.text = "\(stopsCount) Stops"
+            if let connections = plan.connections {
+                let stopsCount = connections.count
+                if stopsCount == 0 {
+                    connectionCount.text = "Direct Flight"
+                } else if stopsCount == 1 {
+                    connectionCount.text = "1 Stop"
+                } else {
+                    connectionCount.text = "\(stopsCount) Stops"
+                }
+                if let path = curvePath {
+                    addConnectionDots(stopCount: Double(stopsCount), path: path, view: summaryContainer)
+                }
             }
             flightDate.text = plan.date
         }
@@ -48,7 +55,7 @@ class HomeTVBottomCell: UITableViewCell {
     let sourceLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.font = .systemFont(ofSize: 18, weight: .semibold)
         label.textAlignment = .left
         return label
     }()
@@ -58,7 +65,7 @@ class HomeTVBottomCell: UITableViewCell {
     let destinationLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 18, weight: .medium)
+        label.font = .systemFont(ofSize: 18, weight: .semibold)
         label.textAlignment = .right
         return label
     }()
@@ -111,10 +118,12 @@ class HomeTVBottomCell: UITableViewCell {
     
     func drawDottedCurve(start p0: CGPoint, middle p1: CGPoint, end p2: CGPoint, view: UIView) {
         let shapeLayer = CAShapeLayer()
+        shapeLayer.frame = view.bounds
         let path = UIBezierPath()
         path.move(to: p0)
         path.addQuadCurve(to: p2, controlPoint: p1)
         path.stroke()
+        curvePath = path
 
         shapeLayer.path = path.cgPath
         shapeLayer.fillColor = UIColor.clear.cgColor
@@ -123,6 +132,21 @@ class HomeTVBottomCell: UITableViewCell {
         shapeLayer.strokeColor = UIColor.black.cgColor
         
         view.layer.addSublayer(shapeLayer)
+    }
+    
+    func addConnectionDots(stopCount: Double, path: UIBezierPath, view: UIView) {
+        if stopCount > 0 {
+            let points: [CGPoint] = (1...Int(stopCount)).map({
+                path.mx_point(atFractionOfLength: CGFloat(Double($0)/(stopCount+1)))
+            })
+            points.forEach { point in
+                let layer = CALayer()
+                layer.frame = CGRect(x: point.x - 10, y: point.y - 10, width: 20, height: 20)
+                layer.contents = UIImage(named: "ic_connection")?.cgImage
+                layer.contentsGravity = .resizeAspect
+                view.layer.addSublayer(layer)
+            }
+        }
     }
     
     
@@ -181,7 +205,6 @@ class HomeTVBottomCell: UITableViewCell {
         expandButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
         expandButton.centerYAnchor.constraint(equalTo: flightDate.centerYAnchor).isActive = true
         
-        print (self.contentView.bounds.maxX)
         drawDottedCurve(start: CGPoint(x: UIScreen.main.bounds.minX + 30, y: 80), middle: CGPoint(x: UIScreen.main.bounds.midX - 30, y: -5), end: CGPoint(x: UIScreen.main.bounds.maxX - (Constants.gap*2) - 30, y: 80), view: summaryContainer)
     }
     

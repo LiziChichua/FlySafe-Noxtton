@@ -25,6 +25,7 @@
 		0D2EF04C277DA50F00FE4E1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2EF04B277DA50F00FE4E1B /* Constants.swift */; };
 		0D32CCA72783061A005C6283 /* TripPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32CCA62783061A005C6283 /* TripPlan.swift */; };
 		0D5B34EE27705F8E00148518 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5B34ED27705F8E00148518 /* APIManager.swift */; };
+		0D5BE44F2784BB5A00EFBF71 /* BezierPathSuperpowers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5BE44E2784BB5A00EFBF71 /* BezierPathSuperpowers.swift */; };
 		0D5CED42276F7691008D29B9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED41276F7691008D29B9 /* User.swift */; };
 		0D5CED45276F7D78008D29B9 /* AddTravelPlanResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED44276F7D78008D29B9 /* AddTravelPlanResponse.swift */; };
 		0D5CED47276F7E7E008D29B9 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED46276F7E7E008D29B9 /* AuthResponse.swift */; };
@@ -84,6 +85,7 @@
 		0D2EF04B277DA50F00FE4E1B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0D32CCA62783061A005C6283 /* TripPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPlan.swift; sourceTree = "<group>"; };
 		0D5B34ED27705F8E00148518 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = Network/APIManager.swift; sourceTree = SOURCE_ROOT; };
+		0D5BE44E2784BB5A00EFBF71 /* BezierPathSuperpowers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathSuperpowers.swift; sourceTree = "<group>"; };
 		0D5CED41276F7691008D29B9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0D5CED44276F7D78008D29B9 /* AddTravelPlanResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelPlanResponse.swift; sourceTree = "<group>"; };
 		0D5CED46276F7E7E008D29B9 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
@@ -185,6 +187,14 @@
 				0D2C10E22770B73E00B0AC93 /* FetchRestrictionsRequest.swift */,
 			);
 			path = RequestStructs;
+			sourceTree = "<group>";
+		};
+		0D5BE44D2784BB0C00EFBF71 /* BezierPathSuperpowers */ = {
+			isa = PBXGroup;
+			children = (
+				0D5BE44E2784BB5A00EFBF71 /* BezierPathSuperpowers.swift */,
+			);
+			path = BezierPathSuperpowers;
 			sourceTree = "<group>";
 		};
 		0D5CED38276F430E008D29B9 /* Managers */ = {
@@ -359,6 +369,7 @@
 		D390F611276F33FB0042FF90 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				0D5BE44D2784BB0C00EFBF71 /* BezierPathSuperpowers */,
 				0DBBAE30277CB9E60078348C /* DropDown */,
 			);
 			path = Utilities;
@@ -606,6 +617,7 @@
 				0D2EF04C277DA50F00FE4E1B /* Constants.swift in Sources */,
 				0D32CCA72783061A005C6283 /* TripPlan.swift in Sources */,
 				D390F609276F33F00042FF90 /* CoordinatorDelegate.swift in Sources */,
+				0D5BE44F2784BB5A00EFBF71 /* BezierPathSuperpowers.swift in Sources */,
 				0D2C10E32770B73E00B0AC93 /* FetchRestrictionsRequest.swift in Sources */,
 				0D5CED49276F7EB7008D29B9 /* TravelPlan.swift in Sources */,
 				D390F606276F33EF0042FF90 /* AppCoordinator.swift in Sources */,
