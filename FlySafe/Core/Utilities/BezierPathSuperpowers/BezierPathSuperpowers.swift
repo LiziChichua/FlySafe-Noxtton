@@ -336,6 +336,8 @@ fileprivate extension CGPathElementType {
       return 3
     case .closeSubpath:
       return 0
+    default:
+        fatalError()
     }
   }
   
@@ -349,6 +351,8 @@ fileprivate extension CGPathElementType {
       return from.quadCurveLength(to: to, controlPoint: controlPoints[0])
     case .addCurveToPoint:
       return from.cubicCurveLength(to: to, controlPoint1: controlPoints[0], controlPoint2: controlPoints[1])
+    default:
+        fatalError()
     }
   }
 }
@@ -384,6 +388,8 @@ fileprivate extension UIBezierPath {
         controlPoints.append(contentsOf: points[0...1])
       case .closeSubpath:
         break
+      default:
+          fatalError()
       }
       
       if type != .closeSubpath && type != .moveToPoint {
