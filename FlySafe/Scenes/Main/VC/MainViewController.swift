@@ -11,10 +11,26 @@ class MainViewController: BaseViewController {
     
     //Networking test
     let networkService = DefaultNetworkService()
+    var mainView = MainView()
+    
+    override func loadView() {
+        view = mainView
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        //Register TV Cells
+        mainView.homeTableView.register(HomeTVTopCell.self, forCellReuseIdentifier: "HomeTVTopCell")
+        mainView.homeTableView.register(HomeTVBottomCell.self, forCellReuseIdentifier: "HomeTVBottomCell")
+        
+        //Set TV delegate and datasource
+        mainView.homeTableView.delegate = self
+        mainView.homeTableView.dataSource = self
+        
+        
+        self.navigationController?.isNavigationBarHidden = true
         let apiManager = APIManager(with: networkService)
         apiManager.onError = { error in
             print (error)
@@ -70,5 +86,30 @@ class MainViewController: BaseViewController {
     }
 
 
+}
+
+extension MainViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
+}
+
+extension MainViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        2
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVTopCell", for: indexPath)
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVBottomCell", for: indexPath) as! HomeTVBottomCell
+            cell.tripPlan = TripPlan(source: "TBS", destination: "WSW", connections: ["SWF","KLP", "KHI"], date: "Tomorrow")
+            return cell
+        }
+    }
+    
+    
 }
 

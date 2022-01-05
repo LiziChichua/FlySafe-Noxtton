@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D1AD7AF2781C8510063DE71 /* HomeTVTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1AD7AE2781C8510063DE71 /* HomeTVTopCell.swift */; };
+		0D1AD7B12781CA510063DE71 /* HomeTVBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1AD7B02781CA510063DE71 /* HomeTVBottomCell.swift */; };
+		0D1AD7B32781CA940063DE71 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1AD7B22781CA940063DE71 /* MainViewModel.swift */; };
 		0D2C10CA27707C2900B0AC93 /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10C927707C2900B0AC93 /* AuthRequest.swift */; };
 		0D2C10CD277096A000B0AC93 /* Loopable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10CC277096A000B0AC93 /* Loopable.swift */; };
 		0D2C10CF27709E9100B0AC93 /* SelfRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10CE27709E9100B0AC93 /* SelfRequest.swift */; };
@@ -19,7 +22,10 @@
 		0D2C10DF2770B5D600B0AC93 /* FetchVaccinesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10DE2770B5D600B0AC93 /* FetchVaccinesRequest.swift */; };
 		0D2C10E12770B6AA00B0AC93 /* FetchNationalitiesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10E02770B6AA00B0AC93 /* FetchNationalitiesRequest.swift */; };
 		0D2C10E32770B73E00B0AC93 /* FetchRestrictionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10E22770B73E00B0AC93 /* FetchRestrictionsRequest.swift */; };
+		0D2EF04C277DA50F00FE4E1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2EF04B277DA50F00FE4E1B /* Constants.swift */; };
+		0D32CCA72783061A005C6283 /* TripPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32CCA62783061A005C6283 /* TripPlan.swift */; };
 		0D5B34EE27705F8E00148518 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5B34ED27705F8E00148518 /* APIManager.swift */; };
+		0D5BE44F2784BB5A00EFBF71 /* BezierPathSuperpowers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5BE44E2784BB5A00EFBF71 /* BezierPathSuperpowers.swift */; };
 		0D5CED42276F7691008D29B9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED41276F7691008D29B9 /* User.swift */; };
 		0D5CED45276F7D78008D29B9 /* AddTravelPlanResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED44276F7D78008D29B9 /* AddTravelPlanResponse.swift */; };
 		0D5CED47276F7E7E008D29B9 /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED46276F7E7E008D29B9 /* AuthResponse.swift */; };
@@ -32,12 +38,13 @@
 		0D5CED55276F81A9008D29B9 /* FetchNationalitiesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED54276F81A9008D29B9 /* FetchNationalitiesResponse.swift */; };
 		0D5CED57276F82BB008D29B9 /* FetchRestrictionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */; };
 		0DB90439277103150063436A /* FetchSelfResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB90438277103150063436A /* FetchSelfResponse.swift */; };
+		0DBBAE32277CBA020078348C /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBAE31277CBA020078348C /* iOSDropDown.swift */; };
+		0DBBAE35277CBC3A0078348C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBAE34277CBC3A0078348C /* MainView.swift */; };
 		0DD2CA1F277041130044CB1B /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2CA1D277041130044CB1B /* DataRequest.swift */; };
 		0DD2CA20277041130044CB1B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2CA1E277041130044CB1B /* NetworkService.swift */; };
 		D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5DC276F33C00042FF90 /* AppDelegate.swift */; };
 		D390F5DF276F33C00042FF90 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5DE276F33C00042FF90 /* SceneDelegate.swift */; };
 		D390F5E1276F33C00042FF90 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5E0276F33C00042FF90 /* MainViewController.swift */; };
-		D390F5E4276F33C00042FF90 /* MainViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D390F5E2276F33C00042FF90 /* MainViewController.storyboard */; };
 		D390F5E7276F33C00042FF90 /* FlySafe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D390F5E5276F33C00042FF90 /* FlySafe.xcdatamodeld */; };
 		D390F5EC276F33C20042FF90 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D390F5EA276F33C20042FF90 /* LaunchScreen.storyboard */; };
 		D390F606276F33EF0042FF90 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5F5276F33EF0042FF90 /* AppCoordinator.swift */; };
@@ -60,6 +67,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0D1AD7AE2781C8510063DE71 /* HomeTVTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVTopCell.swift; sourceTree = "<group>"; };
+		0D1AD7B02781CA510063DE71 /* HomeTVBottomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVBottomCell.swift; sourceTree = "<group>"; };
+		0D1AD7B22781CA940063DE71 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewModel.swift; path = FlySafe/Scenes/Main/ViewModel/MainViewModel.swift; sourceTree = SOURCE_ROOT; };
 		0D2C10C927707C2900B0AC93 /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
 		0D2C10CC277096A000B0AC93 /* Loopable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loopable.swift; sourceTree = "<group>"; };
 		0D2C10CE27709E9100B0AC93 /* SelfRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfRequest.swift; sourceTree = "<group>"; };
@@ -72,7 +82,10 @@
 		0D2C10DE2770B5D600B0AC93 /* FetchVaccinesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchVaccinesRequest.swift; sourceTree = "<group>"; };
 		0D2C10E02770B6AA00B0AC93 /* FetchNationalitiesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNationalitiesRequest.swift; sourceTree = "<group>"; };
 		0D2C10E22770B73E00B0AC93 /* FetchRestrictionsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestrictionsRequest.swift; sourceTree = "<group>"; };
+		0D2EF04B277DA50F00FE4E1B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0D32CCA62783061A005C6283 /* TripPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPlan.swift; sourceTree = "<group>"; };
 		0D5B34ED27705F8E00148518 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = Network/APIManager.swift; sourceTree = SOURCE_ROOT; };
+		0D5BE44E2784BB5A00EFBF71 /* BezierPathSuperpowers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathSuperpowers.swift; sourceTree = "<group>"; };
 		0D5CED41276F7691008D29B9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0D5CED44276F7D78008D29B9 /* AddTravelPlanResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelPlanResponse.swift; sourceTree = "<group>"; };
 		0D5CED46276F7E7E008D29B9 /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
@@ -85,13 +98,14 @@
 		0D5CED54276F81A9008D29B9 /* FetchNationalitiesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNationalitiesResponse.swift; sourceTree = "<group>"; };
 		0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestrictionsResponse.swift; sourceTree = "<group>"; };
 		0DB90438277103150063436A /* FetchSelfResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSelfResponse.swift; sourceTree = "<group>"; };
+		0DBBAE31277CBA020078348C /* iOSDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSDropDown.swift; sourceTree = "<group>"; };
+		0DBBAE34277CBC3A0078348C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		0DD2CA1D277041130044CB1B /* DataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataRequest.swift; path = Network/DataRequest.swift; sourceTree = SOURCE_ROOT; };
 		0DD2CA1E277041130044CB1B /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkService.swift; path = Network/NetworkService.swift; sourceTree = SOURCE_ROOT; };
 		D390F5D9276F33C00042FF90 /* FlySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlySafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D390F5DC276F33C00042FF90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D390F5DE276F33C00042FF90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D390F5E0276F33C00042FF90 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		D390F5E3276F33C00042FF90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainViewController.storyboard; sourceTree = "<group>"; };
 		D390F5E6276F33C00042FF90 /* FlySafe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FlySafe.xcdatamodel; sourceTree = "<group>"; };
 		D390F5EB276F33C20042FF90 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D390F5ED276F33C20042FF90 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,12 +139,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D1AD7AD2781C7F70063DE71 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				0D1AD7AE2781C8510063DE71 /* HomeTVTopCell.swift */,
+				0D1AD7B02781CA510063DE71 /* HomeTVBottomCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		0D2C10CB2770967400B0AC93 /* Loopable */ = {
 			isa = PBXGroup;
 			children = (
 				0D2C10CC277096A000B0AC93 /* Loopable.swift */,
 			);
 			path = Loopable;
+			sourceTree = "<group>";
+		};
+		0D2EF04A277DA50100FE4E1B /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				0D2EF04B277DA50F00FE4E1B /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		0D32CCA5278305B5005C6283 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				0D32CCA62783061A005C6283 /* TripPlan.swift */,
+			);
+			path = Misc;
 			sourceTree = "<group>";
 		};
 		0D5B34EF2770695C00148518 /* RequestStructs */ = {
@@ -148,6 +187,14 @@
 				0D2C10E22770B73E00B0AC93 /* FetchRestrictionsRequest.swift */,
 			);
 			path = RequestStructs;
+			sourceTree = "<group>";
+		};
+		0D5BE44D2784BB0C00EFBF71 /* BezierPathSuperpowers */ = {
+			isa = PBXGroup;
+			children = (
+				0D5BE44E2784BB5A00EFBF71 /* BezierPathSuperpowers.swift */,
+			);
+			path = BezierPathSuperpowers;
 			sourceTree = "<group>";
 		};
 		0D5CED38276F430E008D29B9 /* Managers */ = {
@@ -196,6 +243,22 @@
 				0DB90438277103150063436A /* FetchSelfResponse.swift */,
 			);
 			path = ResponseStructs;
+			sourceTree = "<group>";
+		};
+		0DBBAE30277CB9E60078348C /* DropDown */ = {
+			isa = PBXGroup;
+			children = (
+				0DBBAE31277CBA020078348C /* iOSDropDown.swift */,
+			);
+			path = DropDown;
+			sourceTree = "<group>";
+		};
+		0DBBAE33277CBBFC0078348C /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				D390F5E0276F33C00042FF90 /* MainViewController.swift */,
+			);
+			path = VC;
 			sourceTree = "<group>";
 		};
 		D390F5D0276F33C00042FF90 = {
@@ -306,6 +369,8 @@
 		D390F611276F33FB0042FF90 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				0D5BE44D2784BB0C00EFBF71 /* BezierPathSuperpowers */,
+				0DBBAE30277CB9E60078348C /* DropDown */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -320,6 +385,7 @@
 		D390F615276F34310042FF90 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0D32CCA5278305B5005C6283 /* Misc */,
 				0D5CED40276F7680008D29B9 /* API */,
 				D390F617276F343D0042FF90 /* CoreData */,
 			);
@@ -337,6 +403,7 @@
 		D390F618276F34510042FF90 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D2EF04A277DA50100FE4E1B /* Constants */,
 				D390F619276F34510042FF90 /* Images */,
 				D390F61B276F34510042FF90 /* Colors */,
 				D390F61D276F34510042FF90 /* Fonts */,
@@ -381,6 +448,7 @@
 		D390F627276F346C0042FF90 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0D1AD7AD2781C7F70063DE71 /* TableViewCells */,
 				D390F628276F34760042FF90 /* BaseViewController */,
 				D390F62B276F34810042FF90 /* Launch */,
 				D390F62C276F348D0042FF90 /* Main */,
@@ -407,6 +475,7 @@
 		D390F62C276F348D0042FF90 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				0DBBAE33277CBBFC0078348C /* VC */,
 				D390F62D276F34D50042FF90 /* View */,
 				D390F62E276F34DE0042FF90 /* ViewModel */,
 			);
@@ -416,8 +485,7 @@
 		D390F62D276F34D50042FF90 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				D390F5E0276F33C00042FF90 /* MainViewController.swift */,
-				D390F5E2276F33C00042FF90 /* MainViewController.storyboard */,
+				0DBBAE34277CBC3A0078348C /* MainView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -425,6 +493,7 @@
 		D390F62E276F34DE0042FF90 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				0D1AD7B22781CA940063DE71 /* MainViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -501,7 +570,6 @@
 				D390F623276F34510042FF90 /* Colors.xcassets in Resources */,
 				D390F5EC276F33C20042FF90 /* LaunchScreen.storyboard in Resources */,
 				D390F622276F34510042FF90 /* Assets.xcassets in Resources */,
-				D390F5E4276F33C00042FF90 /* MainViewController.storyboard in Resources */,
 				D390F626276F34510042FF90 /* MyriadGEOMtavruli-Medium.otf in Resources */,
 				D390F625276F34510042FF90 /* MyriadGEOMtavruli-Regular.otf in Resources */,
 			);
@@ -514,6 +582,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D1AD7B32781CA940063DE71 /* MainViewModel.swift in Sources */,
 				D390F60D276F33F00042FF90 /* UICollectionView+Extension.swift in Sources */,
 				0D5CED4B276F7F54008D29B9 /* FetchTravelPlansResponse.swift in Sources */,
 				D390F60E276F33F00042FF90 /* UICollectionViewCell+Extension.swift in Sources */,
@@ -523,6 +592,7 @@
 				0D2C10E12770B6AA00B0AC93 /* FetchNationalitiesRequest.swift in Sources */,
 				0D5CED4F276F800F008D29B9 /* Airport.swift in Sources */,
 				0D5CED47276F7E7E008D29B9 /* AuthResponse.swift in Sources */,
+				0D1AD7B12781CA510063DE71 /* HomeTVBottomCell.swift in Sources */,
 				0D2C10CA27707C2900B0AC93 /* AuthRequest.swift in Sources */,
 				0D2C10D32770A49000B0AC93 /* Flight.swift in Sources */,
 				0DB90439277103150063436A /* FetchSelfResponse.swift in Sources */,
@@ -535,13 +605,19 @@
 				0D5B34EE27705F8E00148518 /* APIManager.swift in Sources */,
 				D390F5E1276F33C00042FF90 /* MainViewController.swift in Sources */,
 				D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */,
+				0D1AD7AF2781C8510063DE71 /* HomeTVTopCell.swift in Sources */,
 				0D2C10D92770AD1700B0AC93 /* EditTravelPlanRequest.swift in Sources */,
 				0D2C10DD2770B52000B0AC93 /* FetchAirportsRequest.swift in Sources */,
 				0D2C10D12770A29C00B0AC93 /* FetchTravelPlansRequest.swift in Sources */,
+				0DBBAE32277CBA020078348C /* iOSDropDown.swift in Sources */,
 				D390F60A276F33F00042FF90 /* UIImage+Extension.swift in Sources */,
 				0D5CED51276F802B008D29B9 /* FetchAirportsResponse.swift in Sources */,
 				D390F60F276F33F00042FF90 /* UITableViewCell+Extension.swift in Sources */,
+				0DBBAE35277CBC3A0078348C /* MainView.swift in Sources */,
+				0D2EF04C277DA50F00FE4E1B /* Constants.swift in Sources */,
+				0D32CCA72783061A005C6283 /* TripPlan.swift in Sources */,
 				D390F609276F33F00042FF90 /* CoordinatorDelegate.swift in Sources */,
+				0D5BE44F2784BB5A00EFBF71 /* BezierPathSuperpowers.swift in Sources */,
 				0D2C10E32770B73E00B0AC93 /* FetchRestrictionsRequest.swift in Sources */,
 				0D5CED49276F7EB7008D29B9 /* TravelPlan.swift in Sources */,
 				D390F606276F33EF0042FF90 /* AppCoordinator.swift in Sources */,
@@ -563,14 +639,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		D390F5E2276F33C00042FF90 /* MainViewController.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D390F5E3276F33C00042FF90 /* Base */,
-			);
-			name = MainViewController.storyboard;
-			sourceTree = "<group>";
-		};
 		D390F5EA276F33C20042FF90 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
