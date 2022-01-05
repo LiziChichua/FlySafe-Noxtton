@@ -88,7 +88,7 @@ class RestrictionDetailsView: UIView {
             frameView.topAnchor.constraint(equalTo: restrictionInformationLabel.bottomAnchor, constant: 20),
             frameView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             frameView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            frameView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -50)
+            frameView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30)
         ])
     }
     
