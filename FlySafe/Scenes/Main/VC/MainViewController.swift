@@ -12,6 +12,7 @@ class MainViewController: BaseViewController {
     //Networking test
     let networkService = DefaultNetworkService()
     var mainView = MainView()
+    var gotoRestrictionsVC: (() -> (Void))?
     
     override func loadView() {
         view = mainView
@@ -92,7 +93,7 @@ class MainViewController: BaseViewController {
 
 extension MainViewController: CheckRestrictionsDelegate {
     func checkRestrictionsPressed() {
-        coordinator?.gotoRestrictionsVC()
+        gotoRestrictionsVC?()
     }
 }
 

@@ -8,5 +8,5 @@
 import UIKit
 
 protocol CoordinatorDelegate: UIViewController {
-    var coordinator: AppCoordinator? { get set }
+    var coordinator: CoordinatorProtocol? { get set }
 }
