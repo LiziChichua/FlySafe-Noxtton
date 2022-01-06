@@ -37,6 +37,8 @@
 		0D5CED53276F808A008D29B9 /* FetchVaccinesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED52276F808A008D29B9 /* FetchVaccinesResponse.swift */; };
 		0D5CED55276F81A9008D29B9 /* FetchNationalitiesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED54276F81A9008D29B9 /* FetchNationalitiesResponse.swift */; };
 		0D5CED57276F82BB008D29B9 /* FetchRestrictionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */; };
+		0D6AAAE5278752570084D571 /* CheckResstrictionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */; };
+		0D6AAAE8278756140084D571 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6AAAE7278756140084D571 /* CustomExtensions.swift */; };
 		0DB90439277103150063436A /* FetchSelfResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB90438277103150063436A /* FetchSelfResponse.swift */; };
 		0DBBAE32277CBA020078348C /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBAE31277CBA020078348C /* iOSDropDown.swift */; };
 		0DBBAE35277CBC3A0078348C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBAE34277CBC3A0078348C /* MainView.swift */; };
@@ -101,6 +103,8 @@
 		0D5CED52276F808A008D29B9 /* FetchVaccinesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchVaccinesResponse.swift; sourceTree = "<group>"; };
 		0D5CED54276F81A9008D29B9 /* FetchNationalitiesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNationalitiesResponse.swift; sourceTree = "<group>"; };
 		0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestrictionsResponse.swift; sourceTree = "<group>"; };
+		0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckResstrictionsButton.swift; sourceTree = "<group>"; };
+		0D6AAAE7278756140084D571 /* CustomExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomExtensions.swift; sourceTree = "<group>"; };
 		0DB90438277103150063436A /* FetchSelfResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSelfResponse.swift; sourceTree = "<group>"; };
 		0DBBAE31277CBA020078348C /* iOSDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSDropDown.swift; sourceTree = "<group>"; };
 		0DBBAE34277CBC3A0078348C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -152,6 +156,7 @@
 			children = (
 				0D1AD7AE2781C8510063DE71 /* HomeTVTopCell.swift */,
 				0D1AD7B02781CA510063DE71 /* HomeTVBottomCell.swift */,
+				0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -231,6 +236,14 @@
 				0D5B34EF2770695C00148518 /* RequestStructs */,
 			);
 			path = API;
+			sourceTree = "<group>";
+		};
+		0D6AAAE6278755F90084D571 /* HideKeyboard */ = {
+			isa = PBXGroup;
+			children = (
+				0D6AAAE7278756140084D571 /* CustomExtensions.swift */,
+			);
+			path = HideKeyboard;
 			sourceTree = "<group>";
 		};
 		0DB904372770DEC70063436A /* ResponseStructs */ = {
@@ -365,6 +378,7 @@
 		D390F5F9276F33EF0042FF90 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0D6AAAE6278755F90084D571 /* HideKeyboard */,
 				0D2C10CB2770967400B0AC93 /* Loopable */,
 				D390F5FA276F33EF0042FF90 /* UIImage */,
 				D390F5FC276F33EF0042FF90 /* UIColor */,
@@ -679,8 +693,10 @@
 				0D5CED4D276F7FB9008D29B9 /* DeleteResponse.swift in Sources */,
 				D390F607276F33EF0042FF90 /* StoryBoarded.swift in Sources */,
 				0D2C10CF27709E9100B0AC93 /* SelfRequest.swift in Sources */,
+				0D6AAAE8278756140084D571 /* CustomExtensions.swift in Sources */,
 				D390F5E7276F33C00042FF90 /* FlySafe.xcdatamodeld in Sources */,
 				D390F62A276F34760042FF90 /* BaseViewController.swift in Sources */,
+				0D6AAAE5278752570084D571 /* CheckResstrictionsButton.swift in Sources */,
 				D390F5DF276F33C00042FF90 /* SceneDelegate.swift in Sources */,
 				0D5CED55276F81A9008D29B9 /* FetchNationalitiesResponse.swift in Sources */,
 				0DD2CA20277041130044CB1B /* NetworkService.swift in Sources */,

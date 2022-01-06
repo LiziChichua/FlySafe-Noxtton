@@ -136,8 +136,6 @@ class HomeTVTopCell: UITableViewCell {
             picker.preferredDatePickerStyle = .compact
             return picker
         }()
-        //      datePicker.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
-        
         
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -214,7 +212,6 @@ class HomeTVTopCell: UITableViewCell {
         datePicker.leadingAnchor.constraint(equalTo: imgDatePicker.trailingAnchor, constant: 16).isActive = true
         datePicker.trailingAnchor.constraint(equalTo: pickerContainer.trailingAnchor, constant: -16-28).isActive = true
         datePicker.centerYAnchor.constraint(equalTo: imgDatePicker.centerYAnchor).isActive = true
-        
         
     }
     
