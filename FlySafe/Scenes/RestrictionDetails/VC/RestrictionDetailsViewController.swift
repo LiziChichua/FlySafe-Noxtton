@@ -19,6 +19,12 @@ class RestrictionDetailsViewController: BaseViewController {
         super.viewDidLoad()
         
         self.navigationController?.isNavigationBarHidden = true
+        restrictionDetailsView.backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+    }
+    
+    
+    @objc func backButtonPressed() {
+        navigationController?.popViewController(animated: true)
     }
 
 }

@@ -17,6 +17,7 @@ class RestrictionDetailsView: UIView {
         button.contentHorizontalAlignment = .fill
         button.contentVerticalAlignment = .fill
         button.tintColor = .black
+        button.isUserInteractionEnabled = true
         return button
     }()
     
@@ -28,6 +29,7 @@ class RestrictionDetailsView: UIView {
         button.contentHorizontalAlignment = .left
         button.contentVerticalAlignment = .fill
         button.tintColor = .black
+        button.isUserInteractionEnabled = true
         return button
     }()
     
