@@ -39,6 +39,7 @@
 		0D5CED57276F82BB008D29B9 /* FetchRestrictionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */; };
 		0D6AAAE5278752570084D571 /* CheckResstrictionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */; };
 		0D6AAAE8278756140084D571 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6AAAE7278756140084D571 /* CustomExtensions.swift */; };
+		0D9268E927887AE900F362C1 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9268E827887AE900F362C1 /* MarqueeLabel.swift */; };
 		0DB90439277103150063436A /* FetchSelfResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB90438277103150063436A /* FetchSelfResponse.swift */; };
 		0DBBAE32277CBA020078348C /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBAE31277CBA020078348C /* iOSDropDown.swift */; };
 		0DBBAE35277CBC3A0078348C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBAE34277CBC3A0078348C /* MainView.swift */; };
@@ -106,6 +107,7 @@
 		0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestrictionsResponse.swift; sourceTree = "<group>"; };
 		0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckResstrictionsButton.swift; sourceTree = "<group>"; };
 		0D6AAAE7278756140084D571 /* CustomExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomExtensions.swift; sourceTree = "<group>"; };
+		0D9268E827887AE900F362C1 /* MarqueeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarqueeLabel.swift; sourceTree = "<group>"; };
 		0DB90438277103150063436A /* FetchSelfResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSelfResponse.swift; sourceTree = "<group>"; };
 		0DBBAE31277CBA020078348C /* iOSDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSDropDown.swift; sourceTree = "<group>"; };
 		0DBBAE34277CBC3A0078348C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -246,6 +248,14 @@
 				0D6AAAE7278756140084D571 /* CustomExtensions.swift */,
 			);
 			path = HideKeyboard;
+			sourceTree = "<group>";
+		};
+		0D9268E727887ADC00F362C1 /* MarqueeLabel */ = {
+			isa = PBXGroup;
+			children = (
+				0D9268E827887AE900F362C1 /* MarqueeLabel.swift */,
+			);
+			path = MarqueeLabel;
 			sourceTree = "<group>";
 		};
 		0DB904372770DEC70063436A /* ResponseStructs */ = {
@@ -444,6 +454,7 @@
 		D390F611276F33FB0042FF90 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				0D9268E727887ADC00F362C1 /* MarqueeLabel */,
 				0DE00C8C2788301B00BF9627 /* FoldingCell */,
 				0D5BE44D2784BB0C00EFBF71 /* BezierPathSuperpowers */,
 				0DBBAE30277CB9E60078348C /* DropDown */,
@@ -685,6 +696,7 @@
 				0D5CED53276F808A008D29B9 /* FetchVaccinesResponse.swift in Sources */,
 				D349F0032785F68F0049DEE6 /* RestrictionDetailsView.swift in Sources */,
 				D390F608276F33F00042FF90 /* CoordinatorProtocol.swift in Sources */,
+				0D9268E927887AE900F362C1 /* MarqueeLabel.swift in Sources */,
 				0D2C10D52770A61C00B0AC93 /* AddTravelPlanRequest.swift in Sources */,
 				0D5B34EE27705F8E00148518 /* APIManager.swift in Sources */,
 				D390F5E1276F33C00042FF90 /* MainViewController.swift in Sources */,
