@@ -12,7 +12,7 @@ class MainView: UIView {
     var authorisedUser: Bool
     
     //Side menu button
-    let menuButton: UIButton = {
+    var menuButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)

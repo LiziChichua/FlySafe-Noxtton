@@ -12,9 +12,9 @@ class HomeTVBottomCell: UITableViewCell {
     var curvePath: UIBezierPath?
     var delegate: CheckRestrictionsDelegate?
     
-    var travelPlan: TripPlan? {
+    var tripPlan: TripPlan? {
         didSet {
-            guard let plan = travelPlan else {return}
+            guard let plan = tripPlan else {return}
             sourceLabel.text = plan.source
             destinationLabel.text = plan.destination
             expandButton.isHidden = true
@@ -41,6 +41,7 @@ class HomeTVBottomCell: UITableViewCell {
             flightDate.text = plan.date
         }
     }
+    
     
     let mainContainer: UIView = {
         let view = UIView()
@@ -141,7 +142,7 @@ class HomeTVBottomCell: UITableViewCell {
     }()
     
     @objc func buttonTriger() {
-        delegate?.checkRestrictionsPressed()
+        delegate?.checkRestrictionsPressed(TravelPlan(source: sourceLabel.text!, destination: destinationLabel.text!, date: flightDate.text!, user: nil, id: nil))
     }
     
     let flightDate: UILabel = {

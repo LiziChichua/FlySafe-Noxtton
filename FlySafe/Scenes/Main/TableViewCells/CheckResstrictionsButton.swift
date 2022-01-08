@@ -29,7 +29,7 @@ class CheckResstrictionsButton: UITableViewCell {
     }()
     
     @objc func buttonTriger() {
-        delegate?.checkRestrictionsPressed()
+        delegate?.checkRestrictionsPressed(nil)
     }
 
     
@@ -54,5 +54,5 @@ class CheckResstrictionsButton: UITableViewCell {
 }
 
 protocol CheckRestrictionsDelegate {
-    func checkRestrictionsPressed()
+    func checkRestrictionsPressed(_ travelPlan: TravelPlan?)
 }
