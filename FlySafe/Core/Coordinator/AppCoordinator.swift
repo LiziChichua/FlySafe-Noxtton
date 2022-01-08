@@ -30,6 +30,9 @@ final class AppCoordinator: CoordinatorProtocol {
         
         let vc = ContainerViewController()
         vc.coordinator = self
+        vc.MainVC.gotoRestrictionsVC = { [weak self] in
+            self?.gotoRestrictionsVC()
+        }
         navigationController?.pushViewController(vc, animated: true)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

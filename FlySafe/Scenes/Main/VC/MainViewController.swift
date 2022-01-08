@@ -8,7 +8,7 @@
 import UIKit
 
 protocol MainViewControllerDelegate: AnyObject {
-    func didTapMenuButton()
+    func didTapSideMenuButton()
 }
 
 class MainViewController: BaseViewController {
@@ -38,7 +38,7 @@ class MainViewController: BaseViewController {
         
         hideKeyboardWhenTappedAround()
         
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = false
         let apiManager = APIManager(with: networkService)
         apiManager.onError = { error in
             print (error)
@@ -46,6 +46,9 @@ class MainViewController: BaseViewController {
         
         
         mainView.menuButton.addTarget(self, action: #selector(sideMenuButtonPressed), for: .touchUpInside)
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .done, target: self, action: #selector(sideMenuButtonPressed))
+        
         
         
         //Works
@@ -98,7 +101,7 @@ class MainViewController: BaseViewController {
     }
     
     @objc func sideMenuButtonPressed() {
-        delegate?.didTapMenuButton()
+        delegate?.didTapSideMenuButton()
     }
 
 
