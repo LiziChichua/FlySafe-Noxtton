@@ -12,4 +12,5 @@ struct Constants {
     static let cornerRadius = 8.0
     static let borderWidth = 1.5
     static let gap: CGFloat = 20.0
+    static let sideMenuCellWidth: CGFloat = 320
 }

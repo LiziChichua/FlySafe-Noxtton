@@ -7,12 +7,17 @@
 
 import UIKit
 
+protocol MainViewControllerDelegate: AnyObject {
+    func didTapSideMenuButton()
+}
+
 class MainViewController: BaseViewController {
     
     //Networking test
     let networkService = DefaultNetworkService()
     var mainView = MainView()
     var gotoRestrictionsVC: (() -> (Void))?
+    weak var delegate: MainViewControllerDelegate?
     
     override func loadView() {
         view = mainView
@@ -33,11 +38,18 @@ class MainViewController: BaseViewController {
         
         hideKeyboardWhenTappedAround()
         
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = false
         let apiManager = APIManager(with: networkService)
         apiManager.onError = { error in
             print (error)
         }
+        
+        
+        mainView.menuButton.addTarget(self, action: #selector(sideMenuButtonPressed), for: .touchUpInside)
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .done, target: self, action: #selector(sideMenuButtonPressed))
+        
+        
         
         //Works
 //        apiManager.fetchSelf(token: "ad7ddf1f-1960-4599-be6e-c76d74798c17") { Response in
@@ -87,6 +99,10 @@ class MainViewController: BaseViewController {
 //        }
         
     }
+    
+    @objc func sideMenuButtonPressed() {
+        delegate?.didTapSideMenuButton()
+    }
 
 
 }
@@ -127,4 +143,3 @@ extension MainViewController: UITableViewDataSource {
     }
     
 }
-
