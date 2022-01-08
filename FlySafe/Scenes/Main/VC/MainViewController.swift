@@ -115,10 +115,8 @@ class MainViewController: BaseViewController {
         
         hideKeyboardWhenTappedAround()
         
-        self.navigationController?.isNavigationBarHidden = false
+        self.navigationController?.isNavigationBarHidden = true
         mainView.menuButton.addTarget(self, action: #selector(sideMenuButtonPressed), for: .touchUpInside)
-        
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .done, target: self, action: #selector(sideMenuButtonPressed))
         
     }
     
@@ -130,12 +128,20 @@ class MainViewController: BaseViewController {
 /////MARK: - Extensions
 
 extension MainViewController: CheckRestrictionsDelegate {
-    func checkRestrictionsPressed() {
-        guard let source = self.source else {return}
-        guard let destination = self.destination else {return}
-        guard let date = self.date else {return}
-        
-        viewModel.fetchRestrictions(flightInfo: Flight(source: source, destination: destination, date: date), nationality: nil, vaccine: nil, transfer: transfer)
+
+    func checkRestrictionsPressed(_ travelPlan: TravelPlan?) {
+        if let travelPlan = travelPlan {
+            let source = travelPlan.source
+            let destination = travelPlan.destination
+            let date = travelPlan.date
+            viewModel.fetchRestrictions(flightInfo: Flight(source: source, destination: destination, date: date), nationality: nil, vaccine: nil, transfer: transfer)
+        } else {
+            guard let source = self.source else {return}
+            guard let destination = self.destination else {return}
+            guard let date = self.date else {return}
+            
+            viewModel.fetchRestrictions(flightInfo: Flight(source: source, destination: destination, date: date), nationality: nil, vaccine: nil, transfer: transfer)
+        }
     }
 }
 
@@ -180,7 +186,7 @@ extension MainViewController: UITableViewDataSource {
             cell.delegate = self
             if let travelPlanList = userTravelPlans {
                 let travelPlan = travelPlanList[indexPath.row - 3]
-                cell.travelPlan = TripPlan(source: travelPlan.source, destination: travelPlan.destination, connections: [], date: travelPlan.date)
+                cell.tripPlan = TripPlan(source: travelPlan.source, destination: travelPlan.destination, connections: [], date: travelPlan.date)
             }
             return cell
         }

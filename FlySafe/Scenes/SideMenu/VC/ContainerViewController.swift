@@ -19,6 +19,7 @@ class ContainerViewController: BaseViewController {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.red
+        self.navigationController?.isNavigationBarHidden = true
         addChildVCs()
         
     }
