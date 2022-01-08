@@ -19,6 +19,8 @@ class MainView: UIView {
         button.contentHorizontalAlignment = .fill
         button.contentVerticalAlignment = .fill
         button.tintColor = .black
+        button.isUserInteractionEnabled = true
+        button.isEnabled = true
         return button
     }()
     
@@ -64,8 +66,8 @@ override init(frame: CGRect) {
     self.addSubview(homeTableView)
     
     
-    menuButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
-    menuButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+    menuButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 60).isActive = true
+    menuButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
     menuButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
     menuButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
     

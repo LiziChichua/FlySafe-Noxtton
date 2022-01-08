@@ -10,6 +10,7 @@ import UIKit
 class RestrictionDetailsViewController: BaseViewController {
 
     var restrictionDetailsView = RestrictionDetailsView()
+    
     var restrictions: [String : Restrictions]? {
         didSet {
             print (restrictions)

@@ -7,11 +7,16 @@
 
 import UIKit
 
+protocol MainViewControllerDelegate: AnyObject {
+    func didTapSideMenuButton()
+}
+
 class MainViewController: BaseViewController {
     
     var mainView = MainView()
     var gotoRestrictionsVC: (([String : Restrictions]) -> (Void))?
     let viewModel = MainViewModel()
+    weak var delegate: MainViewControllerDelegate?
     
     var userTravelPlans: [TravelPlan]?
     var source: String?
@@ -110,7 +115,15 @@ class MainViewController: BaseViewController {
         
         hideKeyboardWhenTappedAround()
         
-        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = false
+        mainView.menuButton.addTarget(self, action: #selector(sideMenuButtonPressed), for: .touchUpInside)
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "line.3.horizontal"), style: .done, target: self, action: #selector(sideMenuButtonPressed))
+        
+    }
+    
+    @objc func sideMenuButtonPressed() {
+        delegate?.didTapSideMenuButton()
     }
 }
 

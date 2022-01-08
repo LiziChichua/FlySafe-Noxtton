@@ -10,16 +10,16 @@ import UIKit
 class RestrictionDetailsView: UIView {
     
     //Side menu button
-    let menuButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
-        button.contentHorizontalAlignment = .fill
-        button.contentVerticalAlignment = .fill
-        button.tintColor = .black
-        button.isUserInteractionEnabled = true
-        return button
-    }()
+//    let menuButton: UIButton = {
+//        let button = UIButton()
+//        button.translatesAutoresizingMaskIntoConstraints = false
+//        button.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
+//        button.contentHorizontalAlignment = .fill
+//        button.contentVerticalAlignment = .fill
+//        button.tintColor = .black
+//        button.isUserInteractionEnabled = true
+//        return button
+//    }()
     
     //Back button
     let backButton: UIButton = {
@@ -61,7 +61,7 @@ class RestrictionDetailsView: UIView {
         self.backgroundColor = .white
         
         //Add subviews
-        self.addSubview(menuButton)
+        //self.addSubview(menuButton)
         self.addSubview(backButton)
         self.addSubview(restrictionInformationLabel)
         self.addSubview(frameView)
@@ -72,17 +72,18 @@ class RestrictionDetailsView: UIView {
         
         //Constraints
         NSLayoutConstraint.activate([
-            menuButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
-            menuButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            menuButton.widthAnchor.constraint(equalToConstant: 25),
-            menuButton.heightAnchor.constraint(equalToConstant: 20),
+//            menuButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
+//            menuButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+//            menuButton.widthAnchor.constraint(equalToConstant: 25),
+//            menuButton.heightAnchor.constraint(equalToConstant: 20),
             
             backButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
             backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             backButton.widthAnchor.constraint(equalToConstant: 25),
             backButton.heightAnchor.constraint(equalToConstant: 20),
             
-            restrictionInformationLabel.topAnchor.constraint(equalTo: menuButton.bottomAnchor, constant: 15),
+//            restrictionInformationLabel.topAnchor.constraint(equalTo: menuButton.bottomAnchor, constant: 15),
+            restrictionInformationLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 15),
             restrictionInformationLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             restrictionInformationLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             restrictionInformationLabel.heightAnchor.constraint(equalToConstant: 30),
@@ -119,56 +120,4 @@ extension RestrictionDetailsView: UITableViewDataSource {
     
 }
 
-
-//
-//  FrameView.swift
-//  FlySafe
-//
-//  Created by LiziChichua on 02.01.22.
-//
-
-import UIKit
-
-class FrameView: UIView {
-    
-    //Frame Table View
-    let frameTableView: UITableView = {
-        let tableView = UITableView()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .clear
-        tableView.showsHorizontalScrollIndicator = false
-        tableView.showsVerticalScrollIndicator = false
-        tableView.allowsSelection = false
-        tableView.estimatedRowHeight = 300
-        tableView.layer.cornerRadius = 20
-        tableView.separatorColor = .clear
-        return tableView
-    }()
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        //Set background color and view appearance
-        self.backgroundColor = .white
-        self.layer.borderWidth = 2
-        self.layer.borderColor = UIColor.black.cgColor
-        self.layer.cornerRadius = 20
-        
-        //Add subviews
-        self.addSubview(frameTableView)
-        
-        //Constraints
-        NSLayoutConstraint.activate([
-            frameTableView.topAnchor.constraint(equalTo: self.topAnchor),
-            frameTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            frameTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            frameTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-        ])
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError()
-    }
-    
-}
 

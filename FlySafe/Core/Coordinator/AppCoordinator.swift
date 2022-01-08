@@ -19,9 +19,9 @@ final class AppCoordinator: CoordinatorProtocol {
     }
     
     func start() {
-        let vc = MainViewController()
+        let vc = ContainerViewController()
         vc.coordinator = self
-        vc.gotoRestrictionsVC = { [weak self] restrictions in
+        vc.MainVC.gotoRestrictionsVC = { [weak self] restrictions in
             self?.gotoRestrictionsVC(restrictions: restrictions)
         }
         navigationController?.pushViewController(vc, animated: true)
