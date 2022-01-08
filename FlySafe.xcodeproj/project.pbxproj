@@ -53,6 +53,12 @@
 		0DD2CA1F277041130044CB1B /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2CA1D277041130044CB1B /* DataRequest.swift */; };
 		0DD2CA20277041130044CB1B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2CA1E277041130044CB1B /* NetworkService.swift */; };
 		0DE00C8E278830A600BF9627 /* FoldingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE00C8D278830A600BF9627 /* FoldingCell.swift */; };
+		D30476B02789C2C7003148EB /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30476AF2789C2C7003148EB /* ContainerViewController.swift */; };
+		D30476B22789C394003148EB /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30476B12789C394003148EB /* MenuViewController.swift */; };
+		D30476B72789CF0B003148EB /* MenuState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30476B62789CF0B003148EB /* MenuState.swift */; };
+		D30476B92789DD0F003148EB /* MenuOptionsForNewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30476B82789DD0F003148EB /* MenuOptionsForNewUser.swift */; };
+		D30476BC2789EA71003148EB /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30476BB2789EA71003148EB /* MenuTableViewCell.swift */; };
+		D30476BE2789EEF8003148EB /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30476BD2789EEF8003148EB /* FrameView.swift */; };
 		D349EFF92785F5B60049DEE6 /* DashedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349EFF82785F5B60049DEE6 /* DashedLineView.swift */; };
 		D349EFFD2785F62A0049DEE6 /* RestrictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349EFFC2785F62A0049DEE6 /* RestrictionTableViewCell.swift */; };
 		D349F0002785F6660049DEE6 /* RestrictionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349EFFF2785F6660049DEE6 /* RestrictionDetailsViewController.swift */; };
@@ -128,6 +134,12 @@
 		0DD2CA1D277041130044CB1B /* DataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataRequest.swift; path = Network/DataRequest.swift; sourceTree = SOURCE_ROOT; };
 		0DD2CA1E277041130044CB1B /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkService.swift; path = Network/NetworkService.swift; sourceTree = SOURCE_ROOT; };
 		0DE00C8D278830A600BF9627 /* FoldingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldingCell.swift; sourceTree = "<group>"; };
+		D30476AF2789C2C7003148EB /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		D30476B12789C394003148EB /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		D30476B62789CF0B003148EB /* MenuState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuState.swift; sourceTree = "<group>"; };
+		D30476B82789DD0F003148EB /* MenuOptionsForNewUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuOptionsForNewUser.swift; sourceTree = "<group>"; };
+		D30476BB2789EA71003148EB /* MenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		D30476BD2789EEF8003148EB /* FrameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 		D349EFF82785F5B60049DEE6 /* DashedLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLineView.swift; sourceTree = "<group>"; };
 		D349EFFC2785F62A0049DEE6 /* RestrictionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionTableViewCell.swift; sourceTree = "<group>"; };
 		D349EFFF2785F6660049DEE6 /* RestrictionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsViewController.swift; sourceTree = "<group>"; };
@@ -350,6 +362,41 @@
 				0DE00C8D278830A600BF9627 /* FoldingCell.swift */,
 			);
 			path = FoldingCell;
+			sourceTree = "<group>";
+		};
+		D30476AD2789C289003148EB /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				D30476AE2789C2A3003148EB /* VC */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		D30476AE2789C2A3003148EB /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				D30476BA2789EA55003148EB /* TableViewCells */,
+				D30476AF2789C2C7003148EB /* ContainerViewController.swift */,
+				D30476B12789C394003148EB /* MenuViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		D30476B52789CEF8003148EB /* CustomTypes */ = {
+			isa = PBXGroup;
+			children = (
+				D30476B62789CF0B003148EB /* MenuState.swift */,
+				D30476B82789DD0F003148EB /* MenuOptionsForNewUser.swift */,
+			);
+			path = CustomTypes;
+			sourceTree = "<group>";
+		};
+		D30476BA2789EA55003148EB /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				D30476BB2789EA71003148EB /* MenuTableViewCell.swift */,
+			);
+			path = TableViewCells;
 			sourceTree = "<group>";
 		};
 		D349EFF72785F59F0049DEE6 /* CustomUIComponents */ = {
@@ -733,7 +780,11 @@
 				0D5CED4B276F7F54008D29B9 /* FetchTravelPlansResponse.swift in Sources */,
 				D390F60E276F33F00042FF90 /* UICollectionViewCell+Extension.swift in Sources */,
 				0D2C10CD277096A000B0AC93 /* Loopable.swift in Sources */,
+
 				0D5D63F6278A039200673350 /* MenuState.swift in Sources */,
+
+				D30476B02789C2C7003148EB /* ContainerViewController.swift in Sources */,
+
 				D390F610276F33F00042FF90 /* UITableView+Extension.swift in Sources */,
 				D349F0002785F6660049DEE6 /* RestrictionDetailsViewController.swift in Sources */,
 				D390F60C276F33F00042FF90 /* UIView+Extension.swift in Sources */,
@@ -764,12 +815,14 @@
 				0D2C10D92770AD1700B0AC93 /* EditTravelPlanRequest.swift in Sources */,
 				0D2C10DD2770B52000B0AC93 /* FetchAirportsRequest.swift in Sources */,
 				0D2C10D12770A29C00B0AC93 /* FetchTravelPlansRequest.swift in Sources */,
+				D30476B22789C394003148EB /* MenuViewController.swift in Sources */,
 				0DBBAE32277CBA020078348C /* iOSDropDown.swift in Sources */,
 				D390F60A276F33F00042FF90 /* UIImage+Extension.swift in Sources */,
 				0D5CED51276F802B008D29B9 /* FetchAirportsResponse.swift in Sources */,
 				D390F60F276F33F00042FF90 /* UITableViewCell+Extension.swift in Sources */,
 				0DBBAE35277CBC3A0078348C /* MainView.swift in Sources */,
 				0D2EF04C277DA50F00FE4E1B /* Constants.swift in Sources */,
+				D30476B92789DD0F003148EB /* MenuOptionsForNewUser.swift in Sources */,
 				0D32CCA72783061A005C6283 /* TripPlan.swift in Sources */,
 				D390F609276F33F00042FF90 /* CoordinatorDelegate.swift in Sources */,
 				0D5BE44F2784BB5A00EFBF71 /* BezierPathSuperpowers.swift in Sources */,
@@ -778,6 +831,7 @@
 				0D5CED49276F7EB7008D29B9 /* TravelPlan.swift in Sources */,
 				D390F606276F33EF0042FF90 /* AppCoordinator.swift in Sources */,
 				0D5CED4D276F7FB9008D29B9 /* DeleteResponse.swift in Sources */,
+				D30476BE2789EEF8003148EB /* FrameView.swift in Sources */,
 				D390F607276F33EF0042FF90 /* StoryBoarded.swift in Sources */,
 				0D2C10CF27709E9100B0AC93 /* SelfRequest.swift in Sources */,
 				0D6AAAE8278756140084D571 /* CustomExtensions.swift in Sources */,
