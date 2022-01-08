@@ -17,6 +17,7 @@ class MainViewModel {
     var travelPlanDidAdd: ((Bool) -> (Void))?
     var travelPlanDidRemove: ((Bool) -> (Void))?
     var travelPlanDidEdit: ((Bool) -> (Void))?
+    var travelPlansDidFetch: (([TravelPlan]) -> (Void))?
     
     init() {
         apiManager = APIManager(with: networkService)
@@ -25,6 +26,7 @@ class MainViewModel {
         }
         
         fetchAirports()
+        fetchTravelPlans(token: "3146379b-9e2d-4d5b-9410-18589cc10c80")
         
     }
     
@@ -44,6 +46,14 @@ class MainViewModel {
                 if let restrictions = response.restricions {
                     self?.restrictionsDidFetch?(restrictions)
                 }
+            }
+        }
+    }
+    
+    func fetchTravelPlans(token: String) {
+        apiManager.fetchTravelPlans(token: token) { [weak self] result in
+            if let response = result {
+                self?.travelPlansDidFetch?(response.travelPlans)
             }
         }
     }

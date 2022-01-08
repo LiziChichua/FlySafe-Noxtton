@@ -13,6 +13,7 @@ class MainViewController: BaseViewController {
     var gotoRestrictionsVC: (([String : Restrictions]) -> (Void))?
     let viewModel = MainViewModel()
     
+    var userTravelPlans: [TravelPlan]?
     var source: String?
     var destination: String?
     var transfer: String?
@@ -27,6 +28,14 @@ class MainViewController: BaseViewController {
                 airports.append("\(airport.code), \(airport.city), \(airport.country)")
             }
             self?.airportsList = airports
+            DispatchQueue.main.async {
+                self?.mainView.homeTableView.reloadData()
+            }
+        }
+        
+        
+        viewmodel.travelPlansDidFetch = { [weak self] result in
+            self?.userTravelPlans = result
             DispatchQueue.main.async {
                 self?.mainView.homeTableView.reloadData()
             }
@@ -91,6 +100,7 @@ class MainViewController: BaseViewController {
         
         //Register TV Cells
         mainView.homeTableView.register(HomeTVTopCell.self, forCellReuseIdentifier: "HomeTVTopCell")
+        mainView.homeTableView.register(SummaryListTitleCell.self, forCellReuseIdentifier: "SummaryListTitleCell")
         mainView.homeTableView.register(HomeTVBottomCell.self, forCellReuseIdentifier: "HomeTVBottomCell")
         mainView.homeTableView.register(CheckResstrictionsButton.self, forCellReuseIdentifier: "CheckResstrictionsButton")
         
@@ -126,7 +136,11 @@ extension MainViewController: UITableViewDelegate {
 //Tableview datasource methods
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        if let travelPlans = userTravelPlans{
+            return 2 + travelPlans.count
+        } else {
+            return 2
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -145,10 +159,16 @@ extension MainViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "CheckResstrictionsButton", for: indexPath) as! CheckResstrictionsButton
             cell.delegate = self
             return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryListTitleCell", for: indexPath)
+            return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVBottomCell", for: indexPath) as! HomeTVBottomCell
             cell.delegate = self
-            cell.tripPlan = TripPlan(source: "TBS", destination: "WSW", connections: ["SWF","KLP", "KHI", "SWF","KLP", "KHI"], date: "Tomorrow")
+            if let travelPlanList = userTravelPlans {
+                let travelPlan = travelPlanList[indexPath.row - 3]
+                cell.travelPlan = TripPlan(source: travelPlan.source, destination: travelPlan.destination, connections: [], date: travelPlan.date)
+            }
             return cell
         }
     

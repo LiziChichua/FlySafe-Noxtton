@@ -12,9 +12,9 @@ class HomeTVBottomCell: UITableViewCell {
     var curvePath: UIBezierPath?
     var delegate: CheckRestrictionsDelegate?
     
-    var tripPlan: TripPlan? {
+    var travelPlan: TripPlan? {
         didSet {
-            guard let plan = tripPlan else {return}
+            guard let plan = travelPlan else {return}
             sourceLabel.text = plan.source
             destinationLabel.text = plan.destination
             expandButton.isHidden = true
@@ -48,16 +48,6 @@ class HomeTVBottomCell: UITableViewCell {
         view.backgroundColor = .clear
         return view
     }()
-    
-    let summaryViewTitle: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Upcoming Flights"
-        label.font = .systemFont(ofSize: 18, weight: .bold)
-        label.sizeToFit()
-        return label
-    }()
-    
     
     let summaryContainer: UIView = {
         let view = UIView()
@@ -200,7 +190,6 @@ class HomeTVBottomCell: UITableViewCell {
         
         //Add subviews
         self.contentView.addSubview(mainContainer)
-        self.contentView.addSubview(summaryViewTitle)
         self.contentView.addSubview(summaryContainer)
         summaryContainer.addSubview(planeImage)
         summaryContainer.addSubview(sourceLabel)
@@ -216,12 +205,7 @@ class HomeTVBottomCell: UITableViewCell {
         mainContainer.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor).isActive = true
         mainContainer.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         
-        summaryViewTitle.topAnchor.constraint(equalTo:  mainContainer.topAnchor, constant: 25).isActive = true
-        summaryViewTitle.leadingAnchor.constraint(equalTo:  mainContainer.leadingAnchor, constant: Constants.gap).isActive = true
-        summaryViewTitle.widthAnchor.constraint(equalToConstant: summaryViewTitle.intrinsicContentSize.width+5).isActive = true
-        summaryViewTitle.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        
-        summaryContainer.topAnchor.constraint(equalTo: summaryViewTitle.bottomAnchor, constant: 13).isActive = true
+        summaryContainer.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 20).isActive = true
         summaryContainer.heightAnchor.constraint(equalToConstant: 170).isActive = true
         summaryContainer.leadingAnchor.constraint(equalTo:  mainContainer.leadingAnchor, constant: Constants.gap).isActive = true
         summaryContainer.trailingAnchor.constraint(equalTo:  mainContainer.trailingAnchor, constant: -Constants.gap).isActive = true
