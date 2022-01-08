@@ -19,11 +19,17 @@ final class AppCoordinator: CoordinatorProtocol {
     }
     
     func start() {
-        let vc = MainViewController()
+//        let vc = MainViewController()
+//        vc.coordinator = self
+//        vc.gotoRestrictionsVC = { [weak self] in
+//            self?.gotoRestrictionsVC()
+//        }
+//        navigationController?.pushViewController(vc, animated: true)
+//        window?.rootViewController = navigationController
+//        window?.makeKeyAndVisible()
+        
+        let vc = ContainerViewController()
         vc.coordinator = self
-        vc.gotoRestrictionsVC = { [weak self] in
-            self?.gotoRestrictionsVC()
-        }
         navigationController?.pushViewController(vc, animated: true)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()

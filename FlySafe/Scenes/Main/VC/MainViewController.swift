@@ -7,12 +7,17 @@
 
 import UIKit
 
+protocol MainViewControllerDelegate: AnyObject {
+    func didTapMenuButton()
+}
+
 class MainViewController: BaseViewController {
     
     //Networking test
     let networkService = DefaultNetworkService()
     var mainView = MainView()
     var gotoRestrictionsVC: (() -> (Void))?
+    weak var delegate: MainViewControllerDelegate?
     
     override func loadView() {
         view = mainView
@@ -38,6 +43,10 @@ class MainViewController: BaseViewController {
         apiManager.onError = { error in
             print (error)
         }
+        
+        
+        mainView.menuButton.addTarget(self, action: #selector(sideMenuButtonPressed), for: .touchUpInside)
+        
         
         //Works
 //        apiManager.fetchSelf(token: "ad7ddf1f-1960-4599-be6e-c76d74798c17") { Response in
@@ -87,6 +96,10 @@ class MainViewController: BaseViewController {
 //        }
         
     }
+    
+    @objc func sideMenuButtonPressed() {
+        delegate?.didTapMenuButton()
+    }
 
 
 }
@@ -127,4 +140,3 @@ extension MainViewController: UITableViewDataSource {
     }
     
 }
-
