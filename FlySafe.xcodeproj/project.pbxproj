@@ -24,6 +24,7 @@
 		0D2C10E32770B73E00B0AC93 /* FetchRestrictionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10E22770B73E00B0AC93 /* FetchRestrictionsRequest.swift */; };
 		0D2EF04C277DA50F00FE4E1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2EF04B277DA50F00FE4E1B /* Constants.swift */; };
 		0D32CCA72783061A005C6283 /* TripPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32CCA62783061A005C6283 /* TripPlan.swift */; };
+		0D5394722789F1EA00B94B8A /* SummaryListTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5394712789F1EA00B94B8A /* SummaryListTitleCell.swift */; };
 		0D5B34EE27705F8E00148518 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5B34ED27705F8E00148518 /* APIManager.swift */; };
 		0D5BE44F2784BB5A00EFBF71 /* BezierPathSuperpowers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5BE44E2784BB5A00EFBF71 /* BezierPathSuperpowers.swift */; };
 		0D5CED42276F7691008D29B9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED41276F7691008D29B9 /* User.swift */; };
@@ -37,8 +38,15 @@
 		0D5CED53276F808A008D29B9 /* FetchVaccinesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED52276F808A008D29B9 /* FetchVaccinesResponse.swift */; };
 		0D5CED55276F81A9008D29B9 /* FetchNationalitiesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED54276F81A9008D29B9 /* FetchNationalitiesResponse.swift */; };
 		0D5CED57276F82BB008D29B9 /* FetchRestrictionsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */; };
+		0D5D63F6278A039200673350 /* MenuState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D63F4278A039200673350 /* MenuState.swift */; };
+		0D5D63F7278A039200673350 /* MenuOptionsForNewUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D63F5278A039200673350 /* MenuOptionsForNewUser.swift */; };
+		0D5D63FE278A044600673350 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D63FB278A044600673350 /* MenuTableViewCell.swift */; };
+		0D5D63FF278A044600673350 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D63FC278A044600673350 /* ContainerViewController.swift */; };
+		0D5D6400278A044600673350 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D63FD278A044600673350 /* MenuViewController.swift */; };
+		0D5D6402278A065200673350 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D6401278A065200673350 /* FrameView.swift */; };
 		0D6AAAE5278752570084D571 /* CheckResstrictionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */; };
 		0D6AAAE8278756140084D571 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6AAAE7278756140084D571 /* CustomExtensions.swift */; };
+		0D9268E927887AE900F362C1 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9268E827887AE900F362C1 /* MarqueeLabel.swift */; };
 		0DB90439277103150063436A /* FetchSelfResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB90438277103150063436A /* FetchSelfResponse.swift */; };
 		0DBBAE32277CBA020078348C /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBAE31277CBA020078348C /* iOSDropDown.swift */; };
 		0DBBAE35277CBC3A0078348C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBAE34277CBC3A0078348C /* MainView.swift */; };
@@ -97,6 +105,7 @@
 		0D2C10E22770B73E00B0AC93 /* FetchRestrictionsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestrictionsRequest.swift; sourceTree = "<group>"; };
 		0D2EF04B277DA50F00FE4E1B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0D32CCA62783061A005C6283 /* TripPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPlan.swift; sourceTree = "<group>"; };
+		0D5394712789F1EA00B94B8A /* SummaryListTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryListTitleCell.swift; sourceTree = "<group>"; };
 		0D5B34ED27705F8E00148518 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = Network/APIManager.swift; sourceTree = SOURCE_ROOT; };
 		0D5BE44E2784BB5A00EFBF71 /* BezierPathSuperpowers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathSuperpowers.swift; sourceTree = "<group>"; };
 		0D5CED41276F7691008D29B9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -110,8 +119,15 @@
 		0D5CED52276F808A008D29B9 /* FetchVaccinesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchVaccinesResponse.swift; sourceTree = "<group>"; };
 		0D5CED54276F81A9008D29B9 /* FetchNationalitiesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNationalitiesResponse.swift; sourceTree = "<group>"; };
 		0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestrictionsResponse.swift; sourceTree = "<group>"; };
+		0D5D63F4278A039200673350 /* MenuState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuState.swift; sourceTree = "<group>"; };
+		0D5D63F5278A039200673350 /* MenuOptionsForNewUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuOptionsForNewUser.swift; sourceTree = "<group>"; };
+		0D5D63FB278A044600673350 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		0D5D63FC278A044600673350 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		0D5D63FD278A044600673350 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		0D5D6401278A065200673350 /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 		0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckResstrictionsButton.swift; sourceTree = "<group>"; };
 		0D6AAAE7278756140084D571 /* CustomExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomExtensions.swift; sourceTree = "<group>"; };
+		0D9268E827887AE900F362C1 /* MarqueeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarqueeLabel.swift; sourceTree = "<group>"; };
 		0DB90438277103150063436A /* FetchSelfResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSelfResponse.swift; sourceTree = "<group>"; };
 		0DBBAE31277CBA020078348C /* iOSDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSDropDown.swift; sourceTree = "<group>"; };
 		0DBBAE34277CBC3A0078348C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -171,6 +187,7 @@
 				0D1AD7AE2781C8510063DE71 /* HomeTVTopCell.swift */,
 				0D1AD7B02781CA510063DE71 /* HomeTVBottomCell.swift */,
 				0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */,
+				0D5394712789F1EA00B94B8A /* SummaryListTitleCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -252,12 +269,55 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		0D5D63F3278A039200673350 /* CustomTypes */ = {
+			isa = PBXGroup;
+			children = (
+				0D5D63F4278A039200673350 /* MenuState.swift */,
+				0D5D63F5278A039200673350 /* MenuOptionsForNewUser.swift */,
+			);
+			path = CustomTypes;
+			sourceTree = "<group>";
+		};
+		0D5D63F8278A044600673350 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				0D5D63F9278A044600673350 /* VC */,
+			);
+			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		0D5D63F9278A044600673350 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				0D5D63FA278A044600673350 /* TableViewCells */,
+				0D5D63FC278A044600673350 /* ContainerViewController.swift */,
+				0D5D63FD278A044600673350 /* MenuViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		0D5D63FA278A044600673350 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				0D5D63FB278A044600673350 /* MenuTableViewCell.swift */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		0D6AAAE6278755F90084D571 /* HideKeyboard */ = {
 			isa = PBXGroup;
 			children = (
 				0D6AAAE7278756140084D571 /* CustomExtensions.swift */,
 			);
 			path = HideKeyboard;
+			sourceTree = "<group>";
+		};
+		0D9268E727887ADC00F362C1 /* MarqueeLabel */ = {
+			isa = PBXGroup;
+			children = (
+				0D9268E827887AE900F362C1 /* MarqueeLabel.swift */,
+			);
+			path = MarqueeLabel;
 			sourceTree = "<group>";
 		};
 		0DB904372770DEC70063436A /* ResponseStructs */ = {
@@ -377,7 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				D349F0022785F68F0049DEE6 /* RestrictionDetailsView.swift */,
-				D30476BD2789EEF8003148EB /* FrameView.swift */,
+				0D5D6401278A065200673350 /* FrameView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -492,7 +552,8 @@
 		D390F611276F33FB0042FF90 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				D30476B52789CEF8003148EB /* CustomTypes */,
+				0D5D63F3278A039200673350 /* CustomTypes */,
+				0D9268E727887ADC00F362C1 /* MarqueeLabel */,
 				0DE00C8C2788301B00BF9627 /* FoldingCell */,
 				0D5BE44D2784BB0C00EFBF71 /* BezierPathSuperpowers */,
 				0DBBAE30277CB9E60078348C /* DropDown */,
@@ -577,7 +638,7 @@
 				D390F62B276F34810042FF90 /* Launch */,
 				D390F62C276F348D0042FF90 /* Main */,
 				D349EFFA2785F5E60049DEE6 /* RestrictionDetails */,
-				D30476AD2789C289003148EB /* SideMenu */,
+				0D5D63F8278A044600673350 /* SideMenu */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -714,11 +775,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D1AD7B32781CA940063DE71 /* MainViewModel.swift in Sources */,
+				0D5394722789F1EA00B94B8A /* SummaryListTitleCell.swift in Sources */,
 				D390F60D276F33F00042FF90 /* UICollectionView+Extension.swift in Sources */,
 				0D5CED4B276F7F54008D29B9 /* FetchTravelPlansResponse.swift in Sources */,
 				D390F60E276F33F00042FF90 /* UICollectionViewCell+Extension.swift in Sources */,
 				0D2C10CD277096A000B0AC93 /* Loopable.swift in Sources */,
+
+				0D5D63F6278A039200673350 /* MenuState.swift in Sources */,
+
 				D30476B02789C2C7003148EB /* ContainerViewController.swift in Sources */,
+
 				D390F610276F33F00042FF90 /* UITableView+Extension.swift in Sources */,
 				D349F0002785F6660049DEE6 /* RestrictionDetailsViewController.swift in Sources */,
 				D390F60C276F33F00042FF90 /* UIView+Extension.swift in Sources */,
@@ -735,11 +801,14 @@
 				D349EFFD2785F62A0049DEE6 /* RestrictionTableViewCell.swift in Sources */,
 				0D5CED53276F808A008D29B9 /* FetchVaccinesResponse.swift in Sources */,
 				D349F0032785F68F0049DEE6 /* RestrictionDetailsView.swift in Sources */,
+				0D5D63FE278A044600673350 /* MenuTableViewCell.swift in Sources */,
 				D390F608276F33F00042FF90 /* CoordinatorProtocol.swift in Sources */,
-				D30476BC2789EA71003148EB /* MenuTableViewCell.swift in Sources */,
+				0D9268E927887AE900F362C1 /* MarqueeLabel.swift in Sources */,
+				0D5D63FF278A044600673350 /* ContainerViewController.swift in Sources */,
+				0D5D63F7278A039200673350 /* MenuOptionsForNewUser.swift in Sources */,
 				0D2C10D52770A61C00B0AC93 /* AddTravelPlanRequest.swift in Sources */,
 				0D5B34EE27705F8E00148518 /* APIManager.swift in Sources */,
-				D30476B72789CF0B003148EB /* MenuState.swift in Sources */,
+				0D5D6402278A065200673350 /* FrameView.swift in Sources */,
 				D390F5E1276F33C00042FF90 /* MainViewController.swift in Sources */,
 				D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */,
 				0D1AD7AF2781C8510063DE71 /* HomeTVTopCell.swift in Sources */,
@@ -758,6 +827,7 @@
 				D390F609276F33F00042FF90 /* CoordinatorDelegate.swift in Sources */,
 				0D5BE44F2784BB5A00EFBF71 /* BezierPathSuperpowers.swift in Sources */,
 				0D2C10E32770B73E00B0AC93 /* FetchRestrictionsRequest.swift in Sources */,
+				0D5D6400278A044600673350 /* MenuViewController.swift in Sources */,
 				0D5CED49276F7EB7008D29B9 /* TravelPlan.swift in Sources */,
 				D390F606276F33EF0042FF90 /* AppCoordinator.swift in Sources */,
 				0D5CED4D276F7FB9008D29B9 /* DeleteResponse.swift in Sources */,
