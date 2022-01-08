@@ -21,19 +21,20 @@ final class AppCoordinator: CoordinatorProtocol {
     func start() {
         let vc = MainViewController()
         vc.coordinator = self
-        vc.gotoRestrictionsVC = { [weak self] in
-            self?.gotoRestrictionsVC()
+        vc.gotoRestrictionsVC = { [weak self] restrictions in
+            self?.gotoRestrictionsVC(restrictions: restrictions)
         }
         navigationController?.pushViewController(vc, animated: true)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
     
-    func gotoRestrictionsVC() {
-        let vc = RestrictionDetailsViewController()
-        vc.coordinator = self
-        navigationController?.pushViewController(vc, animated: true)
+    func gotoRestrictionsVC(restrictions: [String : Restrictions]) {
+        DispatchQueue.main.async {
+            let vc = RestrictionDetailsViewController()
+            vc.restrictions = restrictions
+            vc.coordinator = self
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
-    
-    
 }

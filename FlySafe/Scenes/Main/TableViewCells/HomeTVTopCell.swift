@@ -8,7 +8,8 @@
 import UIKit
 
 class HomeTVTopCell: UITableViewCell {
-
+    
+    var delegate: FlightInfoFieldsDelegate?
 
         //Add new flight title
         let newFlightLabel: UILabel = {
@@ -55,7 +56,7 @@ class HomeTVTopCell: UITableViewCell {
             let dropDown = DropDown()
             dropDown.translatesAutoresizingMaskIntoConstraints = false
             dropDown.placeholder = "Departure Airport"
-            dropDown.optionArray = ["Bilbao, Es, BIO", "Madrid, Es, SAN", "Las-Vegas, US, LAS"]
+            dropDown.optionArray = ["No Data"]
             return dropDown
         }()
         
@@ -76,7 +77,7 @@ class HomeTVTopCell: UITableViewCell {
             let dropDown = DropDown()
             dropDown.translatesAutoresizingMaskIntoConstraints = false
             dropDown.placeholder = "Transfer Airport (optional)"
-            dropDown.optionArray = ["Bilbao, Es, BIO", "Madrid, Es, SAN", "Las-Vegas, US, LAS"]
+            dropDown.optionArray = ["No Data"]
             return dropDown
         }()
         
@@ -97,7 +98,7 @@ class HomeTVTopCell: UITableViewCell {
             let dropDown = DropDown()
             dropDown.translatesAutoresizingMaskIntoConstraints = false
             dropDown.placeholder = "Destination Airport"
-            dropDown.optionArray = ["Bilbao, Es, BIO", "Madrid, Es, SAN", "Las-Vegas, US, LAS"]
+            dropDown.optionArray = ["No Data"]
             return dropDown
         }()
         
@@ -134,8 +135,13 @@ class HomeTVTopCell: UITableViewCell {
             picker.datePickerMode = .date
             picker.frame.size.width = 150
             picker.preferredDatePickerStyle = .compact
+            picker.addTarget(self, action: #selector(datePicked), for: .valueChanged)
             return picker
         }()
+    
+    @objc func datePicked() {
+        delegate?.didSelectFlightDate(date: datePicker.date)
+    }
         
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -213,10 +219,33 @@ class HomeTVTopCell: UITableViewCell {
         datePicker.trailingAnchor.constraint(equalTo: pickerContainer.trailingAnchor, constant: -16-28).isActive = true
         datePicker.centerYAnchor.constraint(equalTo: imgDatePicker.centerYAnchor).isActive = true
         
+        
+        
+        sourceAirport.didSelect { [weak self] selectedText, index, id in
+            self?.delegate?.didSelectSource(source: selectedText)
+            self?.datePicked()
+        }
+        
+        destinationAirport.didSelect { [weak self] selectedText, index, id in
+            self?.delegate?.didSelectDestination(destination: selectedText)
+        }
+        
+        transferAirport.didSelect { [weak self] selectedText, index, id in
+            self?.delegate?.didSelectTransfer(transfer: selectedText)
+        }
+        
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
+}
+
+
+protocol FlightInfoFieldsDelegate {
+    func didSelectSource(source: String)
+    func didSelectDestination(destination: String)
+    func didSelectTransfer(transfer: String)
+    func didSelectFlightDate(date: Date)
 }
