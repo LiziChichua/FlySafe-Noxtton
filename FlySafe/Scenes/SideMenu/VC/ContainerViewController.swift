@@ -14,10 +14,15 @@ class ContainerViewController: BaseViewController {
     let MainVC = MainViewController()
     let menuVC = MenuViewController()
     var navVC: UINavigationController?
+    
+    var authenticationSelected: ((Bool) -> (Void))?
+    var passwordChangeSelected: (() -> (Void))?
+    var logoutSelected: (() -> (Void))?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        menuVC.delegate = self
         view.backgroundColor = UIColor.red
         self.navigationController?.isNavigationBarHidden = true
         addChildVCs()
@@ -61,5 +66,23 @@ extension ContainerViewController: MainViewControllerDelegate {
                 }
             }
         }
+    }
+}
+
+extension ContainerViewController: sideMenuDelegate {
+    func registerPressed() {
+        authenticationSelected?(true)
+    }
+    
+    func loginPressed() {
+        authenticationSelected?(false)
+    }
+    
+    func changePasswordPressed() {
+        passwordChangeSelected?()
+    }
+    
+    func logoutPressed() {
+        logoutSelected?()
     }
 }

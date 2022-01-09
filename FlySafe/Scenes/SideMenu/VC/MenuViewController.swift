@@ -8,9 +8,11 @@
 import UIKit
 
 //This Variable is Temporary - Only for testing UI
-var isNewUser = false
+var isNewUser = true
 
 class MenuViewController: UIViewController {
+    
+    var delegate: sideMenuDelegate?
     
     private let tableView: UITableView = {
         let table = UITableView()
@@ -68,6 +70,22 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if isNewUser {
+            switch MenuOptionsForNewUser.allCases[indexPath.row] {
+            case .RegisterOrSignIn:
+                delegate?.registerPressed()
+            case .newUser:
+                    break
+            }
+        }
     }
     
+}
+
+protocol sideMenuDelegate {
+    func registerPressed()
+    func loginPressed()
+    func changePasswordPressed()
+    func logoutPressed()
 }
