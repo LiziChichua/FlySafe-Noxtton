@@ -25,12 +25,13 @@ class AuthenticationViewModel {
         
     }
     
-    //Create new user
+    //Create or login new user
     func authenticateUser(email: String, password: String, userData: UserData?) {
         if let userData = userData {
             apiManager.createUser(userEmail: email, userPassword: password, userData: userData) { [weak self] result in
                 if let response = result {
                     if let user = response.user, let token = response.token {
+                        self?.saveUserTokenToUserDefaults(token: token)
                         self?.userDidAuthenticate?(user, token)
                     }
                 }
@@ -39,6 +40,7 @@ class AuthenticationViewModel {
             apiManager.logInUser(userEmail: email, userPassword: password) { [weak self] result in
                 if let response = result {
                     if let user = response.user, let token = response.token {
+                        self?.saveUserTokenToUserDefaults(token: token)
                         self?.userDidAuthenticate?(user, token)
                     }
                 }
@@ -46,6 +48,12 @@ class AuthenticationViewModel {
         }
     }
     
+    func saveUserTokenToUserDefaults(token: String) {
+        let defaults = UserDefaults.standard
+        defaults.set(token, forKey: "UserToken")
+    }
+    
+    //Fetch user data
     func fetchUser(token: String) {
         apiManager.fetchSelf(token: token) { [weak self] result in
             if let response = result{

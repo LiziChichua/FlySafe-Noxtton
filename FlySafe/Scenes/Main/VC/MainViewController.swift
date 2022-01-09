@@ -18,6 +18,7 @@ class MainViewController: BaseViewController {
     let viewModel = MainViewModel()
     weak var delegate: MainViewControllerDelegate?
     
+    var userToken: String?
     var userTravelPlans: [TravelPlan]?
     var source: String?
     var destination: String?
@@ -103,6 +104,10 @@ class MainViewController: BaseViewController {
         //Set closures for viewmodel
         initialiseVMClosures(viewmodel: viewModel)
         
+        //Set user token in viewModel
+        print (userToken)
+        viewModel.userToken = userToken
+        
         //Register TV Cells
         mainView.homeTableView.register(HomeTVTopCell.self, forCellReuseIdentifier: "HomeTVTopCell")
         mainView.homeTableView.register(SummaryListTitleCell.self, forCellReuseIdentifier: "SummaryListTitleCell")
@@ -156,7 +161,7 @@ extension MainViewController: UITableViewDelegate {
 extension MainViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let travelPlans = userTravelPlans{
-            return 2 + travelPlans.count
+            return 3 + travelPlans.count
         } else {
             return 2
         }
