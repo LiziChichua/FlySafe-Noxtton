@@ -46,6 +46,9 @@
 		0D5D6402278A065200673350 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D6401278A065200673350 /* FrameView.swift */; };
 		0D6AAAE5278752570084D571 /* CheckResstrictionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */; };
 		0D6AAAE8278756140084D571 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6AAAE7278756140084D571 /* CustomExtensions.swift */; };
+		0D8FEEE5278B168A0021F778 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FEEE4278B168A0021F778 /* AuthenticationView.swift */; };
+		0D8FEEE9278B16DE0021F778 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FEEE8278B16DE0021F778 /* AuthenticationViewController.swift */; };
+		0D8FEEEB278B16EF0021F778 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FEEEA278B16EF0021F778 /* AuthenticationViewModel.swift */; };
 		0D9268E927887AE900F362C1 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9268E827887AE900F362C1 /* MarqueeLabel.swift */; };
 		0DB90439277103150063436A /* FetchSelfResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB90438277103150063436A /* FetchSelfResponse.swift */; };
 		0DBBAE32277CBA020078348C /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBAE31277CBA020078348C /* iOSDropDown.swift */; };
@@ -121,6 +124,10 @@
 		0D5D6401278A065200673350 /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 		0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckResstrictionsButton.swift; sourceTree = "<group>"; };
 		0D6AAAE7278756140084D571 /* CustomExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomExtensions.swift; sourceTree = "<group>"; };
+		0D8FEEDA278B11C70021F778 /* FlySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlySafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0D8FEEE4278B168A0021F778 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		0D8FEEE8278B16DE0021F778 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		0D8FEEEA278B16EF0021F778 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		0D9268E827887AE900F362C1 /* MarqueeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarqueeLabel.swift; sourceTree = "<group>"; };
 		0DB90438277103150063436A /* FetchSelfResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSelfResponse.swift; sourceTree = "<group>"; };
 		0DBBAE31277CBA020078348C /* iOSDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSDropDown.swift; sourceTree = "<group>"; };
@@ -132,7 +139,6 @@
 		D349EFFC2785F62A0049DEE6 /* RestrictionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionTableViewCell.swift; sourceTree = "<group>"; };
 		D349EFFF2785F6660049DEE6 /* RestrictionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsViewController.swift; sourceTree = "<group>"; };
 		D349F0022785F68F0049DEE6 /* RestrictionDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsView.swift; sourceTree = "<group>"; };
-		D390F5D9276F33C00042FF90 /* FlySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = FlySafe.app; path = "/Users/topuchi13/Documents/iOS Programming/Noxtton_Project/FlySafe-Noxtton/build/Debug-iphoneos/FlySafe.app"; sourceTree = "<absolute>"; };
 		D390F5DC276F33C00042FF90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D390F5DE276F33C00042FF90 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D390F5E0276F33C00042FF90 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -300,6 +306,40 @@
 			path = HideKeyboard;
 			sourceTree = "<group>";
 		};
+		0D8FEEDC278B160B0021F778 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				0D8FEEE1278B16640021F778 /* ViewModel */,
+				0D8FEEE2278B16640021F778 /* VC */,
+				0D8FEEE3278B16640021F778 /* View */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		0D8FEEE1278B16640021F778 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0D8FEEEA278B16EF0021F778 /* AuthenticationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0D8FEEE2278B16640021F778 /* VC */ = {
+			isa = PBXGroup;
+			children = (
+				0D8FEEE8278B16DE0021F778 /* AuthenticationViewController.swift */,
+			);
+			path = VC;
+			sourceTree = "<group>";
+		};
+		0D8FEEE3278B16640021F778 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0D8FEEE4278B168A0021F778 /* AuthenticationView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		0D9268E727887ADC00F362C1 /* MarqueeLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -399,6 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				D390F5DB276F33C00042FF90 /* FlySafe */,
+				0D8FEEDA278B11C70021F778 /* FlySafe.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -578,6 +619,7 @@
 		D390F627276F346C0042FF90 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0D8FEEDC278B160B0021F778 /* Authentication */,
 				D390F628276F34760042FF90 /* BaseViewController */,
 				D390F62B276F34810042FF90 /* Launch */,
 				D390F62C276F348D0042FF90 /* Main */,
@@ -659,7 +701,7 @@
 			packageProductDependencies = (
 			);
 			productName = FlySafe;
-			productReference = D390F5D9276F33C00042FF90 /* FlySafe.app */;
+			productReference = 0D8FEEDA278B11C70021F778 /* FlySafe.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -744,6 +786,8 @@
 				0D5D63FE278A044600673350 /* MenuTableViewCell.swift in Sources */,
 				D390F608276F33F00042FF90 /* CoordinatorProtocol.swift in Sources */,
 				0D9268E927887AE900F362C1 /* MarqueeLabel.swift in Sources */,
+				0D8FEEE9278B16DE0021F778 /* AuthenticationViewController.swift in Sources */,
+				0D8FEEE5278B168A0021F778 /* AuthenticationView.swift in Sources */,
 				0D5D63FF278A044600673350 /* ContainerViewController.swift in Sources */,
 				0D5D63F7278A039200673350 /* MenuOptionsForNewUser.swift in Sources */,
 				0D2C10D52770A61C00B0AC93 /* AddTravelPlanRequest.swift in Sources */,
@@ -760,6 +804,7 @@
 				0D5CED51276F802B008D29B9 /* FetchAirportsResponse.swift in Sources */,
 				D390F60F276F33F00042FF90 /* UITableViewCell+Extension.swift in Sources */,
 				0DBBAE35277CBC3A0078348C /* MainView.swift in Sources */,
+				0D8FEEEB278B16EF0021F778 /* AuthenticationViewModel.swift in Sources */,
 				0D2EF04C277DA50F00FE4E1B /* Constants.swift in Sources */,
 				0D32CCA72783061A005C6283 /* TripPlan.swift in Sources */,
 				D390F609276F33F00042FF90 /* CoordinatorDelegate.swift in Sources */,

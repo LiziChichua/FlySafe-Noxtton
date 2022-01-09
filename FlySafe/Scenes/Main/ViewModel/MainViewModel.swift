@@ -84,32 +84,5 @@ class MainViewModel {
             }
         }
     }
-    
-    
-    
 }
-
-
-
-//Works
-//        apiManager.fetchSelf(token: "ad7ddf1f-1960-4599-be6e-c76d74798c17") { Response in
-//            if let response = Response{
-//                print (response.user)
-//            }
-//        }
-
-//Works
-//        apiManager.createUser(userEmail: "nicolas45@gmail.com", userPassword: "123", userData: UserData(nationality: "Georgian", vaccine: "pfizer")) { response in
-//            print (response)
-//            }
-
-//Works
-//        apiManager.logInUser(userEmail: "nika@example.com", userPassword: "123") { response in
-//            print (response)
-//        }
-
-//Works
-//        apiManager.fetchVaccines { vaccines in
-//            print (vaccines)
-//        }
 
