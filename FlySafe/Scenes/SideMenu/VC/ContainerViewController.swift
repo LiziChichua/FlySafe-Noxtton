@@ -18,10 +18,18 @@ class ContainerViewController: BaseViewController {
     var authenticationSelected: ((Bool) -> (Void))?
     var passwordChangeSelected: (() -> (Void))?
     var logoutSelected: (() -> (Void))?
+    var userToken: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        MainVC.userToken = userToken
+        if userToken != nil {
+            menuVC.isNewUser = false
+        } else {
+            menuVC.isNewUser = true
+        }
+        
         menuVC.delegate = self
         view.backgroundColor = UIColor.red
         self.navigationController?.isNavigationBarHidden = true

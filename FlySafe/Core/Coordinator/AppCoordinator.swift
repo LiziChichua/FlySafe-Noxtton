@@ -18,9 +18,27 @@ final class AppCoordinator: CoordinatorProtocol {
         self.navigationController = navigationController
     }
     
+    //Starts application with main view present
     func start() {
+        var vc: UIViewController
+        if let token = checkForSavedToken() {
+            vc = loadMainVC(userToken: token)
+        } else {
+            vc = loadMainVC(userToken: nil)
+        }
+
+        navigationController?.pushViewController(vc, animated: true)
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+    }
+    
+    
+    //Loads main VC
+    func loadMainVC(userToken: String?) -> UIViewController {
         let vc = ContainerViewController()
         vc.coordinator = self
+        vc.userToken = userToken
+        
         vc.MainVC.gotoRestrictionsVC = { [weak self] restrictions in
             self?.gotoRestrictionsVC(restrictions: restrictions)
         }
@@ -40,12 +58,23 @@ final class AppCoordinator: CoordinatorProtocol {
         vc.logoutSelected = { [weak self] in
             self?.userDidLogout()
         }
-
-        navigationController?.pushViewController(vc, animated: true)
-        window?.rootViewController = navigationController
-        window?.makeKeyAndVisible()
+        
+        return vc
     }
     
+    
+    //Check if user has saved token
+    func checkForSavedToken() -> String? {
+        let defaults = UserDefaults.standard
+        if let token = defaults.string(forKey: "UserToken") {
+            return token
+        } else {
+            return nil
+        }
+    }
+    
+    
+    //Goes to restriction details view
     func gotoRestrictionsVC(restrictions: [String : Restrictions]) {
         DispatchQueue.main.async {
             let vc = RestrictionDetailsViewController()
@@ -56,11 +85,30 @@ final class AppCoordinator: CoordinatorProtocol {
     }
 
     
+    //Goes to authentication view
     func gotoAuthenticationVC(isNewUser: Bool) {
         let vc = AuthenticationViewController()
         vc.coordinator = self
         vc.isNewUser = isNewUser
+        vc.switchStatus = { [weak self] isNewUser in
+            self?.gotoAuthenticationVC(isNewUser: isNewUser)
+        }
+        
+        vc.userDidAuthenticate = { [weak self] user, token in
+            DispatchQueue.main.async {
+                if let vc = self?.loadMainVC(userToken: token) {
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+        }
+        
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    func removeUserToken() {
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "UserToken")
     }
     
     func userDidAuthenticate() {
@@ -72,7 +120,10 @@ final class AppCoordinator: CoordinatorProtocol {
     }
     
     func userDidLogout() {
+        removeUserToken()
         
+        let vc = loadMainVC(userToken: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 }

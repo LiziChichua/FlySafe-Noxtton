@@ -9,6 +9,31 @@ import UIKit
 
 class AuthenticationView: UIView {
     
+    var isNewUser: Bool? {
+        didSet {
+            if !isNewUser! {
+                greetingLabel.text = "Welcome Back"
+                loginButton.setTitle("Log In", for: .normal)
+                nameField.isHidden = true
+                surnameField.isHidden = true
+                vaccineList.isHidden = true
+                nationalityList.isHidden = true
+                verticalStack.subviews.first?.isHidden = true
+                verticalStack.subviews.forEach({
+                    $0.removeFromSuperview()
+                })
+                verticalStack.addArrangedSubview(emailField)
+                verticalStack.addArrangedSubview(lineView())
+                verticalStack.addArrangedSubview(passwordField)
+                verticalStack.addArrangedSubview(lineView())
+                switchAuthenticationStatus.setTitle("Don't have an account?", for: .normal)
+                verticalStack.addArrangedSubview(switchAuthenticationStatus)
+                verticalStack.heightAnchor.constraint(equalToConstant: CGFloat(3 * 50)).isActive = true
+                
+            }
+        }
+    }
+    
     //Side menu button
     let backButton: UIButton = {
         let button = UIButton()
@@ -23,7 +48,7 @@ class AuthenticationView: UIView {
     
     
     //Greeting label
-    let greetingLabel: UILabel = {
+    var greetingLabel: UILabel = {
         let label = UILabel()
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -31,7 +56,7 @@ class AuthenticationView: UIView {
         label.textColor = .black
         label.numberOfLines = 1
         label.textAlignment = .left
-        label.text = "Welcome aboard :)"
+        label.text = "Welcome Aboard :)"
         return label
     }()
     
@@ -64,6 +89,24 @@ class AuthenticationView: UIView {
         return textField
     }()
     
+    //Vaccine field
+    let vaccineList: DropDown = {
+        let dropDown = DropDown()
+        dropDown.translatesAutoresizingMaskIntoConstraints = false
+        dropDown.placeholder = "Vaccine received"
+        dropDown.optionArray = ["No Data"]
+        return dropDown
+    }()
+    
+    //Nationality field
+    let nationalityList: DropDown = {
+        let dropDown = DropDown()
+        dropDown.translatesAutoresizingMaskIntoConstraints = false
+        dropDown.placeholder = "Nationality"
+        dropDown.optionArray = ["No Data"]
+        return dropDown
+    }()
+    
     //Email field
     let emailField: UITextField = {
         let textField = UITextField()
@@ -92,10 +135,19 @@ class AuthenticationView: UIView {
         return line
     }
     
+    var switchAuthenticationStatus: UIButton = {
+       let button = UIButton()
+        button.backgroundColor = .clear
+        button.setTitle("Already have an account?", for: .normal)
+        button.setTitleColor(.systemBlue, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 15, weight: .semibold)
+        return button
+    }()
+    
     let loginButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Log In", for: .normal)
+        button.setTitle("Create User", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
         button.titleLabel?.textColor = .white
         button.contentHorizontalAlignment = .center
@@ -119,6 +171,19 @@ class AuthenticationView: UIView {
         self.addSubview(greetingLabel)
         self.addSubview(verticalStack)
         self.addSubview(loginButton)
+        verticalStack.addArrangedSubview(nameField)
+        verticalStack.addArrangedSubview(lineView())
+        verticalStack.addArrangedSubview(surnameField)
+        verticalStack.addArrangedSubview(lineView())
+        verticalStack.addArrangedSubview(nationalityList)
+        verticalStack.addArrangedSubview(lineView())
+        verticalStack.addArrangedSubview(vaccineList)
+        verticalStack.addArrangedSubview(lineView())
+        verticalStack.addArrangedSubview(emailField)
+        verticalStack.addArrangedSubview(lineView())
+        verticalStack.addArrangedSubview(passwordField)
+        verticalStack.addArrangedSubview(lineView())
+        verticalStack.addArrangedSubview(switchAuthenticationStatus)
         
         backButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
         backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
@@ -133,18 +198,8 @@ class AuthenticationView: UIView {
         verticalStack.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: Constants.gap).isActive = true
         verticalStack.leadingAnchor.constraint(equalTo: greetingLabel.leadingAnchor).isActive = true
         verticalStack.trailingAnchor.constraint(equalTo: greetingLabel.trailingAnchor).isActive = true
-        verticalStack.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        verticalStack.heightAnchor.constraint(equalToConstant: CGFloat(verticalStack.subviews.count/2 * 50)).isActive = true
         
-        verticalStack.addArrangedSubview(nameField)
-        verticalStack.addArrangedSubview(lineView())
-        verticalStack.addArrangedSubview(surnameField)
-        verticalStack.addArrangedSubview(lineView())
-        verticalStack.addArrangedSubview(emailField)
-        verticalStack.addArrangedSubview(lineView())
-        verticalStack.addArrangedSubview(passwordField)
-        verticalStack.addArrangedSubview(lineView())
-        
-        //loginButton.topAnchor.constraint(equalTo: verticalStack.bottomAnchor, constant: 20).isActive = true
         loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30).isActive = true
         loginButton.leadingAnchor.constraint(equalTo: greetingLabel.leadingAnchor).isActive = true
         loginButton.trailingAnchor.constraint(equalTo: greetingLabel.trailingAnchor).isActive = true

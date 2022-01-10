@@ -149,6 +149,8 @@ class HomeTVBottomCell: UITableViewCell {
        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.clipsToBounds = true
+        label.adjustsFontSizeToFitWidth = true
         return label
     }()
     
@@ -191,7 +193,7 @@ class HomeTVBottomCell: UITableViewCell {
         
         //Add subviews
         self.contentView.addSubview(mainContainer)
-        self.contentView.addSubview(summaryContainer)
+        mainContainer.addSubview(summaryContainer)
         summaryContainer.addSubview(planeImage)
         summaryContainer.addSubview(sourceLabel)
         summaryContainer.addSubview(destinationLabel)
@@ -239,11 +241,6 @@ class HomeTVBottomCell: UITableViewCell {
         
         drawDottedLine(start: CGPoint(x: 0, y:  130), end: CGPoint(x: UIScreen.main.bounds.width - Constants.gap*2, y: 130), view: summaryContainer)
         
-        flightDate.bottomAnchor.constraint(equalTo: summaryContainer.bottomAnchor, constant: -11).isActive = true
-        flightDate.leadingAnchor.constraint(equalTo: sourceLabel.leadingAnchor).isActive = true
-        flightDate.heightAnchor.constraint(equalToConstant: 20).isActive = true
-        flightDate.widthAnchor.constraint(equalToConstant: 150).isActive = true
-        
         expandButton.centerXAnchor.constraint(equalTo: summaryContainer.centerXAnchor).isActive = true
         expandButton.heightAnchor.constraint(equalToConstant: 15).isActive = true
         expandButton.widthAnchor.constraint(equalToConstant: 30).isActive = true
@@ -254,6 +251,11 @@ class HomeTVBottomCell: UITableViewCell {
         restrictionsButton.widthAnchor.constraint(equalToConstant: 110).isActive = true
         restrictionsButton.centerYAnchor.constraint(equalTo: flightDate.centerYAnchor).isActive = true
         restrictionsButton.layer.cornerRadius = 25/2
+        
+        flightDate.bottomAnchor.constraint(equalTo: summaryContainer.bottomAnchor, constant: -11).isActive = true
+        flightDate.leadingAnchor.constraint(equalTo: sourceLabel.leadingAnchor).isActive = true
+        flightDate.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        flightDate.trailingAnchor.constraint(equalTo: restrictionsButton.leadingAnchor, constant: -10).isActive = true
         
         drawDottedCurve(start: CGPoint(x: UIScreen.main.bounds.minX + 30, y: 80), middle: CGPoint(x: UIScreen.main.bounds.midX - 30, y: 5), end: CGPoint(x: UIScreen.main.bounds.maxX - (Constants.gap*2) - 30, y: 80), view: summaryContainer)
     }

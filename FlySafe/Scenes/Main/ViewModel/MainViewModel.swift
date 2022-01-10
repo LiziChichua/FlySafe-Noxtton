@@ -12,12 +12,20 @@ class MainViewModel {
     
     private let networkService = DefaultNetworkService()
     private let apiManager: APIManager
+    var userToken: String? {
+        didSet {
+            if let token = userToken {
+                fetchTravelPlans(token: token)
+            }
+        }
+    }
     var airportsDidFetch: (([Airport]) -> (Void))?
     var restrictionsDidFetch: (([String : Restrictions]) -> (Void))?
     var travelPlanDidAdd: ((Bool) -> (Void))?
     var travelPlanDidRemove: ((Bool) -> (Void))?
     var travelPlanDidEdit: ((Bool) -> (Void))?
     var travelPlansDidFetch: (([TravelPlan]) -> (Void))?
+    
     
     init() {
         apiManager = APIManager(with: networkService)
@@ -26,7 +34,6 @@ class MainViewModel {
         }
         
         fetchAirports()
-        fetchTravelPlans(token: "3146379b-9e2d-4d5b-9410-18589cc10c80")
         
     }
     
@@ -53,6 +60,7 @@ class MainViewModel {
     func fetchTravelPlans(token: String) {
         apiManager.fetchTravelPlans(token: token) { [weak self] result in
             if let response = result {
+                print (response.success)
                 self?.travelPlansDidFetch?(response.travelPlans)
             }
         }
