@@ -105,7 +105,7 @@ class MainViewController: BaseViewController {
         initialiseVMClosures(viewmodel: viewModel)
         
         //Set user token in viewModel
-        print (userToken)
+//        print (userToken)
         viewModel.userToken = userToken
         
         //Register TV Cells
@@ -191,7 +191,7 @@ extension MainViewController: UITableViewDataSource {
             cell.delegate = self
             if let travelPlanList = userTravelPlans {
                 let travelPlan = travelPlanList[indexPath.row - 3]
-                cell.tripPlan = TripPlan(source: travelPlan.source, destination: travelPlan.destination, connections: [], date: travelPlan.date)
+                cell.tripPlan = TripPlan(source: travelPlan.source, destination: travelPlan.destination, connections: ["GHJ", "KLS", "FSD", "GHJ", "KLS", "FSD"], date: travelPlan.date)
             }
             return cell
         }
