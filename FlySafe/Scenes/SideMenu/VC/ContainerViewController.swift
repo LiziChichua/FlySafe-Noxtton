@@ -24,7 +24,7 @@ class ContainerViewController: BaseViewController {
         super.viewDidLoad()
 
         MainVC.userToken = userToken
-        if let token = userToken {
+        if userToken != nil {
             menuVC.isNewUser = false
         } else {
             menuVC.isNewUser = true

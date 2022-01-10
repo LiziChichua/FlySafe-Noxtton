@@ -13,7 +13,13 @@ class RestrictionDetailsViewController: BaseViewController {
     
     var restrictions: [String : Restrictions]? {
         didSet {
-            print (restrictions)
+            if let restrictions = restrictions {
+                print (restrictions.count)
+                let mapped = restrictions.compactMap({ value in
+                    value
+                })
+                print (mapped)
+            }
         }
     }
     
