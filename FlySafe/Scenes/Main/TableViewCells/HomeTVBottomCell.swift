@@ -11,9 +11,12 @@ class HomeTVBottomCell: UITableViewCell {
     
     var curvePath: UIBezierPath?
     var delegate: CheckRestrictionsDelegate?
+    var editPressed: (() -> (Void))?
+    var deletePressed: (() -> (Void))?
     
     var tripPlan: TripPlan? {
         didSet {
+            blurView.isHidden = true
             guard let plan = tripPlan else {return}
             sourceLabel.text = plan.source
             destinationLabel.text = plan.destination
@@ -45,6 +48,7 @@ class HomeTVBottomCell: UITableViewCell {
     
     let mainContainer: UIView = {
         let view = UIView()
+        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
         return view
@@ -52,6 +56,7 @@ class HomeTVBottomCell: UITableViewCell {
     
     let summaryContainer: UIView = {
         let view = UIView()
+        view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
         view.viewBorder(borderColor: .black, borderWidth: Constants.borderWidth)
         view.layer.cornerRadius = Constants.cornerRadius
@@ -168,7 +173,6 @@ class HomeTVBottomCell: UITableViewCell {
         shapeLayer.lineWidth = 1.5
         shapeLayer.lineDashPattern = [7, 3]
         shapeLayer.strokeColor = UIColor.black.cgColor
-        
         view.layer.addSublayer(shapeLayer)
     }
     
@@ -187,6 +191,77 @@ class HomeTVBottomCell: UITableViewCell {
         }
     }
     
+    let blurView: UIVisualEffectView = {
+        let blurEffect = UIBlurEffect(style: .systemThinMaterial)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.layer.opacity = 0.98
+        blurView.translatesAutoresizingMaskIntoConstraints = false
+        blurView.layer.cornerRadius = Constants.cornerRadius - 1
+        blurView.clipsToBounds = true
+        return blurView
+    }()
+    
+    
+    let editButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let centerImage = UIImage(systemName: "pencil.circle.fill")?.withTintColor(UIColor(hex: "10A5F9"), renderingMode: .alwaysOriginal)
+        button.setImage(centerImage, for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        button.configuration?.contentInsets = .zero
+        button.isUserInteractionEnabled = true
+        return button
+    }()
+    
+    let editLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Edit Plan"
+        label.font = .systemFont(ofSize: 15, weight: .semibold)
+        return label
+    }()
+    
+    
+    let deleteButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        let centerImage = UIImage(systemName: "x.circle.fill")?.withTintColor(UIColor(hex: "EF5D66"), renderingMode: .alwaysOriginal)
+        button.setImage(centerImage, for: .normal)
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
+        button.configuration?.contentInsets = .zero
+        button.isUserInteractionEnabled = true
+        return button
+    }()
+    
+    
+    let deleteLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Delete Plan"
+        label.font = .systemFont(ofSize: 15, weight: .semibold)
+        return label
+    }()
+    
+    
+    private func setupLongGestureRecognizerOnCollection(on view: UIView) {
+          let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+             lpgr.minimumPressDuration = 0.5
+             lpgr.delaysTouchesBegan = true
+             lpgr.delegate = self
+          view.addGestureRecognizer(lpgr)
+    }
+    
+    @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        if gestureRecognizer.state == .began {
+            blurView.layer.opacity = 0
+            blurView.isHidden = false
+            UIView.animate(withDuration: 0.3, animations: { [weak self] in
+                self?.blurView.layer.opacity = 0.98
+            })
+        }
+    }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -202,6 +277,13 @@ class HomeTVBottomCell: UITableViewCell {
         summaryContainer.addSubview(flightDate)
         summaryContainer.addSubview(expandButton)
         summaryContainer.addSubview(restrictionsButton)
+        mainContainer.addSubview(blurView)
+        blurView.contentView.addSubview(editButton)
+        blurView.contentView.addSubview(editLabel)
+        blurView.contentView.addSubview(deleteButton)
+        blurView.contentView.addSubview(deleteLabel)
+        
+        setupLongGestureRecognizerOnCollection(on: summaryContainer)
         
         mainContainer.topAnchor.constraint(equalTo: self.contentView.topAnchor).isActive = true
         mainContainer.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor).isActive = true
@@ -213,6 +295,29 @@ class HomeTVBottomCell: UITableViewCell {
         summaryContainer.leadingAnchor.constraint(equalTo:  mainContainer.leadingAnchor, constant: Constants.gap).isActive = true
         summaryContainer.trailingAnchor.constraint(equalTo:  mainContainer.trailingAnchor, constant: -Constants.gap).isActive = true
         summaryContainer.bottomAnchor.constraint(equalTo:  mainContainer.bottomAnchor).isActive = true
+
+        blurView.topAnchor.constraint(equalTo: summaryContainer.topAnchor).isActive = true
+        blurView.bottomAnchor.constraint(equalTo: summaryContainer.bottomAnchor).isActive = true
+        blurView.leadingAnchor.constraint(equalTo: summaryContainer.leadingAnchor).isActive = true
+        blurView.trailingAnchor.constraint(equalTo: summaryContainer.trailingAnchor).isActive = true
+        
+        deleteButton.centerYAnchor.constraint(equalTo: blurView.centerYAnchor, constant: -10).isActive = true
+        deleteButton.centerXAnchor.constraint(equalTo: blurView.centerXAnchor, constant: 70).isActive = true
+        deleteButton.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        deleteButton.widthAnchor.constraint(equalToConstant: 75).isActive = true
+        deleteButton.layer.cornerRadius = 35
+        
+        deleteLabel.centerXAnchor.constraint(equalTo: deleteButton.centerXAnchor).isActive = true
+        deleteLabel.topAnchor.constraint(equalTo: deleteButton.bottomAnchor, constant: 10).isActive = true
+        
+        editButton.centerYAnchor.constraint(equalTo: deleteButton.centerYAnchor).isActive = true
+        editButton.centerXAnchor.constraint(equalTo: blurView.centerXAnchor, constant: -70).isActive = true
+        editButton.heightAnchor.constraint(equalTo: deleteButton.heightAnchor).isActive = true
+        editButton.widthAnchor.constraint(equalTo: deleteButton.widthAnchor).isActive = true
+        editButton.layer.cornerRadius = deleteButton.layer.cornerRadius
+        
+        editLabel.centerXAnchor.constraint(equalTo: editButton.centerXAnchor).isActive = true
+        editLabel.topAnchor.constraint(equalTo: editButton.bottomAnchor, constant: 10).isActive = true
         
         planeImage.centerYAnchor.constraint(equalTo: summaryContainer.centerYAnchor, constant: -5).isActive = true
         planeImage.centerXAnchor.constraint(equalTo: summaryContainer.centerXAnchor).isActive = true

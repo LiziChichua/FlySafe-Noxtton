@@ -120,6 +120,8 @@ class MainViewController: BaseViewController {
         
         hideKeyboardWhenTappedAround()
         
+        //mainView.homeTableView.addGestureRecognizer(longPress)
+        
         self.navigationController?.isNavigationBarHidden = true
         mainView.menuButton.addTarget(self, action: #selector(sideMenuButtonPressed), for: .touchUpInside)
         
