@@ -93,6 +93,7 @@ extension PopOverViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVTopCell", for: indexPath) as! HomeTVTopCell
         //cell.delegate = self
+        cell.newFlightLabel.text = "Edit Flight"
         return cell
     }
     
