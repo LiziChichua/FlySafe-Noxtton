@@ -14,7 +14,7 @@ protocol MainViewControllerDelegate: AnyObject {
 class MainViewController: BaseViewController {
     
     var mainView = MainView()
-    var gotoRestrictionsVC: (([String : Restrictions]) -> (Void))?
+    var gotoRestrictionsVC: (([String : Restrictions], Flight, Bool) -> (Void))?
     let viewModel = MainViewModel()
     weak var delegate: MainViewControllerDelegate?
     
@@ -25,6 +25,55 @@ class MainViewController: BaseViewController {
     var transfer: String?
     var date: String?
     var airportsList: [String]?
+    
+    @objc func reloadTableview() {
+        if let userToken = userToken {
+            viewModel.fetchTravelPlans(token: userToken)
+        }
+    }
+    
+    func checkRestrictionsPressed(_ travelPlan: TravelPlan?, saveButtonEnabled: Bool) {
+        //If triggered from saved travelPlans
+        if let travelPlan = travelPlan {
+            let source = travelPlan.source
+            let destination = travelPlan.destination
+            let date = travelPlan.date
+            viewModel.fetchRestrictions(flightInfo: Flight(source: source, destination: destination, date: date), nationality: nil, vaccine: nil, transfer: transfer, saveButtonEnabled: saveButtonEnabled)
+        } else {
+            //If triggered from not saved travelPlan
+            guard let source = self.source else {return}
+            guard let destination = self.destination else {return}
+            guard let date = self.date else {return}
+            
+            viewModel.fetchRestrictions(flightInfo: Flight(source: source, destination: destination, date: date), nationality: nil, vaccine: nil, transfer: transfer, saveButtonEnabled: saveButtonEnabled)
+        }
+    }
+    
+    func didTapEdit(tripPlan: TripPlan) {
+        let vc = PopOverViewController()
+        vc.didpressSave = { flight, planID in
+            if let userToken = self.userToken{
+                self.viewModel.editTravelPlan(token: userToken, flightInfo: flight, flightID: planID)
+            }
+        }
+        vc.flightPlan = tripPlan
+        vc.airportsList = self.airportsList
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func didTapDelete(flightID: String) {
+        let actionSheet = UIAlertController(title: "Do you want to delete your flight?", message: nil, preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+            if let userToken = self?.userToken {
+                self?.viewModel.deleteTravelPlan(token: userToken, flightID: flightID)
+            }
+        })
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        actionSheet.addAction(deleteAction)
+        actionSheet.addAction(cancelAction)
+        
+        present(actionSheet, animated: true, completion: nil)
+    }
     
     func initialiseVMClosures(viewmodel: MainViewModel) {
         
@@ -48,49 +97,53 @@ class MainViewController: BaseViewController {
         }
         
         
-        viewmodel.travelPlanDidAdd = { [weak self] success in
-            if success {
-                let alert = UIAlertController(title: "Success", message: "Travel plan succesfylly added", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-                self?.present(alert, animated: true)
-            } else {
-                let alert = UIAlertController(title: "Failure", message: "Travel plan couldn't be added", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-                self?.present(alert, animated: true)
-            }
-        }
-        
-        
         viewmodel.travelPlanDidEdit = { [weak self] success in
-            if success {
-                let alert = UIAlertController(title: "Success", message: "Travel plan succesfylly edited", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-                self?.present(alert, animated: true)
-            } else {
-                let alert = UIAlertController(title: "Failure", message: "Travel plan couldn't be edited", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-                self?.present(alert, animated: true)
+            DispatchQueue.main.async {
+                if success {
+                    let alert = UIAlertController(title: "Success", message: "Travel plan succesfylly edited", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { [weak self] _ in
+                        self?.reloadTableview()
+                    }))
+                    self?.present(alert, animated: true)
+                } else {
+                    let alert = UIAlertController(title: "Failure", message: "Travel plan couldn't be edited", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { [weak self] _ in
+                        self?.reloadTableview()
+                    }))
+                    self?.present(alert, animated: true)
+                }
             }
+
         }
         
         
         viewmodel.travelPlanDidRemove = { [weak self] success in
-            if success {
-                let alert = UIAlertController(title: "Success", message: "Travel plan succesfylly deleted", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-                self?.present(alert, animated: true)
-            } else {
-                let alert = UIAlertController(title: "Failure", message: "Travel plan couldn't be deleted", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Close", style: .default, handler: nil))
-                self?.present(alert, animated: true)
+            DispatchQueue.main.async {
+                if success {
+                    let alert = UIAlertController(title: "Success", message: "Travel plan succesfylly deleted", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { [weak self] _ in
+                        self?.reloadTableview()
+                    }))
+                    self?.present(alert, animated: true)
+                } else {
+                    let alert = UIAlertController(title: "Failure", message: "Travel plan couldn't be deleted", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Close", style: .default, handler: { [weak self] _ in
+                        self?.reloadTableview()
+                    }))
+                    self?.present(alert, animated: true)
+                }
+            }
+
+        }
+        
+        
+        viewmodel.restrictionsDidFetch = { [weak self] dict, flightInfo, saveButtonEnabled in
+            if let source = self?.source, let destination = self?.destination, let date = self?.date {
+                self?.gotoRestrictionsVC?(dict, Flight(source: source, destination: destination, date: date), saveButtonEnabled)
+            } else if let flightInfo = flightInfo {
+                self?.gotoRestrictionsVC?(dict, flightInfo, saveButtonEnabled)
             }
         }
-        
-        
-        viewmodel.restrictionsDidFetch = { [weak self] dict in
-            self?.gotoRestrictionsVC?(dict)
-        }
-        
     }
     
     override func loadView() {
@@ -99,13 +152,15 @@ class MainViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        //Set listener for new travel plan entries.
+        let nc = NotificationCenter.default
+        nc.addObserver(self, selector: #selector(reloadTableview), name: Notification.Name("TravelPlanAdded"), object: nil)
         
         //Set closures for viewmodel
         initialiseVMClosures(viewmodel: viewModel)
         
         //Set user token in viewModel
-//        print (userToken)
         viewModel.userToken = userToken
         
         //Register TV Cells
@@ -120,8 +175,6 @@ class MainViewController: BaseViewController {
         
         hideKeyboardWhenTappedAround()
         
-        //mainView.homeTableView.addGestureRecognizer(longPress)
-        
         self.navigationController?.isNavigationBarHidden = true
         mainView.menuButton.addTarget(self, action: #selector(sideMenuButtonPressed), for: .touchUpInside)
         
@@ -133,24 +186,6 @@ class MainViewController: BaseViewController {
 }
 
 /////MARK: - Extensions
-
-extension MainViewController: CheckRestrictionsDelegate {
-
-    func checkRestrictionsPressed(_ travelPlan: TravelPlan?) {
-        if let travelPlan = travelPlan {
-            let source = travelPlan.source
-            let destination = travelPlan.destination
-            let date = travelPlan.date
-            viewModel.fetchRestrictions(flightInfo: Flight(source: source, destination: destination, date: date), nationality: nil, vaccine: nil, transfer: transfer)
-        } else {
-            guard let source = self.source else {return}
-            guard let destination = self.destination else {return}
-            guard let date = self.date else {return}
-            
-            viewModel.fetchRestrictions(flightInfo: Flight(source: source, destination: destination, date: date), nationality: nil, vaccine: nil, transfer: transfer)
-        }
-    }
-}
 
 //Tableview delegate methods
 extension MainViewController: UITableViewDelegate {
@@ -174,27 +209,32 @@ extension MainViewController: UITableViewDataSource {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVTopCell", for: indexPath) as! HomeTVTopCell
-            if let airports = airportsList {
-                cell.sourceAirport.optionArray = airports
-                cell.transferAirport.optionArray = airports
-                cell.destinationAirport.optionArray = airports
-            }
+            cell.airportsList = self.airportsList
             cell.delegate = self
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "CheckResstrictionsButton", for: indexPath) as! CheckResstrictionsButton
-            cell.delegate = self
+            cell.restrictionsDidGetPressed = { [weak self] travelPlan in
+                self?.checkRestrictionsPressed(travelPlan, saveButtonEnabled: true)
+            }
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryListTitleCell", for: indexPath)
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVBottomCell", for: indexPath) as! HomeTVBottomCell
-            cell.delegate = self
-            cell.editAndDeleteDelegate = self
+            cell.restrictionsDidGetPressed = { [weak self] travelPlan in
+                self?.checkRestrictionsPressed(travelPlan, saveButtonEnabled: false)
+            }
+            cell.editPressed = { [weak self] tripPlan in
+                self?.didTapEdit(tripPlan: tripPlan)
+            }
+            cell.deletePressed = { [weak self] planID in
+                self?.didTapDelete(flightID: planID)
+            }
             if let travelPlanList = userTravelPlans {
                 let travelPlan = travelPlanList[indexPath.row - 3]
-                cell.tripPlan = TripPlan(source: travelPlan.source, destination: travelPlan.destination, connections: ["GHJ", "KLS", "FSD", "GHJ", "KLS", "FSD"], date: travelPlan.date)
+                cell.tripPlan = TripPlan(planID: travelPlan.id!, source: travelPlan.source, destination: travelPlan.destination, connections: ["GHJ", "KLS", "FSD", "GHJ", "KLS", "FSD"], date: travelPlan.date)
             }
             return cell
         }
@@ -232,22 +272,3 @@ extension MainViewController: FlightInfoFieldsDelegate {
     
 }
 
-
-extension MainViewController: EditAndDeleteFlightDelegate {
-    func didTapEdit() {
-        let vc = PopOverViewController()
-        self.present(vc, animated: true, completion: nil)
-    }
-    
-    func didTapDelete() {
-        let actionSheet = UIAlertController(title: "Do you want to delete your flight?", message: nil, preferredStyle: .actionSheet)
-        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: nil)
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        actionSheet.addAction(deleteAction)
-        actionSheet.addAction(cancelAction)
-        
-        present(actionSheet, animated: true, completion: nil)
-    }
-    
-    
-}

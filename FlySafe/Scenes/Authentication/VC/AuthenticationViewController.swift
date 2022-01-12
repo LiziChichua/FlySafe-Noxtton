@@ -36,9 +36,9 @@ class AuthenticationViewController: BaseViewController {
         authenticationView.switchAuthenticationStatus.addTarget(self, action: #selector(switchUserStatus), for: .touchUpInside)
         
         
-        viewModel.didFetchSelf = { [weak self] user in
-            
-        }
+//        viewModel.didFetchSelf = { [weak self] user in
+//
+//        }
         
         viewModel.userDidAuthenticate = { [weak self] user, token in
             self?.userDidAuthenticate?(user, token)

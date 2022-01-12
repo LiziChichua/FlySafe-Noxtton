@@ -56,6 +56,7 @@
 		0DD2CA1F277041130044CB1B /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2CA1D277041130044CB1B /* DataRequest.swift */; };
 		0DD2CA20277041130044CB1B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2CA1E277041130044CB1B /* NetworkService.swift */; };
 		0DE00C8E278830A600BF9627 /* FoldingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE00C8D278830A600BF9627 /* FoldingCell.swift */; };
+		0DE79046278F73A3009C9731 /* RestrictionDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE79045278F73A3009C9731 /* RestrictionDetailsViewModel.swift */; };
 		D349EFF92785F5B60049DEE6 /* DashedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349EFF82785F5B60049DEE6 /* DashedLineView.swift */; };
 		D349EFFD2785F62A0049DEE6 /* RestrictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349EFFC2785F62A0049DEE6 /* RestrictionTableViewCell.swift */; };
 		D349F0002785F6660049DEE6 /* RestrictionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349EFFF2785F6660049DEE6 /* RestrictionDetailsViewController.swift */; };
@@ -136,6 +137,7 @@
 		0DD2CA1D277041130044CB1B /* DataRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataRequest.swift; path = Network/DataRequest.swift; sourceTree = SOURCE_ROOT; };
 		0DD2CA1E277041130044CB1B /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkService.swift; path = Network/NetworkService.swift; sourceTree = SOURCE_ROOT; };
 		0DE00C8D278830A600BF9627 /* FoldingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldingCell.swift; sourceTree = "<group>"; };
+		0DE79045278F73A3009C9731 /* RestrictionDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsViewModel.swift; sourceTree = "<group>"; };
 		D349EFF82785F5B60049DEE6 /* DashedLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLineView.swift; sourceTree = "<group>"; };
 		D349EFFC2785F62A0049DEE6 /* RestrictionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionTableViewCell.swift; sourceTree = "<group>"; };
 		D349EFFF2785F6660049DEE6 /* RestrictionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsViewController.swift; sourceTree = "<group>"; };
@@ -394,6 +396,14 @@
 			path = FoldingCell;
 			sourceTree = "<group>";
 		};
+		0DE79044278F7381009C9731 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				0DE79045278F73A3009C9731 /* RestrictionDetailsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		D349EFF72785F59F0049DEE6 /* CustomUIComponents */ = {
 			isa = PBXGroup;
 			children = (
@@ -405,6 +415,7 @@
 		D349EFFA2785F5E60049DEE6 /* RestrictionDetails */ = {
 			isa = PBXGroup;
 			children = (
+				0DE79044278F7381009C9731 /* ViewModel */,
 				D349EFFB2785F6170049DEE6 /* TableViewCells */,
 				D349EFFE2785F6550049DEE6 /* VC */,
 				D349F0012785F6870049DEE6 /* View */,
@@ -801,6 +812,7 @@
 				0D8FEEE9278B16DE0021F778 /* AuthenticationViewController.swift in Sources */,
 				0D8FEEE5278B168A0021F778 /* AuthenticationView.swift in Sources */,
 				0D5D63FF278A044600673350 /* ContainerViewController.swift in Sources */,
+				0DE79046278F73A3009C9731 /* RestrictionDetailsViewModel.swift in Sources */,
 				0D5D63F7278A039200673350 /* MenuOptionsForNewUser.swift in Sources */,
 				0D2C10D52770A61C00B0AC93 /* AddTravelPlanRequest.swift in Sources */,
 				0D5B34EE27705F8E00148518 /* APIManager.swift in Sources */,

@@ -8,6 +8,7 @@
 import Foundation
 
 struct TripPlan {
+    let planID: String
     let source: String
     let destination: String
     let connections: [String]?

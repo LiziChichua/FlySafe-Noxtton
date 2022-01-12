@@ -20,8 +20,7 @@ class MainViewModel {
         }
     }
     var airportsDidFetch: (([Airport]) -> (Void))?
-    var restrictionsDidFetch: (([String : Restrictions]) -> (Void))?
-    var travelPlanDidAdd: ((Bool) -> (Void))?
+    var restrictionsDidFetch: (([String : Restrictions], Flight?, Bool) -> (Void))?
     var travelPlanDidRemove: ((Bool) -> (Void))?
     var travelPlanDidEdit: ((Bool) -> (Void))?
     var travelPlansDidFetch: (([TravelPlan]) -> (Void))?
@@ -47,11 +46,11 @@ class MainViewModel {
     }
     
     //Fetch restrictions
-    func fetchRestrictions(flightInfo: Flight, nationality: String?, vaccine: String?, transfer: String?) {
+    func fetchRestrictions(flightInfo: Flight, nationality: String?, vaccine: String?, transfer: String?, saveButtonEnabled: Bool) {
         apiManager.fetchRestrictions(flightInfo: flightInfo, nationality: nationality, vaccine: vaccine, transfer: transfer) { [weak self] result in
             if let response = result {
                 if let restrictions = response.restricions {
-                    self?.restrictionsDidFetch?(restrictions)
+                    self?.restrictionsDidFetch?(restrictions, flightInfo, saveButtonEnabled)
                 }
             }
         }
@@ -66,14 +65,6 @@ class MainViewModel {
         }
     }
     
-    //Add new travel plan
-    func addTravelPlan(token: String, flightInfo: Flight) {
-        apiManager.addTravelPlan(token: token, flightInfo: flightInfo) { [weak self] result in
-            if let response = result {
-                self?.travelPlanDidAdd?(response.success)
-            }
-        }
-    }
     
     //Remove existing travel plan
     func deleteTravelPlan(token: String, flightID: String) {

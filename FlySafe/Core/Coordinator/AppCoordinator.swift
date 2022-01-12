@@ -39,8 +39,8 @@ final class AppCoordinator: CoordinatorProtocol {
         vc.coordinator = self
         vc.userToken = userToken
         
-        vc.MainVC.gotoRestrictionsVC = { [weak self] restrictions in
-            self?.gotoRestrictionsVC(restrictions: restrictions)
+        vc.MainVC.gotoRestrictionsVC = { [weak self] restrictions, flightInfo, saveButtonEnabled in
+            self?.gotoRestrictionsVC(restrictions: restrictions, flightInfo: flightInfo, saveButtonEnabled: saveButtonEnabled)
         }
         
         vc.authenticationSelected = { [weak self] isNewUser in
@@ -75,12 +75,17 @@ final class AppCoordinator: CoordinatorProtocol {
     
     
     //Goes to restriction details view
-    func gotoRestrictionsVC(restrictions: [String : Restrictions]) {
-        DispatchQueue.main.async {
+    func gotoRestrictionsVC(restrictions: [String : Restrictions], flightInfo: Flight?, saveButtonEnabled: Bool) {
+        DispatchQueue.main.async { [weak self] in
             let vc = RestrictionDetailsViewController()
             vc.restrictions = restrictions
+            vc.flightInfo = flightInfo
+            vc.userToken = self?.checkForSavedToken()
+            if (self?.checkForSavedToken()) != nil && flightInfo != nil && saveButtonEnabled == true{
+                vc.isSaveButtonEnabled = true
+            }
             vc.coordinator = self
-            self.navigationController?.pushViewController(vc, animated: true)
+            self?.navigationController?.pushViewController(vc, animated: true)
         }
     }
 
@@ -119,6 +124,7 @@ final class AppCoordinator: CoordinatorProtocol {
         
     }
     
+    //Manages user logout
     func userDidLogout() {
         removeUserToken()
         

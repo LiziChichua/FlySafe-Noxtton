@@ -10,10 +10,9 @@ import UIKit
 class HomeTVBottomCell: UITableViewCell {
     
     var curvePath: UIBezierPath?
-    var delegate: CheckRestrictionsDelegate?
-    var editPressed: (() -> (Void))?
-    var deletePressed: (() -> (Void))?
-    var editAndDeleteDelegate: EditAndDeleteFlightDelegate?
+    var restrictionsDidGetPressed: ((TravelPlan?) -> (Void))?
+    var editPressed: ((TripPlan) -> (Void))?
+    var deletePressed: ((String) -> (Void))?
     
     var tripPlan: TripPlan? {
         didSet {
@@ -46,6 +45,13 @@ class HomeTVBottomCell: UITableViewCell {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+       {
+           let touch = touches.first
+           if touch?.view != self.blurView {
+               hideBlurView()
+           }
+       }
     
     let mainContainer: UIView = {
         let view = UIView()
@@ -117,7 +123,7 @@ class HomeTVBottomCell: UITableViewCell {
         shapeLayer.strokeColor = UIColor.gray.cgColor
         shapeLayer.lineWidth = 1
         shapeLayer.lineDashPattern = [7, 3]
-
+        
         let path = CGMutablePath()
         path.addLines(between: [p0, p1])
         shapeLayer.path = path
@@ -148,11 +154,13 @@ class HomeTVBottomCell: UITableViewCell {
     }()
     
     @objc func buttonTriger() {
-        delegate?.checkRestrictionsPressed(TravelPlan(source: sourceLabel.text!, destination: destinationLabel.text!, date: flightDate.text!, user: nil, id: nil))
+        let plan = TravelPlan(source: sourceLabel.text!, destination: destinationLabel.text!, date: flightDate.text!, user: nil, id: "No ID")
+        print (plan)
+        restrictionsDidGetPressed?(plan)
     }
     
     let flightDate: UILabel = {
-       let label = UILabel()
+        let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 18, weight: .regular)
         label.clipsToBounds = true
@@ -168,7 +176,7 @@ class HomeTVBottomCell: UITableViewCell {
         path.addQuadCurve(to: p2, controlPoint: p1)
         path.stroke()
         curvePath = path
-
+        
         shapeLayer.path = path.cgPath
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineWidth = 1.5
@@ -217,7 +225,10 @@ class HomeTVBottomCell: UITableViewCell {
     }()
     
     @objc func editTapped() {
-        editAndDeleteDelegate?.didTapEdit()
+        if let tripPlan = tripPlan {
+            editPressed?(tripPlan)
+            hideBlurView()
+        }
     }
     
     let editLabel: UILabel = {
@@ -243,7 +254,10 @@ class HomeTVBottomCell: UITableViewCell {
     }()
     
     @objc func deleteTapped() {
-        editAndDeleteDelegate?.didTapDelete()
+        if let tripPlan = tripPlan {
+            deletePressed?(tripPlan.planID)
+            hideBlurView()
+        }
     }
     
     
@@ -257,11 +271,11 @@ class HomeTVBottomCell: UITableViewCell {
     
     
     private func setupLongGestureRecognizerOnCollection(on view: UIView) {
-          let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
-             lpgr.minimumPressDuration = 0.5
-             lpgr.delaysTouchesBegan = true
-             lpgr.delegate = self
-          view.addGestureRecognizer(lpgr)
+        let lpgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress))
+        lpgr.minimumPressDuration = 0.5
+        lpgr.delaysTouchesBegan = true
+        lpgr.delegate = self
+        view.addGestureRecognizer(lpgr)
     }
     
     @objc func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
@@ -271,6 +285,16 @@ class HomeTVBottomCell: UITableViewCell {
             UIView.animate(withDuration: 0.3, animations: { [weak self] in
                 self?.blurView.layer.opacity = 0.98
             })
+        }
+    }
+    
+    func hideBlurView() {
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.blurView.layer.opacity = 0.0
+        })
+        let seconds = 0.3
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            self.blurView.isHidden = true
         }
     }
     
@@ -306,7 +330,7 @@ class HomeTVBottomCell: UITableViewCell {
         summaryContainer.leadingAnchor.constraint(equalTo:  mainContainer.leadingAnchor, constant: Constants.gap).isActive = true
         summaryContainer.trailingAnchor.constraint(equalTo:  mainContainer.trailingAnchor, constant: -Constants.gap).isActive = true
         summaryContainer.bottomAnchor.constraint(equalTo:  mainContainer.bottomAnchor).isActive = true
-
+        
         blurView.topAnchor.constraint(equalTo: summaryContainer.topAnchor).isActive = true
         blurView.bottomAnchor.constraint(equalTo: summaryContainer.bottomAnchor).isActive = true
         blurView.leadingAnchor.constraint(equalTo: summaryContainer.leadingAnchor).isActive = true
@@ -381,10 +405,4 @@ class HomeTVBottomCell: UITableViewCell {
     }
     
     
-}
-
-
-protocol EditAndDeleteFlightDelegate {
-    func didTapEdit()
-    func didTapDelete()
 }

@@ -10,6 +10,7 @@ import Foundation
 
 struct Flight: Codable, Loopable {
     var source: String
+    var transfer: String?
     var destination: String
     var date: String
 }
