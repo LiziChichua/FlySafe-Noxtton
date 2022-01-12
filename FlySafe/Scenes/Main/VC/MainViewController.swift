@@ -191,6 +191,7 @@ extension MainViewController: UITableViewDataSource {
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVBottomCell", for: indexPath) as! HomeTVBottomCell
             cell.delegate = self
+            cell.editAndDeleteDelegate = self
             if let travelPlanList = userTravelPlans {
                 let travelPlan = travelPlanList[indexPath.row - 3]
                 cell.tripPlan = TripPlan(source: travelPlan.source, destination: travelPlan.destination, connections: ["GHJ", "KLS", "FSD", "GHJ", "KLS", "FSD"], date: travelPlan.date)
@@ -231,3 +232,22 @@ extension MainViewController: FlightInfoFieldsDelegate {
     
 }
 
+
+extension MainViewController: EditAndDeleteFlightDelegate {
+    func didTapEdit() {
+        let vc = PopOverViewController()
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    func didTapDelete() {
+        let actionSheet = UIAlertController(title: "Do you want to delete your flight?", message: nil, preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        actionSheet.addAction(deleteAction)
+        actionSheet.addAction(cancelAction)
+        
+        present(actionSheet, animated: true, completion: nil)
+    }
+    
+    
+}

@@ -13,6 +13,7 @@ class HomeTVBottomCell: UITableViewCell {
     var delegate: CheckRestrictionsDelegate?
     var editPressed: (() -> (Void))?
     var deletePressed: (() -> (Void))?
+    var editAndDeleteDelegate: EditAndDeleteFlightDelegate?
     
     var tripPlan: TripPlan? {
         didSet {
@@ -211,8 +212,13 @@ class HomeTVBottomCell: UITableViewCell {
         button.contentHorizontalAlignment = .fill
         button.configuration?.contentInsets = .zero
         button.isUserInteractionEnabled = true
+        button.addTarget(self, action: #selector(editTapped), for: .touchUpInside)
         return button
     }()
+    
+    @objc func editTapped() {
+        editAndDeleteDelegate?.didTapEdit()
+    }
     
     let editLabel: UILabel = {
         let label = UILabel()
@@ -232,8 +238,13 @@ class HomeTVBottomCell: UITableViewCell {
         button.contentHorizontalAlignment = .fill
         button.configuration?.contentInsets = .zero
         button.isUserInteractionEnabled = true
+        button.addTarget(self, action: #selector(deleteTapped), for: .touchUpInside)
         return button
     }()
+    
+    @objc func deleteTapped() {
+        editAndDeleteDelegate?.didTapDelete()
+    }
     
     
     let deleteLabel: UILabel = {
@@ -370,4 +381,10 @@ class HomeTVBottomCell: UITableViewCell {
     }
     
     
+}
+
+
+protocol EditAndDeleteFlightDelegate {
+    func didTapEdit()
+    func didTapDelete()
 }

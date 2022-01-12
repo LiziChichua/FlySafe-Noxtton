@@ -82,6 +82,7 @@
 		D390F625276F34510042FF90 /* MyriadGEOMtavruli-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = D390F620276F34510042FF90 /* MyriadGEOMtavruli-Regular.otf */; };
 		D390F626276F34510042FF90 /* MyriadGEOMtavruli-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = D390F621276F34510042FF90 /* MyriadGEOMtavruli-Medium.otf */; };
 		D390F62A276F34760042FF90 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F629276F34760042FF90 /* BaseViewController.swift */; };
+		D3AF9066278ED07800137435 /* PopOverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3AF9065278ED07800137435 /* PopOverViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -162,6 +163,7 @@
 		D390F620276F34510042FF90 /* MyriadGEOMtavruli-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadGEOMtavruli-Regular.otf"; sourceTree = "<group>"; };
 		D390F621276F34510042FF90 /* MyriadGEOMtavruli-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MyriadGEOMtavruli-Medium.otf"; sourceTree = "<group>"; };
 		D390F629276F34760042FF90 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		D3AF9065278ED07800137435 /* PopOverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopOverViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -619,6 +621,7 @@
 		D390F627276F346C0042FF90 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				D3AF9064278ED03900137435 /* PopOver */,
 				0D8FEEDC278B160B0021F778 /* Authentication */,
 				D390F628276F34760042FF90 /* BaseViewController */,
 				D390F62B276F34810042FF90 /* Launch */,
@@ -680,6 +683,14 @@
 				D390F5ED276F33C20042FF90 /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		D3AF9064278ED03900137435 /* PopOver */ = {
+			isa = PBXGroup;
+			children = (
+				D3AF9065278ED07800137435 /* PopOverViewController.swift */,
+			);
+			path = PopOver;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -762,6 +773,7 @@
 			files = (
 				0D1AD7B32781CA940063DE71 /* MainViewModel.swift in Sources */,
 				0D5394722789F1EA00B94B8A /* SummaryListTitleCell.swift in Sources */,
+				D3AF9066278ED07800137435 /* PopOverViewController.swift in Sources */,
 				D390F60D276F33F00042FF90 /* UICollectionView+Extension.swift in Sources */,
 				0D5CED4B276F7F54008D29B9 /* FetchTravelPlansResponse.swift in Sources */,
 				D390F60E276F33F00042FF90 /* UICollectionViewCell+Extension.swift in Sources */,
