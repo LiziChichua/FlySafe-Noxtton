@@ -16,15 +16,17 @@ struct EditTravelPlanRequest: DataRequest {
     var headers: [String : String] = [:]
     var bodyItems: [String : Any] = [:]
     
-    init(token: String, flightInfo: Flight, flightID: String) {
-        url = "http://covid-restrictions-api.noxtton.com/v1_private/travelplan/\(flightID)"
+    init(token: String, travelPlan: TravelPlan) {
+        url = "http://covid-restrictions-api.noxtton.com/v1_private/travelplan/\(travelPlan.id!)"
         
         headers["x-session-id"] = token
-        if let flight = try? flightInfo.allProperties() {
+        
+        if let flight = try? travelPlan.allProperties() {
             flight.forEach { (key: String, value: Any) in
-                self.bodyItems[key] = "\(value)"
+                if key != "user" && key != "id"{
+                    self.bodyItems[key] = "\(value)"
+                }
             }
         }
     }
-    
 }

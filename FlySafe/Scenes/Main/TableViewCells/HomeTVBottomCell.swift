@@ -11,25 +11,28 @@ class HomeTVBottomCell: UITableViewCell {
     
     var curvePath: UIBezierPath?
     var restrictionsDidGetPressed: ((TravelPlan?) -> (Void))?
-    var editPressed: ((TripPlan) -> (Void))?
+    var editPressed: ((TravelPlan) -> (Void))?
     var deletePressed: ((String) -> (Void))?
     
-    var tripPlan: TripPlan? {
+    var travelPlan: TravelPlan? {
         didSet {
             blurView.isHidden = true
-            guard let plan = tripPlan else {return}
+            guard let plan = travelPlan else {return}
             sourceLabel.text = plan.source
             destinationLabel.text = plan.destination
             expandButton.isHidden = true
             restrictionsButton.isHidden = false
-            if let connections = plan.connections {
+
+            let connections = plan.transfer.split(separator: ",")
+
                 let stopsCount = connections.count
+
                 if stopsCount == 0 {
                     connectionCount.text = "No Transfers"
                     connectionMap.text = "♥ FlySafe ♥"
-                    //expandButton.isHidden = true
                     restrictionsButton.isHidden = false
                 } else {
+                    
                     connectionCount.text = "\(stopsCount) \(stopsCount == 1 ? "Stop" : "Stops")"
                     
                     connections.forEach({
@@ -40,7 +43,7 @@ class HomeTVBottomCell: UITableViewCell {
                 if let path = curvePath {
                     addConnectionDots(stopCount: Double(stopsCount), path: path, view: summaryContainer)
                 }
-            }
+            
             flightDate.text = plan.date
         }
     }
@@ -154,9 +157,7 @@ class HomeTVBottomCell: UITableViewCell {
     }()
     
     @objc func buttonTriger() {
-        let plan = TravelPlan(source: sourceLabel.text!, destination: destinationLabel.text!, date: flightDate.text!, user: nil, id: "No ID")
-        print (plan)
-        restrictionsDidGetPressed?(plan)
+        restrictionsDidGetPressed?(travelPlan)
     }
     
     let flightDate: UILabel = {
@@ -225,8 +226,8 @@ class HomeTVBottomCell: UITableViewCell {
     }()
     
     @objc func editTapped() {
-        if let tripPlan = tripPlan {
-            editPressed?(tripPlan)
+        if let travelPlan = travelPlan {
+            editPressed?(travelPlan)
             hideBlurView()
         }
     }
@@ -254,9 +255,11 @@ class HomeTVBottomCell: UITableViewCell {
     }()
     
     @objc func deleteTapped() {
-        if let tripPlan = tripPlan {
-            deletePressed?(tripPlan.planID)
-            hideBlurView()
+        if let travelPlan = travelPlan {
+            if let id = travelPlan.id {
+                deletePressed?(id)
+                hideBlurView()
+            }
         }
     }
     

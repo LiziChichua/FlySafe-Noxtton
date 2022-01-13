@@ -11,7 +11,7 @@ class RestrictionDetailsViewController: BaseViewController {
 
     var restrictionDetailsView = RestrictionDetailsView()
     var isSaveButtonEnabled: Bool?
-    var flightInfo: Flight?
+    var travelPlan: TravelPlan?
     var userToken: String?
     let viewmodel = RestrictionDetailsViewModel()
 
@@ -42,7 +42,7 @@ class RestrictionDetailsViewController: BaseViewController {
     }
     
     @objc func buttonTriger() {
-        if let flightInfo = flightInfo, let userToken = userToken {
+        if let flightInfo = travelPlan, let userToken = userToken {
             viewmodel.addTravelPlan(token: userToken, flightInfo: flightInfo)
         }
     }

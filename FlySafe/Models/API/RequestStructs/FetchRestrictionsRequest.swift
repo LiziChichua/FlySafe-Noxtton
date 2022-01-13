@@ -15,8 +15,8 @@ struct FetchRestrictionsRequest: DataRequest {
     var queryItems: [String : String] = [:]
     typealias Response = FetchRestrictionsResponse
     
-    init(flight: Flight, nationality: String?, vaccine: String?, transfer: String?) {
-        let tempURL = "\(url)\(flight.source)/\(flight.destination)"
+    init(travelPlan: TravelPlan, nationality: String?, vaccine: String?) {
+        let tempURL = "\(url)\(travelPlan.source)/\(travelPlan.destination)"
         url = tempURL
         if let nationalityInfo = nationality {
             queryItems["nationality"] = nationalityInfo
@@ -24,8 +24,14 @@ struct FetchRestrictionsRequest: DataRequest {
         if let vaccineInfo = vaccine {
             queryItems["vaccine"] = vaccineInfo
         }
-        if let transferInfo = transfer {
-            queryItems["transfer"] = transferInfo
+        if travelPlan.transfer.isEmpty {
+            
+        } else {
+            var transferString = ""
+            travelPlan.transfer.forEach({
+                transferString += "\($0),"
+            })
+            queryItems["transfer"] = transferString
         }
     }
     

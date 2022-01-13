@@ -11,11 +11,11 @@ class HomeTVTopCell: UITableViewCell {
     
     var delegate: FlightInfoFieldsDelegate?
     
-    var flightPlan: TripPlan? {
+    var flightPlan: TravelPlan? {
         didSet {
             if let flightPlan = flightPlan {
                 sourceAirport.text = flightPlan.source
-                transferAirport.text = flightPlan.connections?.first
+                transferAirport.text = flightPlan.transfer
                 destinationAirport.text = flightPlan.destination
                 let parseStrategy =
                    Date.ParseStrategy(

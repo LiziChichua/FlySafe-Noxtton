@@ -14,7 +14,7 @@ protocol MainViewControllerDelegate: AnyObject {
 class MainViewController: BaseViewController {
     
     var mainView = MainView()
-    var gotoRestrictionsVC: (([String : Restrictions], Flight, Bool) -> (Void))?
+    var gotoRestrictionsVC: (([String : Restrictions], TravelPlan, Bool) -> (Void))?
     let viewModel = MainViewModel()
     weak var delegate: MainViewControllerDelegate?
     
@@ -35,28 +35,26 @@ class MainViewController: BaseViewController {
     func checkRestrictionsPressed(_ travelPlan: TravelPlan?, saveButtonEnabled: Bool) {
         //If triggered from saved travelPlans
         if let travelPlan = travelPlan {
-            let source = travelPlan.source
-            let destination = travelPlan.destination
-            let date = travelPlan.date
-            viewModel.fetchRestrictions(flightInfo: Flight(source: source, destination: destination, date: date), nationality: nil, vaccine: nil, transfer: transfer, saveButtonEnabled: saveButtonEnabled)
+            viewModel.fetchRestrictions(travelPlan: travelPlan, nationality: nil, vaccine: nil, saveButtonEnabled: saveButtonEnabled)
         } else {
             //If triggered from not saved travelPlan
             guard let source = self.source else {return}
             guard let destination = self.destination else {return}
+            let transferList: String = self.transfer ?? ""
             guard let date = self.date else {return}
             
-            viewModel.fetchRestrictions(flightInfo: Flight(source: source, destination: destination, date: date), nationality: nil, vaccine: nil, transfer: transfer, saveButtonEnabled: saveButtonEnabled)
+            viewModel.fetchRestrictions(travelPlan: TravelPlan(source: source, destination: destination, date: date, transfer: transferList, user: nil, id: nil), nationality: nil, vaccine: nil, saveButtonEnabled: saveButtonEnabled)
         }
     }
     
-    func didTapEdit(tripPlan: TripPlan) {
+    func didTapEdit(travelPlan: TravelPlan) {
         let vc = PopOverViewController()
-        vc.didpressSave = { flight, planID in
-            if let userToken = self.userToken{
-                self.viewModel.editTravelPlan(token: userToken, flightInfo: flight, flightID: planID)
+        vc.didPressSave = { [weak self] travelPlan in
+            if let userToken = self?.userToken{
+                self?.viewModel.editTravelPlan(token: userToken, travelPlan: travelPlan)
             }
         }
-        vc.flightPlan = tripPlan
+        vc.travelPlan = travelPlan
         vc.airportsList = self.airportsList
         self.present(vc, animated: true, completion: nil)
     }
@@ -138,8 +136,8 @@ class MainViewController: BaseViewController {
         
         
         viewmodel.restrictionsDidFetch = { [weak self] dict, flightInfo, saveButtonEnabled in
-            if let source = self?.source, let destination = self?.destination, let date = self?.date {
-                self?.gotoRestrictionsVC?(dict, Flight(source: source, destination: destination, date: date), saveButtonEnabled)
+            if let source = self?.source, let transfer = self?.transfer , let destination = self?.destination, let date = self?.date {
+                self?.gotoRestrictionsVC?(dict, TravelPlan(source: source, destination: destination, date: date, transfer: transfer, user: nil, id: nil), saveButtonEnabled)
             } else if let flightInfo = flightInfo {
                 self?.gotoRestrictionsVC?(dict, flightInfo, saveButtonEnabled)
             }
@@ -227,14 +225,14 @@ extension MainViewController: UITableViewDataSource {
                 self?.checkRestrictionsPressed(travelPlan, saveButtonEnabled: false)
             }
             cell.editPressed = { [weak self] tripPlan in
-                self?.didTapEdit(tripPlan: tripPlan)
+                self?.didTapEdit(travelPlan: tripPlan)
             }
             cell.deletePressed = { [weak self] planID in
                 self?.didTapDelete(flightID: planID)
             }
             if let travelPlanList = userTravelPlans {
                 let travelPlan = travelPlanList[indexPath.row - 3]
-                cell.tripPlan = TripPlan(planID: travelPlan.id!, source: travelPlan.source, destination: travelPlan.destination, connections: ["GHJ", "KLS", "FSD", "GHJ", "KLS", "FSD"], date: travelPlan.date)
+                cell.travelPlan = travelPlan
             }
             return cell
         }

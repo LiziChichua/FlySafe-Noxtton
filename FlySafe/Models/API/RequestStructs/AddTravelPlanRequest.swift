@@ -16,11 +16,14 @@ struct AddTravelPlanRequest: DataRequest{
     var headers: [String : String] = [:]
     var bodyItems: [String : Any] = [:]
     
-    init(token: String, flightInfo: Flight) {
+    init(token: String, travelPlan: TravelPlan) {
         headers["x-session-id"] = token
-        if let flight = try? flightInfo.allProperties() {
-            flight.forEach { (key: String, value: Any) in
-                self.bodyItems[key] = "\(value)"
+        if let plan = try? travelPlan.allProperties() {
+            
+            plan.forEach { (key: String, value: Any) in
+                if key != "user" && key != "id"{
+                    self.bodyItems[key] = "\(value)"
+                }
             }
         }
     }

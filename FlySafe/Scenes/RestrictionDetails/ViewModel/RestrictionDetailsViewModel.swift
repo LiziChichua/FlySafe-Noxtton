@@ -17,8 +17,8 @@ class RestrictionDetailsViewModel {
     
     
     //Add new travel plan
-    func addTravelPlan(token: String, flightInfo: Flight) {
-        apiManager.addTravelPlan(token: token, flightInfo: flightInfo) { [weak self] result in
+    func addTravelPlan(token: String, flightInfo: TravelPlan) {
+        apiManager.addTravelPlan(token: token, travelPlan: flightInfo) { [weak self] result in
             if let response = result {
                 self?.travelPlanDidAdd?(response.success)
             }

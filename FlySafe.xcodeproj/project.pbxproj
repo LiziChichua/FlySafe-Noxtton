@@ -14,7 +14,6 @@
 		0D2C10CD277096A000B0AC93 /* Loopable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10CC277096A000B0AC93 /* Loopable.swift */; };
 		0D2C10CF27709E9100B0AC93 /* SelfRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10CE27709E9100B0AC93 /* SelfRequest.swift */; };
 		0D2C10D12770A29C00B0AC93 /* FetchTravelPlansRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10D02770A29C00B0AC93 /* FetchTravelPlansRequest.swift */; };
-		0D2C10D32770A49000B0AC93 /* Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10D22770A49000B0AC93 /* Flight.swift */; };
 		0D2C10D52770A61C00B0AC93 /* AddTravelPlanRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10D42770A61C00B0AC93 /* AddTravelPlanRequest.swift */; };
 		0D2C10D92770AD1700B0AC93 /* EditTravelPlanRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10D82770AD1700B0AC93 /* EditTravelPlanRequest.swift */; };
 		0D2C10DB2770B14D00B0AC93 /* DeleteTravelPlanRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10DA2770B14D00B0AC93 /* DeleteTravelPlanRequest.swift */; };
@@ -23,7 +22,7 @@
 		0D2C10E12770B6AA00B0AC93 /* FetchNationalitiesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10E02770B6AA00B0AC93 /* FetchNationalitiesRequest.swift */; };
 		0D2C10E32770B73E00B0AC93 /* FetchRestrictionsRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2C10E22770B73E00B0AC93 /* FetchRestrictionsRequest.swift */; };
 		0D2EF04C277DA50F00FE4E1B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D2EF04B277DA50F00FE4E1B /* Constants.swift */; };
-		0D32CCA72783061A005C6283 /* TripPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D32CCA62783061A005C6283 /* TripPlan.swift */; };
+		0D30155E27908CBE0078B644 /* RestrictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D05BD7327902CEA00B7FEB2 /* RestrictionTableViewCell.swift */; };
 		0D5394722789F1EA00B94B8A /* SummaryListTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5394712789F1EA00B94B8A /* SummaryListTitleCell.swift */; };
 		0D5B34EE27705F8E00148518 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5B34ED27705F8E00148518 /* APIManager.swift */; };
 		0D5BE44F2784BB5A00EFBF71 /* BezierPathSuperpowers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5BE44E2784BB5A00EFBF71 /* BezierPathSuperpowers.swift */; };
@@ -95,7 +94,6 @@
 		0D2C10CC277096A000B0AC93 /* Loopable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loopable.swift; sourceTree = "<group>"; };
 		0D2C10CE27709E9100B0AC93 /* SelfRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfRequest.swift; sourceTree = "<group>"; };
 		0D2C10D02770A29C00B0AC93 /* FetchTravelPlansRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchTravelPlansRequest.swift; sourceTree = "<group>"; };
-		0D2C10D22770A49000B0AC93 /* Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flight.swift; sourceTree = "<group>"; };
 		0D2C10D42770A61C00B0AC93 /* AddTravelPlanRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTravelPlanRequest.swift; sourceTree = "<group>"; };
 		0D2C10D82770AD1700B0AC93 /* EditTravelPlanRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTravelPlanRequest.swift; sourceTree = "<group>"; };
 		0D2C10DA2770B14D00B0AC93 /* DeleteTravelPlanRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteTravelPlanRequest.swift; sourceTree = "<group>"; };
@@ -104,7 +102,7 @@
 		0D2C10E02770B6AA00B0AC93 /* FetchNationalitiesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNationalitiesRequest.swift; sourceTree = "<group>"; };
 		0D2C10E22770B73E00B0AC93 /* FetchRestrictionsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestrictionsRequest.swift; sourceTree = "<group>"; };
 		0D2EF04B277DA50F00FE4E1B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		0D32CCA62783061A005C6283 /* TripPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPlan.swift; sourceTree = "<group>"; };
+		0D30155F279090C90078B644 /* FlySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = FlySafe.app; path = "/Users/topuchi13/Documents/iOS Programming/Noxtton_Project/FlySafe-Noxtton/build/Debug-iphoneos/FlySafe.app"; sourceTree = "<absolute>"; };
 		0D5394712789F1EA00B94B8A /* SummaryListTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryListTitleCell.swift; sourceTree = "<group>"; };
 		0D5B34ED27705F8E00148518 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = Network/APIManager.swift; sourceTree = SOURCE_ROOT; };
 		0D5BE44E2784BB5A00EFBF71 /* BezierPathSuperpowers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathSuperpowers.swift; sourceTree = "<group>"; };
@@ -127,7 +125,6 @@
 		0D5D6401278A065200673350 /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 		0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckResstrictionsButton.swift; sourceTree = "<group>"; };
 		0D6AAAE7278756140084D571 /* CustomExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomExtensions.swift; sourceTree = "<group>"; };
-		0D8FEEDA278B11C70021F778 /* FlySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlySafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D8FEEE4278B168A0021F778 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		0D8FEEE8278B16DE0021F778 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		0D8FEEEA278B16EF0021F778 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
@@ -205,14 +202,6 @@
 				0D2EF04B277DA50F00FE4E1B /* Constants.swift */,
 			);
 			path = Constants;
-			sourceTree = "<group>";
-		};
-		0D32CCA5278305B5005C6283 /* Misc */ = {
-			isa = PBXGroup;
-			children = (
-				0D32CCA62783061A005C6283 /* TripPlan.swift */,
-			);
-			path = Misc;
 			sourceTree = "<group>";
 		};
 		0D5B34EF2770695C00148518 /* RequestStructs */ = {
@@ -367,7 +356,6 @@
 				0D5CED52276F808A008D29B9 /* FetchVaccinesResponse.swift */,
 				0D5CED54276F81A9008D29B9 /* FetchNationalitiesResponse.swift */,
 				0D5CED56276F82BB008D29B9 /* FetchRestrictionsResponse.swift */,
-				0D2C10D22770A49000B0AC93 /* Flight.swift */,
 				0DB90438277103150063436A /* FetchSelfResponse.swift */,
 			);
 			path = ResponseStructs;
@@ -454,7 +442,6 @@
 			isa = PBXGroup;
 			children = (
 				D390F5DB276F33C00042FF90 /* FlySafe */,
-				0D8FEEDA278B11C70021F778 /* FlySafe.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -571,7 +558,6 @@
 		D390F615276F34310042FF90 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				0D32CCA5278305B5005C6283 /* Misc */,
 				0D5CED40276F7680008D29B9 /* API */,
 				D390F617276F343D0042FF90 /* CoreData */,
 			);
@@ -725,7 +711,7 @@
 			packageProductDependencies = (
 			);
 			productName = FlySafe;
-			productReference = 0D8FEEDA278B11C70021F778 /* FlySafe.app */;
+			productReference = 0D30155F279090C90078B644 /* FlySafe.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -800,7 +786,6 @@
 				0D5CED47276F7E7E008D29B9 /* AuthResponse.swift in Sources */,
 				0D1AD7B12781CA510063DE71 /* HomeTVBottomCell.swift in Sources */,
 				0D2C10CA27707C2900B0AC93 /* AuthRequest.swift in Sources */,
-				0D2C10D32770A49000B0AC93 /* Flight.swift in Sources */,
 				0DB90439277103150063436A /* FetchSelfResponse.swift in Sources */,
 				0DD2CA1F277041130044CB1B /* DataRequest.swift in Sources */,
 				0D5CED57276F82BB008D29B9 /* FetchRestrictionsResponse.swift in Sources */,
@@ -810,6 +795,7 @@
 				D349F0032785F68F0049DEE6 /* RestrictionDetailsView.swift in Sources */,
 				0D5D63FE278A044600673350 /* MenuTableViewCell.swift in Sources */,
 				D390F608276F33F00042FF90 /* CoordinatorProtocol.swift in Sources */,
+				0D30155E27908CBE0078B644 /* RestrictionTableViewCell.swift in Sources */,
 				0D9268E927887AE900F362C1 /* MarqueeLabel.swift in Sources */,
 				0D8FEEE9278B16DE0021F778 /* AuthenticationViewController.swift in Sources */,
 				0D8FEEE5278B168A0021F778 /* AuthenticationView.swift in Sources */,
@@ -832,7 +818,6 @@
 				0DBBAE35277CBC3A0078348C /* MainView.swift in Sources */,
 				0D8FEEEB278B16EF0021F778 /* AuthenticationViewModel.swift in Sources */,
 				0D2EF04C277DA50F00FE4E1B /* Constants.swift in Sources */,
-				0D32CCA72783061A005C6283 /* TripPlan.swift in Sources */,
 				D390F609276F33F00042FF90 /* CoordinatorDelegate.swift in Sources */,
 				0D5BE44F2784BB5A00EFBF71 /* BezierPathSuperpowers.swift in Sources */,
 				0D2C10E32770B73E00B0AC93 /* FetchRestrictionsRequest.swift in Sources */,
@@ -995,9 +980,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G5YTAD768G;
+				DEVELOPMENT_TEAM = 68B2VR2Z5P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlySafe/SupportingFiles/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlySafe;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1022,9 +1008,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G5YTAD768G;
+				DEVELOPMENT_TEAM = 68B2VR2Z5P;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlySafe/SupportingFiles/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FlySafe;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

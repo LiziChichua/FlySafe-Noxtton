@@ -61,8 +61,8 @@ class APIManager {
     }
     
     //Create new travel plan
-    func addTravelPlan(token: String, flightInfo: Flight, completion: @escaping (AddTravelPlanResponse?) -> Void ) {
-        let request = AddTravelPlanRequest(token: token, flightInfo: flightInfo)
+    func addTravelPlan(token: String, travelPlan: TravelPlan, completion: @escaping (AddTravelPlanResponse?) -> Void ) {
+        let request = AddTravelPlanRequest(token: token, travelPlan: travelPlan)
         
         networkService.request(request) { [weak self] result in
             switch result {
@@ -90,8 +90,8 @@ class APIManager {
     }
     
     //Update existing travel plan
-    func editTravelPlan(token: String, flightInfo: Flight, flightID: String, completion: @escaping (AddTravelPlanResponse?) -> Void) {
-        let request = EditTravelPlanRequest(token: token, flightInfo: flightInfo, flightID: flightID)
+    func editTravelPlan(token: String, travelPlan: TravelPlan, completion: @escaping (AddTravelPlanResponse?) -> Void) {
+        let request = EditTravelPlanRequest(token: token, travelPlan: travelPlan)
         
         networkService.request(request) { [weak self] result in
             switch result {
@@ -160,8 +160,8 @@ class APIManager {
     }
     
     //Fetch restrictions for given travel information
-    func fetchRestrictions(flightInfo: Flight, nationality: String?, vaccine: String?, transfer: String?, completion: @escaping (FetchRestrictionsResponse?) -> Void) {
-        let request = FetchRestrictionsRequest(flight: flightInfo, nationality: nationality, vaccine: vaccine, transfer: transfer)
+    func fetchRestrictions(travelPlan: TravelPlan, nationality: String?, vaccine: String?, completion: @escaping (FetchRestrictionsResponse?) -> Void) {
+        let request = FetchRestrictionsRequest(travelPlan: travelPlan, nationality: nationality, vaccine: vaccine)
         
         networkService.request(request) { [weak self] result in
             switch result {

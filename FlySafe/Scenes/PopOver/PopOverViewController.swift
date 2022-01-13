@@ -9,8 +9,8 @@ import UIKit
 
 class PopOverViewController: UIViewController {
     
-    var flightPlan: TripPlan?
-    var didpressSave: ((Flight, String) -> (Void))?
+    var travelPlan: TravelPlan?
+    var didPressSave: ((TravelPlan) -> (Void))?
     var source: String?
     var destination: String?
     var transfer: String?
@@ -53,9 +53,8 @@ class PopOverViewController: UIViewController {
     }()
     
     @objc func saveTapped() {
-        if let flightPlan = flightPlan, let source = source, let destination = destination, let transfer = transfer, let date = date {
-            didpressSave?(Flight(source: source, destination: destination, date: date), flightPlan.planID)
-            print ("Variable 'Transfer' not used -> \(transfer)")
+        if let plan = travelPlan {
+            didPressSave?(plan)
             self.dismiss(animated: true)
         }
     }
@@ -107,7 +106,7 @@ extension PopOverViewController: UITableViewDelegate, UITableViewDataSource {
         cell.delegate = self
         cell.newFlightLabel.text = "Edit Flight"
         cell.airportsList = airportsList
-        cell.flightPlan = flightPlan
+        cell.flightPlan = travelPlan
         return cell
     }
     
