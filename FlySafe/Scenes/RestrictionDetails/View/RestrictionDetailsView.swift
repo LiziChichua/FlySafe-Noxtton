@@ -9,17 +9,32 @@ import UIKit
 
 class RestrictionDetailsView: UIView {
     
-    //Side menu button
-//    let menuButton: UIButton = {
-//        let button = UIButton()
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.setImage(UIImage(systemName: "line.3.horizontal"), for: .normal)
-//        button.contentHorizontalAlignment = .fill
-//        button.contentVerticalAlignment = .fill
-//        button.tintColor = .black
-//        button.isUserInteractionEnabled = true
-//        return button
-//    }()
+    var isSaveButtonEnabled: Bool? {
+        didSet {
+            if let buttonEnabled = isSaveButtonEnabled {
+                if buttonEnabled {
+                    savePlanButton.isHidden = false
+                }
+            }
+        }
+    }
+    
+    //Button to save plan
+    let savePlanButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("  Save plan  ", for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
+        button.titleLabel?.textColor = .white
+        button.contentHorizontalAlignment = .center
+        button.contentVerticalAlignment = .center
+        button.backgroundColor = UIColor(hex: "10A5F9")
+        button.layer.cornerRadius = Constants.cornerRadius
+        button.isUserInteractionEnabled = true
+        button.isEnabled = true
+        button.isHidden = true
+        return button
+    }()
     
     //Back button
     let backButton: UIButton = {
@@ -65,6 +80,7 @@ class RestrictionDetailsView: UIView {
         self.addSubview(backButton)
         self.addSubview(restrictionInformationLabel)
         self.addSubview(frameView)
+        self.addSubview(savePlanButton)
         
         //Frame View DataSource & Delegate
         frameView.frameTableView.delegate = self
@@ -72,15 +88,16 @@ class RestrictionDetailsView: UIView {
         
         //Constraints
         NSLayoutConstraint.activate([
-//            menuButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
-//            menuButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-//            menuButton.widthAnchor.constraint(equalToConstant: 25),
-//            menuButton.heightAnchor.constraint(equalToConstant: 20),
             
             backButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
             backButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             backButton.widthAnchor.constraint(equalToConstant: 25),
             backButton.heightAnchor.constraint(equalToConstant: 20),
+            
+            savePlanButton.centerYAnchor.constraint(equalTo: backButton.centerYAnchor),
+            savePlanButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            savePlanButton.widthAnchor.constraint(lessThanOrEqualToConstant: 100),
+            savePlanButton.heightAnchor.constraint(equalToConstant: 25),
             
 //            restrictionInformationLabel.topAnchor.constraint(equalTo: menuButton.bottomAnchor, constant: 15),
             restrictionInformationLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 15),

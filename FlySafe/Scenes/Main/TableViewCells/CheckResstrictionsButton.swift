@@ -9,7 +9,7 @@ import UIKit
 
 class CheckResstrictionsButton: UITableViewCell {
     
-    var delegate: CheckRestrictionsDelegate?
+    var restrictionsDidGetPressed: ((TravelPlan?) -> (Void))?
     
     //Create CheckRestrictions button
     let checkRestrictions: UIButton = {
@@ -29,7 +29,7 @@ class CheckResstrictionsButton: UITableViewCell {
     }()
     
     @objc func buttonTriger() {
-        delegate?.checkRestrictionsPressed(nil)
+        restrictionsDidGetPressed?(nil)
     }
 
     
@@ -51,8 +51,4 @@ class CheckResstrictionsButton: UITableViewCell {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-}
-
-protocol CheckRestrictionsDelegate {
-    func checkRestrictionsPressed(_ travelPlan: TravelPlan?)
 }

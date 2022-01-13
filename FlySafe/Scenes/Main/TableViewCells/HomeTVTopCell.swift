@@ -10,6 +10,35 @@ import UIKit
 class HomeTVTopCell: UITableViewCell {
     
     var delegate: FlightInfoFieldsDelegate?
+    
+    var flightPlan: TripPlan? {
+        didSet {
+            if let flightPlan = flightPlan {
+                sourceAirport.text = flightPlan.source
+                transferAirport.text = flightPlan.connections?.first
+                destinationAirport.text = flightPlan.destination
+                let parseStrategy =
+                   Date.ParseStrategy(
+                      format: "\(day: .twoDigits)/\(month: .twoDigits)/\(year: .defaultDigits)",
+                      locale: Locale.current,
+                      timeZone: .current
+                   )
+                if let date = try? Date(flightPlan.date, strategy: parseStrategy) {
+                    datePicker.setDate(date, animated: true)
+                }
+            }
+        }
+    }
+    
+    var airportsList: [String]? {
+        didSet {
+            if let airports = airportsList {
+                sourceAirport.optionArray = airports
+                transferAirport.optionArray = airports
+                destinationAirport.optionArray = airports
+            }
+        }
+    }
 
         //Add new flight title
         let newFlightLabel: UILabel = {
