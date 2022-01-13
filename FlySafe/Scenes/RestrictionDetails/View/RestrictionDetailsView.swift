@@ -9,6 +9,8 @@ import UIKit
 
 class RestrictionDetailsView: UIView {
     
+    var restrictions: [String : Restrictions]?
+    
     var isSaveButtonEnabled: Bool? {
         didSet {
             if let buttonEnabled = isSaveButtonEnabled {
@@ -127,11 +129,12 @@ extension RestrictionDetailsView: UITableViewDelegate {
 
 extension RestrictionDetailsView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "RestrictionTableViewCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RestrictionTableViewCell", for: indexPath) as! RestrictionTableViewCell
+        cell.restrictions = restrictions
         return cell
     }
     

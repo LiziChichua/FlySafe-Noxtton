@@ -15,22 +15,12 @@ class RestrictionDetailsViewController: BaseViewController {
     var userToken: String?
     let viewmodel = RestrictionDetailsViewModel()
 
-    var restrictions: [String : Restrictions]? {
-        didSet {
-            if let restrictions = restrictions {
-                print (restrictions.count)
-                let mapped = restrictions.compactMap({ value in
-                    value
-                })
-                print (mapped)
-            }
-        }
-    }
+    var restrictions: [String : Restrictions]?
     
     override func loadView() {
         view = restrictionDetailsView
         restrictionDetailsView.isSaveButtonEnabled = isSaveButtonEnabled
-        
+        restrictionDetailsView.restrictions = restrictions
         restrictionDetailsView.savePlanButton.addTarget(self, action: #selector(buttonTriger), for: .touchUpInside)
         
         
@@ -59,7 +49,6 @@ class RestrictionDetailsViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationController?.isNavigationBarHidden = true
         restrictionDetailsView.backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
     }

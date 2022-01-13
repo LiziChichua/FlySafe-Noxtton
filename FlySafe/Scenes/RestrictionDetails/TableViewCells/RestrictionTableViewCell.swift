@@ -9,6 +9,8 @@ import UIKit
 
 class RestrictionTableViewCell: UITableViewCell {
     
+    var restrictions: [String : Restrictions]?
+    
     //Source to Destination Label
     let sourceToDestinationLabel: UILabel = {
         let label = UILabel()
