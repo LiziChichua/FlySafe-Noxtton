@@ -17,7 +17,10 @@ struct EditTravelPlanRequest: DataRequest {
     var bodyItems: [String : Any] = [:]
     
     init(token: String, travelPlan: TravelPlan) {
-        url = "http://covid-restrictions-api.noxtton.com/v1_private/travelplan/\(travelPlan.id!)"
+        url = ""
+        if let id = travelPlan.id {
+            url = "http://covid-restrictions-api.noxtton.com/v1_private/travelplan/\(id)"
+        }
         
         headers["x-session-id"] = token
         

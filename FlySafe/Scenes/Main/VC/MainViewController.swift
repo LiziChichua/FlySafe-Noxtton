@@ -18,7 +18,11 @@ class MainViewController: BaseViewController {
     let viewModel = MainViewModel()
     weak var delegate: MainViewControllerDelegate?
     
-    var userToken: String?
+    var userToken: String? {
+        didSet {
+            print (userToken)
+        }
+    }
     var userTravelPlans: [TravelPlan]?
     var source: String?
     var destination: String?
@@ -221,6 +225,7 @@ extension MainViewController: UITableViewDataSource {
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVBottomCell", for: indexPath) as! HomeTVBottomCell
+            cell.allignSubviews()
             cell.restrictionsDidGetPressed = { [weak self] travelPlan in
                 self?.checkRestrictionsPressed(travelPlan, saveButtonEnabled: false)
             }

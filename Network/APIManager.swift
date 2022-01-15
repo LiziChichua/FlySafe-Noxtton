@@ -94,6 +94,7 @@ class APIManager {
         let request = EditTravelPlanRequest(token: token, travelPlan: travelPlan)
         
         networkService.request(request) { [weak self] result in
+            print (result)
             switch result {
             case .success(let response):
                 completion(response)

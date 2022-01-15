@@ -14,9 +14,26 @@ class HomeTVTopCell: UITableViewCell {
     var flightPlan: TravelPlan? {
         didSet {
             if let flightPlan = flightPlan {
+                //Basic labels for already selected airports
                 sourceAirport.text = flightPlan.source
                 transferAirport.text = flightPlan.transfer
                 destinationAirport.text = flightPlan.destination
+                
+                //Full strings of selected airports
+                sourceAirport.text = airportsList?.filter({
+                    $0.contains("\(flightPlan.source)")
+                }).first
+                
+                if flightPlan.transfer.split(separator: ",").count == 1 {
+                    transferAirport.text = airportsList?.filter({
+                        $0.contains("\(flightPlan.transfer)")
+                    }).first
+                }
+                
+                destinationAirport.text = airportsList?.filter({
+                    $0.contains("\(flightPlan.destination)")
+                }).first
+                
                 let parseStrategy =
                    Date.ParseStrategy(
                       format: "\(day: .twoDigits)/\(month: .twoDigits)/\(year: .defaultDigits)",
@@ -264,6 +281,8 @@ class HomeTVTopCell: UITableViewCell {
         }
         
     }
+    
+    
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
