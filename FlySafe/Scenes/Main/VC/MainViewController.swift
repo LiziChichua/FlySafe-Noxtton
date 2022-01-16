@@ -175,7 +175,7 @@ class MainViewController: BaseViewController {
         
         //lat,lon - Tbilisi(41.73 - 44.79)
         //          London(51.52 - -0.11)
-        viewmodel.fetchWeather(lat: 41.73, lon: 44.79)
+        viewmodel.fetchWeather(lat: 51.52, lon: -0.11)
         viewModel.didFetchWeather = { [weak self] weather in
             self?.mainView.temperatureLabel.text = "\(weather.currentInfo?.celsius ?? 0)°C"
         }

@@ -7,8 +7,7 @@
 
 import Foundation
 
-
-class MainViewModel {
+class MainViewModel: NSObject {
     
     private let networkService = DefaultNetworkService()
     private var weatherManager: WeatherManagerProtocol
@@ -29,13 +28,13 @@ class MainViewModel {
     var didFetchUserData: ((User) -> (Void))?
     var didFetchWeather: ((Weather)->())?
     
-    init() {
+    override init() {
         apiManager = APIManager(with: networkService)
         weatherManager = WeatherManager()
         apiManager.onError = { error in
             print (error)
         }
-        
+        super.init()
         fetchAirports()
         
     }
