@@ -14,8 +14,8 @@ class AuthenticationViewModel {
     private let apiManager: APIManager
     
     var userDidAuthenticate: ((User, String) -> (Void))?
-    var didFetchSelf: ((User) -> (Void))?
-    
+    var vaccinesDidFetch: (([String]) -> (Void))?
+    var didfetchNationalities: (([String]) -> (Void))?
     
     init() {
         apiManager = APIManager(with: networkService)
@@ -53,18 +53,25 @@ class AuthenticationViewModel {
         defaults.set(token, forKey: "UserToken")
     }
     
-    //Fetch user data
-    func fetchUser(token: String) {
-        apiManager.fetchSelf(token: token) { [weak self] result in
-            if let response = result{
-                self?.didFetchSelf?(response.user)
+    
+    func fetchVaccines() {
+        apiManager.fetchVaccines { [weak self] result in
+            if let response = result {
+                self?.vaccinesDidFetch?(response.vaccines)
             }
         }
     }
     
+    func fetchNationalities() {
+        apiManager.fetchNationalities(completion: { [weak self] result in
+            if let response = result {
+                self?.didfetchNationalities?(response.nationalities)
+            }
+            
+        })
+        
+    }
+    
 }
 
-//Works
-//        apiManager.fetchVaccines { vaccines in
-//            print (vaccines)
-//        }
+

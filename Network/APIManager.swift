@@ -163,7 +163,7 @@ class APIManager {
     //Fetch restrictions for given travel information
     func fetchRestrictions(travelPlan: TravelPlan, nationality: String?, vaccine: String?, completion: @escaping (FetchRestrictionsResponse?) -> Void) {
         let request = FetchRestrictionsRequest(travelPlan: travelPlan, nationality: nationality, vaccine: vaccine)
-        
+
         networkService.request(request) { [weak self] result in
             switch result {
             case .success(let response):

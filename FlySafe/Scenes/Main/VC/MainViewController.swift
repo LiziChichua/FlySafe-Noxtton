@@ -20,7 +20,7 @@ class MainViewController: BaseViewController {
     
     var userToken: String? {
         didSet {
-            print (userToken)
+         //   print (userToken)
         }
     }
     var userTravelPlans: [TravelPlan]?
@@ -29,6 +29,15 @@ class MainViewController: BaseViewController {
     var transfer: String?
     var date: String?
     var airportsList: [String]?
+    var userData: User? {
+        didSet {
+            if let name = userData?.data.name {
+                DispatchQueue.main.async {
+                    self.mainView.greetingLabel.text! += name
+                }
+            }
+        }
+    }
     
     @objc func reloadTableview() {
         if let userToken = userToken {
@@ -36,20 +45,31 @@ class MainViewController: BaseViewController {
         }
     }
     
+    
     func checkRestrictionsPressed(_ travelPlan: TravelPlan?, saveButtonEnabled: Bool) {
         //If triggered from saved travelPlans
         if let travelPlan = travelPlan {
-            viewModel.fetchRestrictions(travelPlan: travelPlan, nationality: nil, vaccine: nil, saveButtonEnabled: saveButtonEnabled)
+            if let userData = userData {
+                print (travelPlan)
+                viewModel.fetchRestrictions(travelPlan: travelPlan, nationality: userData.data.nationality, vaccine: userData.data.vaccine, saveButtonEnabled: saveButtonEnabled)
+            } else {
+                viewModel.fetchRestrictions(travelPlan: travelPlan, nationality: nil, vaccine: nil, saveButtonEnabled: saveButtonEnabled)
+            }
         } else {
             //If triggered from not saved travelPlan
             guard let source = self.source else {return}
             guard let destination = self.destination else {return}
             let transferList: String = self.transfer ?? ""
             guard let date = self.date else {return}
-            
-            viewModel.fetchRestrictions(travelPlan: TravelPlan(source: source, destination: destination, date: date, transfer: transferList, user: nil, id: nil), nationality: nil, vaccine: nil, saveButtonEnabled: saveButtonEnabled)
+            print (transferList)
+            if let userData = userData {
+                viewModel.fetchRestrictions(travelPlan: TravelPlan(source: source, destination: destination, date: date, transfer: transferList, user: nil, id: nil), nationality: userData.data.nationality, vaccine: userData.data.vaccine, saveButtonEnabled: saveButtonEnabled)
+            } else {
+                viewModel.fetchRestrictions(travelPlan: TravelPlan(source: source, destination: destination, date: date, transfer: transferList, user: nil, id: nil), nationality: nil, vaccine: nil, saveButtonEnabled: saveButtonEnabled)
+            }
         }
     }
+    
     
     func didTapEdit(travelPlan: TravelPlan) {
         let vc = PopOverViewController()
@@ -62,6 +82,7 @@ class MainViewController: BaseViewController {
         vc.airportsList = self.airportsList
         self.present(vc, animated: true, completion: nil)
     }
+    
     
     func didTapDelete(flightID: String) {
         let actionSheet = UIAlertController(title: "Do you want to delete your flight?", message: nil, preferredStyle: .actionSheet)
@@ -77,6 +98,7 @@ class MainViewController: BaseViewController {
         present(actionSheet, animated: true, completion: nil)
     }
     
+    
     func initialiseVMClosures(viewmodel: MainViewModel) {
         
         viewmodel.airportsDidFetch = { [weak self] result in
@@ -88,6 +110,10 @@ class MainViewController: BaseViewController {
             DispatchQueue.main.async {
                 self?.mainView.homeTableView.reloadData()
             }
+        }
+        
+        viewmodel.didFetchUserData = { [weak self] result in
+            self?.userData = result
         }
         
         
@@ -115,7 +141,7 @@ class MainViewController: BaseViewController {
                     self?.present(alert, animated: true)
                 }
             }
-
+            
         }
         
         
@@ -135,7 +161,7 @@ class MainViewController: BaseViewController {
                     self?.present(alert, animated: true)
                 }
             }
-
+            
         }
         
         
@@ -148,9 +174,11 @@ class MainViewController: BaseViewController {
         }
     }
     
+    
     override func loadView() {
         view = mainView
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -241,7 +269,7 @@ extension MainViewController: UITableViewDataSource {
             }
             return cell
         }
-    
+        
     }
     
 }

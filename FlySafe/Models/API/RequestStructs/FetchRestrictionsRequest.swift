@@ -24,15 +24,6 @@ struct FetchRestrictionsRequest: DataRequest {
         if let vaccineInfo = vaccine {
             queryItems["vaccine"] = vaccineInfo
         }
-        if travelPlan.transfer.isEmpty {
-            
-        } else {
-            var transferString = ""
-            travelPlan.transfer.forEach({
-                transferString += "\($0),"
-            })
-            queryItems["transfer"] = transferString
-        }
+        queryItems["transfer"] = travelPlan.transfer
     }
-    
 }

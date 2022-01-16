@@ -9,7 +9,28 @@ import UIKit
 
 class RestrictionDetailsView: UIView {
     
-    var restrictions: [String : Restrictions]?
+    var restrictions: [String : Restrictions]? {
+        didSet {
+            if let restrictions = restrictions {
+                restrictionTuples = restrictions.compactMap({ (key: String, value: Restrictions) in
+                    (key, value)
+                })
+            }
+            DispatchQueue.main.async {
+                self.frameView.frameTableView.reloadData()
+            }
+        }
+    }
+    
+    var airportsList: [String]? {
+        didSet {
+            DispatchQueue.main.async {
+                self.frameView.frameTableView.reloadData()
+            }
+        }
+    }
+    
+    var restrictionTuples: [(String, Restrictions)]?
     
     var isSaveButtonEnabled: Bool? {
         didSet {
@@ -129,12 +150,24 @@ extension RestrictionDetailsView: UITableViewDelegate {
 
 extension RestrictionDetailsView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        if let restrictions = self.restrictionTuples {
+            return restrictions.count
+        } else {
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RestrictionTableViewCell", for: indexPath) as! RestrictionTableViewCell
-        cell.restrictions = restrictions
+
+        if let restrictions = self.restrictionTuples, let airports = self.airportsList {
+            
+                if let header = airports.first(where: {
+                    $0.contains(restrictions[indexPath.row].0)
+                }) {
+                    cell.restrictions = (header, restrictions[indexPath.row].1)
+                }
+        }
         return cell
     }
     

@@ -9,13 +9,103 @@ import UIKit
 
 class RestrictionTableViewCell: UITableViewCell {
     
-    var restrictions: [String : Restrictions]?
+    var restrictions: (String , Restrictions)? {
+        didSet {
+            guard let restrictions = restrictions else {return}
+            //Set main title
+            sourceToDestinationLabel.text = restrictions.0
+            let info = restrictions.1
+            
+            /////MARK: - General restrictions
+            
+            let generalRestrictions = info.generalRestrictions
+            
+            touristsAllowedLabel.text = "Tourists allowed: \(generalRestrictions.allowsTourists == true ? "Yes" : "No" )"
+            
+            businessVisitsAllowedLabel.text = "Business visits allowed: \(generalRestrictions.allowsBusinessVisit == true ? "Yes" : "No")"
+            
+            covidPassportRequiredLabel.text = "Covid passport required: \(generalRestrictions.covidPassportRequired == true ? "Yes" : "No")"
+            
+            PSRTestForNonResidentsLabel.text = "PCR test for non-residents: \(generalRestrictions.pcrRequiredForNoneResidents == true ? "Yes" : "No")"
+            
+            PSRTestForResidentsLabel.text = "PCR test for residents: \(generalRestrictions.pcrRequiredForResidents == true ? "Yes" : "No")"
+            
+            generalInformationTextLabel.text = "General Information: \(generalRestrictions.generalInformation ?? "No Information")"
+            
+            
+            /////MARK: - Restrictions by vaccination
+            
+            if let restrictionsByVaccination = info.restrictionsByVaccination {
+                vaccinatedVisitorsAllowedLabel.text = "Vaccinated Visitors allowed: \(restrictionsByVaccination.isAllowed == true ? "Yes" : "No" )"
+                
+                if let dozesRequired = restrictionsByVaccination.dozesRequired {
+                    dozesRequiredLabel.text = "Dozes required: \(dozesRequired)"
+                } else {
+                    dozesRequiredLabel.text = "Dozes required: No Information"
+                }
+                
+                if let minDays = restrictionsByVaccination.minDaysAfterVaccination {
+                    MinDaysAfterVaccinationLabel.text = "Min days after vaccination: \(minDays)"
+                } else {
+                    MinDaysAfterVaccinationLabel.text = "Min days after vaccination: No Information"
+                }
+                
+                if let maxDays = restrictionsByVaccination.maxDaysAfterVaccination {
+                    MaxDaysAfterVaccinationLabel.text = "Max days after vaccination: \(maxDays)"
+                } else {
+                    MaxDaysAfterVaccinationLabel.text = "Max days after vaccination: No Information"
+                }
+            } else {
+                vaccinatedVisitorsAllowedLabel.text = "Vaccinated Visitors allowed: No information"
+                MinDaysAfterVaccinationLabel.text = "Min days after vaccination: No information"
+                MaxDaysAfterVaccinationLabel.text = "Max days after vaccination: No information"
+                dozesRequiredLabel.text = "Dozes required: No information"
+            }
+            
+            
+            
+            /////MARK: - Restrictions by nationality
+            
+            if let restrictionsByNationality = info.restrictionsByNationality  {
+                
+                restrictionsByNationality.forEach({
+                    switch $0.type {
+                    case "Visit Type":
+                        touristsAllowedByNationalityLabel.text = "Tourists allowed: \($0.data?.allowsTourists == true ? "Yes" : "No" )"
+                        businessVisitsAllowedByNationalityLabel.text = "Business visits allowed: \($0.data?.allowsBusinessVisit == true ? "Yes" : "No" )"
+                    case "Covid Test":
+                        PCRTestsAcceptedLabel.text = "PCR tests accepted: \($0.data?.pcrRequired == true ? "Yes" : "No" )"
+                        quickTestsAcceptedLabel.text = "Quick tests accepted: \($0.data?.fastTestRequired == true ? "Yes" : "No" )"
+                    case "Documents Required":
+                        covidPassportRequiredByNationalityLabel.text = "Covid passport required: \($0.data?.covidPassportRequired == true ? "Yes" : "No" )"
+                        biometricPassportRequiredLabel.text = "Biometric passport required: \($0.data?.biometricPassportRequired == true ? "Yes" : "No" )"
+                        locatorFormRequiredLabel.text = "Locator form required: \($0.data?.locatorFormRequired == true ? "Yes" : "No" )"
+                    default:
+                        print ("Received extra restrictions")
+                    }
+                })
+                
+                
+            } else {
+                touristsAllowedByNationalityLabel.text = "Tourists allowed: No Information"
+                businessVisitsAllowedByNationalityLabel.text = "Business visits allowed: No Information"
+                PCRTestsAcceptedLabel.text = "PCR tests accepted: No Information"
+                quickTestsAcceptedLabel.text = "Quick tests accepted: No Information"
+                covidPassportRequiredByNationalityLabel.text = "Covid passport required: No Information"
+                biometricPassportRequiredLabel.text = "Biometric passport required: No Information"
+                locatorFormRequiredLabel.text = "Locator form required: No Information"
+            }
+            
+        }
+    }
+    
+    
     
     //Source to Destination Label
     let sourceToDestinationLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "TBS to SAW"
+        label.text = ""
         label.font = .systemFont(ofSize: 18, weight: .bold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -39,7 +129,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let touristsAllowedLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Tourists allowed: Yes"
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -51,7 +141,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let businessVisitsAllowedLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Business visits allowed: Yes"
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -63,7 +153,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let covidPassportRequiredLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Covid passport required: Yes"
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -75,7 +165,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let PSRTestForNonResidentsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "PCR test for non-residents: Required"
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -87,7 +177,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let PSRTestForResidentsLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "PCR test for residents: Required"
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -99,7 +189,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let generalInformationLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "General Information:"
+        label.text = ""
         label.font = .systemFont(ofSize: 15, weight: .bold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -111,7 +201,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let generalInformationTextLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 0
         label.textAlignment = .left
@@ -135,7 +225,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let vaccinatedVisitorsAllowedLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Vaccinated Visitors allowed: Yes"
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -147,7 +237,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let dozesRequiredLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Dozes required: 2"
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -159,7 +249,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let MinDaysAfterVaccinationLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Min days after vaccination: 14"
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -171,7 +261,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let MaxDaysAfterVaccinationLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Max days after vaccination: 180"
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -195,7 +285,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let touristsAllowedByNationalityLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Tourists allowed: Yes"
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -207,7 +297,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let businessVisitsAllowedByNationalityLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Business visits allowed: Yes"
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -219,7 +309,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let covidPassportRequiredByNationalityLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Covid passport required: Yes"
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -231,7 +321,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let PCRTestsAcceptedLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "PCR tests accepted: Yes"
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -243,7 +333,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let quickTestsAcceptedLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Quick tests accepted: Yes"
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -255,7 +345,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let biometricPassportRequiredLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Biometric passport required: Yes"
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -267,7 +357,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let locatorFormRequiredLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Locator form required: Yes"
+        label.text = ""
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left

@@ -49,6 +49,7 @@
 		0D8FEEE9278B16DE0021F778 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FEEE8278B16DE0021F778 /* AuthenticationViewController.swift */; };
 		0D8FEEEB278B16EF0021F778 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FEEEA278B16EF0021F778 /* AuthenticationViewModel.swift */; };
 		0D9268E927887AE900F362C1 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9268E827887AE900F362C1 /* MarqueeLabel.swift */; };
+		0DB6929E2794194500E83368 /* DataPrettyPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6929D2794194500E83368 /* DataPrettyPrint.swift */; };
 		0DB90439277103150063436A /* FetchSelfResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB90438277103150063436A /* FetchSelfResponse.swift */; };
 		0DBBAE32277CBA020078348C /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBAE31277CBA020078348C /* iOSDropDown.swift */; };
 		0DBBAE35277CBC3A0078348C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBAE34277CBC3A0078348C /* MainView.swift */; };
@@ -57,7 +58,6 @@
 		0DE00C8E278830A600BF9627 /* FoldingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE00C8D278830A600BF9627 /* FoldingCell.swift */; };
 		0DE79046278F73A3009C9731 /* RestrictionDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE79045278F73A3009C9731 /* RestrictionDetailsViewModel.swift */; };
 		D349EFF92785F5B60049DEE6 /* DashedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349EFF82785F5B60049DEE6 /* DashedLineView.swift */; };
-		D349EFFD2785F62A0049DEE6 /* AlternativeRestrictionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349EFFC2785F62A0049DEE6 /* AlternativeRestrictionTableViewCell.swift */; };
 		D349F0002785F6660049DEE6 /* RestrictionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349EFFF2785F6660049DEE6 /* RestrictionDetailsViewController.swift */; };
 		D349F0032785F68F0049DEE6 /* RestrictionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349F0022785F68F0049DEE6 /* RestrictionDetailsView.swift */; };
 		D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D390F5DC276F33C00042FF90 /* AppDelegate.swift */; };
@@ -102,7 +102,6 @@
 		0D2C10E02770B6AA00B0AC93 /* FetchNationalitiesRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchNationalitiesRequest.swift; sourceTree = "<group>"; };
 		0D2C10E22770B73E00B0AC93 /* FetchRestrictionsRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchRestrictionsRequest.swift; sourceTree = "<group>"; };
 		0D2EF04B277DA50F00FE4E1B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		0D30155F279090C90078B644 /* FlySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = FlySafe.app; path = "/Users/topuchi13/Documents/iOS Programming/Noxtton_Project/FlySafe-Noxtton/build/Debug-iphoneos/FlySafe.app"; sourceTree = "<absolute>"; };
 		0D5394712789F1EA00B94B8A /* SummaryListTitleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryListTitleCell.swift; sourceTree = "<group>"; };
 		0D5B34ED27705F8E00148518 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = APIManager.swift; path = Network/APIManager.swift; sourceTree = SOURCE_ROOT; };
 		0D5BE44E2784BB5A00EFBF71 /* BezierPathSuperpowers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierPathSuperpowers.swift; sourceTree = "<group>"; };
@@ -129,6 +128,7 @@
 		0D8FEEE8278B16DE0021F778 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		0D8FEEEA278B16EF0021F778 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		0D9268E827887AE900F362C1 /* MarqueeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarqueeLabel.swift; sourceTree = "<group>"; };
+		0DB6929D2794194500E83368 /* DataPrettyPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPrettyPrint.swift; sourceTree = "<group>"; };
 		0DB90438277103150063436A /* FetchSelfResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSelfResponse.swift; sourceTree = "<group>"; };
 		0DBBAE31277CBA020078348C /* iOSDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSDropDown.swift; sourceTree = "<group>"; };
 		0DBBAE34277CBC3A0078348C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -136,8 +136,8 @@
 		0DD2CA1E277041130044CB1B /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkService.swift; path = Network/NetworkService.swift; sourceTree = SOURCE_ROOT; };
 		0DE00C8D278830A600BF9627 /* FoldingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldingCell.swift; sourceTree = "<group>"; };
 		0DE79045278F73A3009C9731 /* RestrictionDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsViewModel.swift; sourceTree = "<group>"; };
+		0DF1EF9D2792951000DCAC99 /* FlySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlySafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D349EFF82785F5B60049DEE6 /* DashedLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLineView.swift; sourceTree = "<group>"; };
-		D349EFFC2785F62A0049DEE6 /* AlternativeRestrictionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlternativeRestrictionTableViewCell.swift; sourceTree = "<group>"; };
 		D349EFFF2785F6660049DEE6 /* RestrictionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsViewController.swift; sourceTree = "<group>"; };
 		D349F0022785F68F0049DEE6 /* RestrictionDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsView.swift; sourceTree = "<group>"; };
 		D390F5DC276F33C00042FF90 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -342,6 +342,14 @@
 			path = MarqueeLabel;
 			sourceTree = "<group>";
 		};
+		0DB6929C2794192E00E83368 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0DB6929D2794194500E83368 /* DataPrettyPrint.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		0DB904372770DEC70063436A /* ResponseStructs */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,7 +412,6 @@
 		D349EFFA2785F5E60049DEE6 /* RestrictionDetails */ = {
 			isa = PBXGroup;
 			children = (
-				D349EFFC2785F62A0049DEE6 /* AlternativeRestrictionTableViewCell.swift */,
 				0DE79044278F7381009C9731 /* ViewModel */,
 				D349EFFB2785F6170049DEE6 /* TableViewCells */,
 				D349EFFE2785F6550049DEE6 /* VC */,
@@ -442,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				D390F5DB276F33C00042FF90 /* FlySafe */,
+				0DF1EF9D2792951000DCAC99 /* FlySafe.app */,
 			);
 			sourceTree = "<group>";
 		};
@@ -483,6 +491,7 @@
 		D390F5F9276F33EF0042FF90 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0DB6929C2794192E00E83368 /* Data */,
 				0D6AAAE6278755F90084D571 /* HideKeyboard */,
 				0D2C10CB2770967400B0AC93 /* Loopable */,
 				D390F5FA276F33EF0042FF90 /* UIImage */,
@@ -711,7 +720,7 @@
 			packageProductDependencies = (
 			);
 			productName = FlySafe;
-			productReference = 0D30155F279090C90078B644 /* FlySafe.app */;
+			productReference = 0DF1EF9D2792951000DCAC99 /* FlySafe.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -790,7 +799,6 @@
 				0DD2CA1F277041130044CB1B /* DataRequest.swift in Sources */,
 				0D5CED57276F82BB008D29B9 /* FetchRestrictionsResponse.swift in Sources */,
 				0D5CED45276F7D78008D29B9 /* AddTravelPlanResponse.swift in Sources */,
-				D349EFFD2785F62A0049DEE6 /* AlternativeRestrictionTableViewCell.swift in Sources */,
 				0D5CED53276F808A008D29B9 /* FetchVaccinesResponse.swift in Sources */,
 				D349F0032785F68F0049DEE6 /* RestrictionDetailsView.swift in Sources */,
 				0D5D63FE278A044600673350 /* MenuTableViewCell.swift in Sources */,
@@ -828,6 +836,7 @@
 				D390F607276F33EF0042FF90 /* StoryBoarded.swift in Sources */,
 				0D2C10CF27709E9100B0AC93 /* SelfRequest.swift in Sources */,
 				0D6AAAE8278756140084D571 /* CustomExtensions.swift in Sources */,
+				0DB6929E2794194500E83368 /* DataPrettyPrint.swift in Sources */,
 				D390F5E7276F33C00042FF90 /* FlySafe.xcdatamodeld in Sources */,
 				D390F62A276F34760042FF90 /* BaseViewController.swift in Sources */,
 				0D6AAAE5278752570084D571 /* CheckResstrictionsButton.swift in Sources */,

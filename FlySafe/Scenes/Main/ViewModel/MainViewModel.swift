@@ -16,6 +16,7 @@ class MainViewModel {
         didSet {
             if let token = userToken {
                 fetchTravelPlans(token: token)
+                fetchUser(token: token)
             }
         }
     }
@@ -24,7 +25,7 @@ class MainViewModel {
     var travelPlanDidRemove: ((Bool) -> (Void))?
     var travelPlanDidEdit: ((Bool) -> (Void))?
     var travelPlansDidFetch: (([TravelPlan]) -> (Void))?
-    
+    var didFetchUserData: ((User) -> (Void))?
     
     init() {
         apiManager = APIManager(with: networkService)
@@ -83,5 +84,15 @@ class MainViewModel {
             }
         }
     }
+    
+    //Fetch user data
+    func fetchUser(token: String) {
+        apiManager.fetchSelf(token: token) { [weak self] result in
+            if let response = result{
+                self?.didFetchUserData?(response.user)
+            }
+        }
+    }
+    
 }
 

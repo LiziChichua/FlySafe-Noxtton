@@ -14,7 +14,6 @@ class RestrictionDetailsViewController: BaseViewController {
     var travelPlan: TravelPlan?
     var userToken: String?
     let viewmodel = RestrictionDetailsViewModel()
-
     var restrictions: [String : Restrictions]?
     
     override func loadView() {
@@ -22,7 +21,7 @@ class RestrictionDetailsViewController: BaseViewController {
         restrictionDetailsView.isSaveButtonEnabled = isSaveButtonEnabled
         restrictionDetailsView.restrictions = restrictions
         restrictionDetailsView.savePlanButton.addTarget(self, action: #selector(buttonTriger), for: .touchUpInside)
-        
+        viewmodel.fetchAirports()
         
         viewmodel.travelPlanDidAdd = { [weak self] success in
             DispatchQueue.main.async {
@@ -38,6 +37,14 @@ class RestrictionDetailsViewController: BaseViewController {
                     self?.present(alert, animated: true)
                 }
             }
+        }
+        
+        viewmodel.airportsDidFetch = { [weak self] result in
+            var airports = [String]()
+            result.forEach { airport in
+                airports.append("\(airport.code), \(airport.city), \(airport.country)")
+            }
+            self?.restrictionDetailsView.airportsList = airports
         }
     }
     
