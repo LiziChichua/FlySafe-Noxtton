@@ -21,9 +21,9 @@ struct User: Codable {
 
 // MARK: - UserData
 struct UserData: Codable, Loopable {
-    var name: String?
-    var surname: String?
-    var nationality: String?
-    var vaccine: String?
+    var name: String
+    var surname: String
+    var nationality: String
+    var vaccine: String
 }
 

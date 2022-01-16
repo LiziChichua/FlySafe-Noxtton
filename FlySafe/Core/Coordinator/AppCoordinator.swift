@@ -39,8 +39,8 @@ final class AppCoordinator: CoordinatorProtocol {
         vc.coordinator = self
         vc.userToken = userToken
         
-        vc.MainVC.gotoRestrictionsVC = { [weak self] restrictions, flightInfo, saveButtonEnabled in
-            self?.gotoRestrictionsVC(restrictions: restrictions, flightInfo: flightInfo, saveButtonEnabled: saveButtonEnabled)
+        vc.MainVC.gotoRestrictionsVC = { [weak self] restrictions, travelPlan, saveButtonEnabled in
+            self?.gotoRestrictionsVC(restrictions: restrictions, travelPlan: travelPlan, saveButtonEnabled: saveButtonEnabled)
         }
         
         vc.authenticationSelected = { [weak self] isNewUser in
@@ -75,13 +75,13 @@ final class AppCoordinator: CoordinatorProtocol {
     
     
     //Goes to restriction details view
-    func gotoRestrictionsVC(restrictions: [String : Restrictions], flightInfo: Flight?, saveButtonEnabled: Bool) {
+    func gotoRestrictionsVC(restrictions: [String : Restrictions], travelPlan: TravelPlan?, saveButtonEnabled: Bool) {
         DispatchQueue.main.async { [weak self] in
             let vc = RestrictionDetailsViewController()
             vc.restrictions = restrictions
-            vc.flightInfo = flightInfo
+            vc.travelPlan = travelPlan
             vc.userToken = self?.checkForSavedToken()
-            if (self?.checkForSavedToken()) != nil && flightInfo != nil && saveButtonEnabled == true{
+            if (self?.checkForSavedToken()) != nil && travelPlan != nil && saveButtonEnabled == true{
                 vc.isSaveButtonEnabled = true
             }
             vc.coordinator = self

@@ -15,8 +15,44 @@ class AuthenticationViewController: BaseViewController {
     var userDidAuthenticate: ((User, String) -> (Void))?
     var isNewUser: Bool?
     
+    var vaccines: [String]? {
+        didSet {
+            if let vaccines = vaccines {
+                authenticationView.vaccineList.optionArray = vaccines
+            }
+        }
+    }
+    
+    var nationalities: [String]? {
+        didSet {
+            if let nationalities = nationalities {
+                authenticationView.nationalityList.optionArray = nationalities
+            }
+        }
+    }
+    
     override func loadView() {
         view = authenticationView
+    }
+    
+    func initialiseVMClosures() {
+        
+        viewModel.userDidAuthenticate = { [weak self] user, token in
+                self?.userDidAuthenticate?(user, token)
+        }
+        
+        viewModel.vaccinesDidFetch = { [weak self] vaccines in
+            DispatchQueue.main.async {
+                self?.vaccines = vaccines
+            }
+        }
+        
+        viewModel.didfetchNationalities = { [weak self] nationalities in
+            DispatchQueue.main.async {
+                self?.nationalities = nationalities
+            }
+        }
+        
     }
     
     
@@ -27,6 +63,11 @@ class AuthenticationViewController: BaseViewController {
         
         hideKeyboardWhenTappedAround()
         
+        initialiseVMClosures()
+        
+        viewModel.fetchVaccines()
+        viewModel.fetchNationalities()
+        
         authenticationView.isNewUser = isNewUser
         
         authenticationView.backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
@@ -34,25 +75,13 @@ class AuthenticationViewController: BaseViewController {
         authenticationView.loginButton.addTarget(self, action: #selector(authenticationButtonPressed), for: .touchUpInside)
         
         authenticationView.switchAuthenticationStatus.addTarget(self, action: #selector(switchUserStatus), for: .touchUpInside)
-        
-        
-//        viewModel.didFetchSelf = { [weak self] user in
-//
-//        }
-        
-        viewModel.userDidAuthenticate = { [weak self] user, token in
-            self?.userDidAuthenticate?(user, token)
-        }
-        
-        
-        
+
     }
     
     @objc func switchUserStatus() {
         if let isNewUser = isNewUser {
             navigationController?.popViewController(animated: true)
             switchStatus?(!isNewUser)
-            
         }
     }
     

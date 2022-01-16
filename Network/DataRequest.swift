@@ -30,6 +30,8 @@ protocol DataRequest {
 extension DataRequest where Response: Decodable {
     func decode(_ data: Data) throws -> Response {
         let decoder = JSONDecoder()
+        decoder.assumesTopLevelDictionary = true
+        decoder.allowsJSON5 = true
         return try decoder.decode(Response.self, from: data)
     }
 }

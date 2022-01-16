@@ -14,13 +14,22 @@ class RestrictionDetailsViewModel {
     private let apiManager: APIManager
     
     var travelPlanDidAdd: ((Bool) -> (Void))?
+    var airportsDidFetch: (([Airport]) -> (Void))?
     
     
     //Add new travel plan
-    func addTravelPlan(token: String, flightInfo: Flight) {
-        apiManager.addTravelPlan(token: token, flightInfo: flightInfo) { [weak self] result in
+    func addTravelPlan(token: String, flightInfo: TravelPlan) {
+        apiManager.addTravelPlan(token: token, travelPlan: flightInfo) { [weak self] result in
             if let response = result {
                 self?.travelPlanDidAdd?(response.success)
+            }
+        }
+    }
+    
+    func fetchAirports() {
+        apiManager.fetchAirports { [weak self] result in
+            if let response = result {
+                self?.airportsDidFetch?(response.airports)
             }
         }
     }

@@ -79,7 +79,7 @@ final class DefaultNetworkService: NetworkService {
             if let error = error {
                 return completion(.failure(error))
             } else if let data = data {
-//                print ("Json raw data: \(String(data: data, encoding: .utf8))")
+//                print ("Json raw data: \(data.prettyPrintedJSONString)")
                 do {
                     try completion(.success(request.decode(data)))
                 } catch let error {

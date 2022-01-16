@@ -9,8 +9,15 @@ import UIKit
 
 class PopOverViewController: UIViewController {
     
-    var flightPlan: TripPlan?
-    var didpressSave: ((Flight, String) -> (Void))?
+    var travelPlan: TravelPlan? {
+        didSet {
+            source = travelPlan?.source
+            destination = travelPlan?.destination
+            transfer = travelPlan?.transfer
+            date = travelPlan?.date
+        }
+    }
+    var didPressSave: ((TravelPlan) -> (Void))?
     var source: String?
     var destination: String?
     var transfer: String?
@@ -53,16 +60,22 @@ class PopOverViewController: UIViewController {
     }()
     
     @objc func saveTapped() {
-        if let flightPlan = flightPlan, let source = source, let destination = destination, let transfer = transfer, let date = date {
-            didpressSave?(Flight(source: source, destination: destination, date: date), flightPlan.planID)
-            print ("Variable 'Transfer' not used -> \(transfer)")
-            self.dismiss(animated: true)
-        }
+        guard let source = self.source else {return}
+        guard let destination = self.destination else {return}
+        let transferList: String = self.transfer ?? ""
+        guard let date = self.date else {return}
+        guard let id = self.travelPlan?.id else {return}
+        let modifiedPlan = TravelPlan(source: source, destination: destination, date: date, transfer: transferList, user: nil, id: id)
+        
+        print (modifiedPlan)
+        didPressSave?(modifiedPlan)
+        self.dismiss(animated: true)
+        
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .clear
         
         self.view.addSubview(popOverView)
@@ -92,7 +105,7 @@ class PopOverViewController: UIViewController {
             saveButton.bottomAnchor.constraint(equalTo: popOverView.bottomAnchor, constant: -20)
         ])
     }
-
+    
 }
 
 
@@ -107,7 +120,7 @@ extension PopOverViewController: UITableViewDelegate, UITableViewDataSource {
         cell.delegate = self
         cell.newFlightLabel.text = "Edit Flight"
         cell.airportsList = airportsList
-        cell.flightPlan = flightPlan
+        cell.flightPlan = travelPlan
         return cell
     }
     
@@ -140,5 +153,5 @@ extension PopOverViewController: FlightInfoFieldsDelegate {
         let transferID = transferArray.first
         self.transfer = transferID
     }
-
+    
 }

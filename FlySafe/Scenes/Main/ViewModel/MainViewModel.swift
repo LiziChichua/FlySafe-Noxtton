@@ -16,15 +16,16 @@ class MainViewModel {
         didSet {
             if let token = userToken {
                 fetchTravelPlans(token: token)
+                fetchUser(token: token)
             }
         }
     }
     var airportsDidFetch: (([Airport]) -> (Void))?
-    var restrictionsDidFetch: (([String : Restrictions], Flight?, Bool) -> (Void))?
+    var restrictionsDidFetch: (([String : Restrictions], TravelPlan?, Bool) -> (Void))?
     var travelPlanDidRemove: ((Bool) -> (Void))?
     var travelPlanDidEdit: ((Bool) -> (Void))?
     var travelPlansDidFetch: (([TravelPlan]) -> (Void))?
-    
+    var didFetchUserData: ((User) -> (Void))?
     
     init() {
         apiManager = APIManager(with: networkService)
@@ -46,11 +47,11 @@ class MainViewModel {
     }
     
     //Fetch restrictions
-    func fetchRestrictions(flightInfo: Flight, nationality: String?, vaccine: String?, transfer: String?, saveButtonEnabled: Bool) {
-        apiManager.fetchRestrictions(flightInfo: flightInfo, nationality: nationality, vaccine: vaccine, transfer: transfer) { [weak self] result in
+    func fetchRestrictions(travelPlan: TravelPlan, nationality: String?, vaccine: String?, saveButtonEnabled: Bool) {
+        apiManager.fetchRestrictions(travelPlan: travelPlan, nationality: nationality, vaccine: vaccine) { [weak self] result in
             if let response = result {
                 if let restrictions = response.restricions {
-                    self?.restrictionsDidFetch?(restrictions, flightInfo, saveButtonEnabled)
+                    self?.restrictionsDidFetch?(restrictions, travelPlan, saveButtonEnabled)
                 }
             }
         }
@@ -76,12 +77,22 @@ class MainViewModel {
     }
     
     //Edit travel plan
-    func editTravelPlan(token: String, flightInfo: Flight, flightID: String) {
-        apiManager.editTravelPlan(token: token, flightInfo: flightInfo, flightID: flightID) { [weak self] result in
+    func editTravelPlan(token: String, travelPlan: TravelPlan) {
+        apiManager.editTravelPlan(token: token, travelPlan: travelPlan) { [weak self] result in
             if let response = result {
                 self?.travelPlanDidEdit?(response.success)
             }
         }
     }
+    
+    //Fetch user data
+    func fetchUser(token: String) {
+        apiManager.fetchSelf(token: token) { [weak self] result in
+            if let response = result{
+                self?.didFetchUserData?(response.user)
+            }
+        }
+    }
+    
 }
 

@@ -11,53 +11,61 @@ class HomeTVBottomCell: UITableViewCell {
     
     var curvePath: UIBezierPath?
     var restrictionsDidGetPressed: ((TravelPlan?) -> (Void))?
-    var editPressed: ((TripPlan) -> (Void))?
+    var editPressed: ((TravelPlan) -> (Void))?
     var deletePressed: ((String) -> (Void))?
     
-    var tripPlan: TripPlan? {
+    var travelPlan: TravelPlan? {
         didSet {
             blurView.isHidden = true
-            guard let plan = tripPlan else {return}
+            guard let plan = travelPlan else {return}
             sourceLabel.text = plan.source
             destinationLabel.text = plan.destination
             expandButton.isHidden = true
             restrictionsButton.isHidden = false
-            if let connections = plan.connections {
-                let stopsCount = connections.count
-                if stopsCount == 0 {
-                    connectionCount.text = "No Transfers"
-                    connectionMap.text = "♥ FlySafe ♥"
-                    //expandButton.isHidden = true
-                    restrictionsButton.isHidden = false
-                } else {
-                    connectionCount.text = "\(stopsCount) \(stopsCount == 1 ? "Stop" : "Stops")"
-                    
-                    connections.forEach({
-                        connectionMap.text! += " -> \($0)"
-                    })
-                    connectionMap.text! += " ->   "
-                }
-                if let path = curvePath {
-                    addConnectionDots(stopCount: Double(stopsCount), path: path, view: summaryContainer)
-                }
+            
+            let connections = plan.transfer.split(separator: ",")
+            
+            let stopsCount = connections.count
+            
+            if stopsCount == 0 {
+                connectionCount.text = "No Transfers"
+                connectionMap.text = "♥ FlySafe ♥"
+                restrictionsButton.isHidden = false
+            } else {
+                
+                connectionCount.text = "\(stopsCount) \(stopsCount == 1 ? "Stop" : "Stops")"
+                
+                connections.forEach({
+                    connectionMap.text! += " -> \($0)"
+                })
+                connectionMap.text! += " ->   "
+            }
+            if let path = curvePath {
+                addConnectionDots(stopCount: Double(stopsCount), path: path, view: viewForLines)
             }
             flightDate.text = plan.date
         }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
-       {
-           let touch = touches.first
-           if touch?.view != self.blurView {
-               hideBlurView()
-           }
-       }
+    {
+        let touch = touches.first
+        if touch?.view != self.blurView {
+            hideBlurView()
+        }
+    }
+    
+    let viewForLines: UIView = {
+        let view = UIView()
+        view.backgroundColor = .clear
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
     
     let mainContainer: UIView = {
         let view = UIView()
         view.backgroundColor = .clear
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .clear
         return view
     }()
     
@@ -154,9 +162,7 @@ class HomeTVBottomCell: UITableViewCell {
     }()
     
     @objc func buttonTriger() {
-        let plan = TravelPlan(source: sourceLabel.text!, destination: destinationLabel.text!, date: flightDate.text!, user: nil, id: "No ID")
-        print (plan)
-        restrictionsDidGetPressed?(plan)
+        restrictionsDidGetPressed?(travelPlan)
     }
     
     let flightDate: UILabel = {
@@ -225,8 +231,8 @@ class HomeTVBottomCell: UITableViewCell {
     }()
     
     @objc func editTapped() {
-        if let tripPlan = tripPlan {
-            editPressed?(tripPlan)
+        if let travelPlan = travelPlan {
+            editPressed?(travelPlan)
             hideBlurView()
         }
     }
@@ -254,9 +260,11 @@ class HomeTVBottomCell: UITableViewCell {
     }()
     
     @objc func deleteTapped() {
-        if let tripPlan = tripPlan {
-            deletePressed?(tripPlan.planID)
-            hideBlurView()
+        if let travelPlan = travelPlan {
+            if let id = travelPlan.id {
+                deletePressed?(id)
+                hideBlurView()
+            }
         }
     }
     
@@ -298,12 +306,20 @@ class HomeTVBottomCell: UITableViewCell {
         }
     }
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+    override func prepareForReuse() {
+        sourceLabel.text = ""
+        connectionMap.text = ""
+        destinationLabel.text = ""
+        flightDate.text = ""
+        viewForLines.layer.sublayers?.removeAll()
+    }
+    
+    func allignSubviews() {
         
         //Add subviews
         self.contentView.addSubview(mainContainer)
         mainContainer.addSubview(summaryContainer)
+        summaryContainer.addSubview(viewForLines)
         summaryContainer.addSubview(planeImage)
         summaryContainer.addSubview(sourceLabel)
         summaryContainer.addSubview(destinationLabel)
@@ -330,6 +346,11 @@ class HomeTVBottomCell: UITableViewCell {
         summaryContainer.leadingAnchor.constraint(equalTo:  mainContainer.leadingAnchor, constant: Constants.gap).isActive = true
         summaryContainer.trailingAnchor.constraint(equalTo:  mainContainer.trailingAnchor, constant: -Constants.gap).isActive = true
         summaryContainer.bottomAnchor.constraint(equalTo:  mainContainer.bottomAnchor).isActive = true
+        
+        viewForLines.topAnchor.constraint(equalTo: summaryContainer.topAnchor).isActive = true
+        viewForLines.bottomAnchor.constraint(equalTo: summaryContainer.bottomAnchor).isActive = true
+        viewForLines.leadingAnchor.constraint(equalTo: summaryContainer.leadingAnchor).isActive = true
+        viewForLines.trailingAnchor.constraint(equalTo: summaryContainer.trailingAnchor).isActive = true
         
         blurView.topAnchor.constraint(equalTo: summaryContainer.topAnchor).isActive = true
         blurView.bottomAnchor.constraint(equalTo: summaryContainer.bottomAnchor).isActive = true
@@ -379,7 +400,7 @@ class HomeTVBottomCell: UITableViewCell {
         connectionMap.trailingAnchor.constraint(equalTo: destinationLabel.leadingAnchor, constant: -10).isActive = true
         connectionMap.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
-        drawDottedLine(start: CGPoint(x: 0, y:  130), end: CGPoint(x: UIScreen.main.bounds.width - Constants.gap*2, y: 130), view: summaryContainer)
+        drawDottedLine(start: CGPoint(x: 0, y:  130), end: CGPoint(x: UIScreen.main.bounds.width - Constants.gap*2, y: 130), view: viewForLines)
         
         expandButton.centerXAnchor.constraint(equalTo: summaryContainer.centerXAnchor).isActive = true
         expandButton.heightAnchor.constraint(equalToConstant: 15).isActive = true
@@ -397,7 +418,15 @@ class HomeTVBottomCell: UITableViewCell {
         flightDate.heightAnchor.constraint(equalToConstant: 20).isActive = true
         flightDate.trailingAnchor.constraint(equalTo: restrictionsButton.leadingAnchor, constant: -10).isActive = true
         
-        drawDottedCurve(start: CGPoint(x: UIScreen.main.bounds.minX + 30, y: 80), middle: CGPoint(x: UIScreen.main.bounds.midX - 30, y: 5), end: CGPoint(x: UIScreen.main.bounds.maxX - (Constants.gap*2) - 30, y: 80), view: summaryContainer)
+        drawDottedCurve(start: CGPoint(x: UIScreen.main.bounds.minX + 30, y: 80), middle: CGPoint(x: UIScreen.main.bounds.midX - 30, y: 5), end: CGPoint(x: UIScreen.main.bounds.maxX - (Constants.gap*2) - 30, y: 80), view: viewForLines)
+        
+    }
+    
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -11,28 +11,17 @@ class RestrictionDetailsViewController: BaseViewController {
 
     var restrictionDetailsView = RestrictionDetailsView()
     var isSaveButtonEnabled: Bool?
-    var flightInfo: Flight?
+    var travelPlan: TravelPlan?
     var userToken: String?
     let viewmodel = RestrictionDetailsViewModel()
-
-    var restrictions: [String : Restrictions]? {
-        didSet {
-            if let restrictions = restrictions {
-                print (restrictions.count)
-                let mapped = restrictions.compactMap({ value in
-                    value
-                })
-                print (mapped)
-            }
-        }
-    }
+    var restrictions: [String : Restrictions]?
     
     override func loadView() {
         view = restrictionDetailsView
         restrictionDetailsView.isSaveButtonEnabled = isSaveButtonEnabled
-        
+        restrictionDetailsView.restrictions = restrictions
         restrictionDetailsView.savePlanButton.addTarget(self, action: #selector(buttonTriger), for: .touchUpInside)
-        
+        viewmodel.fetchAirports()
         
         viewmodel.travelPlanDidAdd = { [weak self] success in
             DispatchQueue.main.async {
@@ -49,17 +38,24 @@ class RestrictionDetailsViewController: BaseViewController {
                 }
             }
         }
+        
+        viewmodel.airportsDidFetch = { [weak self] result in
+            var airports = [String]()
+            result.forEach { airport in
+                airports.append("\(airport.code), \(airport.city), \(airport.country)")
+            }
+            self?.restrictionDetailsView.airportsList = airports
+        }
     }
     
     @objc func buttonTriger() {
-        if let flightInfo = flightInfo, let userToken = userToken {
+        if let flightInfo = travelPlan, let userToken = userToken {
             viewmodel.addTravelPlan(token: userToken, flightInfo: flightInfo)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         self.navigationController?.isNavigationBarHidden = true
         restrictionDetailsView.backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
     }
