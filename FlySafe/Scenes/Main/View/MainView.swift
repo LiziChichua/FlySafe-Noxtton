@@ -24,6 +24,19 @@ class MainView: UIView {
         return button
     }()
     
+    //Temperature Label
+    var temperatureLabel: UILabel = {
+        let label = UILabel()
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 24, weight: .semibold)
+        label.textColor = .systemBlue
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.text = ""
+        return label
+    }()
+    
     
     //Greeting label
     let greetingLabel: UILabel = {
@@ -62,6 +75,7 @@ override init(frame: CGRect) {
     
     //Add subviews
     self.addSubview(menuButton)
+    self.addSubview(temperatureLabel)
     self.addSubview(greetingLabel)
     self.addSubview(homeTableView)
     
@@ -70,6 +84,11 @@ override init(frame: CGRect) {
     menuButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
     menuButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
     menuButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    
+    temperatureLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
+    temperatureLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
+    temperatureLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
+    temperatureLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
     
     greetingLabel.topAnchor.constraint(equalTo: menuButton.bottomAnchor, constant: 5).isActive = true
     greetingLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.gap).isActive = true

@@ -172,6 +172,13 @@ class MainViewController: BaseViewController {
                 self?.gotoRestrictionsVC?(dict, flightInfo, saveButtonEnabled)
             }
         }
+        
+        //lat,lon - Tbilisi(41.73 - 44.79)
+        //          London(51.52 - -0.11)
+        viewmodel.fetchWeather(lat: 41.73, lon: 44.79)
+        viewModel.didFetchWeather = { [weak self] weather in
+            self?.mainView.temperatureLabel.text = "\(weather.currentInfo?.celsius ?? 0)°C"
+        }
     }
     
     
