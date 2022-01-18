@@ -57,6 +57,8 @@
 		0DD2CA20277041130044CB1B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2CA1E277041130044CB1B /* NetworkService.swift */; };
 		0DE00C8E278830A600BF9627 /* FoldingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE00C8D278830A600BF9627 /* FoldingCell.swift */; };
 		0DE79046278F73A3009C9731 /* RestrictionDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE79045278F73A3009C9731 /* RestrictionDetailsViewModel.swift */; };
+		0DFDE56E27971D8000081F0C /* AirportPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFDE56D27971D8000081F0C /* AirportPickerCell.swift */; };
+		0DFDE575279750CF00081F0C /* FlightTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFDE574279750CF00081F0C /* FlightTypes.swift */; };
 		D349EFF92785F5B60049DEE6 /* DashedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349EFF82785F5B60049DEE6 /* DashedLineView.swift */; };
 		D349F0002785F6660049DEE6 /* RestrictionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349EFFF2785F6660049DEE6 /* RestrictionDetailsViewController.swift */; };
 		D349F0032785F68F0049DEE6 /* RestrictionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349F0022785F68F0049DEE6 /* RestrictionDetailsView.swift */; };
@@ -147,6 +149,8 @@
 		0DE00C8D278830A600BF9627 /* FoldingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldingCell.swift; sourceTree = "<group>"; };
 		0DE79045278F73A3009C9731 /* RestrictionDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsViewModel.swift; sourceTree = "<group>"; };
 		0DF1EF9D2792951000DCAC99 /* FlySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlySafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DFDE56D27971D8000081F0C /* AirportPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportPickerCell.swift; sourceTree = "<group>"; };
+		0DFDE574279750CF00081F0C /* FlightTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightTypes.swift; sourceTree = "<group>"; };
 		D349EFF82785F5B60049DEE6 /* DashedLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLineView.swift; sourceTree = "<group>"; };
 		D349EFFF2785F6660049DEE6 /* RestrictionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsViewController.swift; sourceTree = "<group>"; };
 		D349F0022785F68F0049DEE6 /* RestrictionDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsView.swift; sourceTree = "<group>"; };
@@ -204,6 +208,7 @@
 				0D1AD7B02781CA510063DE71 /* HomeTVBottomCell.swift */,
 				0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */,
 				0D5394712789F1EA00B94B8A /* SummaryListTitleCell.swift */,
+				0DFDE56D27971D8000081F0C /* AirportPickerCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 				0D2C10DC2770B52000B0AC93 /* FetchAirportsRequest.swift */,
 				0D2C10DE2770B5D600B0AC93 /* FetchVaccinesRequest.swift */,
 				0D2C10E22770B73E00B0AC93 /* FetchRestrictionsRequest.swift */,
+				0DFDE574279750CF00081F0C /* FlightTypes.swift */,
 			);
 			path = RequestStructs;
 			sourceTree = "<group>";
@@ -834,6 +840,7 @@
 				0D2C10CD277096A000B0AC93 /* Loopable.swift in Sources */,
 				0D5D63F6278A039200673350 /* MenuState.swift in Sources */,
 				D390F610276F33F00042FF90 /* UITableView+Extension.swift in Sources */,
+				0DFDE575279750CF00081F0C /* FlightTypes.swift in Sources */,
 				D349F0002785F6660049DEE6 /* RestrictionDetailsViewController.swift in Sources */,
 				D390F60C276F33F00042FF90 /* UIView+Extension.swift in Sources */,
 				0D2C10E12770B6AA00B0AC93 /* FetchNationalitiesRequest.swift in Sources */,
@@ -861,6 +868,7 @@
 				0DE79046278F73A3009C9731 /* RestrictionDetailsViewModel.swift in Sources */,
 				0D5D63F7278A039200673350 /* MenuOptionsForNewUser.swift in Sources */,
 				D3D0A08027943C3E00639F72 /* Day.swift in Sources */,
+				0DFDE56E27971D8000081F0C /* AirportPickerCell.swift in Sources */,
 				0D2C10D52770A61C00B0AC93 /* AddTravelPlanRequest.swift in Sources */,
 				0D5B34EE27705F8E00148518 /* APIManager.swift in Sources */,
 				0D5D6402278A065200673350 /* FrameView.swift in Sources */,

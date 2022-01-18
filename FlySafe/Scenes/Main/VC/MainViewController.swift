@@ -26,6 +26,7 @@ class MainViewController: BaseViewController {
     var userTravelPlans: [TravelPlan]?
     var source: String?
     var destination: String?
+    var userSelectedTransferArray = [String]()
     var transfer: String?
     var date: String?
     var airportsList: [String]?
@@ -59,7 +60,7 @@ class MainViewController: BaseViewController {
             //If triggered from not saved travelPlan
             guard let source = self.source else {return}
             guard let destination = self.destination else {return}
-            let transferList: String = self.transfer ?? ""
+            let transferList: String = self.userSelectedTransferArray.joined(separator: ",")
             guard let date = self.date else {return}
             print (transferList)
             if let userData = userData {
@@ -304,9 +305,10 @@ extension MainViewController: FlightInfoFieldsDelegate {
     
     func didSelectTransfer(transfer: String) {
         let transferArray = transfer.components(separatedBy: ",")
-        let transferID = transferArray.first
-        self.transfer = transferID
+        if let transferID = transferArray.first {
+            self.userSelectedTransferArray.append(transferID)
+            self.transfer = transferID
+        }
     }
-    
 }
 
