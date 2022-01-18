@@ -7,10 +7,10 @@
 
 import Foundation
 
-
-class MainViewModel {
+class MainViewModel: NSObject {
     
     private let networkService = DefaultNetworkService()
+    private var weatherManager: WeatherManagerProtocol
     private let apiManager: APIManager
     var userToken: String? {
         didSet {
@@ -26,13 +26,15 @@ class MainViewModel {
     var travelPlanDidEdit: ((Bool) -> (Void))?
     var travelPlansDidFetch: (([TravelPlan]) -> (Void))?
     var didFetchUserData: ((User) -> (Void))?
+    var didFetchWeather: ((Weather)->())?
     
-    init() {
+    override init() {
         apiManager = APIManager(with: networkService)
+        weatherManager = WeatherManager()
         apiManager.onError = { error in
             print (error)
         }
-        
+        super.init()
         fetchAirports()
         
     }
@@ -90,6 +92,21 @@ class MainViewModel {
         apiManager.fetchSelf(token: token) { [weak self] result in
             if let response = result{
                 self?.didFetchUserData?(response.user)
+            }
+        }
+    }
+    
+    //Fetch weather info
+    func fetchWeather(lat: Double, lon: Double) {
+        weatherManager.fetchWeather(lat: lat, lon: lon) { [weak self] result in
+            switch result {
+            case .success(let weather):
+                guard let self = self else { return }
+                DispatchQueue.main.async {
+                    self.didFetchWeather?(weather)
+                }
+            case .failure(let err):
+                print(err)
             }
         }
     }
