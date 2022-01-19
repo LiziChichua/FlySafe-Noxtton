@@ -9,10 +9,10 @@ import Foundation
 
 
 struct TravelPlan: Codable, Loopable {
-    let source, destination, date : String
-    let transfer: String
-    let user: String?
-    let id: String?
+    var source, destination, date : String
+    var transfer: String
+    var user: String?
+    var id: String?
 
     enum CodingKeys: String, CodingKey {
         case source, destination, date, user, transfer

@@ -9,7 +9,7 @@ import UIKit
 
 class AirportPickerCell: UITableViewCell {
     
-    var didSelectAirport: ((String) -> (Void))?
+    var didSelectAirport: ((FlightTypes, String) -> (Void))?
     
     var airportsList: [String]? {
         didSet {
@@ -18,6 +18,8 @@ class AirportPickerCell: UITableViewCell {
             }
         }
     }
+    
+    var flightType: FlightTypes?
     
     
     //Plane icon
@@ -32,8 +34,8 @@ class AirportPickerCell: UITableViewCell {
     //Source flight selector
     let airportPicker: DropDown = {
         let dropDown = DropDown()
+        dropDown.checkMarkEnabled = false
         dropDown.translatesAutoresizingMaskIntoConstraints = false
-        dropDown.placeholder = ""
         dropDown.optionArray = ["No Data"]
         return dropDown
     }()
@@ -48,8 +50,8 @@ class AirportPickerCell: UITableViewCell {
     
     
     func makeCell(with flightInfo: (FlightTypes, String)) {
-        
         planeImage.image = UIImage(named: flightInfo.0.rawValue)
+        flightType = flightInfo.0
         airportPicker.text = flightInfo.1
         switch flightInfo.0 {
             case .source:
@@ -88,7 +90,10 @@ class AirportPickerCell: UITableViewCell {
         dividerLine.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         
         airportPicker.didSelect { [weak self] selectedText, index, id in
-            self?.didSelectAirport?(selectedText)
+            if let flightType = self?.flightType {
+                print (flightType, selectedText)
+                self?.didSelectAirport?(flightType, selectedText)
+            }
         }
     }
     

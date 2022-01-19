@@ -20,15 +20,11 @@ class MainViewController: BaseViewController {
     
     var userToken: String? {
         didSet {
-         //   print (userToken)
+            //   print (userToken)
         }
     }
     var userTravelPlans: [TravelPlan]?
-    var source: String?
-    var destination: String?
-    var userSelectedTransferArray = [String]()
-    var transfer: String?
-    var date: String?
+    var travelPlan: TravelPlan?
     var airportsList: [String]?
     var userData: User? {
         didSet {
@@ -51,23 +47,24 @@ class MainViewController: BaseViewController {
         //If triggered from saved travelPlans
         if let travelPlan = travelPlan {
             if let userData = userData {
-                print (travelPlan)
+                //                print (travelPlan)
                 viewModel.fetchRestrictions(travelPlan: travelPlan, nationality: userData.data.nationality, vaccine: userData.data.vaccine, saveButtonEnabled: saveButtonEnabled)
             } else {
                 viewModel.fetchRestrictions(travelPlan: travelPlan, nationality: nil, vaccine: nil, saveButtonEnabled: saveButtonEnabled)
             }
         } else {
             //If triggered from not saved travelPlan
-            guard let source = self.source else {return}
-            guard let destination = self.destination else {return}
-            let transferList: String = self.userSelectedTransferArray.joined(separator: ",")
-            guard let date = self.date else {return}
-            print (transferList)
-            if let userData = userData {
-                viewModel.fetchRestrictions(travelPlan: TravelPlan(source: source, destination: destination, date: date, transfer: transferList, user: nil, id: nil), nationality: userData.data.nationality, vaccine: userData.data.vaccine, saveButtonEnabled: saveButtonEnabled)
-            } else {
-                viewModel.fetchRestrictions(travelPlan: TravelPlan(source: source, destination: destination, date: date, transfer: transferList, user: nil, id: nil), nationality: nil, vaccine: nil, saveButtonEnabled: saveButtonEnabled)
+            if let travelPlan = self.travelPlan {
+                
+                if let userData = userData {
+                    viewModel.fetchRestrictions(travelPlan: travelPlan, nationality: userData.data.nationality, vaccine: userData.data.vaccine, saveButtonEnabled: saveButtonEnabled)
+                } else {
+                    viewModel.fetchRestrictions(travelPlan: travelPlan, nationality: nil, vaccine: nil, saveButtonEnabled: saveButtonEnabled)
+                }
+                
             }
+            
+            
         }
     }
     
@@ -167,8 +164,8 @@ class MainViewController: BaseViewController {
         
         
         viewmodel.restrictionsDidFetch = { [weak self] dict, flightInfo, saveButtonEnabled in
-            if let source = self?.source, let transfer = self?.transfer , let destination = self?.destination, let date = self?.date {
-                self?.gotoRestrictionsVC?(dict, TravelPlan(source: source, destination: destination, date: date, transfer: transfer, user: nil, id: nil), saveButtonEnabled)
+            if let travelPlan = self?.travelPlan {
+                self?.gotoRestrictionsVC?(dict, travelPlan, saveButtonEnabled)
             } else if let flightInfo = flightInfo {
                 self?.gotoRestrictionsVC?(dict, flightInfo, saveButtonEnabled)
             }
@@ -285,30 +282,48 @@ extension MainViewController: UITableViewDataSource {
 
 //Update local values whenever user changes them
 extension MainViewController: FlightInfoFieldsDelegate {
-    func didSelectFlightDate(date: Date) {
+    
+    func didMakeSelection(flightStructure: [(FlightTypes, String)], date: Date) {
+        var source: String?
+        var transfer: String?
+        var destination: String?
+        var dateString: String?
+        
+        if flightStructure[0].1 != "" {
+            let sourceArray = flightStructure[0].1.components(separatedBy: ",")
+            if let sourceID = sourceArray.first{
+                source = sourceID
+            }
+        }
+        
+        if flightStructure[flightStructure.count-1].1 != "" {
+            let destinationArray = flightStructure[flightStructure.count-1].1.components(separatedBy: ",")
+            if let destinationID = destinationArray.first {
+                destination = destinationID
+            }
+        }
+        
+        var tempTransferList = [String]()
+        
+        flightStructure.filter { $0.0 == .transfer }.forEach ({
+            let transferArray = $0.1.components(separatedBy: ",")
+            if let transferID = transferArray.first {
+                tempTransferList.append(transferID)
+            }
+        })
+        
+        transfer = tempTransferList.joined(separator: ",")
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
-        self.date = formatter.string(from: date)
-    }
-    
-    func didSelectSource(source: String) {
-        let sourceArray = source.components(separatedBy: ",")
-        let sourceID = sourceArray.first
-        self.source = sourceID
-    }
-    
-    func didSelectDestination(destination: String) {
-        let destinationArray = destination.components(separatedBy: ",")
-        let destinationID = destinationArray.first
-        self.destination = destinationID
-    }
-    
-    func didSelectTransfer(transfer: String) {
-        let transferArray = transfer.components(separatedBy: ",")
-        if let transferID = transferArray.first {
-            self.userSelectedTransferArray.append(transferID)
-            self.transfer = transferID
+        dateString = formatter.string(from: date)
+        
+        if let source = source, let destination = destination, let transfer = transfer, let date = dateString {
+            self.travelPlan = TravelPlan(source: source, destination: destination, date: date, transfer: transfer, user: nil, id: nil)
+            print (self.travelPlan)
         }
+        
     }
+    
 }
 

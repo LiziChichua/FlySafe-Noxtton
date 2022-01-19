@@ -116,6 +116,7 @@ class HomeTVTopCell: UITableViewCell {
         picker.timeZone = NSTimeZone.local
         picker.contentHorizontalAlignment = .center
         picker.datePickerMode = .date
+        picker.date = .now
         picker.frame.size.width = 150
         picker.preferredDatePickerStyle = .compact
         picker.addTarget(self, action: #selector(datePicked), for: .valueChanged)
@@ -123,7 +124,7 @@ class HomeTVTopCell: UITableViewCell {
     }()
     
     @objc func datePicked() {
-        delegate?.didSelectFlightDate(date: datePicker.date)
+        delegate?.didMakeSelection(flightStructure: selectorStructure, date: datePicker.date)
     }
     
     
@@ -178,17 +179,18 @@ class HomeTVTopCell: UITableViewCell {
 
 
 protocol FlightInfoFieldsDelegate {
-    func didSelectSource(source: String)
-    func didSelectDestination(destination: String)
-    func didSelectTransfer(transfer: String)
-    func didSelectFlightDate(date: Date)
+    func didMakeSelection(flightStructure: [(FlightTypes, String)], date: Date)
 }
 
+
 extension HomeTVTopCell: UITableViewDelegate, UITableViewDataSource {
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return selectorStructure.count
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
@@ -196,36 +198,30 @@ extension HomeTVTopCell: UITableViewDelegate, UITableViewDataSource {
         
         cell.airportsList = airportsList
         cell.makeCell(with: selectorStructure[indexPath.row])
-        
-        switch selectorStructure[indexPath.row].0 {
+        cell.didSelectAirport = { [weak self] (flightType, airport) in
             
-        case .source:
-            cell.didSelectAirport = { [weak self] airport in
-                self?.delegate?.didSelectSource(source: airport)
-                self?.selectorStructure[indexPath.row].1 = airport
-                self?.datePicked()
-            }
-            
-        case .destination:
-            cell.didSelectAirport = { [weak self] airport in
-                self?.delegate?.didSelectDestination(destination: airport)
-                if let count = self?.selectorStructure.count {
-                    self?.selectorStructure[count-1].1 = airport
-                }
-            }
-            
-        case .transfer:
-            cell.didSelectAirport = { [weak self] airport in
-                self?.delegate?.didSelectTransfer(transfer: airport)
-                if self?.selectorStructure[indexPath.row].1 == "" {
-                    self?.selectorStructure.insert((.transfer, airport), at: indexPath.row)
-                } else {
-                    
-                }
+            switch flightType {
                 
-                tableView.performBatchUpdates({
-                    tableView.insertRows(at: [IndexPath(row: indexPath.row+1, section: indexPath.section)], with: .automatic)
-                }, completion: nil)
+            case .source:
+                self?.selectorStructure[0].1 = airport
+            case .destination:
+                guard let count = self?.selectorStructure.count else {return}
+                self?.selectorStructure[count - 1].1 = airport
+            case .transfer:
+                if self?.selectorStructure[indexPath.row].1 != "" {
+                    self?.selectorStructure[indexPath.row].1 = airport
+                } else {
+                    self?.selectorStructure.insert((flightType, airport), at: indexPath.row)
+                    tableView.performBatchUpdates({
+                        tableView.insertRows(at: [IndexPath(row: indexPath.row+1, section: indexPath.section)], with: .automatic)
+                    }, completion: nil)
+                }
+            }
+            if let date = self?.datePicker.date {
+                if let selectorStructure = self?.selectorStructure {
+                    print (selectorStructure)
+                    self?.delegate?.didMakeSelection(flightStructure: selectorStructure, date: date)
+                }
             }
         }
         return cell
