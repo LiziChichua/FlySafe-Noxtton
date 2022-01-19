@@ -73,6 +73,7 @@ class AuthenticationView: UIView {
     let nameField: UITextField = {
         let textField = UITextField()
         textField.sizeToFit()
+        textField.autocorrectionType = .no
         textField.placeholder = "Name"
         textField.font = .systemFont(ofSize: 15)
         textField.textColor = .black
@@ -83,6 +84,7 @@ class AuthenticationView: UIView {
     let surnameField: UITextField = {
         let textField = UITextField()
         textField.sizeToFit()
+        textField.autocorrectionType = .no
         textField.placeholder = "Surname(s)"
         textField.font = .systemFont(ofSize: 15)
         textField.textColor = .black
@@ -111,6 +113,8 @@ class AuthenticationView: UIView {
     let emailField: UITextField = {
         let textField = UITextField()
         textField.sizeToFit()
+        textField.keyboardType = .emailAddress
+        textField.autocorrectionType = .no
         textField.placeholder = "Email address"
         textField.font = .systemFont(ofSize: 15)
         textField.textColor = .black
@@ -121,6 +125,7 @@ class AuthenticationView: UIView {
     let passwordField: UITextField = {
         let textField = UITextField()
         textField.sizeToFit()
+        textField.autocorrectionType = .no
         textField.placeholder = "Password (more than 6 characters)"
         textField.font = .systemFont(ofSize: 15)
         textField.textColor = .black

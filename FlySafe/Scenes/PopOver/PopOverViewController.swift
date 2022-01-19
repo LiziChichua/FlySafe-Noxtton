@@ -90,10 +90,10 @@ class PopOverViewController: UIViewController {
         tableView.dataSource = self
         
         NSLayoutConstraint.activate([
-            popOverView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 180),
+            popOverView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 150),
             popOverView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 30),
             popOverView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30),
-            popOverView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -260),
+            popOverView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -240),
             
             tableView.topAnchor.constraint(equalTo: popOverView.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: popOverView.leadingAnchor),

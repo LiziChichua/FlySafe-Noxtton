@@ -16,22 +16,30 @@ class HomeTVTopCell: UITableViewCell {
     var flightPlan: TravelPlan? {
         didSet {
             if let flightPlan = flightPlan {
-
-                //
-                //                //Full strings of selected airports
-                //                sourceAirport.text = airportsList?.filter({
-                //                    $0.contains("\(flightPlan.source)")
-                //                }).first
-                //
-                //                if flightPlan.transfer.split(separator: ",").count == 1 {
-                //                    transferAirport.text = airportsList?.filter({
-                //                        $0.contains("\(flightPlan.transfer)")
-                //                    }).first
-                //                }
-                //
-                //                destinationAirport.text = airportsList?.filter({
-                //                    $0.contains("\(flightPlan.destination)")
-                //                }).first
+                
+                //Full strings of selected airports
+                if let source = airportsList?.filter({
+                    $0.contains("\(flightPlan.source)")
+                }).first {
+                    selectorStructure[0].1 = source
+                }
+                
+                let splitTransfers = flightPlan.transfer.split(separator: ",")
+                if splitTransfers.count > 0 {
+                    selectorStructure.remove(at: 1)
+                    splitTransfers.reversed().forEach({ airportName in
+                        if let airport = airportsList?.filter({
+                            $0.contains("\(airportName)")
+                        }).first {
+                            selectorStructure.insert((.transfer, airport), at: 1)
+                        }
+                    })
+                }
+                if let destination = airportsList?.filter({
+                    $0.contains("\(flightPlan.destination)")
+                }).first {
+                    selectorStructure[selectorStructure.count-1].1 = destination
+                }
                 
                 let parseStrategy =
                 Date.ParseStrategy(
@@ -43,6 +51,7 @@ class HomeTVTopCell: UITableViewCell {
                     datePicker.setDate(date, animated: true)
                 }
             }
+            airportPickersTableView.reloadData()
         }
     }
     
@@ -156,7 +165,7 @@ class HomeTVTopCell: UITableViewCell {
         datePicker.leadingAnchor.constraint(equalTo: imgDatePicker.trailingAnchor, constant: 16).isActive = true
         datePicker.trailingAnchor.constraint(equalTo: pickerContainer.trailingAnchor, constant: -16-28).isActive = true
         datePicker.centerYAnchor.constraint(equalTo: imgDatePicker.centerYAnchor).isActive = true
-
+        
     }
     
     
@@ -178,7 +187,7 @@ protocol FlightInfoFieldsDelegate {
 extension HomeTVTopCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        selectorStructure.count
+        return selectorStructure.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -186,10 +195,9 @@ extension HomeTVTopCell: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AirportPickerCell", for: indexPath) as! AirportPickerCell
         
         cell.airportsList = airportsList
-        cell.airportPicker.text = selectorStructure[indexPath.row].1
-        cell.flightType = selectorStructure[indexPath.row].0
+        cell.makeCell(with: selectorStructure[indexPath.row])
         
-        switch selectorStructure[indexPath.row].0{
+        switch selectorStructure[indexPath.row].0 {
             
         case .source:
             cell.didSelectAirport = { [weak self] airport in
@@ -197,18 +205,24 @@ extension HomeTVTopCell: UITableViewDelegate, UITableViewDataSource {
                 self?.selectorStructure[indexPath.row].1 = airport
                 self?.datePicked()
             }
+            
         case .destination:
             cell.didSelectAirport = { [weak self] airport in
                 self?.delegate?.didSelectDestination(destination: airport)
                 if let count = self?.selectorStructure.count {
                     self?.selectorStructure[count-1].1 = airport
                 }
-                
             }
+            
         case .transfer:
             cell.didSelectAirport = { [weak self] airport in
                 self?.delegate?.didSelectTransfer(transfer: airport)
-                self?.selectorStructure.insert((.transfer, airport), at: indexPath.row)
+                if self?.selectorStructure[indexPath.row].1 == "" {
+                    self?.selectorStructure.insert((.transfer, airport), at: indexPath.row)
+                } else {
+                    
+                }
+                
                 tableView.performBatchUpdates({
                     tableView.insertRows(at: [IndexPath(row: indexPath.row+1, section: indexPath.section)], with: .automatic)
                 }, completion: nil)

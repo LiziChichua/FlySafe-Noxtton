@@ -9,14 +9,6 @@ import UIKit
 
 class AirportPickerCell: UITableViewCell {
     
-    var flightType: FlightTypes? {
-        didSet {
-            if airportPicker.text == "" {
-                refreshCell()
-            }
-        }
-    }
-    
     var didSelectAirport: ((String) -> (Void))?
     
     var airportsList: [String]? {
@@ -55,20 +47,18 @@ class AirportPickerCell: UITableViewCell {
     }()
     
     
-    func refreshCell() {
-        if let flightType = flightType {
-            switch flightType {
+    func makeCell(with flightInfo: (FlightTypes, String)) {
+        
+        planeImage.image = UIImage(named: flightInfo.0.rawValue)
+        airportPicker.text = flightInfo.1
+        switch flightInfo.0 {
             case .source:
-                planeImage.image = UIImage(named: flightType.rawValue)
                 airportPicker.placeholder = "Departure Airport"
             case .destination:
-                planeImage.image = UIImage(named: flightType.rawValue)
                 airportPicker.placeholder = "Destination Airport"
             case .transfer:
-                planeImage.image = UIImage(named: flightType.rawValue)
                 airportPicker.placeholder = "Transfer Airport (optional)"
             }
-        }
     }
     
     
