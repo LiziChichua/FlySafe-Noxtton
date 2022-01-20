@@ -151,16 +151,15 @@ class AuthenticationView: UIView {
         return button
     }()
     
-    let loginButton: UIButton = {
-        let button = UIButton()
+    let loginButton: TransitionButton = {
+        let button = TransitionButton()
+        button.backgroundColor = UIColor(hex: "10A5F9")
+        button.cornerRadius = 54/2
+        button.spinnerColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Create User", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
         button.titleLabel?.textColor = .white
-        button.contentHorizontalAlignment = .center
-        button.contentVerticalAlignment = .center
-        button.backgroundColor = UIColor(hex: "10A5F9")
-        button.layer.cornerRadius = 54/2
         button.isUserInteractionEnabled = true
         button.isEnabled = true
         return button

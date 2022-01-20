@@ -13,7 +13,7 @@ enum MenuOptionsForNewUser: String, CaseIterable {
 }
 
 enum MenuOptionsForRegisteredUser: String, CaseIterable {
-    case UserFullName = "User FullName"
-    case ChangePassword = "Change Password"
+   // case UserFullName = "User FullName"
+   // case ChangePassword = "Change Password"
     case LogOut = "Log Out"
 }

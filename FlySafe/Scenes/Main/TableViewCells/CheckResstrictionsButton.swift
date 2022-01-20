@@ -12,23 +12,24 @@ class CheckResstrictionsButton: UITableViewCell {
     var restrictionsDidGetPressed: ((TravelPlan?) -> (Void))?
     
     //Create CheckRestrictions button
-    let checkRestrictions: UIButton = {
-        let button = UIButton()
+    let checkRestrictions: TransitionButton = {
+        let button = TransitionButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Check Restrictions", for: .normal)
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .semibold)
         button.titleLabel?.textColor = .white
-        button.contentHorizontalAlignment = .center
-        button.contentVerticalAlignment = .center
         button.backgroundColor = UIColor(hex: "10A5F9")
-        button.layer.cornerRadius = 54/2
+        button.cornerRadius = 54/2
+        button.spinnerColor = .white
         button.addTarget(self, action: #selector(buttonTriger), for: .touchUpInside)
         button.isUserInteractionEnabled = true
         button.isEnabled = true
         return button
     }()
+
     
     @objc func buttonTriger() {
+        checkRestrictions.startAnimation()
         restrictionsDidGetPressed?(nil)
     }
 

@@ -14,6 +14,7 @@ class AuthenticationViewModel {
     private let apiManager: APIManager
     
     var userDidAuthenticate: ((User, String) -> (Void))?
+    var couldNotAuthenticate: (() -> (Void))?
     var vaccinesDidFetch: (([String]) -> (Void))?
     var didfetchNationalities: (([String]) -> (Void))?
     
@@ -33,6 +34,8 @@ class AuthenticationViewModel {
                     if let user = response.user, let token = response.token {
                         self?.saveUserTokenToUserDefaults(token: token)
                         self?.userDidAuthenticate?(user, token)
+                    } else {
+                        self?.couldNotAuthenticate?()
                     }
                 }
             }
@@ -42,6 +45,8 @@ class AuthenticationViewModel {
                     if let user = response.user, let token = response.token {
                         self?.saveUserTokenToUserDefaults(token: token)
                         self?.userDidAuthenticate?(user, token)
+                    } else {
+                        self?.couldNotAuthenticate?()
                     }
                 }
             }

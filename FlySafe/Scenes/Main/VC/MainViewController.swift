@@ -55,16 +55,14 @@ class MainViewController: BaseViewController {
         } else {
             //If triggered from not saved travelPlan
             if let travelPlan = self.travelPlan {
-                
                 if let userData = userData {
                     viewModel.fetchRestrictions(travelPlan: travelPlan, nationality: userData.data.nationality, vaccine: userData.data.vaccine, saveButtonEnabled: saveButtonEnabled)
                 } else {
                     viewModel.fetchRestrictions(travelPlan: travelPlan, nationality: nil, vaccine: nil, saveButtonEnabled: saveButtonEnabled)
                 }
-                
+            } else {
+                (mainView.homeTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! CheckResstrictionsButton).checkRestrictions.stopAnimation(animationStyle: .shake, revertAfterDelay: 0.5, completion: nil)
             }
-            
-            
         }
     }
     
@@ -165,7 +163,10 @@ class MainViewController: BaseViewController {
         
         viewmodel.restrictionsDidFetch = { [weak self] dict, flightInfo, saveButtonEnabled in
             if let travelPlan = self?.travelPlan {
-                self?.gotoRestrictionsVC?(dict, travelPlan, saveButtonEnabled)
+                DispatchQueue.main.async {
+                    (self?.mainView.homeTableView.cellForRow(at: IndexPath(row: 1, section: 0)) as! CheckResstrictionsButton).checkRestrictions.stopAnimation(animationStyle: .normal, revertAfterDelay: 0.5)
+                    self?.gotoRestrictionsVC?(dict, travelPlan, saveButtonEnabled)
+                }
             } else if let flightInfo = flightInfo {
                 self?.gotoRestrictionsVC?(dict, flightInfo, saveButtonEnabled)
             }
@@ -320,7 +321,6 @@ extension MainViewController: FlightInfoFieldsDelegate {
         
         if let source = source, let destination = destination, let transfer = transfer, let date = dateString {
             self.travelPlan = TravelPlan(source: source, destination: destination, date: date, transfer: transfer, user: nil, id: nil)
-            print (self.travelPlan)
         }
         
     }

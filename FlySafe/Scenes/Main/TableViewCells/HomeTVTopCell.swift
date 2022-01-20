@@ -117,6 +117,7 @@ class HomeTVTopCell: UITableViewCell {
         picker.contentHorizontalAlignment = .center
         picker.datePickerMode = .date
         picker.date = .now
+        
         picker.frame.size.width = 150
         picker.preferredDatePickerStyle = .compact
         picker.addTarget(self, action: #selector(datePicked), for: .valueChanged)

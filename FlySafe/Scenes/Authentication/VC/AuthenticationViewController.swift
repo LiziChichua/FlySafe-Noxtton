@@ -38,7 +38,14 @@ class AuthenticationViewController: BaseViewController {
     func initialiseVMClosures() {
         
         viewModel.userDidAuthenticate = { [weak self] user, token in
+            self?.authenticationView.loginButton.stopAnimation(animationStyle: .expand, completion: {
                 self?.userDidAuthenticate?(user, token)
+            })
+            
+        }
+        
+        viewModel.couldNotAuthenticate = { [weak self] in
+            self?.authenticationView.loginButton.stopAnimation(animationStyle: .shake, revertAfterDelay: 0.4, completion: nil)
         }
         
         viewModel.vaccinesDidFetch = { [weak self] vaccines in
@@ -86,6 +93,7 @@ class AuthenticationViewController: BaseViewController {
     }
     
     @objc func authenticationButtonPressed() {
+        authenticationView.loginButton.startAnimation()
         if let isNewUser = isNewUser {
             if isNewUser {
                 guard let name = authenticationView.nameField.text else { return }
@@ -96,17 +104,16 @@ class AuthenticationViewController: BaseViewController {
                 guard let password = authenticationView.passwordField.text else { return }
                 
                 if name.isEmpty || surname.isEmpty || nationality.isEmpty || vaccine.isEmpty || !isValidEmailAddress(emailAddressString: email) || password.isEmpty || password.count < 6 {
-                    incompleteFormAlert()
+                    authenticationView.loginButton.stopAnimation(animationStyle: .shake, revertAfterDelay: 0.4, completion: nil)
                 } else {
                     let userData = UserData(name: name, surname: surname, nationality: nationality, vaccine: vaccine)
-                    
                     viewModel.authenticateUser(email: email, password: password, userData: userData)
                 }
             } else {
                 guard let email = authenticationView.emailField.text?.lowercased() else { return }
                 guard let password = authenticationView.passwordField.text else { return }
                 if !isValidEmailAddress(emailAddressString: email) || password.isEmpty || password.count < 6 {
-                    incompleteFormAlert()
+                    authenticationView.loginButton.stopAnimation(animationStyle: .shake, revertAfterDelay: 0.4, completion: nil)
                 } else {
                     viewModel.authenticateUser(email: email, password: password, userData: nil)
                 }
