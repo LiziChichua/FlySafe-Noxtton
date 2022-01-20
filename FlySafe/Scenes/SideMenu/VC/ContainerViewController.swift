@@ -58,7 +58,7 @@ extension ContainerViewController: MainViewControllerDelegate {
         case .closed:
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut) {
 //                self.navVC?.view.frame.origin.x = self.MainVC.view.frame.size.width - 200
-                self.navVC?.view.frame.origin.x = self.MainVC.view.frame.size.width - (Constants.sideMenuCellWidth / 2)
+                self.navVC?.view.frame.origin.x = self.MainVC.view.frame.size.width/2 + Constants.gap
             } completion: { [weak self] done in
                 if done {
                     self?.menuState = .opened

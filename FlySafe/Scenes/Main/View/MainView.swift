@@ -29,10 +29,10 @@ class MainView: UIView {
         let label = UILabel()
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 24, weight: .semibold)
-        label.textColor = .systemBlue
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.textColor = .black
         label.numberOfLines = 1
-        label.textAlignment = .center
+        label.textAlignment = .right
         label.text = ""
         return label
     }()
@@ -80,20 +80,20 @@ override init(frame: CGRect) {
     self.addSubview(homeTableView)
     
     
-    menuButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 60).isActive = true
+    menuButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
     menuButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
     menuButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
     menuButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
     
-    temperatureLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
+    temperatureLabel.topAnchor.constraint(equalTo: menuButton.bottomAnchor).isActive = true
     temperatureLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
     temperatureLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
-    temperatureLabel.heightAnchor.constraint(equalToConstant: 60).isActive = true
+    temperatureLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
     
-    greetingLabel.topAnchor.constraint(equalTo: menuButton.bottomAnchor, constant: 5).isActive = true
+    greetingLabel.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor).isActive = true
     greetingLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.gap).isActive = true
     greetingLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.gap).isActive = true
-    greetingLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+    greetingLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
 
     homeTableView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor).isActive = true
     homeTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true

@@ -510,8 +510,8 @@
 				D390F615276F34310042FF90 /* Models */,
 				0D5CED38276F430E008D29B9 /* Managers */,
 				D390F618276F34510042FF90 /* Resources */,
-				D390F627276F346C0042FF90 /* Scenes */,
 				D390F62F276F34F70042FF90 /* SupportingFiles */,
+				D390F627276F346C0042FF90 /* Scenes */,
 			);
 			path = FlySafe;
 			sourceTree = "<group>";

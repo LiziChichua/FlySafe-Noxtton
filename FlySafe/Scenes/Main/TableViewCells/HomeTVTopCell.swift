@@ -143,7 +143,7 @@ class HomeTVTopCell: UITableViewCell {
         airportPickersTableView.dataSource = self
         airportPickersTableView.register(AirportPickerCell.self, forCellReuseIdentifier: "AirportPickerCell")
         
-        newFlightLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 25).isActive = true
+        newFlightLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 20).isActive = true
         newFlightLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Constants.gap).isActive = true
         newFlightLabel.widthAnchor.constraint(equalToConstant: newFlightLabel.intrinsicContentSize.width+5).isActive = true
         newFlightLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true

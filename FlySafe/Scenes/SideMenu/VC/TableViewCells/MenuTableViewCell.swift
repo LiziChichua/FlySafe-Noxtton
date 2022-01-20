@@ -31,7 +31,7 @@ class MenuTableViewCell: UITableViewCell {
         //Constraints
         NSLayoutConstraint.activate([
             menuOptionsLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 15),
-            menuOptionsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10),
+            menuOptionsLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.gap),
             menuOptionsLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             menuOptionsLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: 15)
         
@@ -40,17 +40,6 @@ class MenuTableViewCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }
