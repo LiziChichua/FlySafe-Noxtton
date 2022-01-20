@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D1582A62799690D00853777 /* CustomTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1582A02799690D00853777 /* CustomTransitionViewController.swift */; };
+		0D1582A72799690D00853777 /* SpinerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1582A12799690D00853777 /* SpinerLayer.swift */; };
+		0D1582A82799690D00853777 /* TransitionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1582A22799690D00853777 /* TransitionButton.swift */; };
+		0D1582A92799690D00853777 /* FadeTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1582A32799690D00853777 /* FadeTransition.swift */; };
+		0D1582AA2799690D00853777 /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1582A42799690D00853777 /* CGRectExtension.swift */; };
 		0D1AD7AF2781C8510063DE71 /* HomeTVTopCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1AD7AE2781C8510063DE71 /* HomeTVTopCell.swift */; };
 		0D1AD7B12781CA510063DE71 /* HomeTVBottomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1AD7B02781CA510063DE71 /* HomeTVBottomCell.swift */; };
 		0D1AD7B32781CA940063DE71 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1AD7B22781CA940063DE71 /* MainViewModel.swift */; };
@@ -57,6 +62,8 @@
 		0DD2CA20277041130044CB1B /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DD2CA1E277041130044CB1B /* NetworkService.swift */; };
 		0DE00C8E278830A600BF9627 /* FoldingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE00C8D278830A600BF9627 /* FoldingCell.swift */; };
 		0DE79046278F73A3009C9731 /* RestrictionDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE79045278F73A3009C9731 /* RestrictionDetailsViewModel.swift */; };
+		0DFDE56E27971D8000081F0C /* AirportPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFDE56D27971D8000081F0C /* AirportPickerCell.swift */; };
+		0DFDE575279750CF00081F0C /* FlightTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DFDE574279750CF00081F0C /* FlightTypes.swift */; };
 		D349EFF92785F5B60049DEE6 /* DashedLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349EFF82785F5B60049DEE6 /* DashedLineView.swift */; };
 		D349F0002785F6660049DEE6 /* RestrictionDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349EFFF2785F6660049DEE6 /* RestrictionDetailsViewController.swift */; };
 		D349F0032785F68F0049DEE6 /* RestrictionDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D349F0022785F68F0049DEE6 /* RestrictionDetailsView.swift */; };
@@ -97,6 +104,11 @@
 
 /* Begin PBXFileReference section */
 		0D05BD7327902CEA00B7FEB2 /* RestrictionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionTableViewCell.swift; sourceTree = "<group>"; };
+		0D1582A02799690D00853777 /* CustomTransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTransitionViewController.swift; sourceTree = "<group>"; };
+		0D1582A12799690D00853777 /* SpinerLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinerLayer.swift; sourceTree = "<group>"; };
+		0D1582A22799690D00853777 /* TransitionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionButton.swift; sourceTree = "<group>"; };
+		0D1582A32799690D00853777 /* FadeTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeTransition.swift; sourceTree = "<group>"; };
+		0D1582A42799690D00853777 /* CGRectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
 		0D1AD7AE2781C8510063DE71 /* HomeTVTopCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVTopCell.swift; sourceTree = "<group>"; };
 		0D1AD7B02781CA510063DE71 /* HomeTVBottomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVBottomCell.swift; sourceTree = "<group>"; };
 		0D1AD7B22781CA940063DE71 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewModel.swift; path = FlySafe/Scenes/Main/ViewModel/MainViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -147,6 +159,8 @@
 		0DE00C8D278830A600BF9627 /* FoldingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoldingCell.swift; sourceTree = "<group>"; };
 		0DE79045278F73A3009C9731 /* RestrictionDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsViewModel.swift; sourceTree = "<group>"; };
 		0DF1EF9D2792951000DCAC99 /* FlySafe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FlySafe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0DFDE56D27971D8000081F0C /* AirportPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AirportPickerCell.swift; sourceTree = "<group>"; };
+		0DFDE574279750CF00081F0C /* FlightTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightTypes.swift; sourceTree = "<group>"; };
 		D349EFF82785F5B60049DEE6 /* DashedLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashedLineView.swift; sourceTree = "<group>"; };
 		D349EFFF2785F6660049DEE6 /* RestrictionDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsViewController.swift; sourceTree = "<group>"; };
 		D349F0022785F68F0049DEE6 /* RestrictionDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionDetailsView.swift; sourceTree = "<group>"; };
@@ -197,6 +211,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D15829F2799690D00853777 /* TransitionButton */ = {
+			isa = PBXGroup;
+			children = (
+				0D1582A02799690D00853777 /* CustomTransitionViewController.swift */,
+				0D1582A12799690D00853777 /* SpinerLayer.swift */,
+				0D1582A22799690D00853777 /* TransitionButton.swift */,
+				0D1582A32799690D00853777 /* FadeTransition.swift */,
+				0D1582A42799690D00853777 /* CGRectExtension.swift */,
+			);
+			path = TransitionButton;
+			sourceTree = "<group>";
+		};
 		0D1AD7AD2781C7F70063DE71 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +230,7 @@
 				0D1AD7B02781CA510063DE71 /* HomeTVBottomCell.swift */,
 				0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */,
 				0D5394712789F1EA00B94B8A /* SummaryListTitleCell.swift */,
+				0DFDE56D27971D8000081F0C /* AirportPickerCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -237,6 +264,7 @@
 				0D2C10DC2770B52000B0AC93 /* FetchAirportsRequest.swift */,
 				0D2C10DE2770B5D600B0AC93 /* FetchVaccinesRequest.swift */,
 				0D2C10E22770B73E00B0AC93 /* FetchRestrictionsRequest.swift */,
+				0DFDE574279750CF00081F0C /* FlightTypes.swift */,
 			);
 			path = RequestStructs;
 			sourceTree = "<group>";
@@ -570,6 +598,7 @@
 		D390F611276F33FB0042FF90 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				0D15829F2799690D00853777 /* TransitionButton */,
 				0D5D63F3278A039200673350 /* CustomTypes */,
 				0D9268E727887ADC00F362C1 /* MarqueeLabel */,
 				0DE00C8C2788301B00BF9627 /* FoldingCell */,
@@ -825,15 +854,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D1582A62799690D00853777 /* CustomTransitionViewController.swift in Sources */,
 				0D1AD7B32781CA940063DE71 /* MainViewModel.swift in Sources */,
 				0D5394722789F1EA00B94B8A /* SummaryListTitleCell.swift in Sources */,
 				D3AF9066278ED07800137435 /* PopOverViewController.swift in Sources */,
 				D390F60D276F33F00042FF90 /* UICollectionView+Extension.swift in Sources */,
 				0D5CED4B276F7F54008D29B9 /* FetchTravelPlansResponse.swift in Sources */,
+				0D1582AA2799690D00853777 /* CGRectExtension.swift in Sources */,
 				D390F60E276F33F00042FF90 /* UICollectionViewCell+Extension.swift in Sources */,
 				0D2C10CD277096A000B0AC93 /* Loopable.swift in Sources */,
 				0D5D63F6278A039200673350 /* MenuState.swift in Sources */,
+				0D1582A82799690D00853777 /* TransitionButton.swift in Sources */,
 				D390F610276F33F00042FF90 /* UITableView+Extension.swift in Sources */,
+				0DFDE575279750CF00081F0C /* FlightTypes.swift in Sources */,
 				D349F0002785F6660049DEE6 /* RestrictionDetailsViewController.swift in Sources */,
 				D390F60C276F33F00042FF90 /* UIView+Extension.swift in Sources */,
 				0D2C10E12770B6AA00B0AC93 /* FetchNationalitiesRequest.swift in Sources */,
@@ -861,8 +894,10 @@
 				0DE79046278F73A3009C9731 /* RestrictionDetailsViewModel.swift in Sources */,
 				0D5D63F7278A039200673350 /* MenuOptionsForNewUser.swift in Sources */,
 				D3D0A08027943C3E00639F72 /* Day.swift in Sources */,
+				0DFDE56E27971D8000081F0C /* AirportPickerCell.swift in Sources */,
 				0D2C10D52770A61C00B0AC93 /* AddTravelPlanRequest.swift in Sources */,
 				0D5B34EE27705F8E00148518 /* APIManager.swift in Sources */,
+				0D1582A92799690D00853777 /* FadeTransition.swift in Sources */,
 				0D5D6402278A065200673350 /* FrameView.swift in Sources */,
 				D390F5E1276F33C00042FF90 /* MainViewController.swift in Sources */,
 				D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */,
@@ -880,6 +915,7 @@
 				D3D0A07A27943C0200639F72 /* CurrentInfo.swift in Sources */,
 				0D8FEEEB278B16EF0021F778 /* AuthenticationViewModel.swift in Sources */,
 				0D2EF04C277DA50F00FE4E1B /* Constants.swift in Sources */,
+				0D1582A72799690D00853777 /* SpinerLayer.swift in Sources */,
 				D390F609276F33F00042FF90 /* CoordinatorDelegate.swift in Sources */,
 				0D5BE44F2784BB5A00EFBF71 /* BezierPathSuperpowers.swift in Sources */,
 				0D2C10E32770B73E00B0AC93 /* FetchRestrictionsRequest.swift in Sources */,

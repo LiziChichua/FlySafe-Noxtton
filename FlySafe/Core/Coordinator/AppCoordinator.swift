@@ -102,7 +102,7 @@ final class AppCoordinator: CoordinatorProtocol {
         vc.userDidAuthenticate = { [weak self] user, token in
             DispatchQueue.main.async {
                 if let vc = self?.loadMainVC(userToken: token) {
-                    self?.navigationController?.pushViewController(vc, animated: true)
+                    self?.navigationController?.pushViewController(vc, animated: false)
                 }
             }
         }

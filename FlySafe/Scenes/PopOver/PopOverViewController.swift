@@ -9,19 +9,9 @@ import UIKit
 
 class PopOverViewController: UIViewController {
     
-    var travelPlan: TravelPlan? {
-        didSet {
-            source = travelPlan?.source
-            destination = travelPlan?.destination
-            transfer = travelPlan?.transfer
-            date = travelPlan?.date
-        }
-    }
+    var travelPlan: TravelPlan?
+    var modifiedPlan: TravelPlan?
     var didPressSave: ((TravelPlan) -> (Void))?
-    var source: String?
-    var destination: String?
-    var transfer: String?
-    var date: String?
     var airportsList: [String]?
     
     var popOverView: UIView = {
@@ -60,17 +50,12 @@ class PopOverViewController: UIViewController {
     }()
     
     @objc func saveTapped() {
-        guard let source = self.source else {return}
-        guard let destination = self.destination else {return}
-        let transferList: String = self.transfer ?? ""
-        guard let date = self.date else {return}
-        guard let id = self.travelPlan?.id else {return}
-        let modifiedPlan = TravelPlan(source: source, destination: destination, date: date, transfer: transferList, user: nil, id: id)
         
-        print (modifiedPlan)
-        didPressSave?(modifiedPlan)
-        self.dismiss(animated: true)
-        
+        if let modifiedPlan = modifiedPlan {
+            print (modifiedPlan)
+            didPressSave?(modifiedPlan)
+            self.dismiss(animated: true)
+        }
     }
     
     override func viewDidLoad() {
@@ -90,10 +75,10 @@ class PopOverViewController: UIViewController {
         tableView.dataSource = self
         
         NSLayoutConstraint.activate([
-            popOverView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 180),
+            popOverView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 150),
             popOverView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 30),
             popOverView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -30),
-            popOverView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -260),
+            popOverView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -240),
             
             tableView.topAnchor.constraint(equalTo: popOverView.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: popOverView.leadingAnchor),
@@ -130,28 +115,47 @@ extension PopOverViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 extension PopOverViewController: FlightInfoFieldsDelegate {
-    func didSelectFlightDate(date: Date) {
+    
+    func didMakeSelection(flightStructure: [(FlightTypes, String)], date: Date) {
+        var source: String?
+        var transfer: String?
+        var destination: String?
+        var dateString: String?
+        
+        if flightStructure[0].1 != "" {
+            let sourceArray = flightStructure[0].1.components(separatedBy: ",")
+            if let sourceID = sourceArray.first{
+                source = sourceID
+            }
+        }
+        
+        if flightStructure[flightStructure.count-1].1 != "" {
+            let destinationArray = flightStructure[flightStructure.count-1].1.components(separatedBy: ",")
+            if let destinationID = destinationArray.first {
+                destination = destinationID
+            }
+        }
+        
+        var tempTransferList = [String]()
+        
+        flightStructure.filter { $0.0 == .transfer }.forEach ({
+            let transferArray = $0.1.components(separatedBy: ",")
+            if let transferID = transferArray.first {
+                tempTransferList.append(transferID)
+            }
+        })
+        
+        transfer = tempTransferList.joined(separator: ",")
+        
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
-        self.date = formatter.string(from: date)
-    }
-    
-    func didSelectSource(source: String) {
-        let sourceArray = source.components(separatedBy: ",")
-        let sourceID = sourceArray.first
-        self.source = sourceID
-    }
-    
-    func didSelectDestination(destination: String) {
-        let destinationArray = destination.components(separatedBy: ",")
-        let destinationID = destinationArray.first
-        self.destination = destinationID
-    }
-    
-    func didSelectTransfer(transfer: String) {
-        let transferArray = transfer.components(separatedBy: ",")
-        let transferID = transferArray.first
-        self.transfer = transferID
+        dateString = formatter.string(from: date)
+        
+        if let id = self.travelPlan?.id {
+            if let source = source, let destination = destination, let transfer = transfer, let date = dateString {
+                self.modifiedPlan = TravelPlan(source: source, destination: destination, date: date, transfer: transfer, user: nil, id: id)
+            }
+        }
     }
     
 }

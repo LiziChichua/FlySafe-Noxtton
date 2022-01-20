@@ -189,7 +189,7 @@ class RestrictionTableViewCell: UITableViewCell {
     let generalInformationLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = ""
+        label.text = "General Information:"
         label.font = .systemFont(ofSize: 15, weight: .bold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -222,10 +222,11 @@ class RestrictionTableViewCell: UITableViewCell {
     }()
     
     //Vaccinated Visitors allowed Label
-    let vaccinatedVisitorsAllowedLabel: UILabel = {
-        let label = UILabel()
+    let vaccinatedVisitorsAllowedLabel: MarqueeLabel = {
+        let label = MarqueeLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
+        label.type = .leftRight
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -234,10 +235,11 @@ class RestrictionTableViewCell: UITableViewCell {
     }()
     
     //Dozes required Label
-    let dozesRequiredLabel: UILabel = {
-        let label = UILabel()
+    let dozesRequiredLabel: MarqueeLabel = {
+        let label = MarqueeLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
+        label.type = .leftRight
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -246,10 +248,11 @@ class RestrictionTableViewCell: UITableViewCell {
     }()
     
     //Min days after vaccination Label
-    let MinDaysAfterVaccinationLabel: UILabel = {
-        let label = UILabel()
+    let MinDaysAfterVaccinationLabel: MarqueeLabel = {
+        let label = MarqueeLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
+        label.type = .leftRight
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -258,10 +261,11 @@ class RestrictionTableViewCell: UITableViewCell {
     }()
     
     //Max days after vaccination Label
-    let MaxDaysAfterVaccinationLabel: UILabel = {
-        let label = UILabel()
+    let MaxDaysAfterVaccinationLabel: MarqueeLabel = {
+        let label = MarqueeLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
+        label.type = .leftRight
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -282,10 +286,11 @@ class RestrictionTableViewCell: UITableViewCell {
     }()
     
     //Tourists allowed By Nationality Label
-    let touristsAllowedByNationalityLabel: UILabel = {
-        let label = UILabel()
+    let touristsAllowedByNationalityLabel: MarqueeLabel = {
+        let label = MarqueeLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
+        label.type = .leftRight
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -294,10 +299,11 @@ class RestrictionTableViewCell: UITableViewCell {
     }()
     
     //Business visits allowed By Nationality Label
-    let businessVisitsAllowedByNationalityLabel: UILabel = {
-        let label = UILabel()
+    let businessVisitsAllowedByNationalityLabel: MarqueeLabel = {
+        let label = MarqueeLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
+        label.type = .leftRight
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -306,10 +312,11 @@ class RestrictionTableViewCell: UITableViewCell {
     }()
     
     //Covid passport required By Nationality Label
-    let covidPassportRequiredByNationalityLabel: UILabel = {
-        let label = UILabel()
+    let covidPassportRequiredByNationalityLabel: MarqueeLabel = {
+        let label = MarqueeLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
+        label.type = .leftRight
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -318,10 +325,11 @@ class RestrictionTableViewCell: UITableViewCell {
     }()
     
     //PCR tests accepted Label
-    let PCRTestsAcceptedLabel: UILabel = {
-        let label = UILabel()
+    let PCRTestsAcceptedLabel: MarqueeLabel = {
+        let label = MarqueeLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
+        label.type = .leftRight
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -330,10 +338,11 @@ class RestrictionTableViewCell: UITableViewCell {
     }()
     
     //Quick tests accepted Label
-    let quickTestsAcceptedLabel: UILabel = {
-        let label = UILabel()
+    let quickTestsAcceptedLabel: MarqueeLabel = {
+        let label = MarqueeLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
+        label.type = .leftRight
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -342,10 +351,11 @@ class RestrictionTableViewCell: UITableViewCell {
     }()
     
     //Biometric passport required Label
-    let biometricPassportRequiredLabel: UILabel = {
-        let label = UILabel()
+    let biometricPassportRequiredLabel: MarqueeLabel = {
+        let label = MarqueeLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
+        label.type = .leftRight
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left
@@ -354,10 +364,11 @@ class RestrictionTableViewCell: UITableViewCell {
     }()
     
     //Locator form required Label
-    let locatorFormRequiredLabel: UILabel = {
-        let label = UILabel()
+    let locatorFormRequiredLabel: MarqueeLabel = {
+        let label = MarqueeLabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = ""
+        label.type = .leftRight
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         label.numberOfLines = 1
         label.textAlignment = .left

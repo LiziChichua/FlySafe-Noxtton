@@ -85,20 +85,20 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
                 }
             } else {
                 switch MenuOptionsForRegisteredUser.allCases[indexPath.row] {
-                case .UserFullName:
-                    break
-                case .ChangePassword:
-                    break
+//                case .UserFullName:
+//                    break
+//                case .ChangePassword:
+//                    break
                 case .LogOut:
                     delegate?.logoutPressed()
                 }
             }
         } else {
             switch MenuOptionsForRegisteredUser.allCases[indexPath.row] {
-            case .UserFullName:
-                break
-            case .ChangePassword:
-                break
+//            case .UserFullName:
+//                break
+//            case .ChangePassword:
+//                break
             case .LogOut:
                 delegate?.logoutPressed()
             }
