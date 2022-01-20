@@ -115,6 +115,7 @@ class AuthenticationView: UIView {
         textField.sizeToFit()
         textField.keyboardType = .emailAddress
         textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.placeholder = "Email address"
         textField.font = .systemFont(ofSize: 15)
         textField.textColor = .black
@@ -126,6 +127,7 @@ class AuthenticationView: UIView {
         let textField = UITextField()
         textField.sizeToFit()
         textField.autocorrectionType = .no
+        textField.autocapitalizationType = .none
         textField.placeholder = "Password (more than 6 characters)"
         textField.font = .systemFont(ofSize: 15)
         textField.textColor = .black

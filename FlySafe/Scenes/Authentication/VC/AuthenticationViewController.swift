@@ -92,24 +92,61 @@ class AuthenticationViewController: BaseViewController {
                 guard let surname = authenticationView.surnameField.text else { return }
                 guard let nationality = authenticationView.nationalityList.text else { return }
                 guard let vaccine = authenticationView.vaccineList.text else { return }
-                guard let email = authenticationView.emailField.text else { return }
+                guard let email = authenticationView.emailField.text?.lowercased() else { return }
                 guard let password = authenticationView.passwordField.text else { return }
                 
-                let userData = UserData(name: name, surname: surname, nationality: nationality, vaccine: vaccine)
-                
-                viewModel.authenticateUser(email: email, password: password, userData: userData)
+                if name.isEmpty || surname.isEmpty || nationality.isEmpty || vaccine.isEmpty || !isValidEmailAddress(emailAddressString: email) || password.isEmpty || password.count < 6 {
+                    incompleteFormAlert()
+                } else {
+                    let userData = UserData(name: name, surname: surname, nationality: nationality, vaccine: vaccine)
+                    
+                    viewModel.authenticateUser(email: email, password: password, userData: userData)
+                }
             } else {
-                guard let email = authenticationView.emailField.text else { return }
+                guard let email = authenticationView.emailField.text?.lowercased() else { return }
                 guard let password = authenticationView.passwordField.text else { return }
-                
-                viewModel.authenticateUser(email: email, password: password, userData: nil)
+                if !isValidEmailAddress(emailAddressString: email) || password.isEmpty || password.count < 6 {
+                    incompleteFormAlert()
+                } else {
+                    viewModel.authenticateUser(email: email, password: password, userData: nil)
+                }
             }
         }
         
     }
     
+    
     @objc func backButtonPressed() {
         navigationController?.popViewController(animated: true)
+    }
+    
+    func incompleteFormAlert() {
+        let alert = UIAlertController(title: "Missing fields", message: "Please fill all given fields, make sure password is at least 6 characters long.", preferredStyle: .alert)
+        alert.addAction(.init(title: "Try again", style: .default, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func isValidEmailAddress(emailAddressString: String) -> Bool {
+        
+        var returnValue = true
+        let emailRegEx = "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
+        
+        do {
+            let regex = try NSRegularExpression(pattern: emailRegEx)
+            let nsString = emailAddressString as NSString
+            let results = regex.matches(in: emailAddressString, range: NSRange(location: 0, length: nsString.length))
+            
+            if results.isEmpty
+            {
+                returnValue = false
+            }
+            
+        } catch let error as NSError {
+            print("invalid regex: \(error.localizedDescription)")
+            returnValue = false
+        }
+        
+        return  returnValue
     }
     
 }
