@@ -23,6 +23,10 @@ class RestrictionDetailsViewController: BaseViewController {
         restrictionDetailsView.savePlanButton.addTarget(self, action: #selector(buttonTriger), for: .touchUpInside)
         viewmodel.fetchAirports()
         
+        let swipeToGoBack = UISwipeGestureRecognizer(target: self, action: #selector(backButtonPressed))
+        swipeToGoBack.direction = .right
+        restrictionDetailsView.addGestureRecognizer(swipeToGoBack)
+        
         viewmodel.travelPlanDidAdd = { [weak self] success in
             DispatchQueue.main.async {
                 if success {

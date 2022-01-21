@@ -37,6 +37,19 @@ class MainView: UIView {
         return label
     }()
     
+    //City,Region label
+    var locationLabel: UILabel = {
+        let label = UILabel()
+        label.sizeToFit()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 13, weight: .semibold)
+        label.textColor = .black
+        label.numberOfLines = 1
+        label.textAlignment = .right
+        label.text = ""
+        return label
+    }()
+    
     
     //Greeting label
     let greetingLabel: UILabel = {
@@ -76,6 +89,7 @@ override init(frame: CGRect) {
     //Add subviews
     self.addSubview(menuButton)
     self.addSubview(temperatureLabel)
+    self.addSubview(locationLabel)
     self.addSubview(greetingLabel)
     self.addSubview(homeTableView)
     
@@ -89,6 +103,11 @@ override init(frame: CGRect) {
     temperatureLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
     temperatureLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
     temperatureLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    
+    locationLabel.bottomAnchor.constraint(equalTo: temperatureLabel.topAnchor, constant: -3).isActive = true
+    locationLabel.trailingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor).isActive = true
+    locationLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
+    locationLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
     
     greetingLabel.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor).isActive = true
     greetingLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.gap).isActive = true
