@@ -160,6 +160,12 @@ class MainViewController: BaseViewController {
             
         }
         
+        viewmodel.didFetchLocation = { location in
+            let lat = Double(location.coordinate.longitude)
+            let long = Double(location.coordinate.longitude)
+            viewmodel.fetchWeather(lat: lat, lon: long)
+        }
+        
         
         viewmodel.restrictionsDidFetch = { [weak self] dict, flightInfo, saveButtonEnabled in
             if let travelPlan = self?.travelPlan {
@@ -172,11 +178,11 @@ class MainViewController: BaseViewController {
             }
         }
         
-        //lat,lon - Tbilisi(41.73 - 44.79)
-        //          London(51.52 - -0.11)
-        viewmodel.fetchWeather(lat: 51.52, lon: -0.11)
-        viewModel.didFetchWeather = { [weak self] weather in
-            self?.mainView.temperatureLabel.text = "\(weather.currentInfo?.celsius ?? 0)°C"
+        viewmodel.didFetchWeather = { [weak self] weatherInfo in
+            DispatchQueue.main.async {
+                self?.mainView.locationLabel.text = "\(weatherInfo.location?.name ?? ""), \(weatherInfo.location?.country ?? "")"
+                self?.mainView.temperatureLabel.text = "\(weatherInfo.currentInfo?.celsius ?? 0)°C"
+            }
         }
     }
     

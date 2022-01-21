@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D156C76279B3FAE009762C9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D156C75279B3FAE009762C9 /* LocationManager.swift */; };
 		0D1582A62799690D00853777 /* CustomTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1582A02799690D00853777 /* CustomTransitionViewController.swift */; };
 		0D1582A72799690D00853777 /* SpinerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1582A12799690D00853777 /* SpinerLayer.swift */; };
 		0D1582A82799690D00853777 /* TransitionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1582A22799690D00853777 /* TransitionButton.swift */; };
@@ -104,6 +105,7 @@
 
 /* Begin PBXFileReference section */
 		0D05BD7327902CEA00B7FEB2 /* RestrictionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionTableViewCell.swift; sourceTree = "<group>"; };
+		0D156C75279B3FAE009762C9 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		0D1582A02799690D00853777 /* CustomTransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTransitionViewController.swift; sourceTree = "<group>"; };
 		0D1582A12799690D00853777 /* SpinerLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinerLayer.swift; sourceTree = "<group>"; };
 		0D1582A22799690D00853777 /* TransitionButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionButton.swift; sourceTree = "<group>"; };
@@ -211,6 +213,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D156C74279B3FA5009762C9 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				0D156C75279B3FAE009762C9 /* LocationManager.swift */,
+			);
+			name = Location;
+			path = FlySafe/Managers/Location;
+			sourceTree = "<group>";
+		};
 		0D15829F2799690D00853777 /* TransitionButton */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +291,7 @@
 		0D5CED38276F430E008D29B9 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				0D156C74279B3FA5009762C9 /* Location */,
 				D390F614276F34210042FF90 /* CoreData */,
 				0D5CED39276F433D008D29B9 /* Network */,
 			);
@@ -510,8 +522,8 @@
 				D390F615276F34310042FF90 /* Models */,
 				0D5CED38276F430E008D29B9 /* Managers */,
 				D390F618276F34510042FF90 /* Resources */,
-				D390F627276F346C0042FF90 /* Scenes */,
 				D390F62F276F34F70042FF90 /* SupportingFiles */,
+				D390F627276F346C0042FF90 /* Scenes */,
 			);
 			path = FlySafe;
 			sourceTree = "<group>";
@@ -890,6 +902,7 @@
 				0D9268E927887AE900F362C1 /* MarqueeLabel.swift in Sources */,
 				0D8FEEE9278B16DE0021F778 /* AuthenticationViewController.swift in Sources */,
 				0D8FEEE5278B168A0021F778 /* AuthenticationView.swift in Sources */,
+				0D156C76279B3FAE009762C9 /* LocationManager.swift in Sources */,
 				0D5D63FF278A044600673350 /* ContainerViewController.swift in Sources */,
 				0DE79046278F73A3009C9731 /* RestrictionDetailsViewModel.swift in Sources */,
 				0D5D63F7278A039200673350 /* MenuOptionsForNewUser.swift in Sources */,

@@ -23,9 +23,15 @@ class RestrictionDetailsViewController: BaseViewController {
         restrictionDetailsView.savePlanButton.addTarget(self, action: #selector(buttonTriger), for: .touchUpInside)
         viewmodel.fetchAirports()
         
+        let swipeToGoBack = UISwipeGestureRecognizer(target: self, action: #selector(backButtonPressed))
+        swipeToGoBack.direction = .right
+        restrictionDetailsView.addGestureRecognizer(swipeToGoBack)
+        
         viewmodel.travelPlanDidAdd = { [weak self] success in
             DispatchQueue.main.async {
                 if success {
+                    self?.restrictionDetailsView.savePlanButton.isEnabled = false
+                    self?.restrictionDetailsView.savePlanButton.backgroundColor = .gray
                     let nc = NotificationCenter.default
                     nc.post(name: Notification.Name("TravelPlanAdded"), object: nil)
                     let alert = UIAlertController(title: "Success", message: "Travel plan succesfylly added", preferredStyle: .alert)

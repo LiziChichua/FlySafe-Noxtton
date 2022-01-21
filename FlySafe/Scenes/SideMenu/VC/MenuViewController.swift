@@ -27,7 +27,7 @@ class MenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.systemGray2
+        view.backgroundColor = UIColor(hex: "10A5F9")
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
@@ -58,6 +58,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
             if isNewUser {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
                 cell.backgroundColor = .clear
+                cell.textLabel?.textColor = .white
                 cell.textLabel?.text = MenuOptionsForNewUser.allCases[indexPath.row].rawValue
                 //cell.menuOptionsLabel.text = MenuOptionsForNewUser.allCases[indexPath.row].rawValue
                 return cell
@@ -65,6 +66,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.backgroundColor = .clear
+        cell.textLabel?.textColor = .white
         cell.textLabel?.text = MenuOptionsForRegisteredUser.allCases[indexPath.row].rawValue
         //cell.menuOptionsLabel.text = MenuOptionsForRegisteredUser.allCases[indexPath.row].rawValue
         return cell
@@ -72,8 +74,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        
+
         //Needs to be more elegant but my brain refuses to work better now ^_^.
         if let isNewUser = isNewUser {
             if isNewUser {

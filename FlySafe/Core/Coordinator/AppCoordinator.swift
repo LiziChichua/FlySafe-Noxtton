@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 final class AppCoordinator: CoordinatorProtocol {
 
