@@ -76,7 +76,9 @@ class AirportPickerCell: UITableViewCell {
         planeImage.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16).isActive = true
         planeImage.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16).isActive = true
         planeImage.widthAnchor.constraint(equalToConstant: 28).isActive = true
-        planeImage.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        let imgHeightConstraint = planeImage.heightAnchor.constraint(equalToConstant: 28)
+        imgHeightConstraint.priority = UILayoutPriority(999)
+        imgHeightConstraint.isActive = true
         
         airportPicker.leadingAnchor.constraint(equalTo: planeImage.trailingAnchor, constant: 16).isActive = true
         airportPicker.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16).isActive = true
@@ -91,7 +93,6 @@ class AirportPickerCell: UITableViewCell {
         
         airportPicker.didSelect { [weak self] selectedText, index, id in
             if let flightType = self?.flightType {
-                print (flightType, selectedText)
                 self?.didSelectAirport?(flightType, selectedText)
             }
         }

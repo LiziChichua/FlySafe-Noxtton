@@ -122,7 +122,6 @@ class RestrictionDetailsView: UIView {
             savePlanButton.widthAnchor.constraint(lessThanOrEqualToConstant: 100),
             savePlanButton.heightAnchor.constraint(equalToConstant: 25),
             
-//            restrictionInformationLabel.topAnchor.constraint(equalTo: menuButton.bottomAnchor, constant: 15),
             restrictionInformationLabel.topAnchor.constraint(equalTo: backButton.bottomAnchor, constant: 15),
             restrictionInformationLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             restrictionInformationLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),

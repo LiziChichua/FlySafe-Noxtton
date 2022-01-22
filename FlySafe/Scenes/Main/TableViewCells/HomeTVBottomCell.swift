@@ -180,7 +180,6 @@ class HomeTVBottomCell: UITableViewCell {
         let path = UIBezierPath()
         path.move(to: p0)
         path.addQuadCurve(to: p2, controlPoint: p1)
-        path.stroke()
         curvePath = path
         
         shapeLayer.path = path.cgPath
@@ -342,7 +341,9 @@ class HomeTVBottomCell: UITableViewCell {
         mainContainer.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         
         summaryContainer.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 20).isActive = true
-        summaryContainer.heightAnchor.constraint(equalToConstant: 170).isActive = true
+        let containerHeightConstraint = summaryContainer.heightAnchor.constraint(equalToConstant: 170)
+        containerHeightConstraint.priority = UILayoutPriority(999)
+        containerHeightConstraint.isActive = true
         summaryContainer.leadingAnchor.constraint(equalTo:  mainContainer.leadingAnchor, constant: Constants.gap).isActive = true
         summaryContainer.trailingAnchor.constraint(equalTo:  mainContainer.trailingAnchor, constant: -Constants.gap).isActive = true
         summaryContainer.bottomAnchor.constraint(equalTo:  mainContainer.bottomAnchor).isActive = true

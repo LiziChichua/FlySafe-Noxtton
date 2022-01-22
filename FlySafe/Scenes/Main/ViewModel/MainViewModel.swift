@@ -70,7 +70,6 @@ class MainViewModel: NSObject {
     func fetchTravelPlans(token: String) {
         apiManager.fetchTravelPlans(token: token) { [weak self] result in
             if let response = result {
-                print (response.success)
                 self?.travelPlansDidFetch?(response.travelPlans)
             }
         }

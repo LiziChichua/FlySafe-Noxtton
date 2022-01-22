@@ -9,7 +9,7 @@ import UIKit
 
 class HomeTVTopCell: UITableViewCell {
     
-    var delegate: FlightInfoFieldsDelegate?
+    weak var delegate: FlightInfoFieldsDelegate?
     
     var selectorStructure: [(FlightTypes, String)] = [(.source, ""), (.transfer, ""), (.destination, "")]
     
@@ -34,6 +34,7 @@ class HomeTVTopCell: UITableViewCell {
                             selectorStructure.insert((.transfer, airport), at: 1)
                         }
                     })
+                    selectorStructure.insert((.transfer, ""), at: selectorStructure.count-1)
                 }
                 if let destination = airportsList?.filter({
                     $0.contains("\(flightPlan.destination)")
@@ -151,7 +152,9 @@ class HomeTVTopCell: UITableViewCell {
         airportPickersTableView.topAnchor.constraint(equalTo: newFlightLabel.bottomAnchor, constant: 13).isActive = true
         airportPickersTableView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Constants.gap).isActive = true
         airportPickersTableView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Constants.gap).isActive = true
-        airportPickersTableView.heightAnchor.constraint(equalToConstant: 180).isActive = true
+        let tableHeightContraint = airportPickersTableView.heightAnchor.constraint(equalToConstant: 180)
+        tableHeightContraint.priority = UILayoutPriority(999)
+        tableHeightContraint.isActive = true
         
         pickerContainer.topAnchor.constraint(equalTo: airportPickersTableView.bottomAnchor, constant: 20).isActive = true
         pickerContainer.leadingAnchor.constraint(equalTo: airportPickersTableView.leadingAnchor).isActive = true
@@ -162,7 +165,10 @@ class HomeTVTopCell: UITableViewCell {
         imgDatePicker.topAnchor.constraint(equalTo: pickerContainer.topAnchor, constant: 16).isActive = true
         imgDatePicker.leadingAnchor.constraint(equalTo: pickerContainer.leadingAnchor, constant: 16).isActive = true
         imgDatePicker.widthAnchor.constraint(equalToConstant: 28).isActive = true
-        imgDatePicker.heightAnchor.constraint(equalToConstant: 28).isActive = true
+        let imgHeightConstraint = imgDatePicker.heightAnchor.constraint(equalToConstant: 28)
+        imgHeightConstraint.priority = UILayoutPriority(999)
+        imgHeightConstraint.isActive = true
+        
         
         datePicker.leadingAnchor.constraint(equalTo: imgDatePicker.trailingAnchor, constant: 16).isActive = true
         datePicker.trailingAnchor.constraint(equalTo: pickerContainer.trailingAnchor, constant: -16-28).isActive = true
@@ -179,7 +185,7 @@ class HomeTVTopCell: UITableViewCell {
 }
 
 
-protocol FlightInfoFieldsDelegate {
+protocol FlightInfoFieldsDelegate: AnyObject {
     func didMakeSelection(flightStructure: [(FlightTypes, String)], date: Date)
 }
 
@@ -190,6 +196,24 @@ extension HomeTVTopCell: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return selectorStructure.count
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            break
+        case selectorStructure.count-1:
+            break
+        case selectorStructure.count-2:
+            break
+        default:
+            if editingStyle == .delete {
+                selectorStructure.remove(at: indexPath.row)
+                tableView.deleteRows(at: [IndexPath(row: indexPath.row, section: indexPath.section)], with: .fade)
+                delegate?.didMakeSelection(flightStructure: selectorStructure, date: datePicker.date)
+            }
+        }
+
     }
     
     
@@ -220,7 +244,6 @@ extension HomeTVTopCell: UITableViewDelegate, UITableViewDataSource {
             }
             if let date = self?.datePicker.date {
                 if let selectorStructure = self?.selectorStructure {
-                    print (selectorStructure)
                     self?.delegate?.didMakeSelection(flightStructure: selectorStructure, date: date)
                 }
             }
