@@ -45,7 +45,9 @@ class CheckResstrictionsButton: UITableViewCell {
         checkRestrictions.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
         checkRestrictions.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Constants.gap).isActive = true
         checkRestrictions.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Constants.gap).isActive = true
-        checkRestrictions.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        let heightConstraint = checkRestrictions.heightAnchor.constraint(equalToConstant: 55)
+        heightConstraint.priority = UILayoutPriority(999)
+        heightConstraint.isActive = true
         
     }
     

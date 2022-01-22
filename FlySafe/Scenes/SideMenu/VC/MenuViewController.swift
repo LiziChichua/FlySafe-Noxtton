@@ -9,7 +9,7 @@ import UIKit
 
 class MenuViewController: UIViewController {
     
-    var delegate: sideMenuDelegate?
+    weak var delegate: sideMenuDelegate?
     var isNewUser: Bool?
     
     private let tableView: UITableView = {
@@ -108,7 +108,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
 }
 
-protocol sideMenuDelegate {
+protocol sideMenuDelegate: AnyObject {
     func registerPressed()
     func loginPressed()
     func changePasswordPressed()

@@ -29,7 +29,9 @@ class SummaryListTitleCell: UITableViewCell {
         summaryViewTitle.leadingAnchor.constraint(equalTo:  self.contentView.leadingAnchor, constant: Constants.gap).isActive = true
         summaryViewTitle.widthAnchor.constraint(equalToConstant: summaryViewTitle.intrinsicContentSize.width + 5).isActive = true
         summaryViewTitle.heightAnchor.constraint(equalToConstant: summaryViewTitle.intrinsicContentSize.height + 5).isActive = true
-        summaryViewTitle.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor).isActive = true
+        let titleHeightAnchor = summaryViewTitle.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor)
+        titleHeightAnchor.priority = UILayoutPriority(999)
+        titleHeightAnchor.isActive = true
         
     }
     

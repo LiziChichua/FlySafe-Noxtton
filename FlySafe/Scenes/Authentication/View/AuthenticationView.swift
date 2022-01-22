@@ -204,12 +204,16 @@ class AuthenticationView: UIView {
         verticalStack.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: Constants.gap).isActive = true
         verticalStack.leadingAnchor.constraint(equalTo: greetingLabel.leadingAnchor).isActive = true
         verticalStack.trailingAnchor.constraint(equalTo: greetingLabel.trailingAnchor).isActive = true
-        verticalStack.heightAnchor.constraint(equalToConstant: CGFloat(verticalStack.subviews.count/2 * 50)).isActive = true
+        let stackHeightConstraint = verticalStack.heightAnchor.constraint(equalToConstant: CGFloat(verticalStack.subviews.count/2 * 50))
+        stackHeightConstraint.priority = UILayoutPriority(999)
+        stackHeightConstraint.isActive = true
         
         loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30).isActive = true
         loginButton.leadingAnchor.constraint(equalTo: greetingLabel.leadingAnchor).isActive = true
         loginButton.trailingAnchor.constraint(equalTo: greetingLabel.trailingAnchor).isActive = true
-        loginButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        let btnHeightConstraint = loginButton.heightAnchor.constraint(equalToConstant: 55)
+        btnHeightConstraint.priority = UILayoutPriority(999)
+        btnHeightConstraint.isActive = true
         
     }
 

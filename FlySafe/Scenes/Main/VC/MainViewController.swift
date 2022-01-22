@@ -47,7 +47,6 @@ class MainViewController: BaseViewController {
         //If triggered from saved travelPlans
         if let travelPlan = travelPlan {
             if let userData = userData {
-                //                print (travelPlan)
                 viewModel.fetchRestrictions(travelPlan: travelPlan, nationality: userData.data.nationality, vaccine: userData.data.vaccine, saveButtonEnabled: saveButtonEnabled)
             } else {
                 viewModel.fetchRestrictions(travelPlan: travelPlan, nationality: nil, vaccine: nil, saveButtonEnabled: saveButtonEnabled)
