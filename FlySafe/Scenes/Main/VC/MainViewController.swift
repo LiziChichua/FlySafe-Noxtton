@@ -160,7 +160,7 @@ class MainViewController: BaseViewController {
         }
         
         viewmodel.didFetchLocation = { location in
-            let lat = Double(location.coordinate.longitude)
+            let lat = Double(location.coordinate.latitude)
             let long = Double(location.coordinate.longitude)
             viewmodel.fetchWeather(lat: lat, lon: long)
         }

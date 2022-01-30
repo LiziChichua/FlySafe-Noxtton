@@ -15,7 +15,7 @@ protocol WeatherManagerProtocol: AnyObject {
 // MARK: - WeatherManager
 class WeatherManager: WeatherManagerProtocol {
     func fetchWeather(lat: Double, lon: Double, completion: @escaping ((Result<Weather, Error>) -> Void)){
-        let url = "https://api.weatherapi.com/v1/current.json?key=ca3b29ef1f454c40ad7150622221601&q=\(lat),\(lon)"
+        let url = "https://api.weatherapi.com/v1/current.json?key=ca3b29ef1f454c40ad7150622221601&q=\(lat),\(lon)&aqi=no"
         NetworkManager.shared.get(url: url) { (result: Result<Weather, Error>) in
             switch result {
             case .success(let response):
