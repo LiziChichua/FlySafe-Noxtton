@@ -11,7 +11,6 @@ import CoreLocation
 class MainViewModel: NSObject {
     
     private let networkService = DefaultNetworkService()
-    private var weatherManager: WeatherManagerProtocol
     private let apiManager: APIManager
     private var locationManager = LocationManager()
     
@@ -29,12 +28,11 @@ class MainViewModel: NSObject {
     var travelPlanDidEdit: ((Bool) -> (Void))?
     var travelPlansDidFetch: (([TravelPlan]) -> (Void))?
     var didFetchUserData: ((User) -> (Void))?
-    var didFetchWeather: ((Weather) -> (Void))?
+    var didFetchWeather: ((WeatherResponse) -> (Void))?
     var didFetchLocation: ((CLLocation) -> (Void))?
     
     override init() {
         apiManager = APIManager(with: networkService)
-        weatherManager = WeatherManager()
         apiManager.onError = { error in
             print (error)
         }
@@ -105,16 +103,10 @@ class MainViewModel: NSObject {
     
     
     //Fetch weather info
-    func fetchWeather(lat: Double, lon: Double) {
-        weatherManager.fetchWeather(lat: lat, lon: lon) { [weak self] result in
-            switch result {
-            case .success(let weather):
-                guard let self = self else { return }
-                    self.didFetchWeather?(weather)
-            case .failure(let err):
-                print(err)
-            }
-        }
+    func fetchWeatherInfo(lat: Double, lon: Double) {
+        apiManager.fetchWeather(latitude: lat, longitude: lon, completion: { [weak self] result in
+            self?.didFetchWeather?(result)
+        })
     }
     
 }

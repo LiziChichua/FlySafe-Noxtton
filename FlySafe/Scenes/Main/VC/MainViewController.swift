@@ -160,9 +160,9 @@ class MainViewController: BaseViewController {
         }
         
         viewmodel.didFetchLocation = { location in
-            let lat = Double(location.coordinate.longitude)
+            let lat = Double(location.coordinate.latitude)
             let long = Double(location.coordinate.longitude)
-            viewmodel.fetchWeather(lat: lat, lon: long)
+            viewmodel.fetchWeatherInfo(lat: lat, lon: long)
         }
         
         
@@ -179,8 +179,16 @@ class MainViewController: BaseViewController {
         
         viewmodel.didFetchWeather = { [weak self] weatherInfo in
             DispatchQueue.main.async {
-                self?.mainView.locationLabel.text = "\(weatherInfo.location?.name ?? ""), \(weatherInfo.location?.country ?? "")"
-                self?.mainView.temperatureLabel.text = "\(weatherInfo.currentInfo?.celsius ?? 0)°C"
+                self?.mainView.locationLabel.text = "\(weatherInfo.location.name), \(weatherInfo.location.country)"
+                self?.mainView.temperatureLabel.text = "\(weatherInfo.current.tempC)°C"
+                let weatherIcon = weatherInfo.current.condition.icon
+                if let splitAddress = weatherIcon.split(separator: "/").last {
+                    if let imageName = splitAddress.split(separator: ".").first {
+                        self?.mainView.weatherIcon.image = UIImage(named: String(imageName))
+                    }
+                }
+                self?.mainView.locationLabel.hideSkeleton()
+                self?.mainView.temperatureLabel.hideSkeleton()
             }
         }
     }
