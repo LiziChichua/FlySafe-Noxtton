@@ -80,7 +80,7 @@ class AirportPickerCell: UITableViewCell {
         imgHeightConstraint.priority = UILayoutPriority(999)
         imgHeightConstraint.isActive = true
         
-        airportPicker.leadingAnchor.constraint(equalTo: planeImage.trailingAnchor, constant: 16).isActive = true
+        airportPicker.leadingAnchor.constraint(equalTo: planeImage.trailingAnchor, constant: 12).isActive = true
         airportPicker.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16).isActive = true
         airportPicker.centerYAnchor.constraint(equalTo: planeImage.centerYAnchor).isActive = true
         airportPicker.heightAnchor.constraint(equalTo: planeImage.heightAnchor).isActive = true
