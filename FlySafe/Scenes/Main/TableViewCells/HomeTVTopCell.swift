@@ -77,6 +77,7 @@ class HomeTVTopCell: UITableViewCell {
     
     let airportPickersTableView: UITableView = {
         let table = UITableView()
+        table.allowsSelection = false
         table.translatesAutoresizingMaskIntoConstraints = false
         table.isUserInteractionEnabled = true
         table.backgroundColor = .clear
