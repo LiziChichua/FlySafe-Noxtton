@@ -37,6 +37,14 @@ class MainView: UIView {
         return label
     }()
     
+    var weatherIcon: UIImageView = {
+        let image = UIImageView()
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
+        image.backgroundColor = .clear
+        return image
+    }()
+    
     //City,Region label
     var locationLabel: UILabel = {
         let label = UILabel()
@@ -68,6 +76,7 @@ class MainView: UIView {
     //Create main table view
     let homeTableView: UITableView = {
         let tableView = UITableView()
+        tableView.backgroundColor = .clear
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.showsHorizontalScrollIndicator = false
         tableView.showsVerticalScrollIndicator = false
@@ -90,6 +99,7 @@ override init(frame: CGRect) {
     self.addSubview(menuButton)
     self.addSubview(temperatureLabel)
     self.addSubview(locationLabel)
+    self.addSubview(weatherIcon)
     self.addSubview(greetingLabel)
     self.addSubview(homeTableView)
     
@@ -103,6 +113,11 @@ override init(frame: CGRect) {
     temperatureLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20).isActive = true
     temperatureLabel.widthAnchor.constraint(equalToConstant: 80).isActive = true
     temperatureLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    
+    weatherIcon.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor, constant: -3).isActive = true
+    weatherIcon.trailingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor).isActive = true
+    weatherIcon.heightAnchor.constraint(equalToConstant: 32).isActive = true
+    weatherIcon.widthAnchor.constraint(equalToConstant: 32).isActive = true
     
     locationLabel.bottomAnchor.constraint(equalTo: temperatureLabel.topAnchor, constant: -3).isActive = true
     locationLabel.trailingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor).isActive = true

@@ -181,6 +181,14 @@ class MainViewController: BaseViewController {
             DispatchQueue.main.async {
                 self?.mainView.locationLabel.text = "\(weatherInfo.location?.name ?? ""), \(weatherInfo.location?.country ?? "")"
                 self?.mainView.temperatureLabel.text = "\(weatherInfo.currentInfo?.celsius ?? 0)°C"
+                if let weatherIcon = weatherInfo.currentInfo?.condition?.conditionImage {
+                    if let splitAddress = weatherIcon.split(separator: "/").last {
+                        if let imageName = splitAddress.split(separator: ".").first {
+                            self?.mainView.weatherIcon.image = UIImage(named: String(imageName))
+                        }
+                    }
+
+                }
             }
         }
     }
