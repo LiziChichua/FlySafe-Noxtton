@@ -173,4 +173,18 @@ class APIManager {
         }
     }
     
+    func fetchWeather(latitude: Double, longitude: Double, completion: @escaping (WeatherResponse) -> Void) {
+        let request = WeatherRequest(latitude: latitude, longitude: longitude)
+        
+        networkService.request(request, completion: { [weak self] result in
+            switch result {
+            case .success(let response):
+                completion(response)
+            case .failure(let error):
+                self?.onError?(error)
+            }
+            
+        })
+    }
+    
 }

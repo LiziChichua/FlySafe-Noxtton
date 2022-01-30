@@ -75,7 +75,6 @@ final class DefaultNetworkService: NetworkService {
         
         //Start URLSession dataTask
         URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
-//            print ("Json raw data: \(String(data: urlRequest.httpBody!, encoding: .utf8))")
             if let error = error {
                 return completion(.failure(error))
             } else if let data = data {
