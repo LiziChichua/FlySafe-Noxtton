@@ -94,7 +94,7 @@ class HomeTVTopCell: UITableViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.viewBorder(borderColor: .black, borderWidth: Constants.borderWidth)
-        view.contentMode = .center
+        view.contentMode = .left
         view.layer.cornerRadius = Constants.cornerRadius
         return view
     }()
@@ -115,7 +115,7 @@ class HomeTVTopCell: UITableViewCell {
         let picker = UIDatePicker()
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.timeZone = NSTimeZone.local
-        picker.contentHorizontalAlignment = .center
+        picker.contentHorizontalAlignment = .leading
         picker.datePickerMode = .date
         picker.date = .now
         
@@ -172,10 +172,11 @@ class HomeTVTopCell: UITableViewCell {
         imgHeightConstraint.isActive = true
         
         
-        datePicker.leadingAnchor.constraint(equalTo: imgDatePicker.trailingAnchor, constant: 16).isActive = true
-        datePicker.trailingAnchor.constraint(equalTo: pickerContainer.trailingAnchor, constant: -16-28).isActive = true
+        datePicker.leadingAnchor.constraint(equalTo: imgDatePicker.trailingAnchor, constant: 0).isActive = true
+        datePicker.trailingAnchor.constraint(equalTo: pickerContainer.trailingAnchor, constant: -16).isActive = true
         datePicker.centerYAnchor.constraint(equalTo: imgDatePicker.centerYAnchor).isActive = true
-        
+        datePicker.subviews[0].subviews[0].subviews[0].alpha = 0
+
     }
     
     
