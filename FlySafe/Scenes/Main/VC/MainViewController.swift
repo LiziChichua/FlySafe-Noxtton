@@ -187,6 +187,8 @@ class MainViewController: BaseViewController {
                         self?.mainView.weatherIcon.image = UIImage(named: String(imageName))
                     }
                 }
+                self?.mainView.locationLabel.hideSkeleton()
+                self?.mainView.temperatureLabel.hideSkeleton()
             }
         }
     }

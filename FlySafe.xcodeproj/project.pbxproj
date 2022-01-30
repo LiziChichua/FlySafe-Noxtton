@@ -53,6 +53,7 @@
 		0D6AAAE8278756140084D571 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6AAAE7278756140084D571 /* CustomExtensions.swift */; };
 		0D7ACAC727A6E46900C4A780 /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7ACAC627A6E46900C4A780 /* WeatherRequest.swift */; };
 		0D7ACAC927A6E57500C4A780 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7ACAC827A6E57500C4A780 /* WeatherResponse.swift */; };
+		0D7ACACC27A6F28B00C4A780 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 0D7ACACB27A6F28B00C4A780 /* SkeletonView */; };
 		0D8FEEE5278B168A0021F778 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FEEE4278B168A0021F778 /* AuthenticationView.swift */; };
 		0D8FEEE9278B16DE0021F778 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FEEE8278B16DE0021F778 /* AuthenticationViewController.swift */; };
 		0D8FEEEB278B16EF0021F778 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FEEEA278B16EF0021F778 /* AuthenticationViewModel.swift */; };
@@ -191,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D7ACACC27A6F28B00C4A780 /* SkeletonView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,6 +767,7 @@
 			);
 			name = FlySafe;
 			packageProductDependencies = (
+				0D7ACACB27A6F28B00C4A780 /* SkeletonView */,
 			);
 			productName = FlySafe;
 			productReference = 0DF1EF9D2792951000DCAC99 /* FlySafe.app */;
@@ -795,6 +798,7 @@
 			);
 			mainGroup = D390F5D0276F33C00042FF90;
 			packageReferences = (
+				0D7ACACA27A6F28B00C4A780 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = D390F5D0276F33C00042FF90;
 			projectDirPath = "";
@@ -1119,6 +1123,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0D7ACACA27A6F28B00C4A780 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0D7ACACB27A6F28B00C4A780 /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D7ACACA27A6F28B00C4A780 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		D390F5E5276F33C00042FF90 /* FlySafe.xcdatamodeld */ = {

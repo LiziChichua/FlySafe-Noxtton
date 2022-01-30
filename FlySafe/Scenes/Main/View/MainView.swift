@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class MainView: UIView {
     
@@ -103,6 +104,11 @@ override init(frame: CGRect) {
     self.addSubview(greetingLabel)
     self.addSubview(homeTableView)
     
+    temperatureLabel.isSkeletonable = true
+    locationLabel.isSkeletonable = true
+    
+    temperatureLabel.showAnimatedGradientSkeleton()
+    locationLabel.showAnimatedGradientSkeleton()
     
     menuButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 50).isActive = true
     menuButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20).isActive = true
