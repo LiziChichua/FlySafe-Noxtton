@@ -8,7 +8,7 @@
 import Foundation
 
 enum MenuOptionsForNewUser: String, CaseIterable {
-    case newUser = "Hi, new user 🥰"
+    //case newUser = "Welcome to FlySafe"
     case RegisterOrSignIn = "Register or Sign In"
 }
 
