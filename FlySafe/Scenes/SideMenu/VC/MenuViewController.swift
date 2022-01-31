@@ -81,8 +81,8 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
                 switch MenuOptionsForNewUser.allCases[indexPath.row] {
                 case .RegisterOrSignIn:
                     delegate?.registerPressed()
-                case .newUser:
-                    break
+//                case .newUser:
+//                    break
                 }
             } else {
                 switch MenuOptionsForRegisteredUser.allCases[indexPath.row] {

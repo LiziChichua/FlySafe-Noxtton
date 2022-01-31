@@ -51,6 +51,9 @@
 		0D5D6402278A065200673350 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D6401278A065200673350 /* FrameView.swift */; };
 		0D6AAAE5278752570084D571 /* CheckResstrictionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */; };
 		0D6AAAE8278756140084D571 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6AAAE7278756140084D571 /* CustomExtensions.swift */; };
+		0D70690727A85A3500C82155 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0D70690627A85A3500C82155 /* Lottie */; };
+		0D70690927A85CBB00C82155 /* HomeTVPlaceHolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D70690827A85CBB00C82155 /* HomeTVPlaceHolderCell.swift */; };
+		0D70691027A86AF900C82155 /* walkingTraveler.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D70690F27A86AF900C82155 /* walkingTraveler.json */; };
 		0D7ACAC727A6E46900C4A780 /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7ACAC627A6E46900C4A780 /* WeatherRequest.swift */; };
 		0D7ACAC927A6E57500C4A780 /* WeatherResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7ACAC827A6E57500C4A780 /* WeatherResponse.swift */; };
 		0D7ACACC27A6F28B00C4A780 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = 0D7ACACB27A6F28B00C4A780 /* SkeletonView */; };
@@ -141,6 +144,8 @@
 		0D5D6401278A065200673350 /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 		0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckResstrictionsButton.swift; sourceTree = "<group>"; };
 		0D6AAAE7278756140084D571 /* CustomExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomExtensions.swift; sourceTree = "<group>"; };
+		0D70690827A85CBB00C82155 /* HomeTVPlaceHolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVPlaceHolderCell.swift; sourceTree = "<group>"; };
+		0D70690F27A86AF900C82155 /* walkingTraveler.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = walkingTraveler.json; sourceTree = "<group>"; };
 		0D7ACAC627A6E46900C4A780 /* WeatherRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherRequest.swift; sourceTree = "<group>"; };
 		0D7ACAC827A6E57500C4A780 /* WeatherResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherResponse.swift; sourceTree = "<group>"; };
 		0D8FEEE4278B168A0021F778 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
@@ -193,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D7ACACC27A6F28B00C4A780 /* SkeletonView in Frameworks */,
+				0D70690727A85A3500C82155 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +234,7 @@
 				0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */,
 				0D5394712789F1EA00B94B8A /* SummaryListTitleCell.swift */,
 				0DFDE56D27971D8000081F0C /* AirportPickerCell.swift */,
+				0D70690827A85CBB00C82155 /* HomeTVPlaceHolderCell.swift */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -345,6 +352,14 @@
 				0D6AAAE7278756140084D571 /* CustomExtensions.swift */,
 			);
 			path = HideKeyboard;
+			sourceTree = "<group>";
+		};
+		0D70690A27A8601700C82155 /* Lottie */ = {
+			isa = PBXGroup;
+			children = (
+				0D70690F27A86AF900C82155 /* walkingTraveler.json */,
+			);
+			path = Lottie;
 			sourceTree = "<group>";
 		};
 		0D8FEEDC278B160B0021F778 /* Authentication */ = {
@@ -633,6 +648,7 @@
 		D390F618276F34510042FF90 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				0D70690A27A8601700C82155 /* Lottie */,
 				0D2EF04A277DA50100FE4E1B /* Constants */,
 				D390F619276F34510042FF90 /* Images */,
 				D390F61B276F34510042FF90 /* Colors */,
@@ -768,6 +784,7 @@
 			name = FlySafe;
 			packageProductDependencies = (
 				0D7ACACB27A6F28B00C4A780 /* SkeletonView */,
+				0D70690627A85A3500C82155 /* Lottie */,
 			);
 			productName = FlySafe;
 			productReference = 0DF1EF9D2792951000DCAC99 /* FlySafe.app */;
@@ -799,6 +816,7 @@
 			mainGroup = D390F5D0276F33C00042FF90;
 			packageReferences = (
 				0D7ACACA27A6F28B00C4A780 /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				0D70690527A85A3500C82155 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = D390F5D0276F33C00042FF90;
 			projectDirPath = "";
@@ -816,6 +834,7 @@
 			files = (
 				D390F624276F34510042FF90 /* MyriadGEOMtavruli-Bold.otf in Resources */,
 				D390F623276F34510042FF90 /* Colors.xcassets in Resources */,
+				0D70691027A86AF900C82155 /* walkingTraveler.json in Resources */,
 				D390F5EC276F33C20042FF90 /* LaunchScreen.storyboard in Resources */,
 				D390F622276F34510042FF90 /* Assets.xcassets in Resources */,
 				D390F626276F34510042FF90 /* MyriadGEOMtavruli-Medium.otf in Resources */,
@@ -836,6 +855,7 @@
 				0D5394722789F1EA00B94B8A /* SummaryListTitleCell.swift in Sources */,
 				D3AF9066278ED07800137435 /* PopOverViewController.swift in Sources */,
 				D390F60D276F33F00042FF90 /* UICollectionView+Extension.swift in Sources */,
+				0D70690927A85CBB00C82155 /* HomeTVPlaceHolderCell.swift in Sources */,
 				0D5CED4B276F7F54008D29B9 /* FetchTravelPlansResponse.swift in Sources */,
 				0D1582AA2799690D00853777 /* CGRectExtension.swift in Sources */,
 				D390F60E276F33F00042FF90 /* UICollectionViewCell+Extension.swift in Sources */,
@@ -1055,10 +1075,14 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlySafe/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FlySafe;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Your location data is used to find nearby service providers";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "FlySafe needs your location to show you current weather details";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1084,10 +1108,14 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = FlySafe/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = FlySafe;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Your location data is used to find nearby service providers";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "FlySafe needs your location to show you current weather details";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1125,6 +1153,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0D70690527A85A3500C82155 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		0D7ACACA27A6F28B00C4A780 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Juanpe/SkeletonView.git";
@@ -1136,6 +1172,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0D70690627A85A3500C82155 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0D70690527A85A3500C82155 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
 		0D7ACACB27A6F28B00C4A780 /* SkeletonView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0D7ACACA27A6F28B00C4A780 /* XCRemoteSwiftPackageReference "SkeletonView" */;

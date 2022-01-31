@@ -217,6 +217,7 @@ class MainViewController: BaseViewController {
         mainView.homeTableView.register(SummaryListTitleCell.self, forCellReuseIdentifier: "SummaryListTitleCell")
         mainView.homeTableView.register(HomeTVBottomCell.self, forCellReuseIdentifier: "HomeTVBottomCell")
         mainView.homeTableView.register(CheckResstrictionsButton.self, forCellReuseIdentifier: "CheckResstrictionsButton")
+        mainView.homeTableView.register(HomeTVPlaceHolderCell.self, forCellReuseIdentifier: "HomeTVPlaceHolderCell")
         
         //Set TV delegate and datasource
         mainView.homeTableView.delegate = self
@@ -249,7 +250,7 @@ extension MainViewController: UITableViewDataSource {
         if let travelPlans = userTravelPlans{
             return 3 + travelPlans.count
         } else {
-            return 2
+            return 3
         }
     }
     
@@ -268,8 +269,14 @@ extension MainViewController: UITableViewDataSource {
             }
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryListTitleCell", for: indexPath)
-            return cell
+            if userToken != nil {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryListTitleCell", for: indexPath)
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVPlaceHolderCell", for: indexPath)
+                return cell
+            }
+
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVBottomCell", for: indexPath) as! HomeTVBottomCell
             cell.allignSubviews()
