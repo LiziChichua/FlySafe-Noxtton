@@ -41,7 +41,11 @@ final class AppCoordinator: CoordinatorProtocol {
     func loadOnboardingVC() -> UIViewController {
         let vc = OnboardingVC()
         vc.didFinishOnboarding = { [weak self] in
-            if let vc = self?.loadMainVC(userToken: nil) {
+            if let token = self?.checkForSavedToken() {
+                guard let vc = self?.loadMainVC(userToken: token) else {return}
+                self?.navigationController?.pushViewController(vc, animated: true)
+            } else {
+                guard let vc = self?.loadMainVC(userToken: nil) else {return}
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
         }
