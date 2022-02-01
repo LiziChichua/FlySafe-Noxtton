@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D074DE127A914F400FE42BC /* passportDocuments.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D074DDF27A914F400FE42BC /* passportDocuments.json */; };
+		0D074DE527A9204000FE42BC /* virusWorldAttack.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D074DE327A9204000FE42BC /* virusWorldAttack.json */; };
+		0D074DE927A9244200FE42BC /* OnboardingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D074DE827A9244200FE42BC /* OnboardingVC.swift */; };
 		0D156C76279B3FAE009762C9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D156C75279B3FAE009762C9 /* LocationManager.swift */; };
 		0D1582A62799690D00853777 /* CustomTransitionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1582A02799690D00853777 /* CustomTransitionViewController.swift */; };
 		0D1582A72799690D00853777 /* SpinerLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D1582A12799690D00853777 /* SpinerLayer.swift */; };
@@ -49,9 +52,10 @@
 		0D5D63FF278A044600673350 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D63FC278A044600673350 /* ContainerViewController.swift */; };
 		0D5D6400278A044600673350 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D63FD278A044600673350 /* MenuViewController.swift */; };
 		0D5D6402278A065200673350 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D6401278A065200673350 /* FrameView.swift */; };
+		0D6319A027A92CD100DC0C20 /* OnboardingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D63199F27A92CD100DC0C20 /* OnboardingCVCell.swift */; };
+		0D6319A327A943B200DC0C20 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0D6319A227A943B200DC0C20 /* Lottie */; };
 		0D6AAAE5278752570084D571 /* CheckResstrictionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */; };
 		0D6AAAE8278756140084D571 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6AAAE7278756140084D571 /* CustomExtensions.swift */; };
-		0D70690727A85A3500C82155 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0D70690627A85A3500C82155 /* Lottie */; };
 		0D70690927A85CBB00C82155 /* HomeTVPlaceHolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D70690827A85CBB00C82155 /* HomeTVPlaceHolderCell.swift */; };
 		0D70691027A86AF900C82155 /* walkingTraveler.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D70690F27A86AF900C82155 /* walkingTraveler.json */; };
 		0D7ACAC727A6E46900C4A780 /* WeatherRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D7ACAC627A6E46900C4A780 /* WeatherRequest.swift */; };
@@ -61,6 +65,8 @@
 		0D8FEEE9278B16DE0021F778 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FEEE8278B16DE0021F778 /* AuthenticationViewController.swift */; };
 		0D8FEEEB278B16EF0021F778 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D8FEEEA278B16EF0021F778 /* AuthenticationViewModel.swift */; };
 		0D9268E927887AE900F362C1 /* MarqueeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D9268E827887AE900F362C1 /* MarqueeLabel.swift */; };
+		0DA057FF27A954A900F1293A /* checkList.json in Resources */ = {isa = PBXBuildFile; fileRef = 0DA057FD27A954A900F1293A /* checkList.json */; };
+		0DA0580027A954A900F1293A /* girlList.json in Resources */ = {isa = PBXBuildFile; fileRef = 0DA057FE27A954A900F1293A /* girlList.json */; };
 		0DB6929E2794194500E83368 /* DataPrettyPrint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB6929D2794194500E83368 /* DataPrettyPrint.swift */; };
 		0DB90439277103150063436A /* FetchSelfResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB90438277103150063436A /* FetchSelfResponse.swift */; };
 		0DBBAE32277CBA020078348C /* iOSDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DBBAE31277CBA020078348C /* iOSDropDown.swift */; };
@@ -101,6 +107,9 @@
 
 /* Begin PBXFileReference section */
 		0D05BD7327902CEA00B7FEB2 /* RestrictionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictionTableViewCell.swift; sourceTree = "<group>"; };
+		0D074DDF27A914F400FE42BC /* passportDocuments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = passportDocuments.json; sourceTree = "<group>"; };
+		0D074DE327A9204000FE42BC /* virusWorldAttack.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = virusWorldAttack.json; sourceTree = "<group>"; };
+		0D074DE827A9244200FE42BC /* OnboardingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingVC.swift; sourceTree = "<group>"; };
 		0D156C75279B3FAE009762C9 /* LocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		0D1582A02799690D00853777 /* CustomTransitionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTransitionViewController.swift; sourceTree = "<group>"; };
 		0D1582A12799690D00853777 /* SpinerLayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpinerLayer.swift; sourceTree = "<group>"; };
@@ -142,6 +151,7 @@
 		0D5D63FC278A044600673350 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		0D5D63FD278A044600673350 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0D5D6401278A065200673350 /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
+		0D63199F27A92CD100DC0C20 /* OnboardingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCVCell.swift; sourceTree = "<group>"; };
 		0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckResstrictionsButton.swift; sourceTree = "<group>"; };
 		0D6AAAE7278756140084D571 /* CustomExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomExtensions.swift; sourceTree = "<group>"; };
 		0D70690827A85CBB00C82155 /* HomeTVPlaceHolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVPlaceHolderCell.swift; sourceTree = "<group>"; };
@@ -152,6 +162,8 @@
 		0D8FEEE8278B16DE0021F778 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		0D8FEEEA278B16EF0021F778 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		0D9268E827887AE900F362C1 /* MarqueeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarqueeLabel.swift; sourceTree = "<group>"; };
+		0DA057FD27A954A900F1293A /* checkList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = checkList.json; sourceTree = "<group>"; };
+		0DA057FE27A954A900F1293A /* girlList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = girlList.json; sourceTree = "<group>"; };
 		0DB6929D2794194500E83368 /* DataPrettyPrint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPrettyPrint.swift; sourceTree = "<group>"; };
 		0DB90438277103150063436A /* FetchSelfResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchSelfResponse.swift; sourceTree = "<group>"; };
 		0DBBAE31277CBA020078348C /* iOSDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSDropDown.swift; sourceTree = "<group>"; };
@@ -198,13 +210,33 @@
 			buildActionMask = 2147483647;
 			files = (
 				0D7ACACC27A6F28B00C4A780 /* SkeletonView in Frameworks */,
-				0D70690727A85A3500C82155 /* Lottie in Frameworks */,
+				0D6319A327A943B200DC0C20 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D074DDE27A914DA00FE42BC /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				0D074DE327A9204000FE42BC /* virusWorldAttack.json */,
+				0DA057FD27A954A900F1293A /* checkList.json */,
+				0DA057FE27A954A900F1293A /* girlList.json */,
+				0D074DDF27A914F400FE42BC /* passportDocuments.json */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		0D074DE727A9240200FE42BC /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				0D63199E27A92CA800DC0C20 /* OnboardingCell */,
+				0D074DE827A9244200FE42BC /* OnboardingVC.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
 		0D156C74279B3FA5009762C9 /* Location */ = {
 			isa = PBXGroup;
 			children = (
@@ -346,6 +378,14 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
+		0D63199E27A92CA800DC0C20 /* OnboardingCell */ = {
+			isa = PBXGroup;
+			children = (
+				0D63199F27A92CD100DC0C20 /* OnboardingCVCell.swift */,
+			);
+			path = OnboardingCell;
+			sourceTree = "<group>";
+		};
 		0D6AAAE6278755F90084D571 /* HideKeyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,6 +397,7 @@
 		0D70690A27A8601700C82155 /* Lottie */ = {
 			isa = PBXGroup;
 			children = (
+				0D074DDE27A914DA00FE42BC /* Onboarding */,
 				0D70690F27A86AF900C82155 /* walkingTraveler.json */,
 			);
 			path = Lottie;
@@ -694,6 +735,7 @@
 		D390F627276F346C0042FF90 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				0D074DE727A9240200FE42BC /* Onboarding */,
 				D3AF9064278ED03900137435 /* PopOver */,
 				0D8FEEDC278B160B0021F778 /* Authentication */,
 				D390F628276F34760042FF90 /* BaseViewController */,
@@ -784,7 +826,7 @@
 			name = FlySafe;
 			packageProductDependencies = (
 				0D7ACACB27A6F28B00C4A780 /* SkeletonView */,
-				0D70690627A85A3500C82155 /* Lottie */,
+				0D6319A227A943B200DC0C20 /* Lottie */,
 			);
 			productName = FlySafe;
 			productReference = 0DF1EF9D2792951000DCAC99 /* FlySafe.app */;
@@ -816,7 +858,7 @@
 			mainGroup = D390F5D0276F33C00042FF90;
 			packageReferences = (
 				0D7ACACA27A6F28B00C4A780 /* XCRemoteSwiftPackageReference "SkeletonView" */,
-				0D70690527A85A3500C82155 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				0D6319A127A943B200DC0C20 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = D390F5D0276F33C00042FF90;
 			projectDirPath = "";
@@ -833,10 +875,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				D390F624276F34510042FF90 /* MyriadGEOMtavruli-Bold.otf in Resources */,
+				0D074DE527A9204000FE42BC /* virusWorldAttack.json in Resources */,
 				D390F623276F34510042FF90 /* Colors.xcassets in Resources */,
 				0D70691027A86AF900C82155 /* walkingTraveler.json in Resources */,
+				0DA057FF27A954A900F1293A /* checkList.json in Resources */,
 				D390F5EC276F33C20042FF90 /* LaunchScreen.storyboard in Resources */,
+				0D074DE127A914F400FE42BC /* passportDocuments.json in Resources */,
 				D390F622276F34510042FF90 /* Assets.xcassets in Resources */,
+				0DA0580027A954A900F1293A /* girlList.json in Resources */,
 				D390F626276F34510042FF90 /* MyriadGEOMtavruli-Medium.otf in Resources */,
 				D390F625276F34510042FF90 /* MyriadGEOMtavruli-Regular.otf in Resources */,
 			);
@@ -915,6 +961,7 @@
 				D390F606276F33EF0042FF90 /* AppCoordinator.swift in Sources */,
 				0D5CED4D276F7FB9008D29B9 /* DeleteResponse.swift in Sources */,
 				D390F607276F33EF0042FF90 /* StoryBoarded.swift in Sources */,
+				0D6319A027A92CD100DC0C20 /* OnboardingCVCell.swift in Sources */,
 				0D2C10CF27709E9100B0AC93 /* SelfRequest.swift in Sources */,
 				0D6AAAE8278756140084D571 /* CustomExtensions.swift in Sources */,
 				0DB6929E2794194500E83368 /* DataPrettyPrint.swift in Sources */,
@@ -930,6 +977,7 @@
 				0DE00C8E278830A600BF9627 /* FoldingCell.swift in Sources */,
 				0D5CED42276F7691008D29B9 /* User.swift in Sources */,
 				0D2C10DB2770B14D00B0AC93 /* DeleteTravelPlanRequest.swift in Sources */,
+				0D074DE927A9244200FE42BC /* OnboardingVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1153,12 +1201,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0D70690527A85A3500C82155 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+		0D6319A127A943B200DC0C20 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.3;
 			};
 		};
 		0D7ACACA27A6F28B00C4A780 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
@@ -1172,9 +1220,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0D70690627A85A3500C82155 /* Lottie */ = {
+		0D6319A227A943B200DC0C20 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0D70690527A85A3500C82155 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			package = 0D6319A127A943B200DC0C20 /* XCRemoteSwiftPackageReference "lottie-ios" */;
 			productName = Lottie;
 		};
 		0D7ACACB27A6F28B00C4A780 /* SkeletonView */ = {

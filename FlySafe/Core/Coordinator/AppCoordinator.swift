@@ -22,15 +22,30 @@ final class AppCoordinator: CoordinatorProtocol {
     //Starts application with main view present
     func start() {
         var vc: UIViewController
-        if let token = checkForSavedToken() {
-            vc = loadMainVC(userToken: token)
+        if isThisFirstLaunch() {
+            vc = loadOnboardingVC()
         } else {
-            vc = loadMainVC(userToken: nil)
+            if let token = checkForSavedToken() {
+                vc = loadMainVC(userToken: token)
+            } else {
+                vc = loadMainVC(userToken: nil)
+            }
         }
 
         navigationController?.pushViewController(vc, animated: true)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+    }
+    
+    
+    func loadOnboardingVC() -> UIViewController {
+        let vc = OnboardingVC()
+        vc.didFinishOnboarding = { [weak self] in
+            if let vc = self?.loadMainVC(userToken: nil) {
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+        return vc
     }
     
     
@@ -115,6 +130,20 @@ final class AppCoordinator: CoordinatorProtocol {
     func removeUserToken() {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "UserToken")
+    }
+    
+    func firstLaunchDidHappen() {
+        let defaults = UserDefaults.standard
+        defaults.set(true, forKey: "firstLaunchDidHappen")
+    }
+    
+    func isThisFirstLaunch() -> Bool {
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "firstLaunchDidHappen") == true {
+            return false
+        } else {
+            return true
+        }
     }
     
     func userDidAuthenticate() {

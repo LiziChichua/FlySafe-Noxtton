@@ -273,7 +273,7 @@ extension MainViewController: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "SummaryListTitleCell", for: indexPath)
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVPlaceHolderCell", for: indexPath)
+                let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVPlaceHolderCell", for: indexPath) as! HomeTVPlaceHolderCell
                 return cell
             }
 
