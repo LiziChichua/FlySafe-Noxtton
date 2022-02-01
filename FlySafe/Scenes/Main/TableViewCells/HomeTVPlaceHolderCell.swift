@@ -29,6 +29,7 @@ class HomeTVPlaceHolderCell: UITableViewCell {
         animation.contentMode = .scaleAspectFit
         animation.loopMode = .loop
         animation.animationSpeed = 1.5
+        animation.backgroundBehavior = .pauseAndRestore
         animation.play()
         
         return animation
