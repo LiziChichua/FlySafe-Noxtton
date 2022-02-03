@@ -23,9 +23,11 @@ class MainViewController: BaseViewController {
             //   print (userToken)
         }
     }
+    
     var userTravelPlans: [TravelPlan]?
     var travelPlan: TravelPlan?
     var airportsList: [String]?
+    
     var userData: User? {
         didSet {
             if let name = userData?.data.name {
@@ -116,6 +118,9 @@ class MainViewController: BaseViewController {
             self?.userTravelPlans = result
             DispatchQueue.main.async {
                 self?.mainView.homeTableView.reloadData()
+                if let userData = self?.userData {
+                    self?.viewModel.fetchAllRestrictions(userData: userData.data, travelPlans: result)
+                }
             }
         }
         

@@ -54,6 +54,8 @@
 		0D5D6402278A065200673350 /* FrameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5D6401278A065200673350 /* FrameView.swift */; };
 		0D6319A027A92CD100DC0C20 /* OnboardingCVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D63199F27A92CD100DC0C20 /* OnboardingCVCell.swift */; };
 		0D6319A327A943B200DC0C20 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 0D6319A227A943B200DC0C20 /* Lottie */; };
+		0D6A51C727AC516D002687C1 /* OfflineStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6A51C627AC516D002687C1 /* OfflineStorageManager.swift */; };
+		0D6A51CA27AC587E002687C1 /* OfflineItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6A51C927AC587E002687C1 /* OfflineItem.swift */; };
 		0D6AAAE5278752570084D571 /* CheckResstrictionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */; };
 		0D6AAAE8278756140084D571 /* CustomExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D6AAAE7278756140084D571 /* CustomExtensions.swift */; };
 		0D70690927A85CBB00C82155 /* HomeTVPlaceHolderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D70690827A85CBB00C82155 /* HomeTVPlaceHolderCell.swift */; };
@@ -152,6 +154,8 @@
 		0D5D63FD278A044600673350 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		0D5D6401278A065200673350 /* FrameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FrameView.swift; sourceTree = "<group>"; };
 		0D63199F27A92CD100DC0C20 /* OnboardingCVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCVCell.swift; sourceTree = "<group>"; };
+		0D6A51C627AC516D002687C1 /* OfflineStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineStorageManager.swift; sourceTree = "<group>"; };
+		0D6A51C927AC587E002687C1 /* OfflineItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OfflineItem.swift; sourceTree = "<group>"; };
 		0D6AAAE4278752570084D571 /* CheckResstrictionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckResstrictionsButton.swift; sourceTree = "<group>"; };
 		0D6AAAE7278756140084D571 /* CustomExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomExtensions.swift; sourceTree = "<group>"; };
 		0D70690827A85CBB00C82155 /* HomeTVPlaceHolderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTVPlaceHolderCell.swift; sourceTree = "<group>"; };
@@ -317,6 +321,7 @@
 		0D5CED38276F430E008D29B9 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				0D6A51C527AC514B002687C1 /* DataPersistance */,
 				0D156C74279B3FA5009762C9 /* Location */,
 				D390F614276F34210042FF90 /* CoreData */,
 				0D5CED39276F433D008D29B9 /* Network */,
@@ -384,6 +389,22 @@
 				0D63199F27A92CD100DC0C20 /* OnboardingCVCell.swift */,
 			);
 			path = OnboardingCell;
+			sourceTree = "<group>";
+		};
+		0D6A51C527AC514B002687C1 /* DataPersistance */ = {
+			isa = PBXGroup;
+			children = (
+				0D6A51C627AC516D002687C1 /* OfflineStorageManager.swift */,
+			);
+			path = DataPersistance;
+			sourceTree = "<group>";
+		};
+		0D6A51C827AC586A002687C1 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				0D6A51C927AC587E002687C1 /* OfflineItem.swift */,
+			);
+			path = Misc;
 			sourceTree = "<group>";
 		};
 		0D6AAAE6278755F90084D571 /* HideKeyboard */ = {
@@ -672,6 +693,7 @@
 		D390F615276F34310042FF90 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				0D6A51C827AC586A002687C1 /* Misc */,
 				0D5CED40276F7680008D29B9 /* API */,
 				D390F617276F343D0042FF90 /* CoreData */,
 			);
@@ -942,6 +964,7 @@
 				D390F5DD276F33C00042FF90 /* AppDelegate.swift in Sources */,
 				0D1AD7AF2781C8510063DE71 /* HomeTVTopCell.swift in Sources */,
 				0D2C10D92770AD1700B0AC93 /* EditTravelPlanRequest.swift in Sources */,
+				0D6A51CA27AC587E002687C1 /* OfflineItem.swift in Sources */,
 				0D2C10DD2770B52000B0AC93 /* FetchAirportsRequest.swift in Sources */,
 				0D2C10D12770A29C00B0AC93 /* FetchTravelPlansRequest.swift in Sources */,
 				0DBBAE32277CBA020078348C /* iOSDropDown.swift in Sources */,
@@ -964,6 +987,7 @@
 				0D6319A027A92CD100DC0C20 /* OnboardingCVCell.swift in Sources */,
 				0D2C10CF27709E9100B0AC93 /* SelfRequest.swift in Sources */,
 				0D6AAAE8278756140084D571 /* CustomExtensions.swift in Sources */,
+				0D6A51C727AC516D002687C1 /* OfflineStorageManager.swift in Sources */,
 				0DB6929E2794194500E83368 /* DataPrettyPrint.swift in Sources */,
 				D390F5E7276F33C00042FF90 /* FlySafe.xcdatamodeld in Sources */,
 				D390F62A276F34760042FF90 /* BaseViewController.swift in Sources */,

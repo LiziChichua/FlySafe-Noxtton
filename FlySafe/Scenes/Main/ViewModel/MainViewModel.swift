@@ -7,12 +7,14 @@
 
 import Foundation
 import CoreLocation
+import Network
 
 class MainViewModel: NSObject {
     
     private let networkService = DefaultNetworkService()
     private let apiManager: APIManager
     private var locationManager = LocationManager()
+    private let storageManager = OfflineStorageManager()
     
     var userToken: String? {
         didSet {
@@ -20,6 +22,7 @@ class MainViewModel: NSObject {
                 fetchTravelPlans(token: token)
                 fetchUser(token: token)
             }
+            print (readOfflineItemsFromDisk())
         }
     }
     var airportsDidFetch: (([Airport]) -> (Void))?
@@ -30,6 +33,7 @@ class MainViewModel: NSObject {
     var didFetchUserData: ((User) -> (Void))?
     var didFetchWeather: ((WeatherResponse) -> (Void))?
     var didFetchLocation: ((CLLocation) -> (Void))?
+    
     
     override init() {
         apiManager = APIManager(with: networkService)
@@ -45,6 +49,7 @@ class MainViewModel: NSObject {
         locationManager.updateLocation()
     }
     
+    
     //Fetch available airports
     func fetchAirports() {
         apiManager.fetchAirports { [weak self] result in
@@ -54,7 +59,64 @@ class MainViewModel: NSObject {
         }
     }
     
-    //Fetch restrictions
+    
+    //Fetches restrictions data for all user travel plans and returns combined offlineItem array
+    func fetchAllRestrictions(userData: UserData, travelPlans: [TravelPlan]){
+        var allOfflinItems: [OfflineItem] = []
+        travelPlans.forEach ({ plan in
+            apiManager.fetchRestrictions(travelPlan: plan, nationality: userData.nationality, vaccine: userData.vaccine) { [weak self] result in
+                if let response = result {
+                    if let restrictions = response.restricions {
+                        allOfflinItems.append(OfflineItem(travelPlan: plan, restrictions: restrictions))
+                        if travelPlans.count == allOfflinItems.count {
+                            self?.saveOfflineItemsToDisk(offlineItems: allOfflinItems)
+                            print ("Save command executed")
+                        }
+                    }
+                }
+            }
+        })
+    }
+    
+    
+    //Save offlineItem array to disk
+    private func saveOfflineItemsToDisk(offlineItems: [OfflineItem]) {
+        if let data = storageManager.convertToJson(info: offlineItems) {
+            storageManager.saveJsonToFile(data: data)
+        } else {
+            debugPrint("Error saving offline items to disk")
+        }
+    }
+    
+    //Start network monitoring
+    func startNetworkMonitor() {
+        let monitor = NWPathMonitor()
+        let queue = DispatchQueue(label: "Monitor")
+        
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied {
+                print ("We have active connection")
+            } else {
+                print ("We are Offline")
+            }
+        }
+        
+        monitor.start(queue: queue)
+    }
+    
+    
+    //Load offlineItems from disk
+    func readOfflineItemsFromDisk() -> [OfflineItem]? {
+        if let data = storageManager.readFromJsonFile() {
+            if let offlineItems = storageManager.decodeFromRawData(data: data) {
+                return offlineItems
+            }
+        }
+        return nil
+    }
+    
+    
+    //Fetch restrictions for given travelPlan
     func fetchRestrictions(travelPlan: TravelPlan, nationality: String?, vaccine: String?, saveButtonEnabled: Bool) {
         apiManager.fetchRestrictions(travelPlan: travelPlan, nationality: nationality, vaccine: vaccine) { [weak self] result in
             if let response = result {
@@ -65,6 +127,7 @@ class MainViewModel: NSObject {
         }
     }
     
+    //Fetch travel plans from API
     func fetchTravelPlans(token: String) {
         apiManager.fetchTravelPlans(token: token) { [weak self] result in
             if let response = result {
@@ -83,6 +146,7 @@ class MainViewModel: NSObject {
         }
     }
     
+    
     //Edit travel plan
     func editTravelPlan(token: String, travelPlan: TravelPlan) {
         apiManager.editTravelPlan(token: token, travelPlan: travelPlan) { [weak self] result in
@@ -91,6 +155,7 @@ class MainViewModel: NSObject {
             }
         }
     }
+    
     
     //Fetch user data
     func fetchUser(token: String) {
