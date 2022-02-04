@@ -37,7 +37,7 @@ final class AppCoordinator: CoordinatorProtocol {
         window?.makeKeyAndVisible()
     }
     
-    
+    //Loads onboarading view
     func loadOnboardingVC() -> UIViewController {
         let vc = OnboardingVC()
         vc.didFinishOnboarding = { [weak self] in
@@ -48,6 +48,7 @@ final class AppCoordinator: CoordinatorProtocol {
                 guard let vc = self?.loadMainVC(userToken: nil) else {return}
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
+            self?.firstLaunchDidHappen()
         }
         return vc
     }
@@ -69,10 +70,6 @@ final class AppCoordinator: CoordinatorProtocol {
             } else {
                 self?.gotoAuthenticationVC(isNewUser: false)
             }
-        }
-        
-        vc.passwordChangeSelected = { [weak self] in
-            self?.gotoPasswordChangeVC()
         }
         
         vc.logoutSelected = { [weak self] in
@@ -130,17 +127,19 @@ final class AppCoordinator: CoordinatorProtocol {
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    
+    //Removes user token from userdefaults
     func removeUserToken() {
         let defaults = UserDefaults.standard
         defaults.removeObject(forKey: "UserToken")
     }
     
+    //Save flag that first launch has already happened
     func firstLaunchDidHappen() {
         let defaults = UserDefaults.standard
         defaults.set(true, forKey: "firstLaunchDidHappen")
     }
     
+    //Check if this is the very first launch of app
     func isThisFirstLaunch() -> Bool {
         let defaults = UserDefaults.standard
         if defaults.bool(forKey: "firstLaunchDidHappen") == true {
@@ -148,14 +147,6 @@ final class AppCoordinator: CoordinatorProtocol {
         } else {
             return true
         }
-    }
-    
-    func userDidAuthenticate() {
-        
-    }
-    
-    func gotoPasswordChangeVC() {
-        
     }
     
     //Manages user logout

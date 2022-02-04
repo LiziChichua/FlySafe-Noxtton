@@ -15,8 +15,8 @@ class OnboardingCVCell: UICollectionViewCell {
         let label = UILabel()
          label.translatesAutoresizingMaskIntoConstraints = false
          label.text = ""
-         label.font = .systemFont(ofSize: 23, weight: .bold)
-         label.numberOfLines = 2
+         label.font = .systemFont(ofSize: 20, weight: .bold)
+         label.numberOfLines = 1
          label.textAlignment = .center
          
          return label
@@ -59,21 +59,25 @@ class OnboardingCVCell: UICollectionViewCell {
         self.contentView.addSubview(bottomLabelSmall)
         
         
-        animationView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10).isActive = true
+        animationView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
         animationView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         animationView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        let animationHeight = animationView.heightAnchor.constraint(equalTo: animationView.widthAnchor)
-        animationHeight.priority = UILayoutPriority(999)
+        let animationHeight = animationView.heightAnchor.constraint(equalTo: contentView.widthAnchor)
+        animationHeight.priority = UILayoutPriority(1000)
         animationHeight.isActive = true
         
-        bottomLabelLarge.topAnchor.constraint(equalTo: animationView.bottomAnchor, constant: Constants.gap*2).isActive = true
+        bottomLabelLarge.topAnchor.constraint(equalTo: animationView.bottomAnchor, constant: Constants.gap).isActive = true
         bottomLabelLarge.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        bottomLabelLarge.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        let largeLabelHeight = bottomLabelLarge.heightAnchor.constraint(equalToConstant: 25)
+        largeLabelHeight.priority = UILayoutPriority(1000)
+        largeLabelHeight.isActive = true
         
-        bottomLabelSmall.topAnchor.constraint(equalTo: bottomLabelLarge.bottomAnchor, constant: Constants.gap).isActive = true
+        bottomLabelSmall.topAnchor.constraint(equalTo: bottomLabelLarge.bottomAnchor, constant: Constants.gap/2).isActive = true
         bottomLabelSmall.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        bottomLabelSmall.heightAnchor.constraint(equalToConstant: 50).isActive = true
-        bottomLabelSmall.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        let smallLabelHeight = bottomLabelSmall.heightAnchor.constraint(equalToConstant: 50)
+        smallLabelHeight.priority = UILayoutPriority(999)
+        smallLabelHeight.isActive = true
+        //bottomLabelSmall.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
         
     }
     

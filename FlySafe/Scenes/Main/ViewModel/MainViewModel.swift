@@ -19,10 +19,8 @@ class MainViewModel: NSObject {
     var userToken: String? {
         didSet {
             if let token = userToken {
-                fetchTravelPlans(token: token)
                 fetchUser(token: token)
             }
-            print (readOfflineItemsFromDisk())
         }
     }
     var airportsDidFetch: (([Airport]) -> (Void))?
@@ -33,6 +31,8 @@ class MainViewModel: NSObject {
     var didFetchUserData: ((User) -> (Void))?
     var didFetchWeather: ((WeatherResponse) -> (Void))?
     var didFetchLocation: ((CLLocation) -> (Void))?
+    var didLoseNetworkConnection: (() -> (Void))?
+    var didConnectToNetwork: (() -> (Void))?
     
     
     override init() {
@@ -54,22 +54,30 @@ class MainViewModel: NSObject {
     func fetchAirports() {
         apiManager.fetchAirports { [weak self] result in
             if let response = result {
-                self?.airportsDidFetch?(response.airports)
+                let defaults = UserDefaults.standard
+                if let data = self?.storageManager.convertToJson(info: response.airports) {
+                    defaults.set(data, forKey: "airports")
+                    self?.airportsDidFetch?(response.airports)
+                }
             }
         }
     }
     
+    //Update user location
+    func updateLocation() {
+        locationManager.updateLocation()
+    }
     
     //Fetches restrictions data for all user travel plans and returns combined offlineItem array
     func fetchAllRestrictions(userData: UserData, travelPlans: [TravelPlan]){
-        var allOfflinItems: [OfflineItem] = []
+        var allOfflineItems: [OfflineItem] = []
         travelPlans.forEach ({ plan in
             apiManager.fetchRestrictions(travelPlan: plan, nationality: userData.nationality, vaccine: userData.vaccine) { [weak self] result in
                 if let response = result {
                     if let restrictions = response.restricions {
-                        allOfflinItems.append(OfflineItem(travelPlan: plan, restrictions: restrictions))
-                        if travelPlans.count == allOfflinItems.count {
-                            self?.saveOfflineItemsToDisk(offlineItems: allOfflinItems)
+                        allOfflineItems.append(OfflineItem(travelPlan: plan, restrictions: restrictions))
+                        if travelPlans.count == allOfflineItems.count {
+                            self?.saveOfflineItemsToDisk(offlineItems: allOfflineItems)
                             print ("Save command executed")
                         }
                     }
@@ -93,17 +101,15 @@ class MainViewModel: NSObject {
         let monitor = NWPathMonitor()
         let queue = DispatchQueue(label: "Monitor")
         
-        monitor.pathUpdateHandler = { path in
+        monitor.pathUpdateHandler = { [weak self] path in
             if path.status == .satisfied {
-                print ("We have active connection")
+                self?.didConnectToNetwork?()
             } else {
-                print ("We are Offline")
+                self?.didLoseNetworkConnection?()
             }
         }
-        
         monitor.start(queue: queue)
     }
-    
     
     //Load offlineItems from disk
     func readOfflineItemsFromDisk() -> [OfflineItem]? {
@@ -114,7 +120,6 @@ class MainViewModel: NSObject {
         }
         return nil
     }
-    
     
     //Fetch restrictions for given travelPlan
     func fetchRestrictions(travelPlan: TravelPlan, nationality: String?, vaccine: String?, saveButtonEnabled: Bool) {

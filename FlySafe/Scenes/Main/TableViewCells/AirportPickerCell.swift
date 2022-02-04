@@ -15,6 +15,8 @@ class AirportPickerCell: UITableViewCell {
         didSet {
             if let airportsList = airportsList {
                 airportPicker.optionArray = airportsList
+            } else {
+                airportPicker.optionArray = []
             }
         }
     }

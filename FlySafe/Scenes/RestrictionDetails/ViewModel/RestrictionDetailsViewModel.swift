@@ -12,6 +12,7 @@ class RestrictionDetailsViewModel {
     
     private let networkService = DefaultNetworkService()
     private let apiManager: APIManager
+    private let storageManager = OfflineStorageManager()
     
     var travelPlanDidAdd: ((Bool) -> (Void))?
     var airportsDidFetch: (([Airport]) -> (Void))?
@@ -26,10 +27,11 @@ class RestrictionDetailsViewModel {
         }
     }
     
-    func fetchAirports() {
-        apiManager.fetchAirports { [weak self] result in
-            if let response = result {
-                self?.airportsDidFetch?(response.airports)
+    func fetchLocalAirports() {
+        let defaults = UserDefaults.standard
+        if let data = defaults.data(forKey: "airports") {
+            if let airports = try? JSONDecoder().decode([Airport].self, from: data) {
+                self.airportsDidFetch?(airports)
             }
         }
     }
