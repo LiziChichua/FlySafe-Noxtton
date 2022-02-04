@@ -12,9 +12,9 @@ class OnboardingVC: UIViewController {
     var didFinishOnboarding: (() -> (Void))?
     var counter = 0
     
-    let animationArray = [ OnboardingCellInfo(image: "virusWorldAttack", largeText: "Welcome to FlySafe", smallText: "Covid19 virus has affected international\n traveling regulations"),
-                            OnboardingCellInfo(image: "checkList", largeText: "All the information you need", smallText: "We will help avoid nasty surprises\n at foreign borders"),
-                            OnboardingCellInfo(image: "girlList", largeText: "Enjoy your travel", smallText: "With FlySafe you can save upcoming\n travel plans for quick access.")]
+    let animationArray = [ OnboardingCellInfo(image: "virusWorldAttack", largeText: "Welcome to FlySafe", smallText: "Covid19 virus has affected\n international traveling regulations"),
+                            OnboardingCellInfo(image: "checkList", largeText: "All the information you need", smallText: "We will help you avoid nasty\n surprises at foreign borders"),
+                            OnboardingCellInfo(image: "girlList", largeText: "Enjoy your travel", smallText: "With FlySafe you can save your\n travel plans for quick access.")]
     
     let localView = UIView()
     
@@ -94,17 +94,16 @@ class OnboardingVC: UIViewController {
         
         onboardingPages.register(OnboardingCVCell.self, forCellWithReuseIdentifier: "OnboardingCVCell")
         
-        onboardingPages.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -80).isActive = true
+        onboardingPages.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100).isActive = true
         onboardingPages.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         onboardingPages.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-        onboardingPages.heightAnchor.constraint(equalTo: onboardingPages.widthAnchor).isActive = true
+        onboardingPages.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height*3/4 + 50).isActive = true
         
-        skipButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70).isActive = true
+        skipButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         skipButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.gap*2).isActive = true
         skipButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
         
-        
-        nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -70).isActive = true
+        nextButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
         nextButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.gap*2).isActive = true
         nextButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
     }

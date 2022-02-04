@@ -30,9 +30,10 @@ class MainView: UIView {
         let label = UILabel()
         label.sizeToFit()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.font = .systemFont(ofSize: 18, weight: .semibold)
         label.textColor = .black
         label.numberOfLines = 1
+        label.minimumScaleFactor = 0.5
         label.textAlignment = .right
         label.text = ""
         return label
@@ -41,7 +42,7 @@ class MainView: UIView {
     var weatherIcon: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.contentMode = .scaleAspectFit
+        image.contentMode = .scaleToFill
         image.backgroundColor = .clear
         return image
     }()
@@ -135,7 +136,7 @@ override init(frame: CGRect) {
     greetingLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.gap).isActive = true
     greetingLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
 
-    homeTableView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor).isActive = true
+    homeTableView.topAnchor.constraint(equalTo: greetingLabel.bottomAnchor, constant: 5).isActive = true
     homeTableView.leadingAnchor.constraint(equalTo: self.leadingAnchor).isActive = true
     homeTableView.trailingAnchor.constraint(equalTo: self.trailingAnchor).isActive = true
     homeTableView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Constants.gap).isActive = true

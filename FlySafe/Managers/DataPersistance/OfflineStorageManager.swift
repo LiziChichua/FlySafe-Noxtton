@@ -43,7 +43,6 @@ class OfflineStorageManager {
         let fileManager = FileManager.default
         let documentDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first
         if let path = documentDirectory?.appendingPathComponent("Flight_Plans_And_Restrictions.json") {
-
                 do {
                     return try Data(contentsOf: path)
                 } catch {

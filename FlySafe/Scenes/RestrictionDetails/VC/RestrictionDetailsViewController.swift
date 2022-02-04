@@ -21,11 +21,6 @@ class RestrictionDetailsViewController: BaseViewController {
         restrictionDetailsView.isSaveButtonEnabled = isSaveButtonEnabled
         restrictionDetailsView.restrictions = restrictions
         restrictionDetailsView.savePlanButton.addTarget(self, action: #selector(buttonTriger), for: .touchUpInside)
-        viewmodel.fetchAirports()
-        
-        let swipeToGoBack = UISwipeGestureRecognizer(target: self, action: #selector(backButtonPressed))
-        swipeToGoBack.direction = .right
-        restrictionDetailsView.addGestureRecognizer(swipeToGoBack)
         
         viewmodel.travelPlanDidAdd = { [weak self] success in
             DispatchQueue.main.async {
@@ -46,12 +41,14 @@ class RestrictionDetailsViewController: BaseViewController {
         }
         
         viewmodel.airportsDidFetch = { [weak self] result in
-            var airports = [String]()
+            var airports: [String] = []
             result.forEach { airport in
                 airports.append("\(airport.code), \(airport.city), \(airport.country)")
             }
             self?.restrictionDetailsView.airportsList = airports
         }
+        
+        viewmodel.fetchLocalAirports()
     }
     
     @objc func buttonTriger() {
@@ -64,6 +61,10 @@ class RestrictionDetailsViewController: BaseViewController {
         super.viewDidLoad()
         self.navigationController?.isNavigationBarHidden = true
         restrictionDetailsView.backButton.addTarget(self, action: #selector(backButtonPressed), for: .touchUpInside)
+        
+        let swipeToGoBack = UISwipeGestureRecognizer(target: self, action: #selector(backButtonPressed))
+        swipeToGoBack.direction = .right
+        restrictionDetailsView.addGestureRecognizer(swipeToGoBack)
     }
     
     

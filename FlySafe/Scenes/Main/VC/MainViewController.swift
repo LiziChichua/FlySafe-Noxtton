@@ -13,6 +13,7 @@ protocol MainViewControllerDelegate: AnyObject {
 
 class MainViewController: BaseViewController {
     
+    var areWeOffline: Bool = false
     var mainView = MainView()
     var gotoRestrictionsVC: (([String : Restrictions], TravelPlan, Bool) -> (Void))?
     let viewModel = MainViewModel()
@@ -25,6 +26,7 @@ class MainViewController: BaseViewController {
     }
     
     var userTravelPlans: [TravelPlan]?
+    var restrictions: [[String : Restrictions]]?
     var travelPlan: TravelPlan?
     var airportsList: [String]?
     
@@ -38,20 +40,46 @@ class MainViewController: BaseViewController {
         }
     }
     
+    //MARK: - Reload TableView
+    //Based on network status, fetches travel plans either from server or local file
     @objc func reloadTableview() {
         if let userToken = userToken {
-            viewModel.fetchTravelPlans(token: userToken)
+            if areWeOffline {
+                var tempTravelPlans: [TravelPlan] = []
+                var tempRestrictions: [[String : Restrictions]] = []
+                if let offlieItems = viewModel.readOfflineItemsFromDisk() {
+                    offlieItems.forEach({
+                        tempTravelPlans.append($0.travelPlan)
+                        tempRestrictions.append($0.restrictions)
+                    })
+                    userTravelPlans = tempTravelPlans
+                    restrictions = tempRestrictions
+                    DispatchQueue.main.async { [weak self] in
+                        self?.mainView.homeTableView.reloadData()
+                    }
+                }
+            } else {
+                viewModel.fetchTravelPlans(token: userToken)
+            }
         }
     }
     
-    
+    //MARK: - Function to fetch restrictions for given travel plan
     func checkRestrictionsPressed(_ travelPlan: TravelPlan?, saveButtonEnabled: Bool) {
         //If triggered from saved travelPlans
         if let travelPlan = travelPlan {
-            if let userData = userData {
-                viewModel.fetchRestrictions(travelPlan: travelPlan, nationality: userData.data.nationality, vaccine: userData.data.vaccine, saveButtonEnabled: saveButtonEnabled)
+            if areWeOffline {
+                if let index = userTravelPlans?.firstIndex(where: { $0.id == travelPlan.id }) {
+                    if let restrictions = restrictions?[index] {
+                        gotoRestrictionsVC?(restrictions, travelPlan, false)
+                    }
+                }
             } else {
-                viewModel.fetchRestrictions(travelPlan: travelPlan, nationality: nil, vaccine: nil, saveButtonEnabled: saveButtonEnabled)
+                if let userData = userData {
+                    viewModel.fetchRestrictions(travelPlan: travelPlan, nationality: userData.data.nationality, vaccine: userData.data.vaccine, saveButtonEnabled: saveButtonEnabled)
+                } else {
+                    viewModel.fetchRestrictions(travelPlan: travelPlan, nationality: nil, vaccine: nil, saveButtonEnabled: saveButtonEnabled)
+                }
             }
         } else {
             //If triggered from not saved travelPlan
@@ -67,7 +95,7 @@ class MainViewController: BaseViewController {
         }
     }
     
-    
+    //MARK: - Function to manage travel plan editing
     func didTapEdit(travelPlan: TravelPlan) {
         let vc = PopOverViewController()
         vc.didPressSave = { [weak self] travelPlan in
@@ -80,7 +108,7 @@ class MainViewController: BaseViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
-    
+    //MARK: - Function to manage travel plan deletion
     func didTapDelete(flightID: String) {
         let actionSheet = UIAlertController(title: "Do you want to delete your flight?", message: nil, preferredStyle: .actionSheet)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
@@ -95,7 +123,7 @@ class MainViewController: BaseViewController {
         present(actionSheet, animated: true, completion: nil)
     }
     
-    
+    //MARK: - Initialisers for viewmodel closures
     func initialiseVMClosures(viewmodel: MainViewModel) {
         
         viewmodel.airportsDidFetch = { [weak self] result in
@@ -164,10 +192,21 @@ class MainViewController: BaseViewController {
             
         }
         
-        viewmodel.didFetchLocation = { location in
+        viewmodel.didFetchLocation = { [weak self] location in
             let lat = Double(location.coordinate.latitude)
             let long = Double(location.coordinate.longitude)
-            viewmodel.fetchWeatherInfo(lat: lat, lon: long)
+            guard let areWeOffline = self?.areWeOffline else {return}
+            if areWeOffline {
+                DispatchQueue.main.async {
+                    self?.mainView.locationLabel.text = "Internet connection lost"
+                    self?.mainView.temperatureLabel.text = ""
+                    self?.mainView.weatherIcon.image = nil
+                    self?.mainView.locationLabel.hideSkeleton()
+                    self?.mainView.temperatureLabel.hideSkeleton()
+                }
+            } else {
+                viewmodel.fetchWeatherInfo(lat: lat, lon: long)
+            }
         }
         
         
@@ -196,14 +235,27 @@ class MainViewController: BaseViewController {
                 self?.mainView.temperatureLabel.hideSkeleton()
             }
         }
+        
+        viewmodel.didConnectToNetwork = { [weak self] in
+            self?.areWeOffline = false
+            self?.viewModel.updateLocation()
+            self?.viewModel.fetchAirports()
+            self?.reloadTableview()
+        }
+        
+        viewmodel.didLoseNetworkConnection = { [weak self] in
+            self?.areWeOffline = true
+            self?.viewModel.updateLocation()
+            self?.airportsList = nil
+            self?.reloadTableview()
+        }
     }
-    
     
     override func loadView() {
         view = mainView
     }
     
-    
+    //MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -213,6 +265,9 @@ class MainViewController: BaseViewController {
         
         //Set closures for viewmodel
         initialiseVMClosures(viewmodel: viewModel)
+        
+        //Start network monitor
+        viewModel.startNetworkMonitor()
         
         //Set user token in viewModel
         viewModel.userToken = userToken
@@ -240,7 +295,7 @@ class MainViewController: BaseViewController {
     }
 }
 
-/////MARK: - Extensions
+//MARK: - Extensions
 
 //Tableview delegate methods
 extension MainViewController: UITableViewDelegate {
@@ -281,13 +336,21 @@ extension MainViewController: UITableViewDataSource {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVPlaceHolderCell", for: indexPath) as! HomeTVPlaceHolderCell
                 return cell
             }
-
+            
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: "HomeTVBottomCell", for: indexPath) as! HomeTVBottomCell
             cell.allignSubviews()
             cell.restrictionsDidGetPressed = { [weak self] travelPlan in
                 self?.checkRestrictionsPressed(travelPlan, saveButtonEnabled: false)
             }
+            if areWeOffline {
+                cell.editButton.isEnabled = false
+                cell.deleteButton.isEnabled = false
+            } else {
+                cell.editButton.isEnabled = true
+                cell.deleteButton.isEnabled = true
+            }
+            
             cell.editPressed = { [weak self] tripPlan in
                 self?.didTapEdit(travelPlan: tripPlan)
             }
