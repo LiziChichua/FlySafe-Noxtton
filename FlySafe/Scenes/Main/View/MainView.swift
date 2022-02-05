@@ -123,8 +123,8 @@ override init(frame: CGRect) {
     
     weatherIcon.topAnchor.constraint(equalTo: temperatureLabel.bottomAnchor, constant: -3).isActive = true
     weatherIcon.trailingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor).isActive = true
-    weatherIcon.heightAnchor.constraint(equalToConstant: 32).isActive = true
-    weatherIcon.widthAnchor.constraint(equalToConstant: 32).isActive = true
+    weatherIcon.heightAnchor.constraint(equalToConstant: 28).isActive = true
+    weatherIcon.widthAnchor.constraint(equalToConstant: 28).isActive = true
     
     locationLabel.bottomAnchor.constraint(equalTo: temperatureLabel.topAnchor, constant: -3).isActive = true
     locationLabel.trailingAnchor.constraint(equalTo: temperatureLabel.trailingAnchor).isActive = true
